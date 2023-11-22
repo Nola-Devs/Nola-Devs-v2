@@ -1,0 +1,252 @@
+[
+  {
+    "group": "Agile Nola",
+    "about": "Agile Nola is a group for connecting the New Orleans software development community, marrying modern Agile methodologies with trends of the tech ecosystem at large. Many esteemed, national speakers gather monthly to provide unique insights into many different avenues in the software world. All are welcome and encouraged to come to the events with beer and food provided! Come network, learn, and laugh with the Agile User Group.",
+    "cal-id": "4a4d1054b6f65221f9afffe5e9d1e42b8dba4f83bd241d48faca0cab50ee478d@group.calendar.google.com",
+    "org-links": {
+      "eventbrite": "https://www.eventbrite.com/o/agile-nola-59051586693",
+      "meetup": "https://www.meetup.com/agilenola/"
+    },
+    "organizers": [
+      {
+        "name": "Dustin Gaspard",
+        "pfp": "dustin_gaspard.webp",
+        "links": {
+          "twitter": "https://twitter.com/dgaspard",
+          "linkedin": "https://www.linkedin.com/in/dustin-gaspard",
+          "website": "http://www.diamonddata.com/",
+          "email": "dgaspard@gmail.com"
+        }
+      },
+      {
+        "name": "Garett Majoue",
+        "pfp": "garett_majoue.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/garett-majoue/",
+          "website": "http://www.geocent.com/Pages/Default.aspx"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Below C Level",
+    "about": "We are a group of programmers residing in New Orleans, Louisiana, who gather on a monthly basis for presentations and discussions focused on systems programming. Our aim is to create an open and inclusive environment for individuals eager to delve deeper into the world of systems programming, going beyond surface-level abstractions. While our talks cater to programmers with a few years of professional experience, we encourage participation from all who are interested. In case any concepts or ideas appear perplexing or unclear, we allocate time for group discussions and collaborative learning.",
+    "cal-id": "4a4247e11b25fdce675a32da7252fba0ce728f6ae0ec47616f2de033592e85c9@group.calendar.google.com",
+    "org-links": {
+      "meetup": "https://belowclevel.org/",
+      "twitch": "https://www.twitch.tv/digraph"
+    },
+    "organizers": [
+      {
+        "name": "Benjamin Eckel",
+        "pfp": "benjamin_eckel.webp",
+        "links": {
+          "github": "https://github.com/bhelx",
+          "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
+          "email": "bhelx@simst.im"
+        }
+      },
+      {
+        "name": "Aaron Lee",
+        "pfp": "aaron_lee.webp",
+        "links": {
+          "github": "https://github.com/wwkeyboard",
+          "linkedin": "https://www.linkedin.com/in/aaronoralee/",
+          "website": "http://aaronosaur.us/",
+          "email": "wwkeyboard@gmail.com"
+        }
+      }
+    ]
+  },
+  {
+    "group": "BR SQL Server User Group",
+    "about": "The Baton Rouge SQL Server User Group is a free, no-registration required user group for professionals and students in the broad field of Microsoft SQL Server. The group aims provide a platform for growing your skillset in Information Technology and your professional network, and work closely with local and regional partners to make our monthly meetings interesting and informative. We meet every second Wednesday of the month on a wide range of topics from Business Intelligence, Disaster Recovery, SQL Server performance and monitoring, and SQL server development. The following links to our meetup calendar: https://www.meetup.com/baton-rouge-net-and-sql-server-user-groups/",
+    "cal-id": "sqlpassbr@gmail.com",
+    "org-links": {
+      "website": "https://www.brssug.org/",
+      "twitter": "https://twitter.com/BRSSUG/",
+      "meetup": "https://www.meetup.com/baton-rouge-net-and-sql-server-user-groups/"
+    },
+    "organizers": [
+      {
+        "name": "Thomas LeBlanc",
+        "pfp": "thomas_leblanc.webp",
+        "links": {
+          "website": "http://thesmilingdba.blogspot.com/",
+          "Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Frontend Party",
+    "about": "We are a vibrant community of front-end web developers known as the 'Front-End Party' located in New Orleans, Louisiana. Our group gathers once a month for engaging presentations and insightful discussions centered around front-end web development. Our primary focus is to provide a platform for like-minded individuals interested in exploring the intricacies of front-end development beyond the surface level.\nEvery second Tuesday of each month join us for 5:30pm at the beautiful Scale New Orleans. 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130",
+    "cal-id": "1c23d7fe14840e320ec0762245bf55cc32a6910417fcf76ca8ba2d1a308110f3@group.calendar.google.com",
+    "organizers": [
+      {
+        "name": "Colin Williams",
+        "pfp": "colin_williams.webp",
+        "links": {
+          "github": "https://github.com/colinwilliams91",
+          "linkedin": "https://www.linkedin.com/in/colin-williams-dev",
+          "website": "https://www.colin-williams.dev/",
+          "email": "colin.williams.dev@gmail.com"
+        }
+      },
+      {
+        "name": "Jorge Carvajal",
+        "pfp": "jorge_carvajal.webp",
+        "links": {
+          "github": "https://github.com/codingMustache",
+          "linkedin": "https://github.com/codingMustache",
+          "website": "https://codingmustache.dev",
+          "email": "contact@codingmustache.dev"
+        }
+      }
+    ],
+    "org-links": {
+      "website": "http://www.frontendparty.com/",
+      "meetup": "https://www.meetup.com/frontendparty/",
+      "twitch": "https://www.twitch.tv/nolafrontendparty"
+    }
+  },
+  {
+    "group": "Hack Night",
+    "about": "Hacknight is the end destination for the defacto 'Tech-Night' events hosted at 7pm every Tuesday at the Rusty Nail. Dozens of developers and designers alike come to unwind in the casual atmosphere of the bar and exchange fun thoughts regarding tech or otherwise. If you see a group of nerds arguing in the street just ask 'Is this Hack Night?' and they will greet you and introduce you to people.",
+    "cal-id": "d2ce13d5608aebe0ff7d3bcec5ea581fea8ca24d66e5f65c112e8cc3dabdbec1@group.calendar.google.com",
+    "organizers": [
+      {
+        "name": "Benjamin Eckel",
+        "pfp": "benjamin_eckel.webp",
+        "links": {
+          "github": "https://github.com/bhelx",
+          "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
+          "email": "bhelx@simst.im"
+        }
+      }
+    ],
+    "org-links": {
+      "meetup": "https://www.meetup.com/nolahacknight/",
+      "website": "http://www.rustynailnola.com"
+    }
+  },
+  {
+    "group": "Nola Game Dev",
+    "about": "We are a bunch of game developers in the Greater New Orleans area who meet on a monthly basis to network, collaborate, and share knowledge. Our events help the gamedev community present on interesting topics, showcase their projects, and encourage game development in the local area. We meet online on the third Thursday of every month at 7:00 pm. See our website for connecting.",
+    "cal-id": "d2ce13d5608aebe0ff7d3bcec5ea581fea8ca24d66e5f65c112e8cc3dabdbec1@group.calendar.google.com",
+    "org-links": {
+      "email": "contact@neworleansgamedev.com",
+      "discord": "https://discord.gg/PeJnP8J6cG"
+    },
+    "organizers": [
+      {
+        "name": "Calder King",
+        "pfp": "caler_tillet.webp",
+        "links": {
+          "Discord": "152092896164708352"
+        }
+      },
+      {
+        "name": "Curtis Cummings",
+        "pfp": "curtis_cummings.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
+          "website": "http://parallaxvisions.com/"
+        }
+      },
+      {
+        "name": "Chris Morison",
+        "pfp": "chris_morrison.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA Sec",
+    "about": "NOLA Sec is New Orleans' premier cybersecurity community. We bring together experts and enthusiasts to explore the ever-changing world of cybersecurity. Our monthly events feature top national speakers, offering unique insights and networking opportunities. All are welcome to join us for learning and laughter, with refreshments provided. Connect with us and be part of the thriving NOLA Sec community today",
+    "cal-id": "7c851f32b1efaa8c73ef1fab80f4177ad3e3e630cf9ba4c989dbfe43788eebcb@group.calendar.google.com",
+    "org-links": {
+      "eventbrite": "https://www.eventbrite.com/o/the-cyber-security-and-technology-community-of-new-orleans-67934786843"
+    },
+    "organizers": [
+      {
+        "name": "David Whelen",
+        "pfp": "david_whelen.webp",
+        "links": {
+          "twitter": "https://twitter.com/WhelenDavid",
+          "linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/",
+          "email": "dwhelen@teksystems.com"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA-Women-in-Tech",
+    "about": "Connecting those who identify as women within the Greater New Orleans tech ecosystem. Mostly social (for now)!",
+    "cal-id": "b85e18cbc5a2d1b3948c0fe9e6f27de409da19ea571bdea00d3e2456fc067f2e@group.calendar.google.com",
+    "org-links": {
+      "linkedin": "https://www.linkedin.com/groups/12554672/"
+    },
+    "organizers": [
+      {
+        "name": "Lucia Berliner",
+        "pfp": "lucia_berliner.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/luciaberliner/",
+          "email": "lucia.berliner@gmail.com"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Work-in-Tech",
+    "about": "As someone involved in the tech scene in New Orleans, we are always learning new things, meeting new people and coming up with new ways of accomplishing our goals. This thriving community of smart, entrepreneurial people now has an official way to connect! The Work In Tech group will meet up once a quarter...or so... at a local New Orleans spot. We invite anyone working in Tech in the NOLA area to join us as well as those looking to learn more about the industry and connect with potential future opportunities!",
+    "cal-id": "b85e18cbc5a2d1b3948c0fe9e6f27de409da19ea571bdea00d3e2456fc067f2e@group.calendar.google.com",
+    "org-links": {
+      "linkedin": "https://www.linkedin.com/company/workintechnola/",
+      "facebook": "https://www.facebook.com/workintechnola",
+      "eventbrite": "https://www.eventbrite.com/o/work-in-tech-nola-51562789513",
+      "linktr": "https://linktr.ee/workintech"
+    },
+    "organizers": [
+      {
+        "name": "Brook Davis",
+        "pfp": "brook_davis.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/brookbissinger/",
+          "twitter": "https://twitter.com/brook5280",
+          "website": "https://electricalSales.com",
+          "email": "brook5280@gmail.com"
+        }
+      }
+    ]
+  },
+  {
+    "group": "StartUp EcoSystem",
+    "about": "The New Orleans Startup Ecosystem is a dynamic and vibrant community of innovators, entrepreneurs, and visionaries who are driving innovation and economic growth in the heart of the Big Easy. Fostering collaboration, creativity, and opportunity, this group is dedicated to supporting and nurturing the city's emerging businesses and startups, making New Orleans a thriving hub for innovation and entrepreneurship.",
+    "cal-id": "398883a70f5e08ce0f331225accf6a4f9103dca6a2fe6e5f1f670cbc833652b0@group.calendar.google.com",
+    "org-links": {
+      "website": "https://startupnola.com",
+      "facebook": "https://www.facebook.com/GNOInc/",
+      "linkedin": "https://www.linkedin.com/company/gnoinc/",
+      "twitter":"https://twitter.com/GNOinc",
+      "youtube": "https://www.youtube.com/channel/UCSRMkwNPyR0M1-NugMq7J9A"
+    },
+    "organizers": [
+      {
+        "name": "Evie Poitevent Sanders",
+        "pfp": "evie_poitevent_sanders.webp",
+        "links": {
+          "linkedin": "https://www.linkedin.com/in/eviepoitevent/",
+          "email": "epoitevent@gnoinc.org"
+        }
+      }
+    ]
+  },
+  {
+    "about":"This is for one off events",
+    "cal-id": "545d217a064ce6f846e820045fccdaae17db65ee1b53dc14ea249833b94d0f70@group.calendar.google.com"
+  }
+]
