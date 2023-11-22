@@ -15,6 +15,7 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
+		"@icons-pack/svelte-simple-icons": "^3.0.0",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
