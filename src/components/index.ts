@@ -1,2 +1,5 @@
 // place files you want to import through the `$components` alias in this folder.
-export const test = () => {};
+import IconParser  from "./icon-parser.svelte";
+
+// exports
+export { IconParser }
