@@ -18,12 +18,14 @@
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
+		"@types/mapbox-gl": "^2.7.19",
 		"@types/sanitize-html": "^2.9.5",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.30.0",
+		"mapbox-gl": "^3.0.0-beta.1",
 		"prettier": "^3.0.0",
 		"prettier-plugin-svelte": "^3.0.0",
 		"sanitize-html": "^2.11.0",
@@ -34,8 +36,5 @@
 		"vite": "^4.4.2",
 		"vitest": "^0.32.2"
 	},
-	"type": "module",
-	"dependencies": {
-		"svelte-icons": "^2.1.0"
-	}
+	"type": "module"
 }
