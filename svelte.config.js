@@ -10,7 +10,8 @@ const config = {
 		alias: {
 			$components: path.resolve('./src/components/index.ts'),
 			$data: path.resolve('./src/data/index.ts'),
-			$images: path.resolve('./src/images/*')
+			$images: path.resolve('./src/images/*'),
+			$appTypes: path.resolve('./src/app.d.ts')
 		}
 	}
 };
