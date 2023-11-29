@@ -32,8 +32,9 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
     }))
     .sort((a:Event ,b:Event)=> 
       new Date(a.start).getTime() - new Date(b.start).getTime()) : [];
-
-  return {
+    
+  
+      return {
     groupObj,
     events,
   };

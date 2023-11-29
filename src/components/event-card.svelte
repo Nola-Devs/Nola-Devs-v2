@@ -5,7 +5,7 @@
 	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 	export let event: Event;
-  $: event
+	$: event;
 	let start = new Date(event.start);
 	let end = new Date(event.end);
 
@@ -13,30 +13,33 @@
 	let time = (t: any) => new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(t);
 	let coordinates: LngLatLike = [-71.224518, 20];
 	let mapContainer: HTMLDivElement;
-  let map: Map
+	let map: Map;
 
 	$: startMonth = month(start);
 	$: startTime = time(start);
 	$: endMonth = month(end);
 	$: endTime = time(end);
 
-	$: map
+	$: map;
 	$: coordinates;
 	$: zoom = 16;
 
-  const updateData = () => {
-    	zoom = map.getZoom();
-    	coordinates[0] = map.getCenter().lat;
-    	coordinates[1] = map.getCenter().lat;
-  }
+	const updateData = () => {
+		zoom = map.getZoom();
+		coordinates[0] = map.getCenter().lat;
+		coordinates[1] = map.getCenter().lat;
+	};
 
 	let mapRender = async () => {
-    const key = 'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xmbmduaXB4MDZ6YzN0cGpwc2dybnJrciJ9.wISnVUWHgy94Wc1VMxwqgg'
+		const key =
+			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xmbmduaXB4MDZ6YzN0cGpwc2dybnJrciJ9.wISnVUWHgy94Wc1VMxwqgg';
 		const businessAndAddressRegex =
-			/(.+?)\s(\d+\s[A-Za-z\s]+,\s[A-Za-z\s]+,\s[A-Za-z]+\s\d{5},\s[A-Za-z\s]+)/;
-		const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${
-			event.location.match(businessAndAddressRegex)[2]
-		}.json?types=address&access_token=${key}`;
+			/\b\d+\s+[a-zA-Z0-9\s.,-]+,\s*[a-zA-Z\s]+\s*,\s*[a-zA-Z]+\s*\d{5}(?:-\d{4})?\s*,\s*[a-zA-Z]+\b/;
+		const locationURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${event.location.match(
+			businessAndAddressRegex
+		)}.json?types=address&access_token=${key}`;
+
+		console.log(event.location.match(businessAndAddressRegex));
 
 		let req = await (await fetch(locationURL, { method: 'GET' })).json();
 
@@ -47,18 +50,16 @@
 			accessToken: key,
 			style: `mapbox://styles/mapbox/standard-beta`,
 			center: coordinates,
-			zoom: zoom,
-			interactive: false,
-			pitch: 3
+			zoom: zoom
 		});
+
 		await new Marker().setLngLat(coordinates).addTo(map);
-    map.on('move', () => {
-        updateData();
-      })
+		map.on('move', () => {
+			updateData();
+		});
 	};
 
-	onMount(()=>mapRender())
-
+	onMount(() => mapRender());
 </script>
 
 <h2>{event.summary}</h2>
@@ -75,39 +76,72 @@
 <p>{@html event.description}</p>
 <p>{event.location}</p>
 
-<div class="map-wrap">
-	<div class="map" bind:this="{mapContainer}"></div>
-  <div class="directions">
-    <button>
-      <p>
-        Directions
-      </p>
-    </button>
-  </div>
+<div class="map-frame">
+	<div class="map-wrap">
+		<div class="map" bind:this="{mapContainer}"></div>
+	</div>
+	<div class="directions">
+		<p>Directions</p>
+	</div>
 </div>
 
 <style>
 	h2 {
-		font-size: large;
+		font-size: larger;
 	}
 	.map {
 		width: 100%;
 		height: 100%;
+		border-radius: 10px;
+		z-index: 2;
 	}
 	.map-wrap {
-    border-radius: 3px;
-    transition: 0.5s;
-		margin: 10px;
+		transition: 0.5s;
 		aspect-ratio: 1/1;
 		height: 200px;
-    clip-path: fill-box;
+		border-radius: 10px;
 	}
 
-  .map-wrap:hover{
-    filter: blur(3px)
-  }
+	.map-frame {
+		margin: 10px;
+		width: fit-content;
+		aspect-ratio: 1/1;
+		transition: 0.2s;
+		display: inline-block;
+		margin: 50px;
+	}
 
-  .directions{
-    z-index: 10;
-  }
+	.map-frame:hover {
+		scale: 1.02;
+	}
+	.map-frame:hover .directions {
+		animation: example 0.2s normal forwards ease-in-out;
+	}
+
+	.directions {
+		margin-top: -50%;
+		height: 30px;
+		width: 100%;
+		transition: 0.2s;
+		box-shadow:
+			inset -3px -3px 10px black,
+			inset 3px 3px 10px white;
+		background-color: rgb(169, 169, 169);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px;
+	}
+	.directions:hover {
+		box-shadow: inset 0 0 10px black;
+	}
+
+	@keyframes example {
+		from {
+			margin-top: -50%;
+		}
+		to {
+			margin-top: 5%;
+		}
+	}
 </style>
