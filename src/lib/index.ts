@@ -2,6 +2,10 @@
 
 // imports
 import { Sanitizer } from './sanitize';
+import { iosChecker } from './iosChecker';
 
 // exports
-export { Sanitizer };
+export { 
+  Sanitizer, 
+  iosChecker 
+};
