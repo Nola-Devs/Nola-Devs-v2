@@ -1,10 +1,9 @@
 import type { PageServerLoad } from './$types';
-
-import { findGroupByName, type Group } from '$data';
-import type { Event, PageServerLoadResult } from '../../app';
-import { Sanitizer } from '$lib';
+import type { Event, PageServerLoadResult } from '$appTypes';
 
 import { CAL } from '$env/static/private'
+import { findGroupByName, type Group } from '$data';
+import { Sanitizer } from '$lib';
 
 export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadResult> => {
 
@@ -20,21 +19,21 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
 
   const eventsJSON = (await res.json()).items
 
-  const events: Event[] = eventsJSON !== undefined ? 
-  eventsJSON
-    .map((e: any) => ({
-      summary: e.summary,
-      calLink: e.htmlLink,
-      description: Sanitizer(e.description),
-      location: e.location,
-      start: e.start.dateTime,
-      end: e.end.dateTime,
-    }))
-    .sort((a:Event ,b:Event)=> 
-      new Date(a.start).getTime() - new Date(b.start).getTime()) : [];
-    
-  
-      return {
+  const events: Event[] = eventsJSON !== undefined ?
+    eventsJSON
+      .map((e: any) => ({
+        summary: e.summary,
+        calLink: e.htmlLink,
+        description: Sanitizer(e.description),
+        location: e.location,
+        start: e.start.dateTime,
+        end: e.end.dateTime,
+      }))
+      .sort((a: Event, b: Event) =>
+        new Date(a.start).getTime() - new Date(b.start).getTime()) : [];
+
+
+  return {
     groupObj,
     events,
   };
