@@ -6,10 +6,14 @@ const GroupNames: string[] = GroupsData
   .map((group: any) => group.group)
   .filter(Boolean);
 
+  const CalID: string[] = GroupsData
+  .map((group: any) => group.calID)
+  .filter(Boolean);
+
 const findGroupByName = (targetGroup: string): Group => {
   const groups = GroupsData as unknown as Group[]
   return groups.find((group: Group) => group.group === targetGroup) || GroupsData[0] as unknown as Group;
 };
 
 
-export {Group, GroupNames, findGroupByName}
+export {Group, CalID, GroupNames, findGroupByName}

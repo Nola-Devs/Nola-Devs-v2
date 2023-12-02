@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
 
   const start = await new Date();
 
-  const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calID}/events?singleEvents=true&timeMin=${start.toISOString()}&maxResults=5&key=${CAL}`, { method: "GET" });
+  const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calID}/events?maxResults=5&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`, { method: "GET" });
 
   const eventsJSON = (await res.json()).items
 

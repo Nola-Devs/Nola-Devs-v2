@@ -81,7 +81,7 @@
 		margin-top: 5px;
 		text-decoration: unset;
 		color: black;
-		background-color: var(--button-color);
+		background-color: var(--card-bg);
 		width: 100%;
 		padding: 0px 3px;
 		border-radius: 5px;

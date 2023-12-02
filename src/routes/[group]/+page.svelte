@@ -11,14 +11,20 @@
 	$: group = data.groupObj.group as string;
 	$: events = data.events as Event[];
 
-	if(events){
-		events.forEach(e=>{
-			if (e.start.date === new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: "numeric" }).format(new Date(e.start.date))){
-				toast('There Is Something Happening Today!', { icon: '❗️' })
-			} 
-		})
+	if (events) {
+		events.forEach((e) => {
+			if (
+				e.start.date ===
+				new Intl.DateTimeFormat('en-US', {
+					month: 'short',
+					day: 'numeric',
+					year: 'numeric'
+				}).format(new Date(e.start.date))
+			) {
+				toast('There Is Something Happening Today!', { icon: '❗️' });
+			}
+		});
 	}
-	
 </script>
 
 <div class="group">
@@ -30,22 +36,21 @@
 			<Carousel />
 		</div>
 	</div>
-	
-	
+
 	{#if events !== undefined}
-	<div class="event-list">
-		{#each events as e}
-		{#key e}
-		<EventCard event="{e}" />
-		{/key}
-		{/each}
-	</div>
+		<div class="event-list">
+			{#each events as e}
+				{#key e}
+					<EventCard event="{e}" />
+				{/key}
+			{/each}
+		</div>
 	{/if}
 </div>
-<Toaster/>
+<Toaster />
 
 <style>
-	.event-list{
+	.event-list {
 		scroll-behavior: smooth;
 		overflow-y: auto;
 		border-radius: 10px;
@@ -53,25 +58,26 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		gap:3px;
+		gap: 3px;
 		scroll-snap-type: y mandatory;
 	}
-	
-	.groupCard, .carousel {
+
+	.groupCard,
+	.carousel {
 		scroll-snap-align: start;
 		height: 100%;
-	} 
+	}
 
-	.section{
+	.section {
 		overflow: auto;
 		scroll-snap-type: y mandatory;
 		display: grid;
 		clip-path: fill-box;
 		border-radius: 10px;
-		grid-template-rows: [first] 100% [line2] auto ;		
+		grid-template-rows: [first] 100% [line2] auto;
 	}
-	
-	.group{
+
+	.group {
 		height: 100vh;
 		padding: 5px;
 		display: grid;
