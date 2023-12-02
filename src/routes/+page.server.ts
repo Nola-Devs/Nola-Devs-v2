@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
   const processStringsWithDelays = (ids) => {
     const promisesArray = ids.map(async (id) => {
       return await (await fetch(
-        `https://www.googleapis.com/calendar/v3/calendars/${id}/events?maxResults=5&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`,
+        `https://www.googleapis.com/calendar/v3/calendars/${id}/events?maxResults=3&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`,
         { method: "GET" }
       )).json();
     });

@@ -93,8 +93,27 @@
 				</p>
 			</div>
 		{/if}
+		{#if location}
+			<div class="addy">
+				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+					><path
+						d="M23.25 8v-.018a7.25 7.25 0 10-8.544 7.135l.044.007V30a1.25 1.25 0 002.5 0V15.124c3.425-.615 5.992-3.568 6-7.123V8zM16 12.75A4.75 4.75 0 1120.75 8 4.756 4.756 0 0116 12.75z"
+					></path></svg
+				>
+				<p>
+					{String(
+						location.match(
+							/\b\d+\s+[a-zA-Z0-9\s.,-]+,\s*[a-zA-Z\s]+\s*,\s*[a-zA-Z]+\s*\d{5}(?:-\d{4})?\s*,\s*[a-zA-Z]+\b/
+						)
+					)
+						.split(', ')
+						.slice(0, -2)
+						.join(', ')}
+				</p>
+			</div>
+		{/if}
 		{#if description}
-		<p id="description">{@html description}</p>
+			<p id="description">{@html description}</p>
 		{/if}
 		<a href="https://maps.google.com/?q={location}">
 			<a href="https://maps.apple.com/maps?q={location}">
@@ -120,14 +139,17 @@
 </div>
 
 <style>
-	
-	.date-time{
-		font-size:medium;
+	.addy{
+		display: flex;
+		align-items: center;
+	}
+	.date-time {
+		font-size: medium;
 		display: flex;
 		align-items: center;
 		gap: 10px;
 	}
- 	svg{
+	svg {
 		height: 20px;
 		width: 20px;
 	}
@@ -165,7 +187,6 @@
 		scroll-snap-align: start;
 	}
 
-
 	.event-info {
 		font-family: var(--read);
 		display: flex;
@@ -187,7 +208,7 @@
 		width: 50%;
 		transition: 0.5s;
 	}
-	
+
 	.map {
 		background-color: aliceblue;
 		width: 100%;

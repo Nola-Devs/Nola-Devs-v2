@@ -32,8 +32,9 @@
     width: 50%;
     padding:5px;
     text-align: center;
-    background-color: rgba(240, 248, 255, 0.554);
+    background-color: rgba(240, 248, 255, 0.487);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 	}
   .groupCard p {
     margin:  auto 0;
@@ -64,4 +65,7 @@
 		gap: 3px;
 		scroll-snap-type: y mandatory;
   }
+	.carousel{
+		overflow: hidden;
+	}
 </style>

@@ -27,6 +27,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>NOLA Devs:{group}</title>
+	<meta name="description" content="{data.groupObj.about}" />
+</svelte:head>
+
 <div class="group">
 	<div class="section">
 		<div class="groupCard">

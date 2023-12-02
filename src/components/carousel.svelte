@@ -34,7 +34,7 @@
 			src="{item.url}"
 			alt="{item.description}"
 			width="{300}"
-			height="{600}"
+			height="{300}"
 		/>
 	{/each}
 {/key}
@@ -42,6 +42,7 @@
 <style>
 	img {
 		width: 100%;
+		height: 400px;
 		object-fit: cover;
 	}
 </style>
