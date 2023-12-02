@@ -7,15 +7,13 @@ import { Sanitizer } from '$lib';
 
 export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadResult> => {
 
-  const group: string = params.group.split('=')[1] as string;
+  const group: string = await params.group.split('=')[1] as string;
   const groupObj: Group = findGroupByName(group) as Group;
   const calID: string = groupObj.calID;
 
-  const start = new Date();
-  const end = new Date();
-  end.setDate(start.getDate() + 90);
+  const start = await new Date();
 
-  const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calID}/events?timeMin=${start.toISOString()}&key=${CAL}`, { method: "GET" });
+  const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calID}/events?singleEvents=true&timeMin=${start.toISOString()}&maxResults=5&key=${CAL}`, { method: "GET" });
 
   const eventsJSON = (await res.json()).items
 
@@ -26,11 +24,23 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
         calLink: e.htmlLink,
         description: Sanitizer(e.description),
         location: e.location,
-        start: e.start.dateTime,
-        end: e.end.dateTime,
-      }))
-      .sort((a: Event, b: Event) =>
-        new Date(a.start).getTime() - new Date(b.start).getTime()) : [];
+        start: {
+          date: e.start?.dateTime !== undefined ?
+            new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: "numeric" }).format(new Date(e.start.dateTime)) :
+            new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: "numeric" }).format(new Date(e.start.date)),
+          time: e.start?.dateTime !== undefined ?
+            new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(new Date(e.start.dateTime)) :
+            undefined
+        },
+        end: {
+          date: e.start?.dateTime !== undefined ?
+            new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: "numeric" }).format(new Date(e.end.dateTime)) :
+            new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: "numeric" }).format(new Date(e.end.date)),
+          time: e.start?.dateTime !== undefined ?
+            new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(new Date(e.end.dateTime)) :
+            undefined
+        },
+      })).sort((a, b) => a.start.date - b.start.date) : [];
 
 
   return {

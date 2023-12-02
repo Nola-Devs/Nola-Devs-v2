@@ -15,8 +15,14 @@ interface Event {
   calLink: string;
   description: string;
   location: string;
-  start: Date;
-  end: Date;
+  start: {
+    date:string
+    time:string
+  };
+  end: {
+    date:string
+    time:string
+  };
 }
 
 interface PageServerLoadResult {

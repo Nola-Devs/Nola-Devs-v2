@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'kabrio';
+  font-style: normal;
+  font-weight: 500;
+  src: url('Poppins.ttf'); /* IE9 Compat Modes */
+  src: local(''), url('Poppins.ttf') format('embedded-opentype'),
+  /* IE6-IE8 */ url('Poppins.ttf') format('ttf'),
+  /* Super Modern Browsers */ url('Poppins.ttf') format('ttf'),
+  /* Modern Browsers */ url('Poppins.ttf') format('truetype'),
+  /* Safari, Android, iOS */ url('Poppins.ttf') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'adam';
+  font-style: normal;
+  font-weight: 500;
+  src: url('adam.otf'); /* IE9 Compat Modes */
+  src: local(''), url('adam.otf') format('embedded-opentype'),
+  /* IE6-IE8 */ url('adam.otf') format('ttf'),
+  /* Super Modern Browsers */ url('adam.otf') format('otf'),
+  /* Modern Browsers */ url('adam.otf') format('truetype'),
+  /* Safari, Android, iOS */ url('adam.otf') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'watchword';
+  font-weight: 500;
+  src: url('watchword.otf'); /* IE9 Compat Modes */
+  src: local(''), url('watchword.otf') format('embedded-opentype'),
+  /* IE6-IE8 */ url('watchword.otf') format('otf'),
+  /* Super Modern Browsers */ url('watchword.otf') format('otf'),
+  /* Modern Browsers */ url('watchword.otf') format('truetype'),
+  /* Safari, Android, iOS */ url('watchword.otf') format('svg'); /* Legacy iOS */
+}
+

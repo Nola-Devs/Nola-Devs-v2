@@ -3,9 +3,11 @@
 // imports
 import { Sanitizer } from './sanitize';
 import { iosChecker } from './iosChecker';
+import { revGeoCode } from './revGeoCode';
 
 // exports
 export { 
   Sanitizer, 
-  iosChecker 
+  iosChecker,
+  revGeoCode
 };
