@@ -1,7 +1,8 @@
 <script>
 	import { slide } from 'svelte/transition';
 	import { bounceOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
+	import {onMount} from 'svelte'
+	
 	export const gallery_items = [
 		{
 			url: 'https://res.cloudinary.com/beswift/image/upload/v1650390102/photo-1649894222226-056a1a79d9fb_xlv73h.jpg',
