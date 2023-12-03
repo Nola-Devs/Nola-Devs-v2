@@ -31,7 +31,7 @@
 
 		map = await new Map({
 			container: mapContainer,
-			accessToken: key,
+			accessToken: 'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbGxxa2VwMDEydjJxdDdoNnhxcWdycyJ9.19HDWM7LPUTljVNpH1SfWA',
 			style: `mapbox://styles/mapbox/standard`,
 			center: coordinates,
 			zoom: zoom,
