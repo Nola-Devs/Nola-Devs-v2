@@ -67,8 +67,7 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
 									  )
 									: undefined
 						}
-					}))
-					.sort((a, b) => a.start.date - b.start.date)
+					})) as Event[]
 			: [];
 
 	return {

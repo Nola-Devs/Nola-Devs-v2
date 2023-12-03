@@ -7,7 +7,7 @@ import { Sanitizer } from '$lib';
 export const load: PageServerLoad = async () => {
 	let start = new Date();
 
-	const processStringsWithDelays = (ids) => {
+	const processStringsWithDelays = (ids: string[]) => {
 		const start = new Date();
 		const end = new Date();
 		end.setDate(start.getDate() + 30);
@@ -64,7 +64,7 @@ export const load: PageServerLoad = async () => {
 				? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(new Date(e.end.dateTime))
 				: undefined
 		}
-	}));
+	})) as Event[];
 
 	return { events };
 };
