@@ -26,12 +26,12 @@
 
 	let mapRender = async () => {
 		const key =
-			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbGxxa2VwMDEydjJxdDdoNnhxcWdycyJ9.19HDWM7LPUTljVNpH1SfWA';
+			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
 		coordinates = await revGeoCode(location);
 
 		map = await new Map({
 			container: mapContainer,
-			accessToken: 'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbGxxa2VwMDEydjJxdDdoNnhxcWdycyJ9.19HDWM7LPUTljVNpH1SfWA',
+			accessToken: key,
 			style: `mapbox://styles/mapbox/standard`,
 			center: coordinates,
 			zoom: zoom,
