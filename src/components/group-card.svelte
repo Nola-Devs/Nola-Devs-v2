@@ -8,17 +8,14 @@
 	$: groupData = findGroupByName(groupName) as Group;
 
 	const copy = () => {
-		toast.success('Calendar ID Copied to Clipboard!',{
-	icon: '📋',
-});
 		navigator.clipboard
-			.writeText(groupData.calID)
-			.then(() => {
-				/** TODO: ADD toast or tooltip (or both) POPUP with info was coppied */
-			})
-			.catch(() => {
-				/** TODO: ADD toast or tooltip (or both) POPUP with info was NOT coppied */
-			});
+		.writeText(groupData.calID)
+		try {
+			toast('Calendar ID Copied to Clipboard!',{ icon: '📋' })
+		}
+		catch{
+			toast('Calendar ID not copied, Unsuporrted browser', { icon: '❌' })
+		};
 	};
 </script>
 
@@ -102,7 +99,7 @@
 		justify-content: space-between;
 	}
 	.group-info p {
-		max-height: 200px;
+		height:100%;
 		overflow-y: auto;
 		font-family: var(--read);
 	}
