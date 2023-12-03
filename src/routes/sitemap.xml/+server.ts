@@ -12,6 +12,7 @@ export async function GET() {
 		>
 			<!-- <url> elements go here -->
       <loc>https://www.noladevs.dev/</loc>
+      <loc>https://www.noladevs.dev/?group=*</loc>
       <lastmod>2023-12-02</lastmod>
 		</urlset>`.trim(),
 		{
