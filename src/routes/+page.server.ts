@@ -9,9 +9,13 @@ export const load: PageServerLoad = async () => {
   let start = new Date()
 
   const processStringsWithDelays = (ids) => {
+    const start = new Date()
+	  const end = new Date()
+	  end.setDate(start.getDate() + 30)
+
     const promisesArray = ids.map(async (id) => {
       return await (await fetch(
-        `https://www.googleapis.com/calendar/v3/calendars/${id}/events?maxResults=3&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`,
+        `https://www.googleapis.com/calendar/v3/calendars/${id}/events?maxResults=10&timeMax=${end.toISOString()}&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`,
         { method: "GET" }
       )).json();
     });
