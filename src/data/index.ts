@@ -4,7 +4,15 @@ import GroupsData from './groups.json';
 
 const GroupNames: string[] = GroupsData.map((group: any) => group.group).filter(Boolean);
 
-const CalID: string[] = GroupsData.map((group: any) => group.calID).filter(Boolean);
+interface eventsList {
+	name: string;
+	id: string;
+}
+
+const CalList: eventsList[] = GroupsData.map((group: any) => ({
+	id: group.calID,
+	name: group.group || 'single-events'
+})).filter((e) => e.id);
 
 const findGroupByName = (targetGroup: string): Group => {
 	const groups = GroupsData as unknown as Group[];
@@ -14,4 +22,4 @@ const findGroupByName = (targetGroup: string): Group => {
 	);
 };
 
-export { Group, CalID, GroupNames, findGroupByName };
+export { Group, CalList, GroupNames, findGroupByName };

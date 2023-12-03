@@ -21,53 +21,52 @@ export const load: PageServerLoad = async ({ params }): Promise<PageServerLoadRe
 
 	const events: Event[] =
 		eventsJSON !== undefined
-			? eventsJSON
-					.map((e: any) => ({
-						summary: e.summary,
-						calLink: e.htmlLink,
-						description: Sanitizer(e.description),
-						location: e.location,
-						start: {
-							date:
-								e.start?.dateTime !== undefined
-									? new Intl.DateTimeFormat('en-US', {
-											month: 'short',
-											day: 'numeric',
-											year: 'numeric'
-									  }).format(new Date(e.start.dateTime))
-									: new Intl.DateTimeFormat('en-US', {
-											month: 'short',
-											day: 'numeric',
-											year: 'numeric'
-									  }).format(new Date(e.start.date)),
-							time:
-								e.start?.dateTime !== undefined
-									? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-											new Date(e.start.dateTime)
-									  )
-									: undefined
-						},
-						end: {
-							date:
-								e.start?.dateTime !== undefined
-									? new Intl.DateTimeFormat('en-US', {
-											month: 'short',
-											day: 'numeric',
-											year: 'numeric'
-									  }).format(new Date(e.end.dateTime))
-									: new Intl.DateTimeFormat('en-US', {
-											month: 'short',
-											day: 'numeric',
-											year: 'numeric'
-									  }).format(new Date(e.end.date)),
-							time:
-								e.start?.dateTime !== undefined
-									? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-											new Date(e.end.dateTime)
-									  )
-									: undefined
-						}
-					})) as Event[]
+			? (eventsJSON.map((e: any) => ({
+					summary: e.summary,
+					calLink: e.htmlLink,
+					description: Sanitizer(e.description),
+					location: e.location,
+					start: {
+						date:
+							e.start?.dateTime !== undefined
+								? new Intl.DateTimeFormat('en-US', {
+										month: 'short',
+										day: 'numeric',
+										year: 'numeric'
+								  }).format(new Date(e.start.dateTime))
+								: new Intl.DateTimeFormat('en-US', {
+										month: 'short',
+										day: 'numeric',
+										year: 'numeric'
+								  }).format(new Date(e.start.date)),
+						time:
+							e.start?.dateTime !== undefined
+								? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
+										new Date(e.start.dateTime)
+								  )
+								: undefined
+					},
+					end: {
+						date:
+							e.start?.dateTime !== undefined
+								? new Intl.DateTimeFormat('en-US', {
+										month: 'short',
+										day: 'numeric',
+										year: 'numeric'
+								  }).format(new Date(e.end.dateTime))
+								: new Intl.DateTimeFormat('en-US', {
+										month: 'short',
+										day: 'numeric',
+										year: 'numeric'
+								  }).format(new Date(e.end.date)),
+						time:
+							e.start?.dateTime !== undefined
+								? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
+										new Date(e.end.dateTime)
+								  )
+								: undefined
+					}
+			  })) as Event[])
 			: [];
 
 	return {
