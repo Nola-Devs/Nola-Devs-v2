@@ -10,7 +10,7 @@ export const revGeoCode = async (address: string):Promise<LngLatLike> => {
     businessAndAddressRegex
   )}.json?types=address&access_token=${PUBLIC_MAPBOX}`;
 
-  let req = await (await fetch(locationURL, { method: 'GET' })).json();
+  let req = await (await fetch(locationURL, { method: 'GET' })).json()
   
-  return req.features[0].center as LngLatLike
+  return req.features[0].center ? req.features[0].center as LngLatLike : [-90.071533, 29.951065] as LngLatLike
 }
