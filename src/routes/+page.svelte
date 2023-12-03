@@ -3,8 +3,8 @@
 	import type { PageData } from './$types';
   
 	export let data: PageData;
-  let events = data.events.sort((a,b)=> new Date(a.start.date).getTime() - new Date(b.start.date).getTime()).slice(0, 10)
-	console.log(data);
+  $: events = data.events.sort((a,b)=> new Date(a.start.date).getTime() - new Date(b.start.date).getTime()).slice(0, 10)
+	
 </script>
 
 <div class="noladevs">
