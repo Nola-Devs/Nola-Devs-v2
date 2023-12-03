@@ -95,7 +95,7 @@
 		display: flex;
 		align-items: center;
 		width: 100%;
-		font-family:var(--read);
+		font-family: var(--read);
 		gap: 3px;
 		color: black;
 	}

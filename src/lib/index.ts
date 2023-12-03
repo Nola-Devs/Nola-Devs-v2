@@ -6,8 +6,4 @@ import { iosChecker } from './iosChecker';
 import { revGeoCode } from './revGeoCode';
 
 // exports
-export { 
-  Sanitizer, 
-  iosChecker,
-  revGeoCode
-};
+export { Sanitizer, iosChecker, revGeoCode };

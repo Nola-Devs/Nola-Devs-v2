@@ -44,11 +44,11 @@
 
 	{#if events !== undefined}
 		<div class="event-list">
-			{#each events as e}
-				{#key e}
+			{#key e}
+				{#each events as e}
 					<EventCard event="{e}" />
-				{/key}
-			{/each}
+				{/each}
+			{/key}
 		</div>
 	{/if}
 </div>

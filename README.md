@@ -58,13 +58,14 @@ Basic Abridged Guide:
 6. Click API Key, fill out all of the required fields.
 7. Now put that API Key into your `.env.local` as CALENDAR_KEY
 
-
 ### Mapbox Public Key
 
 1. Head over to Maxbox
 2. Make an account
 3. Use a Public key
-  - if your api key doesnt start with pk it isn't the right one
+
+- if your api key doesnt start with pk it isn't the right one
+
 4.
 
 ---

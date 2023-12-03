@@ -60,7 +60,7 @@
 			></path>
 		</svg>
 	{:else if icon === 'email'}
-		<svg fill='currentColor' viewBox="0 0 31.826 31.826" xmlns="http://www.w3.org/2000/svg">
+		<svg fill="currentColor" viewBox="0 0 31.826 31.826" xmlns="http://www.w3.org/2000/svg">
 			<path
 				d="M27.826 2a2 2 0 012 2v23.828a2 2 0 01-2 2H3.999a2 2 0 01-2-2V3.999a2 2 0 012-2h23.827m0-2H3.999a4 4 0 00-4 4v23.828a4 4 0 004 4h23.827a4 4 0 004-4V3.999a4 4 0 00-4-4z"
 			></path>

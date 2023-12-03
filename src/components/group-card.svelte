@@ -8,14 +8,12 @@
 	$: groupData = findGroupByName(groupName) as Group;
 
 	const copy = () => {
-		navigator.clipboard
-		.writeText(groupData.calID)
+		navigator.clipboard.writeText(groupData.calID);
 		try {
-			toast('Calendar ID Copied to Clipboard!',{ icon: '📋' })
+			toast('Calendar ID Copied to Clipboard!', { icon: '📋' });
+		} catch {
+			toast('Calendar ID not copied, Unsuporrted browser', { icon: '❌' });
 		}
-		catch{
-			toast('Calendar ID not copied, Unsuporrted browser', { icon: '❌' })
-		};
 	};
 </script>
 
@@ -61,11 +59,11 @@
 				</p>
 				<img src="images/organizers/{organizer.pfp}" alt="" width="200px" height="200px" />
 				<div class="organizer-links">
-						{#each Object.entries(organizer.links) as [site, links] (site)}
-							<a href="{links}" target="_blank">
-								<IconParser icon="{site}" color={'white'} />
-							</a>
-						{/each}
+					{#each Object.entries(organizer.links) as [site, links] (site)}
+						<a href="{links}" target="_blank">
+							<IconParser icon="{site}" color="{'white'}" />
+						</a>
+					{/each}
 				</div>
 			</div>
 		{/each}
@@ -99,7 +97,7 @@
 		justify-content: space-between;
 	}
 	.group-info p {
-		height:100%;
+		height: 100%;
 		overflow-y: auto;
 		font-family: var(--read);
 	}
@@ -119,14 +117,14 @@
 		padding: 5px;
 		gap: 5px;
 		flex-wrap: wrap;
-		
 	}
 
 	.organizer-info {
 		width: 100%;
 		position: relative;
 	}
-	.organizer-links, .organizer-info p{
+	.organizer-links,
+	.organizer-info p {
 		background-color: rgba(97, 97, 97, 0.413);
 		position: absolute;
 		color: white;
@@ -137,10 +135,10 @@
 		-webkit-backdrop-filter: blur(4px);
 		padding: 3px;
 	}
-	.organizer-links{
-		bottom:0px;
+	.organizer-links {
+		bottom: 0px;
 		display: flex;
-		gap:10px;
+		gap: 10px;
 		flex-wrap: wrap;
 		padding: 5px;
 	}
@@ -149,11 +147,11 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter:grayscale();
+		filter: grayscale();
 		transition: 1s;
 	}
 	.organizer-info img:hover {
-		filter:grayscale(0);
+		filter: grayscale(0);
 	}
 
 	button {
@@ -177,7 +175,4 @@
 		display: flex;
 		width: 50%;
 	}
-
-
-
 </style>

@@ -17,8 +17,8 @@ export async function GET() {
 		</urlset>`.trim(),
 		{
 			headers: {
-				'Content-Type': 'application/xml',
-			},
-		},
+				'Content-Type': 'application/xml'
+			}
+		}
 	);
 }

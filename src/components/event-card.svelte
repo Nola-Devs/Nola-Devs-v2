@@ -139,7 +139,7 @@
 </div>
 
 <style>
-	.addy{
+	.addy {
 		display: flex;
 		align-items: center;
 	}

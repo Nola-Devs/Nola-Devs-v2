@@ -11,41 +11,52 @@ declare global {
 }
 
 interface Event {
-  summary: string;
-  calLink: string;
-  description: string;
-  location: string;
-  start: {
-    date:string
-    time:string
-  };
-  end: {
-    date:string
-    time:string
-  };
+	summary: string;
+	calLink: string;
+	description: string;
+	location: string;
+	start: {
+		date: string;
+		time: string;
+	};
+	end: {
+		date: string;
+		time: string;
+	};
 }
 
 interface PageServerLoadResult {
-  groupObj: Group;
-  events: Event[];
+	groupObj: Group;
+	events: Event[];
 }
-type linkKey = "linkedin" | "facebook" | "twitter" | "github" | "twitch" | "eventbrite" | "meetup" | "youtube" | "linktr" | "email" | "website" | string
+type linkKey =
+	| 'linkedin'
+	| 'facebook'
+	| 'twitter'
+	| 'github'
+	| 'twitch'
+	| 'eventbrite'
+	| 'meetup'
+	| 'youtube'
+	| 'linktr'
+	| 'email'
+	| 'website'
+	| string;
 
-type Link ={[key: linkKey]: string}
+type Link = { [key: linkKey]: string };
 
 type Organizers = {
-  name:string,
-  pfp:string,
-  links: Link
-}
+	name: string;
+	pfp: string;
+	links: Link;
+};
 
 interface Group {
-	group: string,
-	about: string,
-	calID: string,
-	orgLinks: Link,
-	organizers: Organizers[]
+	group: string;
+	about: string;
+	calID: string;
+	orgLinks: Link;
+	organizers: Organizers[];
 }
-
 
 export { Event, Group, Organizers, PageServerLoadResult };
