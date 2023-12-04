@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="event-list">
-		{#key eventsList}
+		{#key eventList}
 			{#each eventList as e}
 				<EventCard event="{e}" />
 			{/each}
