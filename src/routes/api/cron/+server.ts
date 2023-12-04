@@ -7,7 +7,7 @@ export const GET = ({ request }) => {
 	// auth
 	const authHeader = request.headers.get('authorization');
 	if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
-		return new Response('nope', { status: 404, statusText: 'NO' });
+		return new Response();
 	}
 
 	const calList = GROUP_OBJ.map((e: { calID: string }) => e.calID);
