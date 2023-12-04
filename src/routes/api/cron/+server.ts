@@ -7,7 +7,7 @@ export const GET = ({ request }) => {
 	// auth
 	const authHeader = request.headers.get('authorization');
 	if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
-		return new Response('',{status:404});
+		return new Response('',{status:401});
 	}
 
 	const calList = GROUP_OBJ.map((e: { calID: string }) => e.calID);
@@ -82,5 +82,5 @@ export const GET = ({ request }) => {
 		writeFileSync('static/data/events.json', JSON.stringify(d, null, 2), 'utf-8');
 	});
 
-	return new Response('hit');
+	return new Response('hit',{ status: 200 });
 };
