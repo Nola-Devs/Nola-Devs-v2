@@ -9,7 +9,7 @@ const config = {
 		alias: {
 			$components: '/src/components/index.ts',
 			$data: '/src/data/index.ts',
-			$images: '/src/images/*',
+			$images: '/src/images/index.ts',
 			$appTypes: '/src/app.d.ts'
 		}
 	}

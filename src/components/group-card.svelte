@@ -1,12 +1,10 @@
 <script lang="ts">
 	import IconParser from './icon-parser.svelte';
-	import { findGroupByName, type Group } from '$data';
 	import toast, { Toaster } from 'svelte-french-toast';
 
-	export let groupName: string;
-
-	$: groupData = findGroupByName(groupName) as Group;
-
+	export let groupData;
+	let { group, about, orgLinks } = groupData
+	$: groupData
 	const copy = () => {
 		navigator.clipboard.writeText(groupData.calID);
 		try {
@@ -16,6 +14,7 @@
 		}
 	};
 </script>
+
 
 <div class="card">
 	<div class="group-info">

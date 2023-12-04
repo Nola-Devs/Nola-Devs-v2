@@ -2,10 +2,11 @@
 	import { Carousel, EventCard } from '$components';
 	import type { PageData } from './$types';
 
+
 	export let data: PageData;
-	$: events = data.events
-		.sort((a, b) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime())
-		.slice(0, 10);
+
+	$: eventList = data.events.sort((a, b) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime())
+		// .slice(0, 10);
 </script>
 
 <div class="noladevs">
@@ -26,7 +27,7 @@
 	</div>
 	<div class="event-list">
 		{#key events}
-			{#each events as e}
+			{#each eventList as e}
 				<EventCard event="{e}" />
 			{/each}
 		{/key}

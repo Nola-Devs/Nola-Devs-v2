@@ -4,38 +4,29 @@
 
 	import Carousel from '../../components/carousel.svelte';
 	import { EventCard, GroupCard } from '$components';
+
 	import toast, { Toaster } from 'svelte-french-toast';
 
-	export let data: PageData;
+	import {onMount} from 'svelte'
+	import { page } from '$app/stores'
+	
+	export let data: PageData
+	$: group = data.group
+	$: events = data.events
 
-	$: group = data.groupObj.group as string;
-	$: events = data.events as Event[];
-
-	if (events) {
-		events.forEach((e) => {
-			if (
-				e.start.date ===
-				new Intl.DateTimeFormat('en-US', {
-					month: 'short',
-					day: 'numeric',
-					year: 'numeric'
-				}).format(new Date(e.start.date))
-			) {
-				toast('There Is Something Happening Today!', { icon: '❗️' });
-			}
-		});
-	}
 </script>
 
-<svelte:head>
-	<title>NOLA Devs:{group}</title>
-	<meta name="description" content="{data.groupObj.about}" />
-</svelte:head>
 
+<svelte:head>
+	<title>NOLA Devs</title>
+	<meta name="description" content="" />
+</svelte:head>
 <div class="group">
+	
+		
 	<div class="section">
 		<div class="groupCard">
-			<GroupCard groupName="{group}" />
+			<GroupCard groupData="{group}" />
 		</div>
 		<div class="carousel">
 			<Carousel />
@@ -45,7 +36,7 @@
 	{#if events !== undefined}
 		<div class="event-list">
 			{#key events}
-				{#each events as e}
+				{#each events.events as e}
 					<EventCard event="{e}" />
 				{/each}
 			{/key}

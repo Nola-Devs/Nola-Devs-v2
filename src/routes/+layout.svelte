@@ -1,5 +1,23 @@
 <script lang="ts">
-	import { GroupNames } from '$data';
+	import { onMount } from 'svelte';
+	import type { Group } from '../app';
+
+	let groups: string[]
+
+	const fetchData = async () => {
+    try {
+      groups = (await (
+				await fetch('/data/groups.json'))
+				.json())
+					.map(e=> e.group)
+					.filter(Boolean) as string[];
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  // Fetch data when the component is mounted
+  onMount(fetchData);
 </script>
 
 <div id="main">
@@ -11,13 +29,15 @@
 		<div class="groups">
 			<h2>Groups</h2>
 			<hr />
-			{#each GroupNames as group}
+			{#if groups}
+			{#each groups as group}
 				<a href="/group={group}">
 					<p>
 						{group}
 					</p>
 				</a>
 			{/each}
+			{/if}
 		</div>
 		<div id="btm-links">
 			<a href="/contact">
