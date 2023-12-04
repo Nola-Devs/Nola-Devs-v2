@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import type { Event } from '../../../app.js';
 import { CRON_SECRET, CAL } from '$env/static/private';
-import GROUP_OBJ from 'static/data/groups.json'
+import GROUP_OBJ from '/static/data/groups.json'
 import { writeFileSync } from 'fs';
 
 export const GET = ({ request }) => {
