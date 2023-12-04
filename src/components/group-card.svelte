@@ -3,8 +3,8 @@
 	import toast, { Toaster } from 'svelte-french-toast';
 
 	export let groupData;
-	let { group, about, orgLinks } = groupData
-	$: groupData
+	let { group, about, orgLinks } = groupData;
+	$: groupData;
 	const copy = () => {
 		navigator.clipboard.writeText(groupData.calID);
 		try {
@@ -14,7 +14,6 @@
 		}
 	};
 </script>
-
 
 <div class="card">
 	<div class="group-info">

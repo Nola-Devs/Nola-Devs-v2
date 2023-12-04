@@ -7,23 +7,19 @@
 
 	import toast, { Toaster } from 'svelte-french-toast';
 
-	import {onMount} from 'svelte'
-	import { page } from '$app/stores'
-	
-	export let data: PageData
-	$: group = data.group
-	$: events = data.events
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
+	export let data: PageData;
+	$: group = data.group;
+	$: events = data.events;
 </script>
-
 
 <svelte:head>
 	<title>NOLA Devs</title>
 	<meta name="description" content="" />
 </svelte:head>
 <div class="group">
-	
-		
 	<div class="section">
 		<div class="groupCard">
 			<GroupCard groupData="{group}" />

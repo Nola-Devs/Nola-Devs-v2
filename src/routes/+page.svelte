@@ -2,11 +2,12 @@
 	import { Carousel, EventCard } from '$components';
 	import type { PageData } from './$types';
 
-
 	export let data: PageData;
 
-	$: eventList = data.events.sort((a, b) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime())
-		// .slice(0, 10);
+	$: eventList = data.events.sort(
+		(a, b) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
+	);
+	// .slice(0, 10);
 </script>
 
 <div class="noladevs">
