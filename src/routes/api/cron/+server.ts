@@ -1,17 +1,18 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import type { Event } from '../../../app.js';
 import { CRON_SECRET, CAL } from '$env/static/private';
-import { CalList } from '../../../data/index.js';
+import GROUP_OBJ from 'static/data/groups.json'
 import { writeFileSync } from 'fs';
 
 export const GET = ({ request }) => {
 
   // auth
   const authHeader = request.headers.get('authorization');
-
   if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
     return new Response('nope');
   }
+
+  const calList = GROUP_OBJ.map((e: { calID: string; })=> e.calID)
 
   const processStringsWithDelays = (cals: any[]) => {
     const start = new Date();
@@ -78,7 +79,7 @@ export const GET = ({ request }) => {
     return Promise.all(promisesArray);
   };
 
-  processStringsWithDelays(CalList)
+  processStringsWithDelays(calList)
     .then((d) => {
       writeFileSync('static/data/events.json', JSON.stringify(d, null, 2), 'utf-8');
     });
