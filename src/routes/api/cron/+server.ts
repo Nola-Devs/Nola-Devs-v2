@@ -1,4 +1,3 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import type { Event } from '../../../app.js';
 import { CRON_SECRET, CAL } from '$env/static/private';
 import GROUP_OBJ from '/static/data/groups.json'
@@ -9,7 +8,7 @@ export const GET = ({ request }) => {
   // auth
   const authHeader = request.headers.get('authorization');
   if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
-    return new Response('nope');
+    return new Response('nope', {status: 404})
   }
 
   const calList = GROUP_OBJ.map((e: { calID: string; })=> e.calID)
