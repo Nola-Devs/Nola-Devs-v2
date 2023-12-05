@@ -2,14 +2,14 @@
 	import type { Event } from '../app';
 	import { onMount } from 'svelte';
 	import { revGeoCode } from '$lib';
-	import { Map, Marker, type LngLatLike, LngLatBounds } from 'mapbox-gl';
+	import { Map, Marker, type LngLat } from 'mapbox-gl';
 	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 	export let event: Event;
 
 	let { start, end, description, summary, calLink, location } = event;
 
-	let coordinates: LngLatLike | [number, number] = [29.951065, -90.071533];
+	let coordinates: LngLat;
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
@@ -21,7 +21,7 @@
 	let mapRender = async () => {
 		const key =
 			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
-		coordinates = await revGeoCode(location);
+		coordinates = await revGeoCode(location) as LngLat;
 
 		map = await new Map({
 			container: mapContainer,
