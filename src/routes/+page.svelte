@@ -7,19 +7,24 @@
 
 	export let data: PageData;
 
-	$: eventList = data.events.sort((a:Event, b:Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime());
-	const checkEvent = () =>{
-		eventList.map((e:Event)=> {
-			if(e.start.date === new Intl.DateTimeFormat('en-US', {
-								month: 'short',
-								day: 'numeric',
-								year: 'numeric'
-						  }).format(new Date())){
-				toast(`${e.summary} is happening today!!`,{icon: '🎉'})
+	$: eventList = data.events.sort(
+		(a: Event, b: Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
+	);
+	const checkEvent = () => {
+		eventList.map((e: Event) => {
+			if (
+				e.start.date ===
+				new Intl.DateTimeFormat('en-US', {
+					month: 'short',
+					day: 'numeric',
+					year: 'numeric'
+				}).format(new Date())
+			) {
+				toast(`${e.summary} is happening today!!`, { icon: '🎉' });
 			}
-		})
-	}
-	onMount(checkEvent)
+		});
+	};
+	onMount(checkEvent);
 </script>
 
 <div class="noladevs">
@@ -46,7 +51,7 @@
 		{/key}
 	</div>
 </div>
-<Toaster/>
+<Toaster />
 
 <style>
 	.groupCard {

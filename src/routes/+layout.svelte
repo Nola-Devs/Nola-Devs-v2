@@ -1,6 +1,12 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+
 	import { onMount } from 'svelte';
+
 	import type { Group } from '../app';
+
+	inject({ mode: dev ? 'development' : 'production' });
 
 	let groups: string[];
 
@@ -13,7 +19,6 @@
 			console.error('Error fetching data:', error);
 		}
 	};
-
 
 	// Fetch data when the component is mounted
 	onMount(fetchData);
