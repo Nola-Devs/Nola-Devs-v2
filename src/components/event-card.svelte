@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { Event } from '$appTypes';
+	import type { Event } from '../app';
 	import { onMount } from 'svelte';
 	import { revGeoCode } from '$lib';
-	import { Map, Marker, type LngLatLike } from 'mapbox-gl';
+	import { Map, Marker, type LngLatLike, LngLatBounds } from 'mapbox-gl';
 	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 	export let event: Event;
 
 	let { start, end, description, summary, calLink, location } = event;
 
-	let coordinates: LngLatLike = [-90.071533, 29.951065];
+	let coordinates: LngLatLike | [number, number] = [29.951065, -90.071533];
 	let mapContainer: HTMLDivElement;
 	let map: Map;
 
@@ -17,12 +17,6 @@
 	$: map;
 	$: coordinates;
 	$: zoom = 17;
-
-	const updateData = () => {
-		zoom = map.getZoom();
-		coordinates[0] = map.getCenter().lat;
-		coordinates[1] = map.getCenter().lat;
-	};
 
 	let mapRender = async () => {
 		const key =
@@ -35,7 +29,7 @@
 			style: `mapbox://styles/mapbox/standard`,
 			center: coordinates,
 			zoom: zoom,
-			pitch: 60
+			pitch: 50
 		});
 
 		await new Marker({
@@ -43,7 +37,6 @@
 		})
 			.setLngLat(coordinates)
 			.addTo(map);
-		map.on('move', () => updateData());
 	};
 
 	onMount(() => mapRender());
@@ -94,42 +87,39 @@
 			</div>
 		{/if}
 		{#if location}
-			<div class="addy">
-				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-					><path
-						d="M23.25 8v-.018a7.25 7.25 0 10-8.544 7.135l.044.007V30a1.25 1.25 0 002.5 0V15.124c3.425-.615 5.992-3.568 6-7.123V8zM16 12.75A4.75 4.75 0 1120.75 8 4.756 4.756 0 0116 12.75z"
-					></path></svg
-				>
-				<p>
-					{String(
-						location.match(
-							/\b\d+\s+[a-zA-Z0-9\s.,-]+,\s*[a-zA-Z\s]+\s*,\s*[a-zA-Z]+\s*\d{5}(?:-\d{4})?\s*,\s*[a-zA-Z]+\b/
-						)
-					)
-						.split(', ')
-						.slice(0, -2)
-						.join(', ')}
-				</p>
-			</div>
+			<a href="https://www.google.com/maps/search/?api=1&query={location}" target="_blank">
+				<div class="addy">
+					<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+						><path
+							d="M23.25 8v-.018a7.25 7.25 0 10-8.544 7.135l.044.007V30a1.25 1.25 0 002.5 0V15.124c3.425-.615 5.992-3.568 6-7.123V8zM16 12.75A4.75 4.75 0 1120.75 8 4.756 4.756 0 0116 12.75z"
+						></path></svg
+					>
+					<p>
+						{location.split(',')[0].trim()}
+					</p>
+				</div>
+			</a>
 		{/if}
 		{#if description}
 			<p id="description">{@html description}</p>
 		{/if}
-		<a href="https://maps.google.com/?q={location}">
-			<a href="https://maps.apple.com/maps?q={location}">
-				<button>
-					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path
-							fill-rule="evenodd"
-							clip-rule="evenodd"
-							d="M2 14.803v6.447c0 .414.336.75.75.75h1.614a.75.75 0 00.74-.627L5.5 19h13l.395 2.373a.75.75 0 00.74.627h1.615a.75.75 0 00.75-.75v-6.447a5.954 5.954 0 00-1-3.303l-.78-1.17a1.994 1.994 0 01-.178-.33h.994a.75.75 0 00.671-.415l.25-.5A.75.75 0 0021.287 8H19.6l-.31-1.546a2.5 2.5 0 00-1.885-1.944C15.943 4.17 14.141 4 12 4c-2.142 0-3.943.17-5.405.51a2.5 2.5 0 00-1.886 1.944L4.399 8H2.714a.75.75 0 00-.67 1.085l.25.5a.75.75 0 00.67.415h.995a1.999 1.999 0 01-.178.33L3 11.5c-.652.978-1 2.127-1 3.303zm15.961-4.799a4 4 0 00.34.997H5.699c.157-.315.271-.65.34-.997l.632-3.157a.5.5 0 01.377-.39C8.346 6.157 10 6 12 6s3.654.156 4.952.458a.5.5 0 01.378.389l.631 3.157zM5.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM20 14.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
-							fill="currentColor"
-						></path>
-					</svg>
-					<p>Get Directions</p>
-				</button>
+		{#if location}
+			<a href="https://maps.google.com/?q={location}">
+				<a href="https://maps.apple.com/maps?q={location}">
+					<button>
+						<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M2 14.803v6.447c0 .414.336.75.75.75h1.614a.75.75 0 00.74-.627L5.5 19h13l.395 2.373a.75.75 0 00.74.627h1.615a.75.75 0 00.75-.75v-6.447a5.954 5.954 0 00-1-3.303l-.78-1.17a1.994 1.994 0 01-.178-.33h.994a.75.75 0 00.671-.415l.25-.5A.75.75 0 0021.287 8H19.6l-.31-1.546a2.5 2.5 0 00-1.885-1.944C15.943 4.17 14.141 4 12 4c-2.142 0-3.943.17-5.405.51a2.5 2.5 0 00-1.886 1.944L4.399 8H2.714a.75.75 0 00-.67 1.085l.25.5a.75.75 0 00.67.415h.995a1.999 1.999 0 01-.178.33L3 11.5c-.652.978-1 2.127-1 3.303zm15.961-4.799a4 4 0 00.34.997H5.699c.157-.315.271-.65.34-.997l.632-3.157a.5.5 0 01.377-.39C8.346 6.157 10 6 12 6s3.654.156 4.952.458a.5.5 0 01.378.389l.631 3.157zM5.5 16a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM20 14.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
+								fill="currentColor"
+							></path>
+						</svg>
+						<p>Get Directions</p>
+					</button>
+				</a>
 			</a>
-		</a>
+		{/if}
 	</div>
 
 	<!-- Map Container-->
@@ -161,6 +151,7 @@
 	}
 	p {
 		font-family: var(--read);
+		color: black;
 	}
 	button {
 		display: flex;

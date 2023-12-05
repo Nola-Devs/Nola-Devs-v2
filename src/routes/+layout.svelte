@@ -7,12 +7,13 @@
 	const fetchData = async () => {
 		try {
 			groups = (await (await fetch('/data/groups.json')).json())
-				.map((e) => e.group)
+				.map((e: Group) => e.group)
 				.filter(Boolean) as string[];
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 	};
+
 
 	// Fetch data when the component is mounted
 	onMount(fetchData);

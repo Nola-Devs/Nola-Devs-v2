@@ -1,13 +1,25 @@
 <script lang="ts">
-	import { Carousel, EventCard } from '$components';
+	import { Carousel, EventCard } from '../components';
+	import type { Event } from '../app';
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
+	import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data: PageData;
 
-	$: eventList = data.events.sort(
-		(a, b) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
-	);
-	// .slice(0, 10);
+	$: eventList = data.events.sort((a:Event, b:Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime());
+	const checkEvent = () =>{
+		eventList.map((e:Event)=> {
+			if(e.start.date === new Intl.DateTimeFormat('en-US', {
+								month: 'short',
+								day: 'numeric',
+								year: 'numeric'
+						  }).format(new Date())){
+				toast(`${e.summary} is happening today!!`,{icon: '🎉'})
+			}
+		})
+	}
+	onMount(checkEvent)
 </script>
 
 <div class="noladevs">
@@ -34,6 +46,7 @@
 		{/key}
 	</div>
 </div>
+<Toaster/>
 
 <style>
 	.groupCard {
@@ -47,7 +60,7 @@
 		-webkit-backdrop-filter: blur(4px);
 	}
 	.groupCard p {
-		margin: auto 0;
+		margin: auto;
 	}
 	.card {
 		position: relative;
