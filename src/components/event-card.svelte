@@ -21,7 +21,7 @@
 	let mapRender = async () => {
 		const key =
 			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
-		coordinates = await revGeoCode(location) as LngLat;
+		coordinates = (await revGeoCode(location)) as LngLat;
 
 		map = await new Map({
 			container: mapContainer,

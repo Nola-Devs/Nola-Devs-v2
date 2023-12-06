@@ -1,14 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import type { Event, Group } from '$appTypes';
-
+	
 	import Carousel from '../../components/carousel.svelte';
-	import { EventCard, GroupCard } from '$components';
-
-	import toast, { Toaster } from 'svelte-french-toast';
-
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { EventCard, GroupCard } from '$components'
 
 	export let data: PageData;
 	$: group = data.group;
@@ -39,7 +33,6 @@
 		</div>
 	{/if}
 </div>
-<Toaster />
 
 <style>
 	.event-list {

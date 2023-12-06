@@ -1,30 +1,42 @@
 <script lang="ts">
 	import { Carousel, EventCard } from '../components';
 	import type { Event } from '../app';
-	import type { PageData } from './$types';
+
 	import { onMount } from 'svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
 
-	export let data: PageData;
+	let data: Event[];
+	$: data;
+	const load = async () => {
+		const req = await (await fetch('data/events.json')).json();
 
-	$: eventList = data.events.sort(
-		(a: Event, b: Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
-	);
-	const checkEvent = () => {
-		eventList.map((e: Event) => {
-			if (
-				e.start.date ===
-				new Intl.DateTimeFormat('en-US', {
-					month: 'short',
-					day: 'numeric',
-					year: 'numeric'
-				}).format(new Date())
-			) {
-				toast(`${e.summary} is happening today!!`, { icon: '🎉' });
-			}
-		});
+		data = req
+			.flatMap((obj: { group: string; events: Event[] }) =>
+				obj.events.filter((e: any) => !(e?.summary == 'Hack Night ' && obj?.group !== 'Hack Night'))
+			)
+			.sort(
+				(a: Event, b: Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
+			);
 	};
-	onMount(checkEvent);
+
+	// $: eventList = data
+	// const checkEvent = () => {
+	// 	load();
+	// 	eventList.map((e: Event) => {
+	// 		if (
+	// 			e.start.date ===
+	// 			new Intl.DateTimeFormat('en-US', {
+	// 				month: 'short',
+	// 				day: 'numeric',
+	// 				year: 'numeric'
+	// 			}).format(new Date())
+	// 		) {
+	// 			toast(`${e.summary} is happening today!!`, { icon: '🎉' });
+	// 		}
+	// 	});
+	// };
+	// onMount(checkEvent);
+	onMount(load);
 </script>
 
 <div class="noladevs">
@@ -44,11 +56,14 @@
 		</div>
 	</div>
 	<div class="event-list">
-		{#key eventList}
-			{#each eventList as e}
+		{#if !data}
+			<!-- TODO: Add loading animation here-->
+			<h1>Loading</h1>
+		{:else}
+			{#each data as e}
 				<EventCard event="{e}" />
 			{/each}
-		{/key}
+		{/if}
 	</div>
 </div>
 <Toaster />

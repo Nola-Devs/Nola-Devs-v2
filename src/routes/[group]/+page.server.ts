@@ -1,12 +1,12 @@
 import type { PageServerLoad } from './$types';
 import type { Group } from '../../app';
-import GROUP_OBJ from '/static/data/groups';
-import EVENTS_OBJ from '/static/data/events';
+
+import { readFileSync } from 'fs'
 
 export const load: PageServerLoad = async ({ params }) => {
 	let groupName = params.group.split('=')[1];
-	let group = GROUP_OBJ.find((group: Group) => group.group === groupName);
-	let events = EVENTS_OBJ.find((group: Group) => group.group === groupName);
+	let group = JSON.parse(await readFileSync('static/data/groups.json', 'utf-8')).find((group: Group) => group.group === groupName);
+	let events = JSON.parse(await readFileSync('static/data/events.json', 'utf-8')).find((group: Group) => group.group === groupName);
 	return {
 		group,
 		events

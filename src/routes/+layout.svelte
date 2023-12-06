@@ -22,9 +22,10 @@
 
 	// Fetch data when the component is mounted
 	onMount(fetchData);
-	let y:number
+	let y: number;
 </script>
-<svelte:window bind:innerWidth={y}/>
+
+<svelte:window bind:innerWidth="{y}" />
 <div id="main">
 	<nav>
 		<a class="logo" href="/">
@@ -157,6 +158,4 @@
 	.logo {
 		display: flex;
 	}
-
-
 </style>

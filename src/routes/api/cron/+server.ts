@@ -1,32 +1,46 @@
 import type { Event } from '../../../app.js';
 import { CRON_SECRET, CAL } from '$env/static/private';
-import GROUP_OBJ from '/static/data/groups.json';
-import { writeFileSync } from 'fs';
-
-export const GET = ({ request }) => {
+import { writeFileSync, readFileSync } from 'fs';
+export const GET = async ({ request }) => {
 	// auth
 	const authHeader = request.headers.get('authorization');
 	if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
 		return new Response('', { status: 401 });
 	}
 
-	const calList = GROUP_OBJ.map((e: { calID: string }) => e.calID);
+	interface EventsGroups {
+		group: string;
+		events: Event[];
+	}
+	interface CalIDGroups {
+		group: string;
+		calID: Event[];
+	}
 
-	const processStringsWithDelays = (cals: any[]) => {
+	const calList = JSON.parse(await readFileSync('static/data/groups.json', 'utf-8')).map(
+		(e: CalIDGroups): CalIDGroups => ({
+			group: e.group,
+			calID: e.calID
+		})
+	);
+
+	const makeAPICall = (cals: EventsGroups) => {
 		const start = new Date();
 		const end = new Date();
-		end.setDate(start.getDate() + 30);
+		// This is the amount of days from today for API
+		const days = 30;
+		end.setTime(end.getTime() + days * 86400000);
 
-		const promisesArray = cals.map(async (cal) => {
+		const promisesArray = calList.map(async (cal: CalIDGroups) => {
 			const data = await (
 				await fetch(
 					`https://www.googleapis.com/calendar/v3/calendars/${
-						cal.id
-					}/events?maxResults=10&timeMax=${end.toISOString()}&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&key=${CAL}`,
+						cal.calID
+					}/events?timeMax=${end.toISOString()}&timeMin=${start.toISOString()}&singleEvents=true&showDeleted=false&orderBy=startTime&key=${CAL}`,
 					{ method: 'GET' }
 				)
 			).json();
-
+			// TODO: Add a geocoding Key here in the events OBJ for less API calls on run time
 			const events: Event[] = data.items.map((e: any) => ({
 				summary: e.summary,
 				calLink: e.htmlLink,
@@ -71,16 +85,16 @@ export const GET = ({ request }) => {
 			})) as Event[];
 
 			return {
-				group: cal.name,
+				group: cal.group,
 				events: events
-			};
+			} as EventsGroups;
 		});
 		return Promise.all(promisesArray);
 	};
 
-	processStringsWithDelays(calList).then((d) => {
-		writeFileSync('static/data/events.json', JSON.stringify(d, null, 2), 'utf-8');
-	});
+	const eventsFromAPI = await makeAPICall(calList);
 
-	return new Response('hit', { status: 200 });
+	writeFileSync('static/data/events.json', JSON.stringify(eventsFromAPI, null, 2), 'utf-8');
+
+	return new Response(JSON.stringify(eventsFromAPI), { status: 200 });
 };

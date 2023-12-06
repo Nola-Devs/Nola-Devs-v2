@@ -7,10 +7,8 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$components: '/src/components/index.ts',
-			$data: '/src/data/index.ts',
-			$images: '/src/images/index.ts',
-			$appTypes: '/src/app.d.ts'
+			$components: 'src/components/index.ts',
+			$types: 'src/app.d.ts'
 		}
 	}
 };
