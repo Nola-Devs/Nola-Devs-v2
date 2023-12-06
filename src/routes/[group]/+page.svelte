@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	
 	import Carousel from '../../components/carousel.svelte';
 	import { EventCard, GroupCard } from '$components'
+  import { page } from "$app/stores";
 
+  $: slug = $page.params.group.split('=')[1]
+
+	// TODO: USE slug to grab data(group and events) using fetch
+
+	
 	export let data: PageData;
 	$: group = data.group;
 	$: events = data.events;
@@ -22,6 +27,7 @@
 			<Carousel />
 		</div>
 	</div>
+	<p>{slug}</p>
 
 	{#if events !== undefined}
 		<div class="event-list">

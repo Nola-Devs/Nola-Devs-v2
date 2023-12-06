@@ -7,36 +7,33 @@
 
 	let data: Event[];
 	$: data;
-	const load = async () => {
+	const loadEvents = async () => {
 		const req = await (await fetch('data/events.json')).json();
 
 		data = req
-			.flatMap((obj: { group: string; events: Event[] }) =>
-				obj.events.filter((e: any) => !(e?.summary == 'Hack Night ' && obj?.group !== 'Hack Night'))
-			)
+			.flatMap((obj: { group: string; events: Event[] }) => {
+				obj.events.forEach(e=>{
+					if (
+					e.start.date ===
+					new Intl.DateTimeFormat('en-US', {
+						month: 'short',
+						day: 'numeric',
+						year: 'numeric'
+					}).format(new Date())
+					) {
+						toast(`${e.summary} is happening today!!`, { icon: '🎉' });
+					}
+				})
+				return obj.events.filter(
+					(e: any) => !(e?.summary == 'Hack Night ' && obj?.group !== 'Hack Night')
+				);
+			})
 			.sort(
 				(a: Event, b: Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
 			);
 	};
 
-	// $: eventList = data
-	// const checkEvent = () => {
-	// 	load();
-	// 	eventList.map((e: Event) => {
-	// 		if (
-	// 			e.start.date ===
-	// 			new Intl.DateTimeFormat('en-US', {
-	// 				month: 'short',
-	// 				day: 'numeric',
-	// 				year: 'numeric'
-	// 			}).format(new Date())
-	// 		) {
-	// 			toast(`${e.summary} is happening today!!`, { icon: '🎉' });
-	// 		}
-	// 	});
-	// };
-	// onMount(checkEvent);
-	onMount(load);
+	onMount(loadEvents);
 </script>
 
 <div class="noladevs">
