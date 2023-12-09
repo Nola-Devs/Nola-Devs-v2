@@ -1,43 +1,85 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	//import type { PageData } from './$types';
 	import Carousel from '../../components/carousel.svelte';
-	import { EventCard, GroupCard } from '$components'
-  import { page } from "$app/stores";
+	import { EventCard, GroupCard } from '$components';
+	import type { Group, Event } from '$types';
+	import { onMount } from 'svelte';
+	import { getGroupsEvents } from '$lib';
+	import type { PageData } from './$types';
+	import toast, { Toaster } from 'svelte-french-toast';
 
-  $: slug = $page.params.group.split('=')[1]
+	import { page } from '$app/stores';
 
-	// TODO: USE slug to grab data(group and events) using fetch
+	let slug: string;
+	let events: Event[];
+	let group: Group;
+	let data: any;
 
-	
-	export let data: PageData;
-	$: group = data.group;
-	$: events = data.events;
+	$: slug = $page.params.group.split('=')[1];
+	$: events;
+	$: group;
+
+	const loadData = async () => {
+		data = await getGroupsEvents();
+	};
+
+	const handleSlugChange = async (newSlug: string) => {
+		events = data.eventsJSON.find((group: any) => group.group === newSlug).events as Event[];
+		group = data.groupsJSON.find((group: any) => group.group === newSlug) as Group;
+		events.forEach((event: Event) => {
+			if (
+				event.start.date ===
+				new Intl.DateTimeFormat('en-US', {
+					month: 'short',
+					day: 'numeric',
+					year: 'numeric'
+				}).format(new Date())
+			) {
+				toast(`${event.summary} is happening today!!`, { icon: '🎉' });
+			}
+		});
+	};
+
+	onMount(() => {
+		loadData();
+		handleSlugChange(slug);
+		const unsubscribe = page.subscribe((newPage) => {
+			const newSlug = newPage.params.group.split('=')[1];
+			if (newSlug !== slug) {
+				slug = newSlug;
+				handleSlugChange(newSlug);
+			}
+		});
+		return unsubscribe;
+	});
 </script>
 
 <svelte:head>
 	<title>NOLA Devs</title>
 	<meta name="description" content="" />
 </svelte:head>
+
 <div class="group">
 	<div class="section">
 		<div class="groupCard">
-			<GroupCard groupData="{group}" />
+			{#key group}
+				<GroupCard groupData="{group}" />
+			{/key}
 		</div>
 		<div class="carousel">
 			<Carousel />
 		</div>
 	</div>
-	<p>{slug}</p>
 
-	{#if events !== undefined}
-		<div class="event-list">
-			{#key events}
-				{#each events.events as e}
-					<EventCard event="{e}" />
+	<div class="event-list">
+		{#key events}
+			{#if events}
+				{#each events as event}
+					<EventCard {event} />
 				{/each}
-			{/key}
-		</div>
-	{/if}
+			{/if}
+		{/key}
+	</div>
 </div>
 
 <style>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Event } from '../app';
 	import { onMount } from 'svelte';
-	import { revGeoCode } from '$lib';
+	import { RevGeocode } from '$lib';
 	import { Map, Marker, type LngLat } from 'mapbox-gl';
 	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
@@ -21,7 +21,7 @@
 	let mapRender = async () => {
 		const key =
 			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
-		coordinates = (await revGeoCode(location)) as LngLat;
+		coordinates = (await RevGeocode(location)) as LngLat;
 
 		map = await new Map({
 			container: mapContainer,

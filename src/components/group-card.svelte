@@ -1,10 +1,14 @@
 <script lang="ts">
+	
 	import IconParser from './icon-parser.svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
+	import type { Group } from '$types'
 
-	export let groupData;
-	let { group, about, orgLinks } = groupData;
-	$: groupData;
+	export let groupData : Group;
+	let groupName: string
+	$: groupName = groupData?.group 
+	$: groupData
+
 	const copy = () => {
 		navigator.clipboard.writeText(groupData.calID);
 		try {
@@ -13,16 +17,19 @@
 			toast('Calendar ID not copied, Unsuporrted browser', { icon: '❌' });
 		}
 	};
+
 </script>
 
 <div class="card">
 	<div class="group-info">
+		
+			
 		<h1>
-			{groupData.group}
+			{groupData?.group}
 		</h1>
-
+		
 		<p>
-			{groupData.about}
+			{groupData?.about}
 		</p>
 
 		<div class="card-links">
@@ -40,16 +47,19 @@
 			</button>
 
 			<div class="links">
-				{#each Object.entries(groupData.orgLinks) as [site, links] (site)}
+				{#if groupData}
+				{#each Object.entries(groupData?.orgLinks) as [site, links] (site)}
 					<a href="{links}" target="_blank">
 						<IconParser icon="{site}" size="{30}" />
 					</a>
 				{/each}
+				{/if}
 			</div>
 		</div>
 	</div>
 
 	<div class="organizer-list">
+		{#if groupData?.organizers } 
 		{#each groupData.organizers as organizer}
 			<div class="organizer-info">
 				<p>
@@ -65,6 +75,7 @@
 				</div>
 			</div>
 		{/each}
+		{/if}
 	</div>
 	<Toaster />
 </div>

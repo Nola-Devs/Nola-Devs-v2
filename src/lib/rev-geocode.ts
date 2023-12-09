@@ -1,7 +1,7 @@
 import { PUBLIC_MAPBOX } from '$env/static/public';
 import type { LngLat } from 'mapbox-gl';
 
-export const revGeoCode = async (address: string): Promise<LngLat> => {
+export const RevGeocode = async (address: string): Promise<LngLat> => {
 	const businessAndAddressRegex =
 		/\b\d+\s+[a-zA-Z0-9\s.,-]+,\s*[a-zA-Z\s]+\s*,\s*[a-zA-Z]+\s*\d{5}(?:-\d{4})?\s*,\s*[a-zA-Z]+\b/;
 	const parsedAddress: string | null = address.match(businessAndAddressRegex) as string | null;

@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	import { inject } from '@vercel/analytics';
-
+	// import { inject } from '@vercel/analytics';
 	import { onMount } from 'svelte';
 
 	import type { Group } from '../app';
 
-	inject({ mode: dev ? 'development' : 'production' });
+	// inject({ mode: dev ? 'development' : 'production' });
 
 	let groups: string[];
 
@@ -100,9 +99,9 @@
 		--shadow-move-up: 0 0 10px rgba(0, 0, 0, 0.568);
 		--shadow-move-back: inset -5px -5px 10px rgba(0, 0, 0, 0.621), inset 5px 5px 10px white;
 		--card-bg: #e9e9e9;
-		--title: 'watchword';
-		--small-title: 'panton';
-		--read: 'kabrio';
+		--title: 'watchword',  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--small-title: 'panton' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--read: 'kabrio', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		--card-radius: 10px;
 		--button-color: rgb(184, 184, 184);
 	}

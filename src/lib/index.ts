@@ -2,7 +2,12 @@
 
 // imports
 import { Sanitizer } from './sanitize';
-import { revGeoCode } from './revGeoCode';
+import { RevGeocode } from './rev-geocode';
+import { getGroupsEvents } from './get-group-info';
 
 // exports
-export { Sanitizer, revGeoCode };
+export { 
+  Sanitizer,
+  RevGeocode,
+  getGroupsEvents
+};
