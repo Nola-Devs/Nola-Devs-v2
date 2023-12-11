@@ -17,6 +17,11 @@ export const GET = async ({ request }) => {
 		calID: Event[];
 	}
 
+	/*
+		This is the default calendar for the one off turn this into a pvt key
+	 545d217a064ce6f846e820045fccdaae17db65ee1b53dc14ea249833b94d0f70@group.calendar.google.com
+	*/
+
 	const calList = JSON.parse(await readFileSync('static/data/groups.json', 'utf-8')).map(
 		(e: CalIDGroups): CalIDGroups => ({
 			group: e.group,

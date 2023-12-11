@@ -6,8 +6,4 @@ import { RevGeocode } from './rev-geocode';
 import { getGroupsEvents } from './get-group-info';
 
 // exports
-export { 
-  Sanitizer,
-  RevGeocode,
-  getGroupsEvents
-};
+export { Sanitizer, RevGeocode, getGroupsEvents };

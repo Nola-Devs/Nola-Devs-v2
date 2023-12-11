@@ -1,13 +1,12 @@
 <script lang="ts">
-	
 	import IconParser from './icon-parser.svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
-	import type { Group } from '$types'
+	import type { Group } from '$types';
 
-	export let groupData : Group;
-	let groupName: string
-	$: groupName = groupData?.group 
-	$: groupData
+	export let groupData: Group;
+	let groupName: string;
+	$: groupName = groupData?.group;
+	$: groupData;
 
 	const copy = () => {
 		navigator.clipboard.writeText(groupData.calID);
@@ -17,17 +16,14 @@
 			toast('Calendar ID not copied, Unsuporrted browser', { icon: '❌' });
 		}
 	};
-
 </script>
 
 <div class="card">
 	<div class="group-info">
-		
-			
 		<h1>
 			{groupData?.group}
 		</h1>
-		
+
 		<p>
 			{groupData?.about}
 		</p>
@@ -48,33 +44,33 @@
 
 			<div class="links">
 				{#if groupData}
-				{#each Object.entries(groupData?.orgLinks) as [site, links] (site)}
-					<a href="{links}" target="_blank">
-						<IconParser icon="{site}" size="{30}" />
-					</a>
-				{/each}
+					{#each Object.entries(groupData?.orgLinks) as [site, links] (site)}
+						<a href="{links}" target="_blank">
+							<IconParser icon="{site}" size="{30}" />
+						</a>
+					{/each}
 				{/if}
 			</div>
 		</div>
 	</div>
 
 	<div class="organizer-list">
-		{#if groupData?.organizers } 
-		{#each groupData.organizers as organizer}
-			<div class="organizer-info">
-				<p>
-					{organizer.name}
-				</p>
-				<img src="images/organizers/{organizer.pfp}" alt="" width="200px" height="200px" />
-				<div class="organizer-links">
-					{#each Object.entries(organizer.links) as [site, links] (site)}
-						<a href="{links}" target="_blank">
-							<IconParser icon="{site}" color="{'white'}" />
-						</a>
-					{/each}
+		{#if groupData?.organizers}
+			{#each groupData.organizers as organizer}
+				<div class="organizer-info">
+					<p>
+						{organizer.name}
+					</p>
+					<img src="images/organizers/{organizer.pfp}" alt="" width="200px" height="200px" />
+					<div class="organizer-links">
+						{#each Object.entries(organizer.links) as [site, links] (site)}
+							<a href="{links}" target="_blank">
+								<IconParser icon="{site}" color="{'white'}" />
+							</a>
+						{/each}
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
 		{/if}
 	</div>
 	<Toaster />

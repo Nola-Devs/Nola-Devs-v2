@@ -239,22 +239,7 @@
 	},
 	{
 		"group": "NOLA Sec",
-		"events": [
-			{
-				"summary": "Capture the Flag \"Competitive, Educational, Adversarial Cyber\"",
-				"calLink": "https://www.google.com/calendar/event?eid=MjhnNWRnMzBwa2pkZGE0OGw1dWkxZ2Vkcm4gN2M4NTFmMzJiMWVmYWE4YzczZWYxZmFiODBmNDE3N2FkM2UzZTYzMGNmOWJhNGM5ODlkYmZlNDM3ODhlZWJjYkBn",
-				"description": "NOLA SEC: Capture the Flag Intro/DemoJoin us for an exciting in-person event at TEKsystems, 3900 North Causeway Boulevard, Metairie, LA, USA! Get ready to dive into an intro/demo of \"Capture the Flag\" and put your skills to the test. Whether you're a beginner or an experienced hacker, there is something for you to contribute to this discussion.We’ll cover what it is, why it’s valuable and how to get started!Don't miss out on this opportunity to network with fellow enthusiasts and gain valuable insights. Mark your calendars and get ready for an action-packed event!<br><a href=\"https://www.eventbrite.com/e/nola-sec-capture-the-flag-competitive-educational-adversarial-cyber-tickets-769180488547?aff=oddtdtcreator\">Eventbrite</a>",
-				"location": "3900 N Causeway Blvd, Metairie, LA 70002, USA",
-				"start": {
-					"date": "Dec 6, 2023",
-					"time": "5:00 PM"
-				},
-				"end": {
-					"date": "Dec 6, 2023",
-					"time": "8:00 PM"
-				}
-			}
-		]
+		"events": []
 	},
 	{
 		"group": "NOLA Women in Tech",

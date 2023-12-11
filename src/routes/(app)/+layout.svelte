@@ -1,26 +1,12 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
+	import type { LayoutData } from './$types';
 	// import { inject } from '@vercel/analytics';
-	import { onMount } from 'svelte';
 
-	import type { Group } from '../app';
+	export let data: LayoutData;
 
 	// inject({ mode: dev ? 'development' : 'production' });
 
-	let groups: string[];
-
-	const fetchData = async () => {
-		try {
-			groups = (await (await fetch('/data/groups.json')).json())
-				.map((e: Group) => e.group)
-				.filter(Boolean) as string[];
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		}
-	};
-
-	// Fetch data when the component is mounted
-	onMount(fetchData);
 	let y: number;
 </script>
 
@@ -34,15 +20,14 @@
 		<div class="groups">
 			<h2>Groups</h2>
 			<hr />
-			{#if groups}
-				{#each groups as group}
-					<a href="/group={group}">
-						<p>
-							{group}
-						</p>
-					</a>
-				{/each}
-			{/if}
+
+			{#each data.groups as group}
+				<a href="/group={group}">
+					<p>
+						{group}
+					</p>
+				</a>
+			{/each}
 		</div>
 		<div id="btm-links">
 			<a href="/contact">
@@ -99,9 +84,12 @@
 		--shadow-move-up: 0 0 10px rgba(0, 0, 0, 0.568);
 		--shadow-move-back: inset -5px -5px 10px rgba(0, 0, 0, 0.621), inset 5px 5px 10px white;
 		--card-bg: #e9e9e9;
-		--title: 'watchword',  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		--small-title: 'panton' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-		--read: 'kabrio', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--title: 'watchword', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+			Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--small-title: 'panton', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		--read: 'kabrio', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+			Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		--card-radius: 10px;
 		--button-color: rgb(184, 184, 184);
 	}

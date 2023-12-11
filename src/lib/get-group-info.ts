@@ -1,15 +1,12 @@
-
-
-
 export const getGroupsEvents = async () => {
-  try {
+	try {
 		let eventsJSON = await (await fetch('data/events.json')).json();
 		let groupsJSON = await (await fetch('data/groups.json')).json();
-    return {
-      groupsJSON,
-      eventsJSON
-    }
-  } catch (error) {
-    throw new Error("Counldn't Find Group :" + error)
-  }
-} 
+		return {
+			groupsJSON,
+			eventsJSON
+		};
+	} catch (error) {
+		throw new Error("Counldn't Find Group :" + error);
+	}
+};

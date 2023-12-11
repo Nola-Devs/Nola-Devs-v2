@@ -1,39 +1,31 @@
 <script lang="ts">
-	import { Carousel, EventCard } from '../components';
-	import type { Event } from '../app';
+	import { Carousel, EventCard } from '$lib/components';
+	import type { Event } from '$types';
 
 	import { onMount } from 'svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
 
-	let data: Event[];
-	$: data;
-	const loadEvents = async () => {
-		const req = await (await fetch('data/events.json')).json();
+	import type { PageData } from './$types';
 
-		data = req
-			.flatMap((obj: { group: string; events: Event[] }) => {
-				obj.events.forEach(e=>{
-					if (
-					e.start.date ===
-					new Intl.DateTimeFormat('en-US', {
-						month: 'short',
-						day: 'numeric',
-						year: 'numeric'
-					}).format(new Date())
-					) {
-						toast(`${e.summary} is happening today!!`, { icon: '🎉' });
-					}
-				})
-				return obj.events.filter(
-					(e: any) => !(e?.summary == 'Hack Night ' && obj?.group !== 'Hack Night')
-				);
-			})
-			.sort(
-				(a: Event, b: Event) => new Date(a.start.date).getTime() - new Date(b.start.date).getTime()
-			);
+	export let data: PageData;
+	let events: Event[] = data.events;
+
+	const checkToday = async () => {
+		data.events.forEach((e) => {
+			if (
+				e.start.date ===
+				new Intl.DateTimeFormat('en-US', {
+					month: 'short',
+					day: 'numeric',
+					year: 'numeric'
+				}).format(new Date())
+			) {
+				toast(`${e.summary} is happening today!!`, { icon: '🎉' });
+			}
+		});
 	};
 
-	onMount(loadEvents);
+	onMount(checkToday);
 </script>
 
 <div class="noladevs">
@@ -54,10 +46,11 @@
 	</div>
 	<div class="event-list">
 		{#if !data}
-			<!-- TODO: Add loading animation here-->
+			<!-- TODO: Add loading animation here -->
 			<h1>Loading</h1>
 		{:else}
-			{#each data as e}
+			<!-- TODO: Add pull down animation here -->
+			{#each events as e}
 				<EventCard event="{e}" />
 			{/each}
 		{/if}

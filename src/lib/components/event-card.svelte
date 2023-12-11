@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Event } from '../app';
+	import type { Event } from '$types';
 	import { onMount } from 'svelte';
 	import { RevGeocode } from '$lib';
-	import { Map, Marker, type LngLat } from 'mapbox-gl';
+	import { Map, Marker, type LngLat, LngLatBounds, type LngLatBoundsLike } from 'mapbox-gl';
 	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 	export let event: Event;
@@ -18,7 +18,7 @@
 	$: coordinates;
 	$: zoom = 17;
 
-	let mapRender = async () => {
+	async function mapRender() {
 		const key =
 			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
 		coordinates = (await RevGeocode(location)) as LngLat;
@@ -29,7 +29,9 @@
 			style: `mapbox://styles/mapbox/standard`,
 			center: coordinates,
 			zoom: zoom,
-			pitch: 50
+			pitch: 50,
+			minZoom: 10,
+			maxZoom: 18
 		});
 
 		await new Marker({
@@ -37,7 +39,9 @@
 		})
 			.setLngLat(coordinates)
 			.addTo(map);
-	};
+
+		return 'test';
+	}
 
 	onMount(() => mapRender());
 </script>
@@ -45,7 +49,6 @@
 <div class="event-card">
 	<div class="event-info">
 		<h2>{summary}</h2>
-
 		<div class="date-time">
 			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
 				><path
@@ -121,11 +124,17 @@
 			</a>
 		{/if}
 	</div>
-
-	<!-- Map Container-->
-	<div class="map-wrap">
-		<div class="map" bind:this="{mapContainer}"></div>
-	</div>
+	{#await mapRender}
+		<p>loading</p>
+	{:then map}
+		<div class="map-wrap">
+			<div class="map" bind:this="{mapContainer}"></div>
+		</div>
+	{:catch}
+		<p>Error</p>
+	{/await}
+	<!-- Map Container
+	-->
 </div>
 
 <style>
@@ -176,6 +185,7 @@
 		height: fit-content;
 		border-radius: 5px;
 		scroll-snap-align: start;
+		width: 100%;
 	}
 
 	.event-info {

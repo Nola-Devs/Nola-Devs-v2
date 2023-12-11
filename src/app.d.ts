@@ -25,10 +25,6 @@ interface Event {
 	};
 }
 
-interface PageServerLoadResult {
-	groupObj: Group;
-	events: Event[];
-}
 type linkKey =
 	| 'linkedin'
 	| 'facebook'
@@ -57,6 +53,7 @@ interface Group {
 	calID: string;
 	orgLinks: Link;
 	organizers: Organizers[];
+	events: Event[];
 }
 
-export { Event, Group, Organizers, PageServerLoadResult };
+export { Event, Group, Organizers };
