@@ -1,4 +1,4 @@
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
 import GroupModel from '$lib/db/groups';
 import type { Event } from '$types';
 

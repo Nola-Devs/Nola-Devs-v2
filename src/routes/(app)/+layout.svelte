@@ -7,8 +7,12 @@
 
 	// inject({ mode: dev ? 'development' : 'production' });
 
+	$: isHidden = y > 800;
+	const autoClosingTheMenu = () => !isHidden ? isHidden = false : isHidden
 	let y: number;
+
 </script>
+
 
 <svelte:window bind:innerWidth="{y}" />
 <div id="main">
@@ -17,19 +21,27 @@
 			<img src="" alt="logo" />
 			<h1>NOLA Devs</h1>
 		</a>
-		<div class="groups">
-			<h2>Groups</h2>
-			<hr />
 
+		<details  open="{isHidden}">
+			<summary>
+				<img src="https://www.gmprt.com/wp-content/uploads/icon.png" alt="ling" height="30px" width="30px" />
+				<h2>Groups</h2>
+			</summary>
 			{#each data.groups as group}
-				<a href="/group={group}">
+				<a on:click="{autoClosingTheMenu}" href="/group={group}">
 					<p>
 						{group}
 					</p>
 				</a>
 			{/each}
-		</div>
-		<div id="btm-links">
+		</details>
+
+		<details class="end" open="{isHidden}">
+			<summary>
+				<img src="https://www.gmprt.com/wp-content/uploads/icon.png" alt="ling" height="30px" width="30px" />
+				<h2>Other Links</h2>
+			</summary>
+
 			<a href="/contact">
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
 					><path
@@ -74,9 +86,11 @@
 				>
 				<p>Mission Statement</p>
 			</a>
-		</div>
+		</details>
 	</nav>
-	<slot />
+	<div class="content">
+		<slot />
+	</div>
 </div>
 
 <style>
@@ -95,54 +109,125 @@
 	}
 	#main {
 		display: grid;
-		grid-template-columns: [first] 185px [line2] auto;
+		grid-template-columns: [first] 200px [line2] auto;
 		font-family: var(--read);
 	}
+	
 	nav {
-		padding: 5px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		padding: 5px 0px 5px 5px;
+		border-bottom: solid 1px black;
 	}
-	#btm-links a {
-		display: flex;
-		align-items: center;
-		width: 100%;
-		font-family: var(--read);
-		gap: 3px;
-		color: black;
-	}
+
 	svg {
 		width: 20px;
 		height: 20px;
 	}
-	.groups {
+	details {
 		display: flex;
-		flex-direction: column;
-	}
-	.groups a {
-		margin-top: 5px;
-		color: black;
-		background-color: var(--card-bg);
-		width: 100%;
-		padding: 0px 3px;
+		align-items: center;
+		gap: 3px;
+		padding: 3px;
 		border-radius: 5px;
-		transition: 0.2s;
+		background-color: var(--card-bg);
+		
 	}
+	summary {
+		display: flex;
+		align-items: center;
+	}
+
 	a {
 		text-decoration: unset;
+		color: unset;
+		display: flex;
+		gap: 3px;
 	}
-	.groups a:hover {
-		scale: 0.95;
-	}
+
 	.logo h1 {
 		font-family: 'adam';
 		font-weight: 100;
 		color: black;
 		text-decoration: unset;
+		font-size: larger;
 	}
 
 	.logo {
 		display: flex;
+		height: fit-content;
+	}
+	@media only screen and (max-width: 800px) {
+		#main {
+			grid-template-columns: unset;
+			grid-template-rows: [navbar] 10%, [info] auto,;
+		}
+		details h2{
+			font-size: smaller;
+		}
+		.content{
+			margin-top: 75px;
+		}
+		summary{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			height: fit-content;
+			width: 100px;
+			height: 100%;
+		}
+		details a {
+			background-color: var(--card-bg);
+			padding:10px;
+		}
+		details{	
+			border-radius: 10px;
+			z-index: 10;
+			position: fixed;
+			left: 50%;
+			height: 7%;
+		}
+		details[open] a{
+			border: solid 1px black;
+			border-top: none;
+			border-radius: 0 0 5px 5px;
+			margin-top: -3px;
+		}
+		details[open]{
+			margin-top:10px
+		}
+		.end{
+			position: fixed;
+			left: 0px;
+		}
+		nav{
+			box-shadow: 0 0 10px black;
+			display: flex;
+			flex-direction: row-reverse;
+			z-index: 2;
+			height: 8%;
+			width: 100%;
+			padding: 5px;
+			position: fixed;
+			justify-content: space-between;
+			background-color: #e9e9e9;
+		}
+		
+		.logo{
+			flex-direction: column;
+			font-size: smaller;
+			margin: 0 auto ;
+		}
+		img{
+			height: 30px;
+			width: 30px;
+		}
+		.logo{	
+			height: 100%;
+			width: fit-content;
+			margin: unset;
+		}
 	}
 </style>

@@ -101,4 +101,14 @@
 	.carousel {
 		overflow: hidden;
 	}
+	@media only screen and (max-width: 800px) {
+		.event-list{
+			height: fit-content;
+		}
+		.groupCard{
+			width: 100%;
+		}
+		
+
+	}
 </style>

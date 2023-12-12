@@ -1,7 +1,7 @@
 <script lang="ts">
 	//import type { PageData } from './$types';
-	import Carousel from '../../../components/carousel.svelte';
-	import { EventCard, GroupCard } from '$components';
+	import { EventCard, GroupCard , Carousel } from '$lib/components';
+	
 
 	import type { PageData } from './$types';
 
@@ -50,8 +50,8 @@
 		height: 100%;
 		width: 100%;
 		gap: 3px;
-		margin: auto 3px;
-		border-radius: 5px;
+		padding: 2.5px 5px 5px 5px;
+		border-radius: 20px;
 		overflow-y: auto;
 		scroll-snap-type: y mandatory;
 		scroll-behavior: smooth;
@@ -59,13 +59,11 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		margin: 5px;
 	}
 
 	.group {
-		margin: 5px;
-		border-radius: 10px;
+		padding: 5px 5px 2.5px 5px;
+		border-radius: 20px;
 		overflow: auto;
 		scroll-snap-type: y mandatory;
 		display: grid;
@@ -76,5 +74,22 @@
 		height: 100vh;
 		display: grid;
 		grid-template-rows: [info] 40% [events] auto;
+	}
+	@media only screen and (max-width: 800px) {
+		.groupinfo{
+			display: flex;
+			flex-direction: column;
+			grid-template-columns: unset;
+			height: fit-content;
+		}
+		.group{
+			display: flex;
+			flex-direction: column;
+			grid-template-rows: unset;
+			overflow: visible;
+		}
+		.section{
+			height: fit-content;
+		}
 	}
 </style>

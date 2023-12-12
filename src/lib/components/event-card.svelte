@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Event } from '$types';
 	import { onMount } from 'svelte';
-	import { RevGeocode } from '$lib';
+	import { RevGeocode } from '$lib/utils';
 	import { Map, Marker, type LngLat, LngLatBounds, type LngLatBoundsLike } from 'mapbox-gl';
-	import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+	import 'mapbox-gl/dist/mapbox-gl.css';
 
 	export let event: Event;
 
@@ -31,7 +31,7 @@
 			zoom: zoom,
 			pitch: 50,
 			minZoom: 10,
-			maxZoom: 18
+			maxZoom: 18,
 		});
 
 		await new Marker({
@@ -49,34 +49,36 @@
 <div class="event-card">
 	<div class="event-info">
 		<h2>{summary}</h2>
-		<div class="date-time">
-			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-				><path
-					d="M3 10h18M7 3v2m10-2v2M6.2 21h11.6c1.12 0 1.68 0 2.108-.218a2 2 0 00.874-.874C21 19.48 21 18.92 21 17.8V8.2c0-1.12 0-1.68-.218-2.108a2 2 0 00-.874-.874C19.48 5 18.92 5 17.8 5H6.2c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C3 6.52 3 7.08 3 8.2v9.6c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874C4.52 21 5.08 21 6.2 21z"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				></path></svg
-			>
-			<p id="date">
-				{#if start.date === end.date}
-					{start.date}
-				{:else}
-					{start.date} - {end.date}
-				{/if}
-			</p>
-		</div>
+		<div class="when-where">
 
-		{#if start.time}
 			<div class="date-time">
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-					><path
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-						d="M11.943 1.25h.114c2.309 0 4.118 0 5.53.19 1.444.194 2.584.6 3.479 1.494.895.895 1.3 2.035 1.494 3.48.19 1.411.19 3.22.19 5.529v.114c0 2.309 0 4.118-.19 5.53-.194 1.444-.6 2.584-1.494 3.479-.895.895-2.035 1.3-3.48 1.494-1.411.19-3.22.19-5.529.19h-.114c-2.309 0-4.118 0-5.53-.19-1.444-.194-2.584-.6-3.479-1.494-.895-.895-1.3-2.035-1.494-3.48-.19-1.411-.19-3.22-.19-5.529v-.114c0-2.309 0-4.118.19-5.53.194-1.444.6-2.584 1.494-3.479.895-.895 2.035-1.3 3.48-1.494 1.411-.19 3.22-.19 5.529-.19zm-5.33 1.676c-1.278.172-2.049.5-2.618 1.069-.57.57-.897 1.34-1.069 2.619-.174 1.3-.176 3.008-.176 5.386s.002 4.086.176 5.386c.172 1.279.5 2.05 1.069 2.62.57.569 1.34.896 2.619 1.068 1.3.174 3.008.176 5.386.176s4.086-.002 5.386-.176c1.279-.172 2.05-.5 2.62-1.069.569-.57.896-1.34 1.068-2.619.174-1.3.176-3.008.176-5.386s-.002-4.086-.176-5.386c-.172-1.279-.5-2.05-1.069-2.62-.57-.569-1.34-.896-2.619-1.068-1.3-.174-3.008-.176-5.386-.176s-4.086.002-5.386.176zM12 7.25a.75.75 0 01.75.75v3.69l2.28 2.28a.75.75 0 11-1.06 1.06l-2.134-2.134c-.29-.289-.434-.433-.51-.617-.076-.184-.076-.388-.076-.797V8a.75.75 0 01.75-.75z"
-						fill="currentColor"
-					></path></svg
+				><path
+				d="M3 10h18M7 3v2m10-2v2M6.2 21h11.6c1.12 0 1.68 0 2.108-.218a2 2 0 00.874-.874C21 19.48 21 18.92 21 17.8V8.2c0-1.12 0-1.68-.218-2.108a2 2 0 00-.874-.874C19.48 5 18.92 5 17.8 5H6.2c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C3 6.52 3 7.08 3 8.2v9.6c0 1.12 0 1.68.218 2.108a2 2 0 00.874.874C4.52 21 5.08 21 6.2 21z"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				></path></svg
+				>
+				<p id="date">
+					{#if start.date === end.date}
+					{start.date}
+					{:else}
+					{start.date} - {end.date}
+					{/if}
+				</p>
+			</div>
+			
+			{#if start.time}
+			<div class="date-time">
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+				><path
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M11.943 1.25h.114c2.309 0 4.118 0 5.53.19 1.444.194 2.584.6 3.479 1.494.895.895 1.3 2.035 1.494 3.48.19 1.411.19 3.22.19 5.529v.114c0 2.309 0 4.118-.19 5.53-.194 1.444-.6 2.584-1.494 3.479-.895.895-2.035 1.3-3.48 1.494-1.411.19-3.22.19-5.529.19h-.114c-2.309 0-4.118 0-5.53-.19-1.444-.194-2.584-.6-3.479-1.494-.895-.895-1.3-2.035-1.494-3.48-.19-1.411-.19-3.22-.19-5.529v-.114c0-2.309 0-4.118.19-5.53.194-1.444.6-2.584 1.494-3.479.895-.895 2.035-1.3 3.48-1.494 1.411-.19 3.22-.19 5.529-.19zm-5.33 1.676c-1.278.172-2.049.5-2.618 1.069-.57.57-.897 1.34-1.069 2.619-.174 1.3-.176 3.008-.176 5.386s.002 4.086.176 5.386c.172 1.279.5 2.05 1.069 2.62.57.569 1.34.896 2.619 1.068 1.3.174 3.008.176 5.386.176s4.086-.002 5.386-.176c1.279-.172 2.05-.5 2.62-1.069.569-.57.896-1.34 1.068-2.619.174-1.3.176-3.008.176-5.386s-.002-4.086-.176-5.386c-.172-1.279-.5-2.05-1.069-2.62-.57-.569-1.34-.896-2.619-1.068-1.3-.174-3.008-.176-5.386-.176s-4.086.002-5.386.176zM12 7.25a.75.75 0 01.75.75v3.69l2.28 2.28a.75.75 0 11-1.06 1.06l-2.134-2.134c-.29-.289-.434-.433-.51-.617-.076-.184-.076-.388-.076-.797V8a.75.75 0 01.75-.75z"
+				fill="currentColor"
+				></path></svg
 				>
 				<p id="time">
 					<time datetime="{start.time}">
@@ -88,21 +90,22 @@
 					</time>
 				</p>
 			</div>
-		{/if}
-		{#if location}
+			{/if}
+			{#if location}
 			<a href="https://www.google.com/maps/search/?api=1&query={location}" target="_blank">
 				<div class="addy">
-					<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+					<svg fill='currentColor' viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
 						><path
 							d="M23.25 8v-.018a7.25 7.25 0 10-8.544 7.135l.044.007V30a1.25 1.25 0 002.5 0V15.124c3.425-.615 5.992-3.568 6-7.123V8zM16 12.75A4.75 4.75 0 1120.75 8 4.756 4.756 0 0116 12.75z"
 						></path></svg
 					>
 					<p>
-						{location.split(',')[0].trim()}
+						{location.split(/[,0-9]/)[0].trim()}
 					</p>
 				</div>
 			</a>
-		{/if}
+			{/if}
+		</div>
 		{#if description}
 			<p id="description">{@html description}</p>
 		{/if}
@@ -118,23 +121,17 @@
 								fill="currentColor"
 							></path>
 						</svg>
-						<p>Get Directions</p>
+						<p>Directions</p>
 					</button>
 				</a>
 			</a>
 		{/if}
 	</div>
-	{#await mapRender}
-		<p>loading</p>
-	{:then map}
 		<div class="map-wrap">
 			<div class="map" bind:this="{mapContainer}"></div>
 		</div>
-	{:catch}
-		<p>Error</p>
-	{/await}
-	<!-- Map Container
-	-->
+	
+
 </div>
 
 <style>
@@ -142,15 +139,25 @@
 		display: flex;
 		align-items: center;
 	}
-	.date-time {
-		font-size: medium;
+	.when-where{
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		align-items: center;
-		gap: 10px;
+		gap:5px;
+		font-size: small;
+		font-weight: 1;
+		color: rgb(134, 134, 134);
+	}
+	.date-time {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
 	}
 	svg {
-		height: 20px;
-		width: 20px;
+		height: 15px;
+		width: 15px;
 	}
 	h2 {
 		font-size: large;
@@ -160,14 +167,13 @@
 	}
 	p {
 		font-family: var(--read);
-		color: black;
 	}
 	button {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		gap: 3px;
 		font-family: var(--small-title);
-		font-size: large;
 		border-radius: 5px;
 		border: unset;
 		background-color: var(--button-color);
@@ -176,15 +182,16 @@
 	}
 	a {
 		text-decoration: none;
+		color: unset;
 	}
 
 	.event-card {
-		display: flex;
-		justify-content: space-around;
+		display: grid;
+		grid-template-columns: [info]75% [map]25%;
 		background-color: rgb(230, 230, 230);
-		height: fit-content;
-		border-radius: 5px;
 		scroll-snap-align: start;
+		border-radius: 5px;
+		clip-path: fill-box;
 		width: 100%;
 	}
 
@@ -192,28 +199,24 @@
 		font-family: var(--read);
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 100%;
+		height: 100%;
 		padding: 10px;
-		gap: 10px;
-		padding: 10px;
+		gap: 3px;
 	}
 
 	#description {
-		max-height: 300px;
-		height: 100%;
+		max-height: 200px;
 		overflow-y: auto;
 	}
 
 	.map-wrap {
 		min-height: 100%;
-		width: 50%;
-		transition: 0.5s;
+		width: 100%;
 	}
-
 	.map {
 		background-color: aliceblue;
 		width: 100%;
 		height: 100%;
-		border-radius: 0px 10px 10px 0px;
 	}
 </style>
