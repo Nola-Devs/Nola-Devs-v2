@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Carousel, EventCard } from '$lib/components';
+	import Carousel from '$lib/components/carousel.svelte'
+	import EventCard from '$lib/components/event-card.svelte';
 	import type { Event } from '$types';
 
 	import { onMount } from 'svelte';

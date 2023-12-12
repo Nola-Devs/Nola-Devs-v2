@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Event } from '$types';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { RevGeocode } from '$lib/utils';
 	import { Map, Marker, type LngLat, LngLatBounds, type LngLatBoundsLike } from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
@@ -18,7 +18,7 @@
 	$: coordinates;
 	$: zoom = 17;
 
-	async function mapRender() {
+	const mapRender = async () => {
 		const key =
 			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2xwbG1lZGUxMDFkNDJxbzlwbmlvODA3eCJ9.cueMasr8_HGiV_fBzJJx1w';
 		coordinates = (await RevGeocode(location)) as LngLat;
@@ -29,18 +29,16 @@
 			style: `mapbox://styles/mapbox/standard`,
 			center: coordinates,
 			zoom: zoom,
-			pitch: 50,
 			minZoom: 10,
 			maxZoom: 18,
 		});
+		 
 
 		await new Marker({
 			color: 'blue'
 		})
 			.setLngLat(coordinates)
 			.addTo(map);
-
-		return 'test';
 	}
 
 	onMount(() => mapRender());
@@ -127,11 +125,10 @@
 			</a>
 		{/if}
 	</div>
-		<div class="map-wrap">
-			<div class="map" bind:this="{mapContainer}"></div>
-		</div>
 	
-
+	<div class="map-wrap">
+		<div class="map" bind:this="{mapContainer}"></div>
+	</div>
 </div>
 
 <style>
