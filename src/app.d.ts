@@ -17,11 +17,11 @@ interface Event {
 	location: string;
 	start: {
 		date: string;
-		time: string;
+		time: string | undefined;
 	};
 	end: {
 		date: string;
-		time: string;
+		time: string | undefined;
 	};
 }
 

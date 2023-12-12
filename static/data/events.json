@@ -1,274 +1,1307 @@
 [
-	{
-		"group": "Agile Nola",
-		"events": [
-			{
-				"summary": "Lean Coffee: Agile Talks",
-				"calLink": "https://www.google.com/calendar/event?eid=Njg0MGVzZmkyNmM3azdhcGF1cWkwbmNnYmMgNGE0ZDEwNTRiNmY2NTIyMWY5YWZmZmU1ZTlkMWU0MmI4ZGJhNGY4M2JkMjQxZDQ4ZmFjYTBjYWI1MGVlNDc4ZEBn",
-				"description": "Are there any delivery, people, or process problems at work you would like to get advice on? This is an open space floor to discuss all the agile questions you may have. \n\nAlso, we will also discuss any questions you may have for the upcoming January meetup Pitch2Tech with The Idea Village, where founders will pitch their startups to engineers to find co-founders, CTOs, developers, and mentors.",
-				"location": "Mojo Coffee House, 4700 Freret St, New Orleans, LA 70115, USA",
-				"start": {
-					"date": "Dec 14, 2023",
-					"time": "8:00 AM"
-				},
-				"end": {
-					"date": "Dec 14, 2023",
-					"time": "9:30 AM"
-				}
-			}
-		]
-	},
-	{
-		"group": "Below C Level",
-		"events": [
-			{
-				"summary": "Below C Level",
-				"calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDAxMDNUMDAwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
-				"location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Jan 2, 2024",
-					"time": "6:00 PM"
-				},
-				"end": {
-					"date": "Jan 2, 2024",
-					"time": "7:45 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "BR SQL Server UG",
-		"events": [
-			{
-				"summary": "SQL/.NET User Group Meeting",
-				"calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyMzEyMTNUMjMxNTAwWiBzcWxwYXNzYnJAbQ",
-				"description": "Speaker: TBD\nSponsor: TBD",
-				"location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
-				"start": {
-					"date": "Dec 13, 2023",
-					"time": "5:15 PM"
-				},
-				"end": {
-					"date": "Dec 13, 2023",
-					"time": "8:00 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "Frontend Party",
-		"events": [
-			{
-				"summary": "SHOW & Tell",
-				"calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyMzEyMTJUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
-				"description": "💻  Calling all NOLA FrontEnd Folks! 💻 \n(FEP will be moving to the THIRD Tuesday of every month starting in Dec.)\n\nWant to showcase your coding masterpieces at our next #FrontendParty? @Colin Williams and I will be changing it up a bit this time: 12/19 at Scale New Orleans! 🎉✨\n\nWe've had some incredible speakers in the past, and now it's YOUR turn to take the stage. Whether you're a seasoned developer, a coding hobbyist, or just dipping your toes into frontend waters, we want to see what you've been brewing! 🖥️💡\n\n🌟 What to Expect:\nShow and Tell: Share your latest projects, experiments, or even a cool feature you've implemented at work. Talks should be 5-10 mins long.\nNetworking: Connect with fellow developers, exchange ideas, and maybe find your next coding collaborator.\nInspiration: Witness the diverse creativity within our community and leave with fresh ideas for your next coding adventure.\n\n🗓️ Save the Date:\n12/19, 5:30p at the beautiful @Scale New Orleans\n\nCome show off your work, gain valuable feedback, and inspire others in the #FrontendDeveloper community. Whether it's a passion project, a quirky experiment, or a work triumph, we want to see it all! \n\nSign up here: https://docs.google.com/forms/d/e/1FAIpQLSc7o7Gqealo1c6D3Ggo262Ge2wZwpcZhAhseC-o1IUCOcmpqg/viewform?usp=sharing\n\nLet's continue to grow as developers together! 🚀🔥 #ShowAndTell #CodeShowcase #FrontendDeveloper #TechCommunity #NOLA",
-				"location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Dec 19, 2023",
-					"time": "5:30 PM"
-				},
-				"end": {
-					"date": "Dec 19, 2023",
-					"time": "7:00 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "Hack Night",
-		"events": [
-			{
-				"summary": "Hack Night",
-				"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMTNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
-				"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
-				"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Dec 12, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 12, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "Hack Night",
-				"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
-				"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
-				"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Dec 19, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 19, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "Hack Night",
-				"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
-				"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
-				"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Dec 26, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 26, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "Hack Night",
-				"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMDNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
-				"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
-				"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-				"start": {
-					"date": "Jan 2, 2024",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Jan 2, 2024",
-					"time": "9:00 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "Nola Game Dev",
-		"events": [
-			{
-				"summary": "Hack Night ",
-				"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMTNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-				"location": "http://discord.gg/A2Ngs4w",
-				"start": {
-					"date": "Dec 12, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 12, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "SHO' & TELL",
-				"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMTRUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
-				"location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
-				"start": {
-					"date": "Dec 13, 2023",
-					"time": "7:30 PM"
-				},
-				"end": {
-					"date": "Dec 13, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "Hack Night ",
-				"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-				"location": "http://discord.gg/A2Ngs4w",
-				"start": {
-					"date": "Dec 19, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 19, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "NOLA Game Dev Meetup",
-				"calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyMzEyMjJUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"location": "The Shop At The CAC",
-				"start": {
-					"date": "Dec 21, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 21, 2023",
-					"time": "9:30 PM"
-				}
-			},
-			{
-				"summary": "Hack Night ",
-				"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-				"location": "http://discord.gg/A2Ngs4w",
-				"start": {
-					"date": "Dec 26, 2023",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Dec 26, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "SHO' & TELL",
-				"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMjhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
-				"location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
-				"start": {
-					"date": "Dec 27, 2023",
-					"time": "7:30 PM"
-				},
-				"end": {
-					"date": "Dec 27, 2023",
-					"time": "9:00 PM"
-				}
-			},
-			{
-				"summary": "Hack Night ",
-				"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMDNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-				"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-				"location": "http://discord.gg/A2Ngs4w",
-				"start": {
-					"date": "Jan 2, 2024",
-					"time": "7:00 PM"
-				},
-				"end": {
-					"date": "Jan 2, 2024",
-					"time": "9:00 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "NOLA Sec",
-		"events": []
-	},
-	{
-		"group": "NOLA Women in Tech",
-		"events": [
-			{
-				"summary": "NOLA Womxn In Tech",
-				"calLink": "https://www.google.com/calendar/event?eid=XzZzcGpnZ3BoODRvazhiOWk2MG8zaWI5azY1MGs0YjlwNzBxamdiOWc2Z29qZWNxNTY4czQ2ZTlnNmcgYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
-				"description": "Lovely ladies of New Orleans, join us for our last meetup of 2023 at the Chloe (4125 St Charles Ave New Orleans, LA 70115)! These events are free but we do encourage everyone to get a snack and/or drink at the bar.\n\nP.S. This group is intended for womxn in tech, however those who advocate women in tech are also welcome to join.\n\nRSVP here: https://www.tickeri.com/events/8hmstcx6boty/new-orleans-womxn-in-tech\n\nJoin our LinkedIn group to stay up-to-date here: https://www.linkedin.com/groups/12554672/",
-				"location": "The Chloe\n4125 Saint Charles Ave, New Orleans, LA 70115, United States",
-				"start": {
-					"date": "Dec 12, 2023",
-					"time": "6:00 PM"
-				},
-				"end": {
-					"date": "Dec 12, 2023",
-					"time": "8:00 PM"
-				}
-			}
-		]
-	},
-	{
-		"group": "Work in Tech",
-		"events": []
-	},
-	{
-		"group": "StartUp EcoSystem",
-		"events": []
-	},
-	{
-		"events": []
-	}
+  {
+    "group": "Agile Nola",
+    "events": [
+      {
+        "summary": "Lean Coffee: Agile Talks",
+        "calLink": "https://www.google.com/calendar/event?eid=Njg0MGVzZmkyNmM3azdhcGF1cWkwbmNnYmMgNGE0ZDEwNTRiNmY2NTIyMWY5YWZmZmU1ZTlkMWU0MmI4ZGJhNGY4M2JkMjQxZDQ4ZmFjYTBjYWI1MGVlNDc4ZEBn",
+        "description": "Are there any delivery, people, or process problems at work you would like to get advice on? This is an open space floor to discuss all the agile questions you may have. \n\nAlso, we will also discuss any questions you may have for the upcoming January meetup Pitch2Tech with The Idea Village, where founders will pitch their startups to engineers to find co-founders, CTOs, developers, and mentors.",
+        "location": "Mojo Coffee House, 4700 Freret St, New Orleans, LA 70115, USA",
+        "start": {
+          "date": "Dec 14, 2023",
+          "time": "8:00 AM"
+        },
+        "end": {
+          "date": "Dec 14, 2023",
+          "time": "9:30 AM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Below C Level",
+    "events": [
+      {
+        "summary": "Below C Level",
+        "calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDAxMDNUMDAwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
+        "location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "7:45 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "BR SQL Server UG",
+    "events": [
+      {
+        "summary": "SQL/.NET User Group Meeting",
+        "calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyNDAxMTBUMjMxNTAwWiBzcWxwYXNzYnJAbQ",
+        "description": "Speaker: Kyle MacDonald- Tips for SQL Sevelopers\nSponsor: TBD",
+        "location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "5:15 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Frontend Party",
+    "events": [
+      {
+        "summary": "SHOW & Tell",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyMzEyMTJUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "description": "💻  Calling all NOLA FrontEnd Folks! 💻 \n(FEP will be moving to the THIRD Tuesday of every month starting in Dec.)\n\nWant to showcase your coding masterpieces at our next #FrontendParty? @Colin Williams and I will be changing it up a bit this time: 12/19 at Scale New Orleans! 🎉✨\n\nWe've had some incredible speakers in the past, and now it's YOUR turn to take the stage. Whether you're a seasoned developer, a coding hobbyist, or just dipping your toes into frontend waters, we want to see what you've been brewing! 🖥️💡\n\n🌟 What to Expect:\nShow and Tell: Share your latest projects, experiments, or even a cool feature you've implemented at work. Talks should be 5-10 mins long.\nNetworking: Connect with fellow developers, exchange ideas, and maybe find your next coding collaborator.\nInspiration: Witness the diverse creativity within our community and leave with fresh ideas for your next coding adventure.\n\n🗓️ Save the Date:\n12/19, 5:30p at the beautiful @Scale New Orleans\n\nCome show off your work, gain valuable feedback, and inspire others in the #FrontendDeveloper community. Whether it's a passion project, a quirky experiment, or a work triumph, we want to see it all! \n\nSign up here: https://docs.google.com/forms/d/e/1FAIpQLSc7o7Gqealo1c6D3Ggo262Ge2wZwpcZhAhseC-o1IUCOcmpqg/viewform?usp=sharing\n\nLet's continue to grow as developers together! 🚀🔥 #ShowAndTell #CodeShowcase #FrontendDeveloper #TechCommunity #NOLA",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        }
+      },
+      {
+        "summary": "FrontEnd Party",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAxMDlUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Hack Night",
+    "events": [
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMTNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMDNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMTBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Nola Game Dev",
+    "events": [
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMTNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMTRUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 13, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 13, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "NOLA Game Dev Meetup",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyMzEyMjJUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "location": "The Shop At The CAC",
+        "start": {
+          "date": "Dec 21, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 21, 2023",
+          "time": "9:30 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMjhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 27, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 27, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMDNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMTBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAxMTFUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA Sec",
+    "events": []
+  },
+  {
+    "group": "NOLA Women in Tech",
+    "events": [
+      {
+        "summary": "NOLA Womxn In Tech",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZzcGpnZ3BoODRvazhiOWk2MG8zaWI5azY1MGs0YjlwNzBxamdiOWc2Z29qZWNxNTY4czQ2ZTlnNmcgYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
+        "description": "Lovely ladies of New Orleans, join us for our last meetup of 2023 at the Chloe (4125 St Charles Ave New Orleans, LA 70115)! These events are free but we do encourage everyone to get a snack and/or drink at the bar.\n\nP.S. This group is intended for womxn in tech, however those who advocate women in tech are also welcome to join.\n\nRSVP here: https://www.tickeri.com/events/8hmstcx6boty/new-orleans-womxn-in-tech\n\nJoin our LinkedIn group to stay up-to-date here: https://www.linkedin.com/groups/12554672/",
+        "location": "The Chloe\n4125 Saint Charles Ave, New Orleans, LA 70115, United States",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Work in Tech",
+    "events": []
+  },
+  {
+    "group": "StartUp EcoSystem",
+    "events": []
+  },
+  {
+    "group": "Agile Nola",
+    "events": [
+      {
+        "summary": "Lean Coffee: Agile Talks",
+        "calLink": "https://www.google.com/calendar/event?eid=Njg0MGVzZmkyNmM3azdhcGF1cWkwbmNnYmMgNGE0ZDEwNTRiNmY2NTIyMWY5YWZmZmU1ZTlkMWU0MmI4ZGJhNGY4M2JkMjQxZDQ4ZmFjYTBjYWI1MGVlNDc4ZEBn",
+        "description": "Are there any delivery, people, or process problems at work you would like to get advice on? This is an open space floor to discuss all the agile questions you may have. \n\nAlso, we will also discuss any questions you may have for the upcoming January meetup Pitch2Tech with The Idea Village, where founders will pitch their startups to engineers to find co-founders, CTOs, developers, and mentors.",
+        "location": "Mojo Coffee House, 4700 Freret St, New Orleans, LA 70115, USA",
+        "start": {
+          "date": "Dec 14, 2023",
+          "time": "8:00 AM"
+        },
+        "end": {
+          "date": "Dec 14, 2023",
+          "time": "9:30 AM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Below C Level",
+    "events": [
+      {
+        "summary": "Below C Level",
+        "calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDAxMDNUMDAwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
+        "location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "7:45 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "BR SQL Server UG",
+    "events": [
+      {
+        "summary": "SQL/.NET User Group Meeting",
+        "calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyNDAxMTBUMjMxNTAwWiBzcWxwYXNzYnJAbQ",
+        "description": "Speaker: Kyle MacDonald- Tips for SQL Sevelopers\nSponsor: TBD",
+        "location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "5:15 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Frontend Party",
+    "events": [
+      {
+        "summary": "SHOW & Tell",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyMzEyMTJUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "description": "💻  Calling all NOLA FrontEnd Folks! 💻 \n(FEP will be moving to the THIRD Tuesday of every month starting in Dec.)\n\nWant to showcase your coding masterpieces at our next #FrontendParty? @Colin Williams and I will be changing it up a bit this time: 12/19 at Scale New Orleans! 🎉✨\n\nWe've had some incredible speakers in the past, and now it's YOUR turn to take the stage. Whether you're a seasoned developer, a coding hobbyist, or just dipping your toes into frontend waters, we want to see what you've been brewing! 🖥️💡\n\n🌟 What to Expect:\nShow and Tell: Share your latest projects, experiments, or even a cool feature you've implemented at work. Talks should be 5-10 mins long.\nNetworking: Connect with fellow developers, exchange ideas, and maybe find your next coding collaborator.\nInspiration: Witness the diverse creativity within our community and leave with fresh ideas for your next coding adventure.\n\n🗓️ Save the Date:\n12/19, 5:30p at the beautiful @Scale New Orleans\n\nCome show off your work, gain valuable feedback, and inspire others in the #FrontendDeveloper community. Whether it's a passion project, a quirky experiment, or a work triumph, we want to see it all! \n\nSign up here: https://docs.google.com/forms/d/e/1FAIpQLSc7o7Gqealo1c6D3Ggo262Ge2wZwpcZhAhseC-o1IUCOcmpqg/viewform?usp=sharing\n\nLet's continue to grow as developers together! 🚀🔥 #ShowAndTell #CodeShowcase #FrontendDeveloper #TechCommunity #NOLA",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        }
+      },
+      {
+        "summary": "FrontEnd Party",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAxMDlUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Hack Night",
+    "events": [
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMTNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMDNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMTBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Nola Game Dev",
+    "events": [
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMTNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMTRUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 13, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 13, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "NOLA Game Dev Meetup",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyMzEyMjJUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "location": "The Shop At The CAC",
+        "start": {
+          "date": "Dec 21, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 21, 2023",
+          "time": "9:30 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMjhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 27, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 27, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMDNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMTBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAxMTFUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA Sec",
+    "events": []
+  },
+  {
+    "group": "NOLA Women in Tech",
+    "events": [
+      {
+        "summary": "NOLA Womxn In Tech",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZzcGpnZ3BoODRvazhiOWk2MG8zaWI5azY1MGs0YjlwNzBxamdiOWc2Z29qZWNxNTY4czQ2ZTlnNmcgYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
+        "description": "Lovely ladies of New Orleans, join us for our last meetup of 2023 at the Chloe (4125 St Charles Ave New Orleans, LA 70115)! These events are free but we do encourage everyone to get a snack and/or drink at the bar.\n\nP.S. This group is intended for womxn in tech, however those who advocate women in tech are also welcome to join.\n\nRSVP here: https://www.tickeri.com/events/8hmstcx6boty/new-orleans-womxn-in-tech\n\nJoin our LinkedIn group to stay up-to-date here: https://www.linkedin.com/groups/12554672/",
+        "location": "The Chloe\n4125 Saint Charles Ave, New Orleans, LA 70115, United States",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Work in Tech",
+    "events": []
+  },
+  {
+    "group": "StartUp EcoSystem",
+    "events": []
+  },
+  {
+    "events": []
+  },
+  {
+    "group": "Agile Nola",
+    "events": [
+      {
+        "summary": "Lean Coffee: Agile Talks",
+        "calLink": "https://www.google.com/calendar/event?eid=Njg0MGVzZmkyNmM3azdhcGF1cWkwbmNnYmMgNGE0ZDEwNTRiNmY2NTIyMWY5YWZmZmU1ZTlkMWU0MmI4ZGJhNGY4M2JkMjQxZDQ4ZmFjYTBjYWI1MGVlNDc4ZEBn",
+        "description": "Are there any delivery, people, or process problems at work you would like to get advice on? This is an open space floor to discuss all the agile questions you may have. \n\nAlso, we will also discuss any questions you may have for the upcoming January meetup Pitch2Tech with The Idea Village, where founders will pitch their startups to engineers to find co-founders, CTOs, developers, and mentors.",
+        "location": "Mojo Coffee House, 4700 Freret St, New Orleans, LA 70115, USA",
+        "start": {
+          "date": "Dec 14, 2023",
+          "time": "8:00 AM"
+        },
+        "end": {
+          "date": "Dec 14, 2023",
+          "time": "9:30 AM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Below C Level",
+    "events": [
+      {
+        "summary": "Below C Level",
+        "calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDAxMDNUMDAwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
+        "location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "7:45 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "BR SQL Server UG",
+    "events": [
+      {
+        "summary": "SQL/.NET User Group Meeting",
+        "calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyNDAxMTBUMjMxNTAwWiBzcWxwYXNzYnJAbQ",
+        "description": "Speaker: Kyle MacDonald- Tips for SQL Sevelopers\nSponsor: TBD",
+        "location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "5:15 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Frontend Party",
+    "events": [
+      {
+        "summary": "SHOW & Tell",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyMzEyMTJUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "description": "💻  Calling all NOLA FrontEnd Folks! 💻 \n(FEP will be moving to the THIRD Tuesday of every month starting in Dec.)\n\nWant to showcase your coding masterpieces at our next #FrontendParty? @Colin Williams and I will be changing it up a bit this time: 12/19 at Scale New Orleans! 🎉✨\n\nWe've had some incredible speakers in the past, and now it's YOUR turn to take the stage. Whether you're a seasoned developer, a coding hobbyist, or just dipping your toes into frontend waters, we want to see what you've been brewing! 🖥️💡\n\n🌟 What to Expect:\nShow and Tell: Share your latest projects, experiments, or even a cool feature you've implemented at work. Talks should be 5-10 mins long.\nNetworking: Connect with fellow developers, exchange ideas, and maybe find your next coding collaborator.\nInspiration: Witness the diverse creativity within our community and leave with fresh ideas for your next coding adventure.\n\n🗓️ Save the Date:\n12/19, 5:30p at the beautiful @Scale New Orleans\n\nCome show off your work, gain valuable feedback, and inspire others in the #FrontendDeveloper community. Whether it's a passion project, a quirky experiment, or a work triumph, we want to see it all! \n\nSign up here: https://docs.google.com/forms/d/e/1FAIpQLSc7o7Gqealo1c6D3Ggo262Ge2wZwpcZhAhseC-o1IUCOcmpqg/viewform?usp=sharing\n\nLet's continue to grow as developers together! 🚀🔥 #ShowAndTell #CodeShowcase #FrontendDeveloper #TechCommunity #NOLA",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        }
+      },
+      {
+        "summary": "FrontEnd Party",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAxMDlUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Hack Night",
+    "events": [
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMTNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMDNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMTBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Nola Game Dev",
+    "events": [
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMTNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMTRUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 13, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 13, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "NOLA Game Dev Meetup",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyMzEyMjJUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "location": "The Shop At The CAC",
+        "start": {
+          "date": "Dec 21, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 21, 2023",
+          "time": "9:30 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMjhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 27, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 27, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMDNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMTBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAxMTFUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA Sec",
+    "events": []
+  },
+  {
+    "group": "NOLA Women in Tech",
+    "events": [
+      {
+        "summary": "NOLA Womxn In Tech",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZzcGpnZ3BoODRvazhiOWk2MG8zaWI5azY1MGs0YjlwNzBxamdiOWc2Z29qZWNxNTY4czQ2ZTlnNmcgYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
+        "description": "Lovely ladies of New Orleans, join us for our last meetup of 2023 at the Chloe (4125 St Charles Ave New Orleans, LA 70115)! These events are free but we do encourage everyone to get a snack and/or drink at the bar.\n\nP.S. This group is intended for womxn in tech, however those who advocate women in tech are also welcome to join.\n\nRSVP here: https://www.tickeri.com/events/8hmstcx6boty/new-orleans-womxn-in-tech\n\nJoin our LinkedIn group to stay up-to-date here: https://www.linkedin.com/groups/12554672/",
+        "location": "The Chloe\n4125 Saint Charles Ave, New Orleans, LA 70115, United States",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Work in Tech",
+    "events": []
+  },
+  {
+    "group": "StartUp EcoSystem",
+    "events": []
+  },
+  {
+    "events": []
+  },
+  {
+    "group": "Agile Nola",
+    "events": [
+      {
+        "summary": "Lean Coffee: Agile Talks",
+        "calLink": "https://www.google.com/calendar/event?eid=Njg0MGVzZmkyNmM3azdhcGF1cWkwbmNnYmMgNGE0ZDEwNTRiNmY2NTIyMWY5YWZmZmU1ZTlkMWU0MmI4ZGJhNGY4M2JkMjQxZDQ4ZmFjYTBjYWI1MGVlNDc4ZEBn",
+        "description": "Are there any delivery, people, or process problems at work you would like to get advice on? This is an open space floor to discuss all the agile questions you may have. \n\nAlso, we will also discuss any questions you may have for the upcoming January meetup Pitch2Tech with The Idea Village, where founders will pitch their startups to engineers to find co-founders, CTOs, developers, and mentors.",
+        "location": "Mojo Coffee House, 4700 Freret St, New Orleans, LA 70115, USA",
+        "start": {
+          "date": "Dec 14, 2023",
+          "time": "8:00 AM"
+        },
+        "end": {
+          "date": "Dec 14, 2023",
+          "time": "9:30 AM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Below C Level",
+    "events": [
+      {
+        "summary": "Below C Level",
+        "calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDAxMDNUMDAwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
+        "location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "7:45 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "BR SQL Server UG",
+    "events": [
+      {
+        "summary": "SQL/.NET User Group Meeting",
+        "calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyNDAxMTBUMjMxNTAwWiBzcWxwYXNzYnJAbQ",
+        "description": "Speaker: Kyle MacDonald- Tips for SQL Sevelopers\nSponsor: TBD",
+        "location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "5:15 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Frontend Party",
+    "events": [
+      {
+        "summary": "SHOW & Tell",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyMzEyMTJUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "description": "💻  Calling all NOLA FrontEnd Folks! 💻 \n(FEP will be moving to the THIRD Tuesday of every month starting in Dec.)\n\nWant to showcase your coding masterpieces at our next #FrontendParty? @Colin Williams and I will be changing it up a bit this time: 12/19 at Scale New Orleans! 🎉✨\n\nWe've had some incredible speakers in the past, and now it's YOUR turn to take the stage. Whether you're a seasoned developer, a coding hobbyist, or just dipping your toes into frontend waters, we want to see what you've been brewing! 🖥️💡\n\n🌟 What to Expect:\nShow and Tell: Share your latest projects, experiments, or even a cool feature you've implemented at work. Talks should be 5-10 mins long.\nNetworking: Connect with fellow developers, exchange ideas, and maybe find your next coding collaborator.\nInspiration: Witness the diverse creativity within our community and leave with fresh ideas for your next coding adventure.\n\n🗓️ Save the Date:\n12/19, 5:30p at the beautiful @Scale New Orleans\n\nCome show off your work, gain valuable feedback, and inspire others in the #FrontendDeveloper community. Whether it's a passion project, a quirky experiment, or a work triumph, we want to see it all! \n\nSign up here: https://docs.google.com/forms/d/e/1FAIpQLSc7o7Gqealo1c6D3Ggo262Ge2wZwpcZhAhseC-o1IUCOcmpqg/viewform?usp=sharing\n\nLet's continue to grow as developers together! 🚀🔥 #ShowAndTell #CodeShowcase #FrontendDeveloper #TechCommunity #NOLA",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        }
+      },
+      {
+        "summary": "FrontEnd Party",
+        "calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAxMDlUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+        "location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "5:30 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Hack Night",
+    "events": [
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMTNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyMzEyMjdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMDNUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night",
+        "calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMTBUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+        "description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
+        "location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Nola Game Dev",
+    "events": [
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMTNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMTRUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 13, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 13, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 19, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 19, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "NOLA Game Dev Meetup",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyMzEyMjJUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "location": "The Shop At The CAC",
+        "start": {
+          "date": "Dec 21, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 21, 2023",
+          "time": "9:30 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyMzEyMjdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Dec 26, 2023",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Dec 26, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyMzEyMjhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Dec 27, 2023",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Dec 27, 2023",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMDNUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 2, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 2, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "Hack Night ",
+        "calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMTBUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+        "location": "http://discord.gg/A2Ngs4w",
+        "start": {
+          "date": "Jan 9, 2024",
+          "time": "7:00 PM"
+        },
+        "end": {
+          "date": "Jan 9, 2024",
+          "time": "9:00 PM"
+        }
+      },
+      {
+        "summary": "SHO' & TELL",
+        "calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAxMTFUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+        "description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+        "location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+        "start": {
+          "date": "Jan 10, 2024",
+          "time": "7:30 PM"
+        },
+        "end": {
+          "date": "Jan 10, 2024",
+          "time": "9:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "NOLA Sec",
+    "events": []
+  },
+  {
+    "group": "NOLA Women in Tech",
+    "events": [
+      {
+        "summary": "NOLA Womxn In Tech",
+        "calLink": "https://www.google.com/calendar/event?eid=XzZzcGpnZ3BoODRvazhiOWk2MG8zaWI5azY1MGs0YjlwNzBxamdiOWc2Z29qZWNxNTY4czQ2ZTlnNmcgYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
+        "description": "Lovely ladies of New Orleans, join us for our last meetup of 2023 at the Chloe (4125 St Charles Ave New Orleans, LA 70115)! These events are free but we do encourage everyone to get a snack and/or drink at the bar.\n\nP.S. This group is intended for womxn in tech, however those who advocate women in tech are also welcome to join.\n\nRSVP here: https://www.tickeri.com/events/8hmstcx6boty/new-orleans-womxn-in-tech\n\nJoin our LinkedIn group to stay up-to-date here: https://www.linkedin.com/groups/12554672/",
+        "location": "The Chloe\n4125 Saint Charles Ave, New Orleans, LA 70115, United States",
+        "start": {
+          "date": "Dec 12, 2023",
+          "time": "6:00 PM"
+        },
+        "end": {
+          "date": "Dec 12, 2023",
+          "time": "8:00 PM"
+        }
+      }
+    ]
+  },
+  {
+    "group": "Work in Tech",
+    "events": []
+  },
+  {
+    "group": "StartUp EcoSystem",
+    "events": []
+  },
+  {
+    "events": []
+  }
 ]
