@@ -15,15 +15,13 @@ export const GET = async ({ request }) => {
 		calID: string;
 	}
 
-
 	const calList: Group[] = await GroupModel.find({})
 	const calObj = calList.map((e: Group): CalIDGroups =>({
 		group: e.group,
 		calID: e.calID
 	}));
-	const eventsFromAPI = await updateEvents(calObj);
 
-	
+	const eventsFromAPI = await updateEvents(calObj);
 
 	return new Response(JSON.stringify(eventsFromAPI), { status: 200 });
 };

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Event } from '$types';
 	import { onMount, onDestroy } from 'svelte';
-	import { RevGeocode } from '$lib/utils/rev-geocode';
+	// import { RevGeocode } from '$lib/utils/rev-geocode';
 	//import { Map, Marker, type LngLat, LngLatBounds, type LngLatBoundsLike } from 'mapbox-gl';
 	import 'mapbox-gl/dist/mapbox-gl.css';
 

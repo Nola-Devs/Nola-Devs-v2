@@ -32,5 +32,3 @@ const groupSchema = new Schema({
 });
 
 export const GroupModel = model('Group', groupSchema);
-
-
