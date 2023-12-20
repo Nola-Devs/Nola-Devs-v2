@@ -1,4 +1,4 @@
-import GroupModel from '$lib/db/groups';
+import { GroupModel } from '$lib/db/groups';
 import type { PageServerLoad } from './$types';
 import type { Group } from '$types';
 

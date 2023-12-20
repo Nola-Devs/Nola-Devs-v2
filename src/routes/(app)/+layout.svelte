@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	import type { LayoutData } from './$types';
+	
 	// import { inject } from '@vercel/analytics';
+	
+	import type { LayoutData } from './$types';
+
 
 	export let data: LayoutData;
-
-	// inject({ mode: dev ? 'development' : 'production' });
-
-	$: isHidden = y > 800;
-	const autoClosingTheMenu = () => !isHidden ? isHidden = false : isHidden
 	let y: number;
+	$: isHidden = y > 800;
+	
+	// inject({ mode: dev ? 'development' : 'production' });
 
 </script>
 
@@ -22,13 +23,13 @@
 			<h1>NOLA Devs</h1>
 		</a>
 
-		<details  open="{isHidden}">
+		<details  open="{isHidden}" >
 			<summary>
 				<img src="https://www.gmprt.com/wp-content/uploads/icon.png" alt="ling" height="30px" width="30px" />
 				<h2>Groups</h2>
 			</summary>
 			{#each data.groups as group}
-				<a on:click="{autoClosingTheMenu}" href="/group={group}">
+				<a  href="/group={group}">
 					<p>
 						{group}
 					</p>
@@ -111,6 +112,7 @@
 		display: grid;
 		grid-template-columns: [first] 200px [line2] auto;
 		font-family: var(--read);
+		height: 100vh;
 	}
 	
 	nav {
@@ -137,6 +139,8 @@
 	summary {
 		display: flex;
 		align-items: center;
+		pointer-events: none;
+    user-select: none;
 	}
 
 	a {
@@ -158,6 +162,9 @@
 		display: flex;
 		height: fit-content;
 	}
+	summary::-webkit-details-marker {
+  	display:none;
+	}
 	@media only screen and (max-width: 800px) {
 		#main {
 			grid-template-columns: unset;
@@ -177,6 +184,8 @@
 			height: fit-content;
 			width: 100px;
 			height: 100%;
+			pointer-events: all;
+    	user-select:all;
 		}
 		details a {
 			background-color: var(--card-bg);

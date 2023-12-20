@@ -1,7 +1,7 @@
 <script lang="ts">
-	//import type { PageData } from './$types';
-	import { EventCard, GroupCard , Carousel } from '$lib/components';
-	
+	import EventCard from '$lib/components/event-card.svelte';
+	import GroupCard from '$lib/components/group-card.svelte';
+	import Carousel from '$lib/components/carousel.svelte';
 
 	import type { PageData } from './$types';
 
@@ -17,26 +17,25 @@
 <div class="groupinfo">
 	<div class="group">
 		<div class="groupCard">
-			{#key group}
-				{#if group}
-					<GroupCard groupData="{group}" />
-				{/if}
-			{/key}
+			{#if group}
+				<GroupCard groupData="{group}" />
+			{/if}
 		</div>
 		<div class="carousel">
 			<Carousel />
 		</div>
 	</div>
 
+	{#if group.events.length}
+	
 	<div class="section">
-		{#key group.events}
-			{#if group.events}
-				{#each group.events as event}
-					<EventCard {event} />
-				{/each}
-			{/if}
-		{/key}
-	</div>
+		{#each group.events as event}
+		{#key event}
+			<EventCard {event} />
+			{/key}
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -73,22 +72,24 @@
 	.groupinfo {
 		height: 100vh;
 		display: grid;
-		grid-template-rows: [info] 40% [events] auto;
+		grid-template-columns: 1fr;
+		grid-template-rows: [info] auto [events] 60%;
 	}
+
 	@media only screen and (max-width: 800px) {
-		.groupinfo{
+		.groupinfo {
 			display: flex;
 			flex-direction: column;
 			grid-template-columns: unset;
-			height: fit-content;
+			height: 100%;
 		}
-		.group{
+		.group {
 			display: flex;
 			flex-direction: column;
 			grid-template-rows: unset;
 			overflow: visible;
 		}
-		.section{
+		.section {
 			height: fit-content;
 		}
 	}

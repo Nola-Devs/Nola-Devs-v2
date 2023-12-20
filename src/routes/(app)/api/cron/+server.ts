@@ -1,8 +1,7 @@
-import type { Group} from '$types';
+import type { Group } from '$types';
 import { CRON_SECRET } from '$env/static/private';
-import { writeFileSync, readFileSync } from 'fs';
-import { updateEvents } from '$lib/utils/update-events.js';
-import {GroupModel} from '$lib/db'
+import { updateEvents }  from '$lib/utils/update-events';
+import { GroupModel } from '$lib/db/groups'
 
 export const GET = async ({ request }) => {
 	// auth
@@ -18,16 +17,13 @@ export const GET = async ({ request }) => {
 
 
 	const calList: Group[] = await GroupModel.find({})
-	const calObj = calList.map((e: Group): CalIDGroups =>
-	({
+	const calObj = calList.map((e: Group): CalIDGroups =>({
 		group: e.group,
 		calID: e.calID
-	})
-	
-	);
+	}));
 	const eventsFromAPI = await updateEvents(calObj);
 
-	writeFileSync('static/data/events.json', JSON.stringify(eventsFromAPI, null, 2), 'utf-8');
+	
 
 	return new Response(JSON.stringify(eventsFromAPI), { status: 200 });
 };

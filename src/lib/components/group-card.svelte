@@ -39,14 +39,14 @@
 						stroke-linejoin="round"
 					></path>
 				</svg>
-				<p>Suscribe to this Calendar</p>
+				<p>Suscribe</p>
 			</button>
 
 			<div class="links">
 				{#if groupData}
 					{#each Object.entries(groupData?.orgLinks) as [site, links] (site)}
 						<a href="{links}" target="_blank">
-							<IconParser icon="{site}" size="{30}" />
+							<IconParser icon="{site}" size="{15}" />
 						</a>
 					{/each}
 				{/if}
@@ -65,7 +65,7 @@
 					<div class="organizer-links">
 						{#each Object.entries(organizer.links) as [site, links] (site)}
 							<a href="{links}" target="_blank">
-								<IconParser icon="{site}" color="{'white'}" />
+								<IconParser icon="{site}" color="{'white'}" size={15}/>
 							</a>
 						{/each}
 					</div>
@@ -101,17 +101,19 @@
 		flex-direction: column;
 		justify-content: space-between;
 	}
-	.group-info p {
+	p {
 		height: 100%;
 		overflow-y: auto;
 		font-family: var(--read);
+		font-size: small;
 	}
-	svg {
-		min-height: 25px;
-		min-width: 25px;
-	}
+	
 	.organizer-info {
 		display: inline;
+	}
+	svg{
+		width: 15px;
+		height: 15px;
 	}
 
 	.card-links {
@@ -136,8 +138,6 @@
 		width: 100%;
 		z-index: 2;
 		font-size: large;
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
 		padding: 3px;
 	}
 	.organizer-links {
@@ -152,11 +152,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter: grayscale();
 		transition: 1s;
-	}
-	.organizer-info img:hover {
-		filter: grayscale(0);
 	}
 
 	button {
@@ -164,17 +160,12 @@
 		align-items: center;
 		gap: 3px;
 		font-family: var(--small-title);
-		font-size: large;
 		border-radius: 5px;
 		border: unset;
 		background-color: var(--button-color);
 		float: right;
 	}
-	button svg {
-		width: 20px;
-		height: 20px;
-		margin: 5px;
-	}
+	
 
 	.organizer-list {
 		display: flex;

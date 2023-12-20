@@ -1,6 +1,8 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
+import type { LngLat } from "mapbox-gl";
+
 declare global {
 	namespace App {
 		// interface Error {}
@@ -11,10 +13,12 @@ declare global {
 }
 
 interface Event {
+	group: string | undefined
 	summary: string;
 	calLink: string;
 	description: string;
 	location: string;
+	lnglat: {lat: number, lng: number};
 	start: {
 		date: string;
 		time: string | undefined;
