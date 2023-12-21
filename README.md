@@ -99,7 +99,7 @@ _we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlass
 - Star the repository :)
 - Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
 - Create or pick up a "ticket" from our [GitHub Issues](https://github.com/Nola-Devs/Nola-Dev-Site/issues)
-  - Create a branch directly from that ticket's full view on GitHub<sup>see 1.1</sup>
+  - Create a branch directly from that ticket's full view on GitHub<sup>see diagram 1.0</sup>
 - Fetch from `origin main` in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
 - Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
 - Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
@@ -109,7 +109,8 @@ _we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlass
 
 _if your code has linting errors please run `npm run lint -- --fix` :)_
 
-_footnotes_
-diagram<sup>1.1</sup>
+### Footnotes:
+
+diagram<sup>1.0</sup>
 ![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/2e40f7b5-e109-4062-b323-96228da620bd)
 
