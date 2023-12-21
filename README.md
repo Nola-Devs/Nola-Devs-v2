@@ -117,7 +117,7 @@ diagram<sup>1.0</sup>
 diagram<sup>1.1</sup>
 ![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/012294aa-41c0-4a0e-aa19-1ea287045eb5)
 
-diagram<sup>1.2</sup?
+diagram<sup>1.2</sup>
 ![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/9ebcf2a7-ef65-43ff-8cf4-193af1a6239b)
 
 
