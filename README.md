@@ -19,33 +19,49 @@ This application hosts individual group sites, events, and contact information f
 - [Simple Icons](https://simpleicons.org)
 
 ---
-
-## Setup Development Environment
+## To Run:
+### Setup Development Environment
 
 Just install all of the dependencies in any NPM-equivalent package manager, and then run the dev script.
 
 This will run the web app under a "development" node environment, meaning that it will not load any external resources which may require secrets (API Keys, etc).
 
-```
+```ts
 npm i
 npm run dev
 ```
 
-## Setup Production Environment
+### Setup Production Environment
 
-Make sure you have both your Google Calendar API Key and your Discord Webhook URL.
-Once you have both created (copy `.env.example`) and added to your `.env.local` file (or any other equivalent environment variable system), you can actually deploy it.
+_API Keys you will need_
+- Google Calendar API
+  - [Follow these steps](https://github.com/Nola-Devs/Nola-Devs-v2?tab=readme-ov-file#google-calendar-api-key)
+- Discord Webhook URL
+  - Apply for Contributor Access to [this channel](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already.
+  - Copy the pinned URL for your `.env`
+- Mapbox Public API Key
+  - [Follow these steps](https://github.com/Nola-Devs/Nola-Devs-v2?tab=readme-ov-file#mapbox-public-key)
+- Cron Secret
+  - _Coming soon..._
+- DB Name
+  - `noladevs`
+- DB Connection URL
+  - _Coming soon..._
 
-Instead of just running in the development environment, now the site is built and than served (which is how it would run on Vercel).
+Make sure you have created the above keys with provided values or your own where indicated.
+Once you have both created (copy `.env.example`) and added to your `.env.local` file (or any other equivalent environment variable system), you can actually deploy it. (_instructions in hyperlinks_)
+
+Instead of just running in the development environment, now the site will be built and then served (which is how it would run on Vercel).
 
 To run the production environment, simply run these commands (and have environment variables populated).
 
-```
+```ts
 npm i
 npm run build
 npm run preview
 ```
 
+## API Key Instructions (where applicable):
 ### Google Calendar API Key
 
 Basic Abridged Guide:
@@ -66,8 +82,6 @@ Basic Abridged Guide:
 
 - if your api key doesnt start with pk it isn't the right one
 
-4.
-
 ---
 
 ## Contribute
@@ -80,12 +94,12 @@ If you reside in or around NOLA consider this community website a deployed sandb
 
 ### Contribution Protocol:
 
-_we have transitioned away from [a forking git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow) to a [forkless/trunk feature-branch hybrid git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)_
+_we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)_
 
-- ~~Star and Fork the repository~~
+- Star the repository :)
 - Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
 - Create or pick up a "ticket" from our [GitHub Issues](https://github.com/Nola-Devs/Nola-Dev-Site/issues)
-  - Create a branch directly from that ticket's full view on GitHub
+  - Create a branch directly from that ticket's full view on GitHub<sup>see 1.1</sup>
 - Fetch from `origin main` in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
 - Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
 - Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
@@ -94,3 +108,8 @@ _we have transitioned away from [a forking git workflow](https://www.atlassian.c
 - Merge your approved PR branch to main or revise and repeat
 
 _if your code has linting errors please run `npm run lint -- --fix` :)_
+
+_footnotes_
+diagram<sup>1.1</sup>
+![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/2e40f7b5-e109-4062-b323-96228da620bd)
+
