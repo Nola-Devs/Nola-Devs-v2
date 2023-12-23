@@ -29,7 +29,7 @@
 				<h2>Groups</h2>
 			</summary>
 			{#each data.groups as group}
-				<a  href="/group={group}">
+				<a  href="/group/{group?.replace(/[ ]/g, '-')}">
 					<p>
 						{group}
 					</p>

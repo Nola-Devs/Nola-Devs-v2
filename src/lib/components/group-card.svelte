@@ -61,7 +61,7 @@
 					<p>
 						{organizer.name}
 					</p>
-					<img src="images/organizers/{organizer.pfp}" alt="" width="200px" height="200px" />
+					<img src="/images/organizers/{organizer.pfp}" alt="" width="200px" height="200px" />
 					<div class="organizer-links">
 						{#each Object.entries(organizer.links) as [site, links] (site)}
 							<a href="{links}" target="_blank">
