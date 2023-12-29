@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import type { Event } from '$types'
+import type { Event } from '$types';
 
 const eventSchema = new Schema<Event>({
 	group: String,
@@ -10,11 +10,11 @@ const eventSchema = new Schema<Event>({
 	lnglat: [Number, Number],
 	start: {
 		date: String,
-		time: String,
+		time: String
 	},
 	end: {
 		date: String,
-		time: String,
+		time: String
 	}
 });
 

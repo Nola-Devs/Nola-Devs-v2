@@ -19,7 +19,9 @@ This application hosts individual group sites, events, and contact information f
 - [Simple Icons](https://simpleicons.org)
 
 ---
+
 ## To Run:
+
 ### Setup Development Environment
 
 Just install all of the dependencies in any NPM-equivalent package manager, and then run the dev script.
@@ -34,6 +36,7 @@ npm run dev
 ### Setup Production Environment
 
 _API Keys you will need_
+
 - Google Calendar API
   - [Follow these steps](https://github.com/Nola-Devs/Nola-Devs-v2?tab=readme-ov-file#google-calendar-api-key)
 - Discord Webhook URL
@@ -62,6 +65,7 @@ npm run preview
 ```
 
 ## API Key Instructions (where applicable):
+
 ### Google Calendar API Key
 
 Basic Abridged Guide:
@@ -119,6 +123,3 @@ diagram<sup>1.1</sup>
 
 diagram<sup>1.2</sup>
 ![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/9ebcf2a7-ef65-43ff-8cf4-193af1a6239b)
-
-
-

@@ -65,7 +65,7 @@
 					<div class="organizer-links">
 						{#each Object.entries(organizer.links) as [site, links] (site)}
 							<a href="{links}" target="_blank">
-								<IconParser icon="{site}" color="{'white'}" size={15}/>
+								<IconParser icon="{site}" color="{'white'}" size="{15}" />
 							</a>
 						{/each}
 					</div>
@@ -107,11 +107,11 @@
 		font-family: var(--read);
 		font-size: small;
 	}
-	
+
 	.organizer-info {
 		display: inline;
 	}
-	svg{
+	svg {
 		width: 15px;
 		height: 15px;
 	}
@@ -165,7 +165,6 @@
 		background-color: var(--button-color);
 		float: right;
 	}
-	
 
 	.organizer-list {
 		display: flex;

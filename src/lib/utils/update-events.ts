@@ -4,7 +4,6 @@
 // import { revGeocode } from './rev-geocode';
 // import type { LngLat } from 'mapbox-gl';
 
-
 // interface EventsGroups {
 //   group: string;
 //   events: Event[];
@@ -18,7 +17,6 @@
 //   This is the default calendar for the one off turn this into a pvt key
 //  545d217a064ce6f846e820045fccdaae17db65ee1b53dc14ea249833b94d0f70@group.calendar.google.com
 // */
-
 
 // export const updateEvents = (cals: CalIDGroups[]) => {
 //   const start = new Date();
@@ -86,9 +84,8 @@
 //       }
 //       return event
 //     }) as Event[];
-    
-//     //await GroupModel.findOneAndUpdate({ group: cal.group }, { events })
 
+//     //await GroupModel.findOneAndUpdate({ group: cal.group }, { events })
 
 //     return {
 //       events
