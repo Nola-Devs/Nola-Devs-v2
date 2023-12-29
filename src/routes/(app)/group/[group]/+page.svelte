@@ -27,12 +27,11 @@
 	</div>
 
 	{#if group.events.length}
-	
-	<div class="section">
-		{#each group.events as event}
-		{#key event}
-			<EventCard {event} />
-			{/key}
+		<div class="section">
+			{#each group.events as event}
+				{#key event}
+					<EventCard {event} />
+				{/key}
 			{/each}
 		</div>
 	{/if}

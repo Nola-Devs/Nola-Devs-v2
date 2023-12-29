@@ -1,19 +1,16 @@
 <script lang="ts">
 	import { dev } from '$app/environment';
-	
-	// import { inject } from '@vercel/analytics';
-	
-	import type { LayoutData } from './$types';
 
+	// import { inject } from '@vercel/analytics';
+
+	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
 	let y: number;
 	$: isHidden = y > 800;
-	
+
 	// inject({ mode: dev ? 'development' : 'production' });
-
 </script>
-
 
 <svelte:window bind:innerWidth="{y}" />
 <div id="main">
@@ -23,13 +20,18 @@
 			<h1>NOLA Devs</h1>
 		</a>
 
-		<details  open="{isHidden}" >
+		<details open="{isHidden}">
 			<summary>
-				<img src="https://www.gmprt.com/wp-content/uploads/icon.png" alt="ling" height="30px" width="30px" />
+				<img
+					src="https://www.gmprt.com/wp-content/uploads/icon.png"
+					alt="ling"
+					height="30px"
+					width="30px"
+				/>
 				<h2>Groups</h2>
 			</summary>
 			{#each data.groups as group}
-				<a  href="/group/{group?.replace(/[ ]/g, '-')}">
+				<a href="/group/{group?.replace(/[ ]/g, '-')}">
 					<p>
 						{group}
 					</p>
@@ -39,7 +41,12 @@
 
 		<details class="end" open="{isHidden}">
 			<summary>
-				<img src="https://www.gmprt.com/wp-content/uploads/icon.png" alt="ling" height="30px" width="30px" />
+				<img
+					src="https://www.gmprt.com/wp-content/uploads/icon.png"
+					alt="ling"
+					height="30px"
+					width="30px"
+				/>
 				<h2>Other Links</h2>
 			</summary>
 
@@ -114,7 +121,7 @@
 		font-family: var(--read);
 		height: 100vh;
 	}
-	
+
 	nav {
 		display: flex;
 		flex-direction: column;
@@ -134,13 +141,12 @@
 		padding: 3px;
 		border-radius: 5px;
 		background-color: var(--card-bg);
-		
 	}
 	summary {
 		display: flex;
 		align-items: center;
 		pointer-events: none;
-    user-select: none;
+		user-select: none;
 	}
 
 	a {
@@ -163,20 +169,22 @@
 		height: fit-content;
 	}
 	summary::-webkit-details-marker {
-  	display:none;
+		display: none;
 	}
 	@media only screen and (max-width: 800px) {
 		#main {
 			grid-template-columns: unset;
-			grid-template-rows: [navbar] 10%, [info] auto,;
+			grid-template-rows:
+				[navbar] 10%,
+				[info] auto;
 		}
-		details h2{
+		details h2 {
 			font-size: smaller;
 		}
-		.content{
+		.content {
 			margin-top: 75px;
 		}
-		summary{
+		summary {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -185,33 +193,33 @@
 			width: 100px;
 			height: 100%;
 			pointer-events: all;
-    	user-select:all;
+			user-select: all;
 		}
 		details a {
 			background-color: var(--card-bg);
-			padding:10px;
+			padding: 10px;
 		}
-		details{	
+		details {
 			border-radius: 10px;
 			z-index: 10;
 			position: fixed;
 			left: 50%;
 			height: 7%;
 		}
-		details[open] a{
+		details[open] a {
 			border: solid 1px black;
 			border-top: none;
 			border-radius: 0 0 5px 5px;
 			margin-top: -3px;
 		}
-		details[open]{
-			margin-top:10px
+		details[open] {
+			margin-top: 10px;
 		}
-		.end{
+		.end {
 			position: fixed;
 			left: 0px;
 		}
-		nav{
+		nav {
 			box-shadow: 0 0 10px black;
 			display: flex;
 			flex-direction: row-reverse;
@@ -223,17 +231,17 @@
 			justify-content: space-between;
 			background-color: #e9e9e9;
 		}
-		
-		.logo{
+
+		.logo {
 			flex-direction: column;
 			font-size: smaller;
-			margin: 0 auto ;
+			margin: 0 auto;
 		}
-		img{
+		img {
 			height: 30px;
 			width: 30px;
 		}
-		.logo{	
+		.logo {
 			height: 100%;
 			width: fit-content;
 			margin: unset;

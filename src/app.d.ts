@@ -1,7 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
-import type { LngLatLike } from "mapbox-gl";
+import type { LngLatLike } from 'mapbox-gl';
 
 declare global {
 	namespace App {
@@ -13,7 +13,7 @@ declare global {
 }
 
 interface Event {
-	group: string | undefined
+	group: string | undefined;
 	summary: string;
 	calLink: string;
 	description: string;

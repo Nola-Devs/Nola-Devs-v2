@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Carousel from '$lib/components/carousel.svelte'
+	import Carousel from '$lib/components/carousel.svelte';
 	import EventCard from '$lib/components/event-card.svelte';
 	import type { Event } from '$types';
 
@@ -103,10 +103,10 @@
 		overflow: hidden;
 	}
 	@media only screen and (max-width: 800px) {
-		.event-list{
+		.event-list {
 			height: fit-content;
 		}
-		.groupCard{
+		.groupCard {
 			width: 100%;
 		}
 	}
