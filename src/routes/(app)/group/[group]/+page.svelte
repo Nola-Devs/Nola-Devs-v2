@@ -7,6 +7,7 @@
 
 	export let data: PageData;
 	$: group = data.group;
+	$: events = data.events;
 </script>
 
 <svelte:head>
@@ -26,9 +27,9 @@
 		</div>
 	</div>
 
-	{#if group.events.length}
+	{#if events.length}
 		<div class="section">
-			{#each group.events as event}
+			{#each events as event}
 				{#key event}
 					<EventCard {event} />
 				{/key}

@@ -38,6 +38,7 @@ export const GET = async ({ request }) => {
 	const parseEvents: Event[] = eventsWithLatLon.map((e) => eventParser(e));
 
 	EventModel.collection.drop();
+
 	EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
 
 	return new Response(JSON.stringify(events), { status: 200 });
