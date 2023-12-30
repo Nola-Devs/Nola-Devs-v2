@@ -13,6 +13,11 @@ export const GET = async ({ request }) => {
 		return new Response('You Shall Not Pass!', { status: 401 });
 	}
 
+	// /*
+	//   This is the default calendar for the one off turn this into a pvt key
+	//  545d217a064ce6f846e820045fccdaae17db65ee1b53dc14ea249833b94d0f70@group.calendar.google.com
+	// */
+	
 	const calList: Group[] = await GroupModel.find({}).select(['group', 'calID']);
 
 	const events = (

@@ -1,3 +1,5 @@
+// TODO: Add sitemap generation using DB
+
 export async function GET() {
 	return new Response(
 		`
