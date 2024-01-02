@@ -23,7 +23,6 @@ export const GET = async ({ request }) => {
 
 	const calList: Group[] = await GroupModel.find({}).select(['group', 'calID']);
 
-
 	// TODO: Change all Promise.all into Promise.allSettled for better error handling
 	const events = (
 		await Promise.all(
