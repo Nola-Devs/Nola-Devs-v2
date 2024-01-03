@@ -1,3 +1,4 @@
 export const load = ({ cookies }) => {
-	console.log('cookies', cookies);
+	const ses = cookies.get('session')
+	console.log('cookies', ses);
 };
