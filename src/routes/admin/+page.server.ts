@@ -8,9 +8,16 @@ import type { Actions } from './$types';
 
 export const load = async ({ cookies }) => {
 	const browserSes = cookies.get('session');
-	const dbSes = await SessionModel.find({ id: browserSes });
-	console.log('dbSes', dbSes);
-	console.log('browserSes', browserSes);
+	const dbSes = await SessionModel.findOne({ id: browserSes });
+	const user = await UserModel.findById(dbSes?.user);
+
+	if (Number(dbSes?.expire) >= Date.now() + 1000 * 60 * 60 * 24 * 30) {
+		await SessionModel.deleteOne({ id: browserSes });
+	} else if (dbSes?.id === browserSes && dbSes && browserSes) {
+		throw redirect(302, `/admin/${user?.role}`);
+	} else {
+		return { success: false }; // wrong password or email
+	}
 };
 
 export const actions: Actions = {
@@ -48,7 +55,7 @@ export const actions: Actions = {
 				throw redirect(302, `/admin/${userpw.role}`); // correct password and email
 			}
 		}
-		setTimeout(() => {}, 1000); // Prolongs bruteforce attacks
+		setTimeout(() => { }, 1000); // Prolongs bruteforce attacks
 		return { success: false }; // wrong password or email
 	}
 };
