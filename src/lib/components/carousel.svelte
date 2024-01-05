@@ -26,6 +26,8 @@
 		currentSlideItem = (currentSlideItem + 1) % gallery_items.length;
 	};
 	onMount(() => setInterval(nextImage, 5000));
+
+	// parse out a string to say hello world
 </script>
 
 {#key [gallery_items[currentSlideItem]]}

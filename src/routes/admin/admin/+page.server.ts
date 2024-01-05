@@ -13,7 +13,7 @@ export const load = async ({ cookies }) => {
 		await SessionModel.deleteOne({ id: browserSes });
 	}
 
-	if (dbSes?.id !== browserSes || !browserSes) {
+	if (dbSes?.id !== browserSes || !browserSes || user?.role !== 'admin') {
 		throw redirect(302, `/admin`);
 	}
 
