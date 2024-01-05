@@ -1,5 +1,9 @@
-<script>
-	// get info from DB of Dev role for team
+<script lang="ts">
+	// get info from event
+	let i = 0;
+	$: i;
+	setInterval(() => i++, 1000);
 </script>
 
-<h1>Meat du teem</h1>
+{i}
+<h1>Event INFO</h1>
