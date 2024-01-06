@@ -1,7 +1,7 @@
 name: "\U0001F4A1 Ticket Proposal"
 description: Suggest a new task
 
-title: "[i]-"
+title: "[i]-your-task"
 
 body:
   - type: markdown
