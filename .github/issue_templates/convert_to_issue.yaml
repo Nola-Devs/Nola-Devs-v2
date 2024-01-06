@@ -1,0 +1,6 @@
+name: Convert Subtask to Issue
+about: This will hook into users clicking Convert to issue from project ticket full view
+
+on:
+  project_card:
+    types: [created, deleted]
