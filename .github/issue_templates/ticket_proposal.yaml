@@ -1,0 +1,23 @@
+name: "\U0001F4A1 Ticket Proposal"
+description: Suggest a new task
+
+title: "[i]-"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        _Thank you for taking the time to propose a new idea_
+  - type: textarea
+    id: problem
+    attributes:
+      label: "<h2>Describe the problem</h2>"
+      description: Please provide a short user story description of the problem
+      placeholder: As a user I...
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots-and-links
+    attributes:
+      label: "<h2>Code & Links</h2>"
+      description: Please provide any screenshots, code snippets or links to reference code which will help implement a solution.
