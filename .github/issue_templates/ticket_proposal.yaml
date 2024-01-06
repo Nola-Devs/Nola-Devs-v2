@@ -8,16 +8,27 @@ body:
     attributes:
       value: |
         _Thank you for taking the time to propose a new idea_
+
   - type: textarea
     id: problem
     attributes:
-      label: "<h2>Describe the problem</h2>"
-      description: Please provide a short user story description of the problem
+      label: "<h2>Describe the Problem</h2>"
+      description: Please provide a short user story **DESCRIPTION** of the **PROBLEM**
       placeholder: As a user I...
     validations:
       required: true
+
   - type: textarea
-    id: screenshots-and-links
+    id: references
     attributes:
-      label: "<h2>Code & Links</h2>"
-      description: Please provide any screenshots, code snippets or links to reference code which will help implement a solution.
+      label: "<h2>References</h2>"
+      description: Please provide any **SCREENSHOTS**, **CODE SNIPPETS** or **LINKS** to the codebase or documentation which will help implement a solution.
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: "<h2>Describe the Proposed Solution</h2>"
+      description: Try to provide an EXAMPLE or CONCEPT of a design pattern that will lead to a SOLUTION
+      placeholder: Implementing x, y, & z will...
+    validations:
+      required: true
