@@ -9,8 +9,10 @@ function reset() {
 function set_assets(path) {
   assets = initial.assets = path;
 }
+let private_env = {};
 let public_env = {};
 function set_private_env(environment) {
+  private_env = environment;
 }
 function set_public_env(environment) {
   public_env = environment;
@@ -205,7 +207,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "3vv7lr"
+  version_hash: "1nldhf7"
 };
 function get_hooks() {
   return import("./hooks.server.js");
@@ -214,8 +216,9 @@ export {
   assets as a,
   base as b,
   set_public_env as c,
-  set_assets as d,
-  set_building as e,
+  private_env as d,
+  set_assets as e,
+  set_building as f,
   get_hooks as g,
   options as o,
   public_env as p,
