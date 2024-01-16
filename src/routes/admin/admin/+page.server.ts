@@ -2,6 +2,7 @@ import { SessionModel } from '$lib/db/sessions';
 import { UserModel } from '$lib/db/users';
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
+import bcrypt from 'bcrypt';
 
 
 export const load = async ({ cookies }) => {
