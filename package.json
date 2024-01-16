@@ -30,6 +30,8 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.30.0",
+		"flowbite": "^2.2.1",
+		"flowbite-svelte": "^0.44.22",
 		"mapbox-gl": "^3.0.0",
 		"mongoose": "^8.0.3",
 		"postcss": "^8.4.33",
