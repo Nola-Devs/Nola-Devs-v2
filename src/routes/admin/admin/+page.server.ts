@@ -9,7 +9,7 @@ export const load = async ({ cookies }) => {
 	const browserSes = cookies.get('session');
 	const dbSes = await SessionModel.findOne({ id: browserSes });
 	const user = await UserModel.findById(dbSes?.user);
-	console.log('test')
+
 
 	if (Number(dbSes?.expire) > Date.now() + 1000 * 60 * 60 * 24 * 30) {
 		await SessionModel.deleteOne({ id: browserSes });
@@ -47,10 +47,10 @@ export const actions: Actions = {
 		const email = formData.get('email') as string
 		const name = formData.get('name') as string
 		const role = formData.get('role') as string
-		console.log(name)
+
 
 		const test = await UserModel.findOneAndUpdate({ email }, { name, role })
-		console.log(test)
+
 		return { success: true }
 	}
 
