@@ -20,5 +20,25 @@ export const actions: Actions = {
 
     await UserModel.create({ email, password: hashPW, role })
 
+  },
+  removeUser: async ({ request }) => {
+    const formData = await request.formData()
+    const email = formData.get('email') as string
+
+    await UserModel.deleteOne({ email })
+
+  },
+  editUser: async ({ request }) => {
+    const formData = await request.formData()
+
+    const email = formData.get('email') as string
+    const name = formData.get('name') as string
+    const role = formData.get('role') as string
+    console.log(name)
+
+    const test = await UserModel.findOneAndUpdate({ email }, { name, role })
+    console.log(test)
+    return { success: true }
   }
+
 }
