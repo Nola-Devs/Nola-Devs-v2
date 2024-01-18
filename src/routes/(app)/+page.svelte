@@ -2,6 +2,9 @@
 	import Carousel from '$lib/components/carousel.svelte';
 	import EventCard from '$lib/components/event-card.svelte';
 	import type { Event } from '$types';
+	//
+	import { Circle2, Jumper } from 'svelte-loading-spinners';
+	import { navigating } from '$app/stores'
 
 	import { onMount } from 'svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
@@ -47,8 +50,10 @@
 	</div>
 	<div class="event-list">
 		{#if !data}
-			<!-- TODO: Add loading animation here -->
-			<h1>Loading</h1>
+			<!-- By using an {#if $navigating} this allows us to show the loading animation when the page is loading and stop once it's fully rendered. -->
+			{#if $navigating}
+			<Circle2 size="60" colorOuter="#FF3E00" unit="px" durationOuter="1s" />
+			{/if}
 		{:else}
 			<!-- TODO: Add pull down animation here -->
 			{#each events as e}
