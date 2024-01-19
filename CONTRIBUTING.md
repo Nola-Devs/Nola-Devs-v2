@@ -17,6 +17,15 @@ _we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlass
   - We will review <= 48 hours
 - 🎇Merge your approved PR branch to main or revise and repeat
 
+diagram<sup>1.0</sup>
+![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/2e40f7b5-e109-4062-b323-96228da620bd)
+
+diagram<sup>1.1</sup>
+![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/012294aa-41c0-4a0e-aa19-1ea287045eb5)
+
+diagram<sup>1.2</sup>
+![image](https://github.com/Nola-Devs/Nola-Devs-v2/assets/92059005/9ebcf2a7-ef65-43ff-8cf4-193af1a6239b)
+
 **Thank you for your interest in building a tool for the Greater New Orleans Tech community.**
 
 **Your invaluable help is going towards a resource that helps hundreds of people in our community (each month) discover local events for edification, skill sharing, networking, and friend making.**
