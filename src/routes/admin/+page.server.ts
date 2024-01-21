@@ -7,15 +7,19 @@ import bcrypt from 'bcrypt';
 import type { Actions } from './$types';
 
 export const load = async ({ cookies }) => {
-	const browserSes = cookies.get('session');
+	const browserSes = await cookies.get('session');
 	const dbSes = await SessionModel.findOne({ id: browserSes });
-	const user = await UserModel.findById(dbSes?.user);
 
-	if (Number(dbSes?.expire) >= Date.now() + 1000 * 60 * 60 * 24 * 30) {
-		await SessionModel.deleteOne({ id: browserSes });
-	} else if (dbSes?.id === browserSes && dbSes && browserSes) {
-		throw redirect(302, `/admin/${user?.role}`);
+	if (browserSes === dbSes?.id && dbSes) {
+		const user = await UserModel.findById(dbSes?.user);
+		if (Number(dbSes?.expire) >= Date.now() + 1000 * 60 * 60 * 24 * 30) {
+			await SessionModel.deleteOne({ id: browserSes });
+			cookies.delete('session');
+		} else {
+			throw redirect(302, `/admin/${user?.role}`);
+		}
 	} else {
+		cookies.delete('session');
 		return { success: false }; // wrong password or email
 	}
 };
@@ -27,26 +31,27 @@ export const actions: Actions = {
 		const password = (await formData.get('password')) as string;
 		const permission = (await formData.get('permissions')) as string;
 
-		const userpw = await UserModel.findOne({ email, role: permission }).select([
-			'password',
-			'_id',
-			'role'
-		]);
+		const userpw = await UserModel
+			.findOne({ email, role: permission })
+			.select([
+				'password',
+				'_id',
+				'role'
+			]);
 
 		if (userpw?.password) {
 			const checkpw = await bcrypt.compare(password, userpw.password);
 
 			if (checkpw) {
-				const sessionId = randomBytes(32).toString('hex');
+				const sessionId = await randomBytes(32).toString('hex');
 				const expire = 1000 * 60 * 60 * 24 * 30; // 30 days
 
-				(
-					await SessionModel.create({
-						id: sessionId,
-						expire: Date.now() + expire,
-						user: userpw._id.toString()
-					})
-				).save();
+				const session = (await SessionModel.create({
+					id: sessionId,
+					expire: Date.now() + expire,
+					user: userpw._id.toString()
+				})).save();
+
 
 				cookies.set('session', sessionId, {
 					path: `/admin`,
