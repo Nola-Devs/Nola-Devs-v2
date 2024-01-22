@@ -1,7 +1,7 @@
+import users from './data/users.json' assert { type: 'json' };
 import { model, Schema } from 'mongoose';
-import type { User } from '$types';
 
-const UserSchema = new Schema<User>({
+const UserSchema = new Schema({
 	name: {
 		type: String,
 		required: false
@@ -32,5 +32,9 @@ const UserSchema = new Schema<User>({
 	}
 });
 
-const UserModel = model('User', UserSchema);
-export default UserModel;
+export const UserModel = model('User', UserSchema);
+
+export const loadUsers = async () => {
+	const res = await UserModel.bulkSave(users.map((e) => new UserModel(e)));
+	console.log(res);
+};

@@ -29,35 +29,38 @@ interface Event {
 	};
 }
 
-type linkKey =
+type groupLinkKey =
 	| 'linkedin'
 	| 'facebook'
 	| 'twitter'
-	| 'github'
 	| 'twitch'
 	| 'eventbrite'
 	| 'meetup'
 	| 'youtube'
 	| 'linktr'
 	| 'email'
-	| 'website'
-	| string;
+	| 'website';
 
-type Link = { [key: linkKey]: string };
+type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
 
-type Organizers = {
+type groupLinks = { [key: groupLinkKey]: string };
+type userLinks = { [key: userLinkKey]: string };
+
+type User = {
 	name: string;
 	pfp: string;
-	links: Link;
+	links: userLinks;
+	email: string;
+	password: string;
+	role: string;
+	group: string;
 };
 
 interface Group {
 	group: string;
 	about: string;
 	calID: string;
-	orgLinks: Link;
-	organizers: Organizers[];
-	events: Event[];
+	links: Link;
 }
 
-export { Event, Group, Organizers };
+export { Event, Group, User };
