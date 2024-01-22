@@ -50,5 +50,5 @@ export const GET = async ({ request }) => {
 
 	EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
 
-	return new Response(JSON.stringify(events), { status: 200 });
+	return new Response(JSON.stringify(parseEvents), { status: 200 });
 };

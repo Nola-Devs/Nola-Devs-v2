@@ -8,6 +8,7 @@
       "website": "http://www.diamonddata.com/",
       "email": "dgaspard@gmail.com"
     },
+    "email": "test@email.com",
     "group": "Agile Nola",
     "role": "organizer",
     "password": "123456789"
@@ -19,6 +20,7 @@
       "linkedin": "https://www.linkedin.com/in/garett-majoue/",
       "website": "http://www.geocent.com/Pages/Default.aspx"
     },
+    "email": "test@email.com",
     "group": "Agile Nola",
     "role": "organizer",
     "password": "123456789"
@@ -31,6 +33,7 @@
       "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
       "email": "bhelx@simst.im"
     },
+    "email": "test@email.com",
     "group": "Below C Level",
     "role": "organizer",
     "password": "123456789"
@@ -44,6 +47,7 @@
       "website": "http://aaronosaur.us/",
       "email": "wwkeyboard@gmail.com"
     },
+    "email": "test@email.com",
     "group": "Below C Level",
     "role": "organizer",
     "password": "123456789"
@@ -55,6 +59,7 @@
       "website": "http://thesmilingdba.blogspot.com/",
       "Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
     },
+    "email": "test@email.com",
     "group": "BR SQL Server UG",
     "role": "organizer",
     "password": "123456789"
@@ -68,6 +73,7 @@
       "website": "https://www.colin-williams.dev/",
       "email": "colin.williams.dev@gmail.com"
     },
+    "email": "test@email.com",
     "group": "FrontEnd Party",
     "role": "organizer",
     "password": "123456789"
@@ -81,6 +87,7 @@
       "website": "https://codingmustache.dev",
       "email": "contact@codingmustache.dev"
     },
+    "email": "test@email.com",
     "group": "FrontEnd Party",
     "role": "organizer",
     "password": "123456789"
@@ -93,6 +100,7 @@
       "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
       "email": "bhelx@simst.im"
     },
+    "email": "test@email.com",
     "group": "Hack Night",
     "role": "organizer",
     "password": "123456789"
@@ -103,6 +111,7 @@
     "links": {
       "Discord": "152092896164708352"
     },
+    "email": "test@email.com",
     "group": "NOLA Game Dev",
     "role": "organizer",
     "password": "123456789"
@@ -114,6 +123,7 @@
       "linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
       "website": "http://parallaxvisions.com/"
     },
+    "email": "test@email.com",
     "group": "NOLA Game Dev",
     "role": "organizer",
     "password": "123456789"
@@ -124,6 +134,7 @@
     "links": {
       "linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
     },
+    "email": "test@email.com",
     "group": "NOLA Game Dev",
     "role": "organizer",
     "password": "123456789"
@@ -136,6 +147,7 @@
       "linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/",
       "email": "dwhelen@teksystems.com"
     },
+    "email": "test@email.com",
     "group": "NOLA Sec",
     "role": "organizer",
     "password": "123456789"
@@ -147,6 +159,7 @@
       "linkedin": "https://www.linkedin.com/in/luciaberliner/",
       "email": "lucia.berliner@gmail.com"
     },
+    "email": "test@email.com",
     "group": "Womxn in Tech",
     "role": "organizer",
     "password": "123456789"
@@ -160,6 +173,7 @@
       "website": "https://electricalSales.com",
       "email": "brook5280@gmail.com"
     },
+    "email": "test@email.com",
     "group": "Work in Tech",
     "role": "organizer",
     "password": "123456789"
@@ -171,6 +185,7 @@
       "linkedin": "https://www.linkedin.com/in/eviepoitevent/",
       "email": "epoitevent@gnoinc.org"
     },
+    "email": "test@email.com",
     "group": "StrartUp EcoSystem",
     "role": "organizer",
     "password": "123456789"
