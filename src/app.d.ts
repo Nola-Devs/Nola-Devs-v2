@@ -45,7 +45,7 @@ type linkKey =
 
 type Link = { [key: linkKey]: string };
 
-type Organizers = {
+type User = {
 	name: string;
 	pfp: string;
 	links: Link;
