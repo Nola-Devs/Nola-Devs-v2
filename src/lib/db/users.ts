@@ -1,6 +1,8 @@
 import { model, Schema } from 'mongoose';
+import type { User } from '$types';
 
-const UserSchema = new Schema({
+
+const UserSchema = new Schema<User>({
 	name: {
 		type: String,
 		required: false
