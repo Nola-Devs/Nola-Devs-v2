@@ -1,8 +1,6 @@
 import { model, Schema } from 'mongoose';
 import type { Group } from '$types';
 
-
-
 const groupSchema = new Schema<Group>({
 	group: {
 		type: String,

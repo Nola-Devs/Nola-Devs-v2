@@ -39,9 +39,9 @@ type groupLinkKey =
 	| 'youtube'
 	| 'linktr'
 	| 'email'
-	| 'website'
+	| 'website';
 
-type userLinkKey = 'website' | 'github' | 'linkedin' | "twitter"
+type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
 
 type groupLinks = { [key: groupLinkKey]: string };
 type userLinks = { [key: userLinkKey]: string };

@@ -4,8 +4,6 @@ import type { Group, Event, User } from '$types';
 import EventModel from '$lib/db/events';
 import UserModel from '$lib/db/users';
 
-
-
 export const load: PageServerLoad = async ({ params }) => {
 	const slug = params.group.replace(/-/g, ' ');
 

@@ -31,13 +31,11 @@ export const actions: Actions = {
 		const password = (await formData.get('password')) as string;
 		const permission = (await formData.get('permissions')) as string;
 
-		const userpw = await UserModel
-			.findOne({ email, role: permission })
-			.select([
-				'password',
-				'_id',
-				'role'
-			]);
+		const userpw = await UserModel.findOne({ email, role: permission }).select([
+			'password',
+			'_id',
+			'role'
+		]);
 
 		if (userpw?.password) {
 			const checkpw = await bcrypt.compare(password, userpw.password);
@@ -46,12 +44,13 @@ export const actions: Actions = {
 				const sessionId = await randomBytes(32).toString('hex');
 				const expire = 1000 * 60 * 60 * 24 * 30; // 30 days
 
-				const session = (await SessionModel.create({
-					id: sessionId,
-					expire: Date.now() + expire,
-					user: userpw._id.toString()
-				})).save();
-
+				const session = (
+					await SessionModel.create({
+						id: sessionId,
+						expire: Date.now() + expire,
+						user: userpw._id.toString()
+					})
+				).save();
 
 				cookies.set('session', sessionId, {
 					path: `/admin`,
@@ -60,7 +59,7 @@ export const actions: Actions = {
 				throw redirect(302, `/admin/${userpw.role}`); // correct password and email
 			}
 		}
-		setTimeout(() => { }, 1000); // Prolongs bruteforce attacks
+		setTimeout(() => {}, 1000); // Prolongs bruteforce attacks
 		return { success: false }; // wrong password or email
 	}
 };
