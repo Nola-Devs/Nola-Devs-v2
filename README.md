@@ -9,7 +9,7 @@ MVP is currently live at this domain: [https://www.noladevs.org/](https://www.no
 
 ## What Is This For?
 
-This application hosts individual group sites, events, and contact information for New Orleans-based Software Development, Tech, Networking, Design... ect. groups.
+This application hosts individual group sites, events, and contact information for New Orleans-based Software Development, Tech, Networking, Design... etc. groups.
 
 ---
 
@@ -80,7 +80,7 @@ Basic Abridged Guide:
 
 ### Mapbox Public Key
 
-1. Head over to Maxbox
+1. Head over to Mapbox
 2. Make an account
 3. Use a Public key
 
@@ -88,30 +88,26 @@ Basic Abridged Guide:
 
 ---
 
-## Contribute
+## [Contribute](./CONTRIBUTING.md)
 
 Join our [Discord](https://discord.gg/Hea5n85VEv)
-
-This project is open-source, however, pull and merge requests will be limited to developers limited to the geographic region of Greater New Orleans and surrounding areas. If you reside in or around NOLA please feel free to add whatever supporting information or custom styling you feel would benefit our local community's represenation.
-
-If you reside in or around NOLA consider this community website a deployed sandbox environment. PRs will be scrutinized by one of the four original Contributors: @austinchaet @codingMustache @colinwilliams91 @HeyImKyle
 
 ### Contribution Protocol:
 
 _we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)_
 
-- Star the repository :)
-- Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
-- Create or pick up a "ticket" from our [GitHub Issues](https://github.com/Nola-Devs/Nola-Dev-Site/issues)
+- 🌟Star the repository :)
+- 📌Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
+- 📌Find a "Feature" from our [Project Board](https://github.com/orgs/Nola-Devs/projects/1) that you would like to work on
+  - Inside that "Feature Board" will be "Tickets" (Issues) to pick up. If you have a suggestion open a [new Issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues/new/choose) with the Issue Template provided
+  - Assign yourself to the ticket and move it into the "In Progress" lane inside it's respective "Feature Board"
   - Create a branch directly from that ticket's full view on GitHub<sup>see diagram 1.0 - 1.2</sup>
-- Fetch from `origin main` (paste what you copied) in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
-- Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
-- Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
-- PR to main for Code Review
+- 📌Fetch from `origin main` (paste what you copied) in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
+- 📌Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
+- 📌Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
+- 📌PR to main for Code Review
   - We will review <= 48 hours
-- Merge your approved PR branch to main or revise and repeat
-
-_if your code has linting errors please run `npm run lint -- --fix` :)_
+- 🎇Merge your approved PR branch to main or revise and repeat
 
 ### Footnotes:
 
