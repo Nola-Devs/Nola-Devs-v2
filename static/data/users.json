@@ -1,0 +1,148 @@
+[
+  {
+    "name": "Dustin Gaspard",
+    "pfp": "dustin_gaspard.webp",
+    "links": {
+      "twitter": "https://twitter.com/dgaspard",
+      "linkedin": "https://www.linkedin.com/in/dustin-gaspard",
+      "website": "http://www.diamonddata.com/",
+      "email": "dgaspard@gmail.com"
+    },
+    "group": "Agile Nola"
+  },
+  {
+    "name": "Garett Majoue",
+    "pfp": "garett_majoue.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/garett-majoue/",
+      "website": "http://www.geocent.com/Pages/Default.aspx"
+    },
+    "group": "Agile Nola"
+  },
+  {
+    "name": "Benjamin Eckel",
+    "pfp": "benjamin_eckel.webp",
+    "links": {
+      "github": "https://github.com/bhelx",
+      "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
+      "email": "bhelx@simst.im"
+    },
+    "group": "Below C Level"
+  },
+  {
+    "name": "Aaron Lee",
+    "pfp": "aaron_lee.webp",
+    "links": {
+      "github": "https://github.com/wwkeyboard",
+      "linkedin": "https://www.linkedin.com/in/aaronoralee/",
+      "website": "http://aaronosaur.us/",
+      "email": "wwkeyboard@gmail.com"
+    },
+    "group": "Below C Level"
+  },
+  {
+    "name": "Thomas LeBlanc",
+    "pfp": "thomas_leblanc.webp",
+    "links": {
+      "website": "http://thesmilingdba.blogspot.com/",
+      "Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
+    },
+    "group": "BR SQL Server UG"
+  },
+  {
+    "name": "Colin Williams",
+    "pfp": "colin_williams.webp",
+    "links": {
+      "github": "https://github.com/colinwilliams91",
+      "linkedin": "https://www.linkedin.com/in/colin-williams-dev",
+      "website": "https://www.colin-williams.dev/",
+      "email": "colin.williams.dev@gmail.com"
+    },
+    "group": "FrontEnd Party"
+  },
+  {
+    "name": "Jorge Carvajal",
+    "pfp": "jorge_carvajal.webp",
+    "links": {
+      "github": "https://github.com/codingMustache",
+      "linkedin": "https://github.com/codingMustache",
+      "website": "https://codingmustache.dev",
+      "email": "contact@codingmustache.dev"
+    },
+    "group": "FrontEnd Party"
+  },
+  {
+    "name": "Benjamin Eckel",
+    "pfp": "benjamin_eckel.webp",
+    "links": {
+      "github": "https://github.com/bhelx",
+      "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
+      "email": "bhelx@simst.im"
+    },
+    "group": "Hack Night"
+  },
+  {
+    "name": "Calder Tillet",
+    "pfp": "calder_tillet.webp",
+    "links": {
+      "Discord": "152092896164708352"
+    },
+    "group": "NOLA Game Dev"
+  },
+  {
+    "name": "Curtis Cummings",
+    "pfp": "curtis_cummings.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
+      "website": "http://parallaxvisions.com/"
+    },
+    "group": "NOLA Game Dev"
+  },
+  {
+    "name": "Chris Morison",
+    "pfp": "chris_morrison.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
+    },
+    "group": "NOLA Game Dev"
+  },
+  {
+    "name": "David Whelen",
+    "pfp": "david_whelen.webp",
+    "links": {
+      "twitter": "https://twitter.com/WhelenDavid",
+      "linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/",
+      "email": "dwhelen@teksystems.com"
+    },
+    "group": "NOLA Sec"
+  }
+  {
+    "name": "Lucia Berliner",
+    "pfp": "lucia_berliner.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/luciaberliner/",
+      "email": "lucia.berliner@gmail.com"
+    },
+    "group": "Womxn in Tech"
+  },
+  {
+    "name": "Brook Davis",
+    "pfp": "brook_davis.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/brookbissinger/",
+      "twitter": "https://twitter.com/brook5280",
+      "website": "https://electricalSales.com",
+      "email": "brook5280@gmail.com"
+    },
+    "group": "Work in Tech"
+  },
+  {
+    "name": "Evie Poitevent Sanders",
+    "pfp": "evie_poitevent_sanders.webp",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/eviepoitevent/",
+      "email": "epoitevent@gnoinc.org"
+    },
+    "group": "StrartUp EcoSystem"
+  }
+]
