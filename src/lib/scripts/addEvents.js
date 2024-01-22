@@ -1,4 +1,4 @@
-import groups from './data/groups.json' assert {type: 'json'};
+import events from './data/events.json' assert {type: 'json'};
 import { model, Schema } from 'mongoose';
 
 
@@ -22,6 +22,6 @@ const eventSchema = new Schema({
 const EventModel = model('Event', eventSchema);
 
 export const loadEvents = async () => {
-  const res = await EventModel.bulkSave(groups.map(e => new EventModel(e)))
+  const res = await EventModel.bulkSave(events.map(e => new EventModel(e)))
   console.log(res)
 }

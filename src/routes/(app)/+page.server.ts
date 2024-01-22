@@ -7,7 +7,9 @@ export const load: PageServerLoad = async () => {
 	//const events = await GroupModel.distinct('events');
 	const events = (await EventModel.find({})
 		.select(['-_id', '-__v'])
-		.lean()) as Event[]
+		.lean()
+		.limit(3)
+	) as Event[]
 
 	const removeHN: Event[] = events.filter((event: any) => event.summary !== 'Hack Night ')
 		.sort(

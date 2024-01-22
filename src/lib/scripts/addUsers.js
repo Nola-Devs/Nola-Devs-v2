@@ -1,4 +1,4 @@
-import groups from './data/users.json' assert {type: 'json'};
+import users from './data/users.json' assert {type: 'json'};
 import { model, Schema } from 'mongoose';
 
 
@@ -36,6 +36,6 @@ const UserSchema = new Schema({
 export const UserModel = model('User', UserSchema);
 
 export const loadUsers = async () => {
-  const res = await UserModel.bulkSave(groups.map(e => new UserModel(e)))
+  const res = await UserModel.bulkSave(users.map(e => new UserModel(e)))
   console.log(res)
 }
