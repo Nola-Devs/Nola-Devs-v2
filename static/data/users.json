@@ -8,7 +8,9 @@
       "website": "http://www.diamonddata.com/",
       "email": "dgaspard@gmail.com"
     },
-    "group": "Agile Nola"
+    "group": "Agile Nola",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Garett Majoue",
@@ -17,7 +19,9 @@
       "linkedin": "https://www.linkedin.com/in/garett-majoue/",
       "website": "http://www.geocent.com/Pages/Default.aspx"
     },
-    "group": "Agile Nola"
+    "group": "Agile Nola",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Benjamin Eckel",
@@ -27,7 +31,9 @@
       "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
       "email": "bhelx@simst.im"
     },
-    "group": "Below C Level"
+    "group": "Below C Level",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Aaron Lee",
@@ -38,7 +44,9 @@
       "website": "http://aaronosaur.us/",
       "email": "wwkeyboard@gmail.com"
     },
-    "group": "Below C Level"
+    "group": "Below C Level",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Thomas LeBlanc",
@@ -47,7 +55,9 @@
       "website": "http://thesmilingdba.blogspot.com/",
       "Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
     },
-    "group": "BR SQL Server UG"
+    "group": "BR SQL Server UG",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Colin Williams",
@@ -58,7 +68,9 @@
       "website": "https://www.colin-williams.dev/",
       "email": "colin.williams.dev@gmail.com"
     },
-    "group": "FrontEnd Party"
+    "group": "FrontEnd Party",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Jorge Carvajal",
@@ -69,7 +81,9 @@
       "website": "https://codingmustache.dev",
       "email": "contact@codingmustache.dev"
     },
-    "group": "FrontEnd Party"
+    "group": "FrontEnd Party",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Benjamin Eckel",
@@ -79,7 +93,9 @@
       "linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
       "email": "bhelx@simst.im"
     },
-    "group": "Hack Night"
+    "group": "Hack Night",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Calder Tillet",
@@ -87,7 +103,9 @@
     "links": {
       "Discord": "152092896164708352"
     },
-    "group": "NOLA Game Dev"
+    "group": "NOLA Game Dev",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Curtis Cummings",
@@ -96,7 +114,9 @@
       "linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
       "website": "http://parallaxvisions.com/"
     },
-    "group": "NOLA Game Dev"
+    "group": "NOLA Game Dev",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Chris Morison",
@@ -104,7 +124,9 @@
     "links": {
       "linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
     },
-    "group": "NOLA Game Dev"
+    "group": "NOLA Game Dev",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "David Whelen",
@@ -114,7 +136,9 @@
       "linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/",
       "email": "dwhelen@teksystems.com"
     },
-    "group": "NOLA Sec"
+    "group": "NOLA Sec",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Lucia Berliner",
@@ -123,7 +147,9 @@
       "linkedin": "https://www.linkedin.com/in/luciaberliner/",
       "email": "lucia.berliner@gmail.com"
     },
-    "group": "Womxn in Tech"
+    "group": "Womxn in Tech",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Brook Davis",
@@ -134,7 +160,9 @@
       "website": "https://electricalSales.com",
       "email": "brook5280@gmail.com"
     },
-    "group": "Work in Tech"
+    "group": "Work in Tech",
+    "role": "organizer",
+    "password": "123456789"
   },
   {
     "name": "Evie Poitevent Sanders",
@@ -143,6 +171,8 @@
       "linkedin": "https://www.linkedin.com/in/eviepoitevent/",
       "email": "epoitevent@gnoinc.org"
     },
-    "group": "StrartUp EcoSystem"
+    "group": "StrartUp EcoSystem",
+    "role": "organizer",
+    "password": "123456789"
   }
 ]
