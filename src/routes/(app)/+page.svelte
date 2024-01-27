@@ -49,8 +49,7 @@
 		</div>
 	</div>
 	<div class="event-list">
-		{#if data}
-			<!-- By using an {#if $navigating} this allows us to show the loading animation when the page is loading and stop once it's fully rendered. -->
+		{#if !events.length}
 			<div class="mx-auto my-auto">
 				<Circle2 size="200" colorOuter="#5569E0" unit="px" durationOuter="1s" />
 			</div>

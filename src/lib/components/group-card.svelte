@@ -44,8 +44,8 @@
 
 			<div class="links">
 				{#if groupData}
-					{#each Object.entries(groupData?.orgLinks) as [site, links] (site)}
-						<a href="{links}" target="_blank">
+					{#each Object.entries(groupData?.links) as [site, link] (site)}
+						<a href="{link}" target="_blank">
 							<IconParser icon="{site}" size="{15}" />
 						</a>
 					{/each}
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 
-	<div class="organizer-list">
+	<!-- <div class="organizer-list">
 		{#if groupData?.organizers}
 			{#each groupData.organizers as organizer}
 				<div class="organizer-info">
@@ -72,7 +72,7 @@
 				</div>
 			{/each}
 		{/if}
-	</div>
+	</div> -->
 	<Toaster />
 </div>
 

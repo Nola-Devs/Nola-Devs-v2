@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
+import type { Group } from '$types';
 
-const groupSchema = new Schema({
+const groupSchema = new Schema<Group>({
 	group: {
 		type: String,
 		required: false
@@ -13,22 +14,10 @@ const groupSchema = new Schema({
 		type: String,
 		required: true
 	},
-	orgLinks: {
+	links: {
 		type: Object,
 		required: false
-	},
-	organizers: [
-		{
-			type: Object,
-			required: false
-		}
-	],
-	events: [
-		{
-			type: Object,
-			required: false
-		}
-	]
+	}
 });
 
 export const GroupModel = model('Group', groupSchema);
