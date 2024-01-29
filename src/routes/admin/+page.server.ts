@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { SessionModel } from '$lib/db/sessions';
-import { UserModel } from '$lib/db/users';
+import UserModel from '$lib/db/users';
 import { randomBytes } from 'node:crypto';
 import bcrypt from 'bcrypt';
 
@@ -30,13 +30,13 @@ export const actions: Actions = {
 		const email = (await formData.get('email')) as string;
 		const password = (await formData.get('password')) as string;
 		const permission = (await formData.get('permissions')) as string;
+		
 
 		const userpw = await UserModel.findOne({ email, role: permission }).select([
 			'password',
 			'_id',
 			'role'
 		]);
-
 		if (userpw?.password) {
 			const checkpw = await bcrypt.compare(password, userpw.password);
 
@@ -59,7 +59,7 @@ export const actions: Actions = {
 				throw redirect(302, `/admin/${userpw.role}`); // correct password and email
 			}
 		}
-		setTimeout(() => {}, 1000); // Prolongs bruteforce attacks
+		setTimeout(() => { }, 1000); // Prolongs bruteforce attacks
 		return { success: false }; // wrong password or email
 	}
 };
