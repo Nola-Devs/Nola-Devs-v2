@@ -30,7 +30,6 @@ export const actions: Actions = {
 		const email = (await formData.get('email')) as string;
 		const password = (await formData.get('password')) as string;
 		const permission = (await formData.get('permissions')) as string;
-		
 
 		const userpw = await UserModel.findOne({ email, role: permission }).select([
 			'password',
@@ -59,7 +58,7 @@ export const actions: Actions = {
 				throw redirect(302, `/admin/${userpw.role}`); // correct password and email
 			}
 		}
-		setTimeout(() => { }, 1000); // Prolongs bruteforce attacks
+		setTimeout(() => {}, 1000); // Prolongs bruteforce attacks
 		return { success: false }; // wrong password or email
 	}
 };
