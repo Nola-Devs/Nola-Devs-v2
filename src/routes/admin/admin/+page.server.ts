@@ -1,7 +1,8 @@
 import { SessionModel } from '$lib/db/sessions';
-import { UserModel } from '$lib/db/users';
-import { redirect } from '@sveltejs/kit';
+import UserModel from '$lib/db/users';
+import { redirect, json } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
+
 import bcrypt from 'bcrypt';
 
 export const load = async ({ cookies }) => {
@@ -16,7 +17,9 @@ export const load = async ({ cookies }) => {
 	if (dbSes?.id !== browserSes || !browserSes || user?.role !== 'admin') {
 		throw redirect(302, `/admin`);
 	}
-	const users = await UserModel.find({}).select(['-_id', '-__v', '-password']).lean();
+	const users = (await UserModel.find({}).select(['name', 'email', 'role', '-_id']))
+		.map(user => user.toObject())
+
 	return { users };
 };
 
@@ -34,8 +37,8 @@ export const actions: Actions = {
 	removeUser: async ({ request }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
-
-		await UserModel.deleteOne({ email });
+		const name = formData.get('name') as string;
+		await UserModel.deleteOne({ email, name });
 	},
 	editUser: async ({ request }) => {
 		const formData = await request.formData();
@@ -43,8 +46,14 @@ export const actions: Actions = {
 		const email = formData.get('email') as string;
 		const name = formData.get('name') as string;
 		const role = formData.get('role') as string;
+		const password = formData.get('password') as string;
+		console.log(email)
+		const user = await UserModel.findOneAndUpdate({ email }, { name, role });
 
-		const test = await UserModel.findOneAndUpdate({ email }, { name, role });
+		if (password && user) {
+			const hashPW = await bcrypt.hash(password, 12);
+			await UserModel.findOneAndUpdate({ email }, { password: hashPW })
+		}
 
 		return { success: true };
 	}
