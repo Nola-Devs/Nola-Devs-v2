@@ -32,6 +32,7 @@
 		"eslint-plugin-svelte": "^2.30.0",
 		"flowbite": "^2.2.1",
 		"flowbite-svelte": "^0.44.22",
+		"flowbite-svelte-icons": "^1.0.3",
 		"mapbox-gl": "^3.0.0",
 		"mongoose": "^8.0.3",
 		"postcss": "^8.4.33",
