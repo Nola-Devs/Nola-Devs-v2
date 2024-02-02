@@ -5,12 +5,12 @@
 </script>
 
 <div class="flex justify-between">
-	<div class="h-8 w-24 m-4">
+	<div class="h-8 w-36 m-4">
 		<a href="/">
 			<LOGO />
 		</a>
 	</div>
-	<div class="h-fit my-auto">
+	<div class="h-fit my-auto m-3">
 		<DarkMode />
 	</div>
 </div>

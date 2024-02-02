@@ -1,34 +1,39 @@
 <script lang="ts">
 	import { Button, Label, Input, Helper, Fileupload } from 'flowbite-svelte';
+
+	export let user: any;
+	let links = [''];
+	const addLink = () => {
+		links = [...links, ''];
+	};
 </script>
 
 <form action="?/editUser" method="post" class="flex flex-col gap-3">
 	<div>
-		<Label for="name">Name</Label>
-		<Input type="text" name="name" />
+		<Label for="name">Name *</Label>
+		<Input type="text" name="name" placeholder="{user.name}" value="{user.name}" required />
 	</div>
 	<div>
-		<Label for="with_helper">Upload file</Label>
+		<Label for="with_helper">Upload Your Profile Picture</Label>
 		<Fileupload name="pfp" />
 		<Helper>PNG, JPG</Helper>
 	</div>
 	<div class="flex flex-col gap-2">
-		<div>
-			<Label>LinkedIn</Label>
-			<Input name="linkedin" type="url" placeholder="url" />
-		</div>
-		<div>
-			<Label>Github</Label>
-			<Input name="gihub" type="url" placeholder="url" />
-		</div>
-		<div>
-			<Label>Twitter/X</Label>
-			<Input name="x" type="url" placeholder="url" />
-		</div>
-		<div>
-			<Label>Website</Label>
-			<Input name="website" type="url" placeholder="url" />
-		</div>
+		<h3>Links</h3>
+		{#if user.links}
+			{#each Object.values(user.links) as link, i}
+				<div>
+					<Input name="{'link' + i}" type="url" value="{link}" />
+				</div>
+			{/each}
+		{/if}
+		{#each links as link, i}
+			<div>
+				<Input name="{'link' + i}" type="url" value="{link}" />
+			</div>
+		{/each}
+
+		<Button class="w-fit" on:click="{addLink}">Add Link</Button>
 	</div>
-	<Button class="w-fit m-3" type="submit">Save</Button>
+	<Button class="w-fit m-3 self-end" type="submit">Save</Button>
 </form>

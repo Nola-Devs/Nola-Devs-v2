@@ -21,6 +21,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	return {
 		group,
-		events
+		events,
+		organizers
 	};
 };

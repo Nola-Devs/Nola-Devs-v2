@@ -1,12 +1,13 @@
-import type { Group, Event } from '$types';
 import { CRON_SECRET } from '$env/static/private';
-import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
-import { GroupModel } from '$lib/db/groups';
-import { revGeocode } from '$lib/utils/rev-geocode.js';
-import { eventParser } from '$lib/utils/event-parser.js';
 import EventModel from '$lib/db/events.js';
+import { GroupModel } from '$lib/db/groups';
+import { eventParser } from '$lib/utils/event-parser.js';
+import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
+import { revGeocode } from '$lib/utils/rev-geocode.js';
+import type { Event, Group } from '$types';
+import type { RequestHandler } from './$types';
 
-export const GET = async ({ request }) => {
+export const GET: RequestHandler = async ({ request }) => {
 	// auth
 	const authHeader = request.headers.get('authorization');
 	if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
@@ -32,7 +33,9 @@ export const GET = async ({ request }) => {
 		)
 	)
 		.map((eventsObj, i) =>
-			eventsObj.items.map((event: any) => ({ ...event, group: calList[i].group }))
+			eventsObj.items.map((event: any): any => {
+				return { ...event, group: calList[i].group };
+			})
 		)
 		.flat();
 

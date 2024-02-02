@@ -1,6 +1,7 @@
 // TODO: Add sitemap generation using DB
+import type { RequestHandler } from './$types';
 
-export async function GET() {
+export const GET: RequestHandler = async () => {
 	return new Response(
 		`
 		<?xml version="1.0" encoding="UTF-8" ?>
@@ -23,4 +24,4 @@ export async function GET() {
 			}
 		}
 	);
-}
+};

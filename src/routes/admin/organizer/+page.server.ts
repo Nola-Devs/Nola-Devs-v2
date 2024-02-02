@@ -1,16 +1,18 @@
+import { GroupModel } from '$lib/db/groups';
 import { SessionModel } from '$lib/db/sessions';
 import UserModel from '$lib/db/users';
-import { GroupModel } from '$lib/db/groups.js';
+import type { Group, User } from '$types';
 
 import { redirect, type Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
-export const load = async ({ cookies }) => {
+export const load: PageServerLoad = async ({ cookies }) => {
 	// Auth
 	const browserSes = cookies.get('session');
 	const dbSes = await SessionModel.findOne({ id: browserSes }).select(['expire', 'user', 'id']);
 
 	if (dbSes?.id === browserSes && dbSes) {
-		const user = (
+		const user = (await (
 			await UserModel.findById(dbSes?.user).select([
 				'-_id',
 				'name',
@@ -19,9 +21,9 @@ export const load = async ({ cookies }) => {
 				'email',
 				'group'
 			])
-		)?.toObject();
+		)?.toObject()) as User;
 
-		const userGroup = (
+		const userGroup = (await (
 			await GroupModel.findOne({ group: user?.group }).select([
 				'-_id',
 				'group',
@@ -29,11 +31,11 @@ export const load = async ({ cookies }) => {
 				'calID',
 				'orgLinks'
 			])
-		)?.toObject();
+		)?.toObject()) as Group;
 
 		if (!userGroup) {
-			const groups = await GroupModel.distinct('group');
-			return { user, userGroup, groups };
+			const groups = (await GroupModel.distinct('group')) as string[];
+			return { user, groups };
 		} else {
 			return { user, userGroup };
 		}
@@ -47,34 +49,28 @@ export const actions: Actions = {
 		cookies.delete('session');
 		throw redirect(302, '/');
 	},
-	resetPassword: async ({ request, cookies }) => {
+	resetPassword: async ({ cookies }) => {
 		cookies.get('sessionId');
 	},
 	editUser: async ({ request, cookies }) => {
+		const userID = await SessionModel.findOne({ id: cookies.get('session') }).select([
+			'-_id',
+			'user'
+		]);
+
 		const formData = (await request.formData()).entries();
-		const links = {};
+		const links: { [key: string]: string } = {};
 		for (const pair of formData) {
-			if (pair[0].match(/link/)) {
-				let host = new URL(String(pair[1])).hostname;
-				console.log(pair[0], pair[1], host);
-				// parse links for
-				/**
-				 * Linkedin
-				 * Github
-				 * Twitter/X
-				 * Website
-				 */
+			if (pair[0].match(/link/) && pair[1]) {
+				const host: string = new URL(String(pair[1])).hostname.split('.')[0] as string;
+				links[host] = pair[1] as string;
+			} else {
+				await UserModel.findByIdAndUpdate(userID?.user, { [pair[0]]: pair[1] });
 			}
 		}
 
-		// const userID = await SessionModel
-		// 	.findOne({ id: cookies.get('session') })
-		// 	.select(['-_id', 'user']);
-
-		// for (const pair of formData) {
-		// 	if (pair[1]) {
-		// 		await UserModel.findByIdAndUpdate(userID?.user, { [pair[0]]: pair[1] });
-		// 	}
-		// }
+		if (links) {
+			await UserModel.findByIdAndUpdate(userID?.user, { links });
+		}
 	}
 };

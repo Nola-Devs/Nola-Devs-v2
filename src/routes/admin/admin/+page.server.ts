@@ -1,11 +1,11 @@
 import { SessionModel } from '$lib/db/sessions';
 import UserModel from '$lib/db/users';
-import { redirect, json } from '@sveltejs/kit';
-import type { Actions } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 import bcrypt from 'bcrypt';
+import type { Actions, PageServerLoad } from './$types';
 
-export const load = async ({ cookies }) => {
+export const load: PageServerLoad = async ({ cookies }) => {
 	const browserSes = cookies.get('session');
 	const dbSes = await SessionModel.findOne({ id: browserSes });
 	const user = await UserModel.findById(dbSes?.user);
