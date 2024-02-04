@@ -14,5 +14,6 @@
 		<DarkMode />
 	</div>
 </div>
-
-<slot />
+<div class="w-full">
+	<slot />
+</div>

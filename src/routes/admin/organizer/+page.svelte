@@ -41,7 +41,9 @@
 
 <Tabs>
 	<TabItem open title="Organizer">
-		<EditUser {user} />
+		<div class="max-w-2xl mx-auto">
+			<EditUser {user} />
+		</div>
 	</TabItem>
 	<TabItem title="Group">
 		{#if !!group}

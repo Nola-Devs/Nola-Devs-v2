@@ -29,13 +29,9 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
-		const permission = formData.get('permissions') as string;
+		const role = formData.get('role') as string;
 
-		const userpw = await UserModel.findOne({ email, role: permission }).select([
-			'password',
-			'_id',
-			'role'
-		]);
+		const userpw = await UserModel.findOne({ email, role }).select(['password', '_id', 'role']);
 		if (userpw?.password) {
 			const checkpw = await bcrypt.compare(password, userpw.password);
 

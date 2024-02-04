@@ -1,11 +1,11 @@
 <script lang="ts">
 	import EventCard from '$lib/components/event-card.svelte';
-	export let eventsArray: Event[];
-	$: eventsArray;
+	import type { Event } from '$types';
+	export let events: Event[];
 </script>
 
-<!-- {#if eventsArray.length}
-{#each eventsArray as event}
- <EventCard {event}/>
-{/each}
-{/if} -->
+<div class="flex gap-3">
+	{#each events as event}
+		<EventCard {event} />
+	{/each}
+</div>

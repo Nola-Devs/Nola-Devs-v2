@@ -17,6 +17,7 @@ export const eventParser = (event: {
 		description: event.description,
 		location: event.location,
 		lnglat: event.latLon,
+		dateTime: new Date(event.start?.dateTime),
 		start: {
 			date: event.start?.dateTime
 				? new Intl.DateTimeFormat('en-US', {
