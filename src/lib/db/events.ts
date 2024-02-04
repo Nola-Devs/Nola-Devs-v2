@@ -8,6 +8,7 @@ const eventSchema = new Schema<Event>({
 	description: String,
 	location: String,
 	lnglat: [Number, Number],
+	dateTime: Date,
 	start: {
 		date: String,
 		time: String

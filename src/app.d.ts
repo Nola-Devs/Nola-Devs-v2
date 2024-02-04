@@ -19,6 +19,7 @@ interface Event {
 	description: string;
 	location: string;
 	lnglat: LngLatLike;
+	dateTime: Date;
 	start: {
 		date: string;
 		time: string | undefined;

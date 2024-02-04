@@ -1,11 +1,11 @@
 import type { Event } from '$types';
 
 export const eventParser = (event: {
-	summary: any;
-	htmlLink: any;
-	description: any;
-	location: any;
-	latLon: any;
+	summary: string;
+	htmlLink: string;
+	description: string;
+	location: string;
+	latLon: [number, number];
 	start: { dateTime: string | number | Date; date: string | number | Date };
 	end: { dateTime: string | number | Date; date: string | number | Date };
 	group: string;
@@ -17,6 +17,7 @@ export const eventParser = (event: {
 		description: event.description,
 		location: event.location,
 		lnglat: event.latLon,
+		dateTime: new Date(event.start?.dateTime),
 		start: {
 			date: event.start?.dateTime
 				? new Intl.DateTimeFormat('en-US', {

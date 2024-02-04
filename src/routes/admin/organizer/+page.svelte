@@ -1,49 +1,53 @@
 <script lang="ts">
-	import { Tabs, TabItem, Input, Label, Fileupload, Helper, Button } from 'flowbite-svelte';
+	import { Tabs, TabItem, Button, Modal, Select } from 'flowbite-svelte';
+	import EditUser from '$lib/components/edit-user.svelte';
+	import EditOrg from '$lib/components/edit-org.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	$: user = data.user;
 	$: group = data.userGroup;
+	const groups = data.groups?.map((g) => {
+		return { value: g, name: g };
+	});
+	let step = 0;
 </script>
 
 {#if user?.name}
 	Welcome {user.name}
 {/if}
 
+<Modal dismissable="{false}">
+	{#if step === 0}
+		<div class="flex flex-col items-center">
+			<h1 class="text-3xl">👋 Welcome To NOLADevs</h1>
+			<p>We Noticed this is the 1st time you signed in!!</p>
+			<Button class="w-fit self-end" on:click="{() => step++}">Next</Button>
+		</div>
+	{:else if step === 1}
+		<div>
+			<EditUser {user} />
+			<Button on:click="{() => step++}">Next</Button>
+		</div>
+	{:else if step === 2}
+		<div>
+			<h1>Does your group exist?</h1>
+			<Select items="{groups}" placeholder="I don't see my group here" />
+			<Button on:click="{() => step++}">Save</Button>
+		</div>
+	{:else if step === 3}
+		<EditOrg {group} />
+	{/if}
+</Modal>
+
 <Tabs>
 	<TabItem open title="Organizer">
-		<form action="?/editUser" method="post" class="flex flex-col p-5">
-			<Label for="name" class="mb-2">Name</Label>
-			<Input type="text" name="name" placeholder="{user?.name}" />
-
-			<Label for="name" class="mb-2">Group</Label>
-			<Input type="text" name="group" placeholder="{user?.group}" />
-
-			<Label for="with_helper" class="pb-2">Upload file</Label>
-			<Fileupload name="pfp" class="mb-2" />
-			<Helper>SVG, PNG, JPG or GIF (MAX. 800x400px).</Helper>
-
-			<Label for="links" class="mb-2">Organizer's Links</Label>
-			<Input type="text" id="links" placeholder="{user?.links}" />
-
-			<Button class="w-fit m-3" type="submit">Save</Button>
-		</form>
+		<div class="max-w-2xl mx-auto">
+			<EditUser {user} />
+		</div>
 	</TabItem>
 	<TabItem title="Group">
-		<form action="?/editOrg">
-			<Label for="groupName">Group Name</Label>
-			<Input type="text" id="groupName" placeholder="{group?.group}" required />
-
-			<Label for="about">About</Label>
-			<Input type="text" id="about" placeholder="{group?.about}" required />
-
-			<Label for="groupName">Google Calendar ID</Label>
-			<Input type="text" id="groupName" placeholder="{group?.name}" required />
-
-			<Label for="groupName">Organization's Links</Label>
-			<Input type="text" id="groupName" placeholder="{user?.links}" required />
-
-			<Button class="w-fit m-3" type="submit">Save</Button>
-		</form>
+		{#if !!group}
+			<EditOrg {group} />
+		{/if}
 	</TabItem>
 </Tabs>

@@ -1,96 +1,44 @@
 <script lang="ts">
-	import EventCard from '$lib/components/event-card.svelte';
 	import GroupCard from '$lib/components/group-card.svelte';
 	import Carousel from '$lib/components/carousel.svelte';
+	import EventList from '$lib/components/event-list.svelte';
 
+	import type { Event, User } from '$types';
 	import type { PageData } from './$types';
+
+	import { P, Heading, Img } from 'flowbite-svelte';
 
 	export let data: PageData;
 	$: group = data.group;
+
+	let events: Event[];
 	$: events = data.events;
+
+	let organizers: User[];
+	$: organizers = data.organizers;
 </script>
 
 <svelte:head>
 	<title>NOLA Devs</title>
-	<meta name="description" content="" />
+	<meta name="description" content="{group.group}" />
 </svelte:head>
 
-<div class="groupinfo">
-	<div class="group">
-		<div class="groupCard">
-			{#if group}
-				<GroupCard groupData="{group}" />
-			{/if}
-		</div>
-		<div class="carousel">
-			<Carousel />
-		</div>
-	</div>
+<Carousel />
+<GroupCard {group} />
 
-	{#if events.length}
-		<div class="section">
-			{#each events as event}
-				{#key event}
-					<EventCard {event} />
-				{/key}
-			{/each}
-		</div>
+<Heading tag="h4">Organgized By:</Heading>
+{#each organizers as organizer}
+	{#if organizers.pfp}
+		<Img src="{organizer.pfp}" />
+	{:else}
+		<Img
+			imgClass="w-32 rounded"
+			src="https://3etagenleben.de/wp-content/uploads/2019/03/blank-profile-picture-973460-e1554219898755.png"
+		/>
 	{/if}
-</div>
+	<P>
+		{organizer.name}
+	</P>
+{/each}
 
-<style>
-	.groupCard,
-	.carousel {
-		scroll-snap-align: start;
-		height: 100%;
-	}
-
-	.section {
-		height: 100%;
-		width: 100%;
-		gap: 3px;
-		padding: 2.5px 5px 5px 5px;
-		border-radius: 20px;
-		overflow-y: auto;
-		scroll-snap-type: y mandatory;
-		scroll-behavior: smooth;
-		clip-path: fill-box;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.group {
-		padding: 5px 5px 2.5px 5px;
-		border-radius: 20px;
-		overflow: auto;
-		scroll-snap-type: y mandatory;
-		display: grid;
-		clip-path: fill-box;
-		grid-template-rows: [details] 100% [carousel] 100%;
-	}
-	.groupinfo {
-		height: 100vh;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: [info] auto [events] 60%;
-	}
-
-	@media only screen and (max-width: 800px) {
-		.groupinfo {
-			display: flex;
-			flex-direction: column;
-			grid-template-columns: unset;
-			height: 100%;
-		}
-		.group {
-			display: flex;
-			flex-direction: column;
-			grid-template-rows: unset;
-			overflow: visible;
-		}
-		.section {
-			height: fit-content;
-		}
-	}
-</style>
+<EventList {events} />
