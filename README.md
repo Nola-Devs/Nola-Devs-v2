@@ -1,41 +1,58 @@
-# Nola Dev's Site
+# Nola Devs
 
-## What Is This?
+        _   ______  __    ___       ____
+       / | / / __ \/ /   /   |     / __ \___ _   _______
+      /  |/ / / / / /   / /| |    / / / / _ \ | / / ___/
+     / /|  / /_/ / /___/ ___ |   / /_/ /  __/ |/ (__  )
+    /_/ |_/\____/_____/_/  |_|  /_____/\___/|___/____/
+
+# What is this?
 
 This is a website for Nola Devs, an organization made up of New Orleanian Software Developers.
 It serves as a hub for many other local organizations and meetups.
 
+This application hosts individual group sites, events, and contact information for New Orleans-based Software Development, Tech, Networking, Design... etc. groups.
+
 MVP is currently live at this domain: [https://www.noladevs.org/](https://www.noladevs.org/).
 
-## What Is This For?
+# Who is this for?
 
-This application hosts individual group sites, events, and contact information for New Orleans-based Software Development, Tech, Networking, Design... etc. groups.
+The purpose of this app is to be a central hub for for the NOLA dev community
 
 ---
 
-### Tech Stach Reference
+## Tech Stack
 
 - [Svelte Simple Icons](https://github.com/icons-pack/svelte-simple-icons)
 - [Simple Icons](https://simpleicons.org)
+- [mongodb](https://www.mongodb.com/)
 
 ---
 
-## To Run:
+# Set up
 
-### Setup Development Environment
+## Development Environment
 
-Just install all of the dependencies in any NPM-equivalent package manager, and then run the dev script.
+1. Install [mongodb](https://www.mongodb.com/docs/manual/installation/) if not already installed locally.
+2. Copy example env to get local up and running.
 
-This will run the web app under a "development" node environment, meaning that it will not load any external resources which may require secrets (API Keys, etc).
+```sh
+cp .env.example .env.local
+```
 
-```ts
+4. Install dependencies and start app
+
+```sh
 npm i
 npm run dev
 ```
 
-### Setup Production Environment
+5. This will run the web app under a _development_ node environment, meaning that it will not load any external resources which may require secrets (API Keys, etc).
+6. You now should be up and running to start developing 🥸
 
-_API Keys you will need_
+## Production Environment
+
+### API Keys you will need
 
 - Google Calendar API
   - [Follow these steps](https://github.com/Nola-Devs/Nola-Devs-v2?tab=readme-ov-file#google-calendar-api-key)
@@ -58,7 +75,7 @@ Instead of just running in the development environment, now the site will be bui
 
 To run the production environment, simply run these commands (and have environment variables populated).
 
-```ts
+```sh
 npm i
 npm run build
 npm run preview
@@ -96,18 +113,18 @@ Join our [Discord](https://discord.gg/Hea5n85VEv)
 
 _we use a [forkless/trunk feature-branch hybrid git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)_
 
-- 🌟Star the repository :)
-- 📌Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
-- 📌Find a "Feature" from our [Project Board](https://github.com/orgs/Nola-Devs/projects/1) that you would like to work on
+- 🌟 Star the repository 😁
+- 📌 Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
+- 📌 Find a "Feature" from our [Project Board](https://github.com/orgs/Nola-Devs/projects/1) that you would like to work on
   - Inside that "Feature Board" will be "Tickets" (Issues) to pick up. If you have a suggestion open a [new Issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues/new/choose) with the Issue Template provided
   - Assign yourself to the ticket and move it into the "In Progress" lane inside it's respective "Feature Board"
   - Create a branch directly from that ticket's full view on GitHub<sup>see diagram 1.0 - 1.2</sup>
-- 📌Fetch from `origin main` (paste what you copied) in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
-- 📌Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
-- 📌Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
-- 📌PR to main for Code Review
+- 📌 Fetch from `origin main` (paste what you copied) in your IDE and checkout your new feature-branch which should share the same name as the issuing ticket
+- 📌 Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
+- 📌 Push your feature-branch to the trunk remote `git push origin feature/ticket-branch`
+- 📌 PR to main for Code Review
   - We will review <= 48 hours
-- 🎇Merge your approved PR branch to main or revise and repeat
+- 🎇 Merge your approved PR branch to main or revise and repeat
 
 ### Footnotes:
 
