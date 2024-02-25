@@ -11,11 +11,11 @@
 	// inject({ mode: dev ? 'development' : 'production' });
 </script>
 
-<div class="grid grid-cols-[14rem,_1fr] max-sm:grid-cols-[unset] max-sm:grid-rows-[1rem,_1fr]">
-	<div class="z-2">
-		<NavBar {groups} />
-	</div>
-	<div class="pt-10 p-3 h-screen max-sm:w-full">
+<div
+	class="h-screen w-screen grid grid-cols-[200px_auto] max-sm:grid-cols-[unset] max-sm:grid-row-[100px_auto]"
+>
+	<NavBar {groups} />
+	<div class="mt-8">
 		<slot />
 	</div>
 </div>
