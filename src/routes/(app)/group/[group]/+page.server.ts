@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	const events = (await EventModel.find({ group: slug })
 		.select(['-_id', '-__v'])
+		.limit(4)
 		.lean()) as Event[];
 
 	const organizers = (await UserModel.find({ group: slug })
