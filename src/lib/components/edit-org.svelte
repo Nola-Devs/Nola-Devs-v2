@@ -12,7 +12,7 @@
 <form action="?/editOrg">
 	<Label for="groupName">Group Name</Label>
 	<Input type="text" id="groupName" placeholder="{group?.group}" required />
-<!-- TODO: Should be a text area and should have a limit of 500 -->
+	<!-- TODO: Should be a text area and should have a limit of 500 -->
 	<Label for="about">About</Label>
 	<Input type="text" id="about" placeholder="{group?.about}" required />
 
