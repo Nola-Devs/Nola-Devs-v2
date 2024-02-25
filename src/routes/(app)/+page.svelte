@@ -8,12 +8,8 @@
 	let events: Event[] = data.events;
 </script>
 
-<div class="grid grid-rows-[1fr,_auto] h-full gap-3">
-	<div>
-		<HomePageHero />
-	</div>
+<div class="grid grid-rows-[1fr_1fr] items-center h-full">
+	<HomePageHero />
 
-	<div>
-		<EventList {events} />
-	</div>
+	<EventList {events} />
 </div>

@@ -3,49 +3,27 @@
 	import { bounceOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 
-	export const gallery_items = [
+	import { Carousel } from 'flowbite-svelte';
+
+	export const images = [
 		{
-			url: 'https://res.cloudinary.com/beswift/image/upload/v1650390102/photo-1649894222226-056a1a79d9fb_xlv73h.jpg',
-			description: 'Dog'
+			alt: 'Cosmic timetraveler',
+			src: 'https://thetechtribune.com/wp-content/uploads/2020/09/24-800x445.jpg',
+			title: 'cosmic-timetraveler-pYyOZ8q7AII-unsplash.com'
 		},
 		{
-			url: 'https://res.cloudinary.com/beswift/image/upload/v1650391131/photo-1648800475313-2bb7fbec8701_ae60yw.jpg',
-			description: 'Building'
+			alt: 'Cristina Gottardi',
+			src: 'https://i1.wp.com/siliconbayounews.com/wp-content/uploads/2019/10/Scale.jpg?fit=2500%2C1668&ssl=1',
+			title: 'cristina-gottardi-CSpjU6hYo_0-unsplash.com'
 		},
 		{
-			url: 'https://res.cloudinary.com/beswift/image/upload/v1650391337/photo-1647067867267-e01d98462f3c_ugtnwe.jpg',
-			description: 'Staircase'
-		},
-		{
-			url: 'https://res.cloudinary.com/beswift/image/upload/v1650391490/photo-1644241687200-eadaf7601290_xcz2kh.jpg',
-			description: 'Staircase'
+			alt: 'Johannes Plenio',
+			src: 'https://coworker.imgix.net/photos/united-states/louisiana/new-orleans/the-shop-at-the-contemporary-arts-center/3-1549572912.jpg',
+			title: 'johannes-plenio-RwHv7LgeC7s-unsplash.com'
 		}
 	];
-	let currentSlideItem = 0;
-	const nextImage = () => {
-		currentSlideItem = (currentSlideItem + 1) % gallery_items.length;
-	};
-	onMount(() => setInterval(nextImage, 5000));
-
-	// parse out a string to say hello world
 </script>
 
-{#key [gallery_items[currentSlideItem]]}
-	{#each [gallery_items[currentSlideItem]] as item (currentSlideItem)}
-		<img
-			transition:slide="{{ duration: 300, easing: bounceOut }}"
-			src="{item.url}"
-			alt="{item.description}"
-			width="{300}"
-			height="{300}"
-		/>
-	{/each}
-{/key}
-
-<style>
-	img {
-		width: 100%;
-		height: 400px;
-		object-fit: cover;
-	}
-</style>
+<Carousel {images} duration="{5000}" let:Controls>
+	<Controls />
+</Carousel>

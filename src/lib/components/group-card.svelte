@@ -14,15 +14,15 @@
 </script>
 
 <div class="card">
-	<div class="group-info">
+	<div class="">
 		<Heading tag="h2">
 			{group?.group}
 		</Heading>
 
-		<div class="flex gap-3 my-3">
+		<div class="flex gap-3">
 			{#each Object.entries(group?.links) as [site, link] (site)}
 				<A href="{link}" target="_blank" class="flex items-center justify-center p-1 px-2 ">
-					<IconParser styles="{'my-auto'}" icon="{site}" size="{30}" />
+					<IconParser styles="{'my-auto'}" icon="{site}" size="{20}" />
 				</A>
 			{/each}
 		</div>
