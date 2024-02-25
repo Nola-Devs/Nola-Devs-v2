@@ -16,7 +16,7 @@
 	Welcome {user.name}
 {/if}
 
-<Modal dismissable="{false}">
+<Modal open="{!user.group}" dismissable="{false}">
 	{#if step === 0}
 		<div class="flex flex-col items-center">
 			<h1 class="text-3xl">👋 Welcome To NOLADevs</h1>
@@ -46,8 +46,6 @@
 		</div>
 	</TabItem>
 	<TabItem title="Group">
-		{#if !!group}
-			<EditOrg {group} />
-		{/if}
+		<EditOrg {group} />
 	</TabItem>
 </Tabs>
