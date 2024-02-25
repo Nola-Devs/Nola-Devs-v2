@@ -20,28 +20,28 @@
 
 <div class="{styles}" style="height: {size}px; width: {size}px; color:{color};">
 	{#if icon === 'linkedin'}
-		<Linkedin class="fill-inherit dark:fill-white" />
+		<Linkedin class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'facebook'}
-		<Facebook class="fill-inherit dark:fill-white" />
+		<Facebook class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'meetup'}
-		<Meetup class="fill-inherit dark:fill-white" />
+		<Meetup class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'twitter'}
-		<Twitter class="fill-inherit dark:fill-white" />
+		<Twitter class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'github'}
-		<Github class="fill-inherit dark:fill-white" />
+		<Github class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'twitch'}
-		<Twitch class="fill-inherit dark:fill-white" />
+		<Twitch class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'eventbrite'}
-		<Eventbrite class="fill-inherit dark:fill-white" />
+		<Eventbrite class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'youtube'}
-		<Youtube class="fill-inherit dark:fill-white" />
+		<Youtube class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'linktr'}
-		<Linktree class="fill-inherit dark:fill-white" />
+		<Linktree class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'discord'}
-		<Discord class="fill-inherit dark:fill-white" />
+		<Discord class="fill-inherit dark:fill-white w-full h-full" />
 	{:else if icon === 'email'}
-		<EnvelopeOutline class="text-color dark:text-white" />
+		<EnvelopeOutline class="text-color dark:text-white w-full h-full" />
 	{:else}
-		<LinkOutline class="text-color dark:text-white" />
+		<LinkOutline class="text-color dark:text-white w-full h-full" />
 	{/if}
 </div>
