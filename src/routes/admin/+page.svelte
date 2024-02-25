@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { Input, Select, Label, Button, Card } from 'flowbite-svelte';
 
 	let roles = [
