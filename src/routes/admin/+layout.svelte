@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '/src/app.css';
 	import { DarkMode } from 'flowbite-svelte';
 	import LOGO from '$lib/assets/icons/Logo-wide.svelte';
