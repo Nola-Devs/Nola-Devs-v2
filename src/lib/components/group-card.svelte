@@ -20,7 +20,7 @@
 		</Heading>
 
 		<div class="flex gap-3">
-			{#each Object.entries(group?.links) as [site, link] (site)}
+			{#each Object.entries(group.links) as [site, link] (site)}
 				<A href="{link}" target="_blank" class="flex items-center justify-center p-1 px-2 ">
 					<IconParser styles="{'my-auto'}" icon="{site}" size="{20}" />
 				</A>

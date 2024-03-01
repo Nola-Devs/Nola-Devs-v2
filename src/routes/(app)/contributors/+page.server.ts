@@ -11,5 +11,5 @@ export const load: PageServerLoad = async () => {
 	// print data from the fetch on screen
 	const contributorsList: any = await request.json();
 	console.log(contributorsList);
-	return { data: contributorsList };
+	return { contributorsList };
 };
