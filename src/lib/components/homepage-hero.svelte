@@ -1,27 +1,19 @@
 <script lang="ts">
 	import { Heading, P, Button } from 'flowbite-svelte';
-	import { Slack, Github, Discord } from 'svelte-simples';
+	import { Slack } from 'svelte-simples';
 </script>
 
 <div class="p-5 w-full">
-	<Heading class="float-end">We find tech events and bring them to you.</Heading>
-	<P class="my-3 text-wrap font-thin"
-		>All you need to bring is yourself! Explore a growing community of curious people wanting to
+	<Heading class="float-end  text-primary-800 dark:text-primary-50">
+		Connecting the New Orleans Tech Community
+	</Heading>
+	<P class="my-3 text-wrap font-thin  text-primary-900 dark:text-primary-50">
+		All you need to bring is yourself! Explore a growing community of curious people wanting to
 		share ideas and learn from others.
 	</P>
-	<div class="flex gap-3 w-full justify-center">
-		<Button class="flex gap-2 w-32">
-			<Slack class="fill-inherit dark:fill-white" />
-			<P>Slack</P>
-		</Button>
 
-		<Button class="flex gap-2 w-32">
-			<Discord class="fill-inherit dark:fill-white" />
-			<P>Discord</P>
-		</Button>
-		<Button class="flex gap-2 w-32">
-			<Github class="fill-inherit dark:fill-white" />
-			<P>Github</P>
-		</Button>
-	</div>
+	<Button class="flex gap-2 bg-violet-200">
+		<Slack class="fill-primary-800 dark:fill-primary-100" />
+		<P class="text-primary-800 dark:text-primary-100">Join the Conversation</P>
+	</Button>
 </div>

@@ -1,25 +1,49 @@
 <script lang="ts">
-	import Sidebar from '$lib/components/sidebar.svelte';
-	import MobileMenu from '$lib/components/mobile.svelte';
+	import {
+		Navbar,
+		NavBrand,
+		NavUl,
+		NavLi,
+		NavHamburger,
+		Dropdown,
+		DropdownItem,
+		DropdownDivider,
+		DarkMode,
+		MegaMenu
+	} from 'flowbite-svelte';
 	import LogoWide from '$lib/assets/icons/Logo-wide.svelte';
 	export let groups: string[];
-	let y: number;
+	let groupItems: { name: string; href: string }[] = groups.map((e: string) => {
+		return { name: e, href: '/group/' + e.replace(/ /g, '-') };
+	});
 </script>
 
-<svelte:window bind:innerWidth="{y}" />
-<!--
-	TODO: Implement a seach Feature
-	<div>
-		<Input class="w-full" placeholder="Search Nola Devs">
-			<SearchOutline slot="left" class="w-4 h-4" />
-		</Input>
+<Navbar fluid class="fixed top-0 bg-primary-100 dark:bg-primary-900" let:hidden let:toggle>
+	<NavBrand href="/">
+		<LogoWide styles="w-34 h-10 m-0 p-1" />
+	</NavBrand>
+
+	<div class="flex md:order-2">
+		<DarkMode />
+		<NavHamburger on:click="{toggle}" />
 	</div>
-	-->
-<a href="/" class="fixed top-1 left-1 mt-3 z-10 bg-white rounded-xl dark:bg-slate-800">
-	<LogoWide styles="w-34 h-12 m-0 p-1" />
-</a>
-{#if y > 640}
-	<Sidebar {groups} />
-{:else}
-	<MobileMenu {groups} />
-{/if}
+	<NavUl {hidden} class="order-1 " ulClass="flex bg-primary-100 justify-around dark:bg-primary-900">
+		<NavLi class="text-xs md:p-1" href="/" active="{true}">Home</NavLi>
+		<NavLi class="text-xs md:p-1" href="/">About</NavLi>
+		<NavLi class="text-xs md:p-1" href="/">Navbar</NavLi>
+		<NavLi class="text-xs md:p-1">TechGroups</NavLi>
+		<MegaMenu
+			full
+			items="{groupItems}"
+			let:item
+			class="'grid grid-flow-row w-full px-0 md:gap-x-3 auto-col-max auto-row-max bg-primary-100 dark:bg-primary-900"
+		>
+			<a
+				href="{item.href}"
+				class="hover:underline hover:text-primary-600 dark:hover:text-primary-500 text-xs"
+			>
+				{item.name}
+			</a>
+		</MegaMenu>
+	</NavUl>
+</Navbar>

@@ -9,11 +9,10 @@
 	export let data: LayoutData;
 	const groups = data.groups;
 	// inject({ mode: dev ? 'development' : 'production' });
+	//class="h-screen w-screen grid grid-cols-[200px_auto] max-sm:grid-cols-[unset] max-sm:grid-row-[100px_auto]"
 </script>
 
-<div
-	class="h-screen w-screen grid grid-cols-[200px_auto] max-sm:grid-cols-[unset] max-sm:grid-row-[100px_auto]"
->
+<div>
 	<NavBar {groups} />
 	<div class="mt-8">
 		<slot />

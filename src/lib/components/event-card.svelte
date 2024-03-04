@@ -8,21 +8,12 @@
 	const { group, summary, start, end, location } = event;
 </script>
 
-<Card padding="none">
-	{#if !/^(http|https):\/\/[^ "]+$/.test(location)}
-		<Map location="{event.lnglat}" />
-	{:else}
-		<Img
-			class="w-full h-full rounded-t-lg object-cover"
-			src="https://ttgmice.2017.ttgasia.com/wp-content/uploads/sites/3/2020/12/online-event.jpg"
-			alt="this is a virtual event"
-		/>
-	{/if}
-	<div class="w-full h-full p-3">
-		<Heading tag="h4" customSize="xl" class="font-bold">
+<Card padding="none" class="bg-primary-100 dark:bg-primary-800">
+	<div class="w-full h-full p-3 grid grid-rows-4">
+		<Heading tag="h4" customSize="text-2xl" class="font-extrabold">
 			{summary}
 		</Heading>
-		<Heading tag="h5" customSize="lg">
+		<Heading tag="h5" customSize="lg" class="font-bold">
 			{group}
 		</Heading>
 		<P class="font-extralight text-sm">

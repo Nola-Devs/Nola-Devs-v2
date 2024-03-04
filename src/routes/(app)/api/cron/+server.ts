@@ -23,7 +23,6 @@ export const GET: RequestHandler = async ({ request }) => {
 	// */
 
 	const calList: Group[] = await GroupModel.find({}).select(['group', 'calID']);
-
 	// TODO: Change all Promise.all into Promise.allSettled for better error handling
 	const events = (
 		await Promise.all(
@@ -49,6 +48,7 @@ export const GET: RequestHandler = async ({ request }) => {
 
 	const parseEvents: Event[] = eventsWithLatLon.map((e) => eventParser(e));
 
+	console.log(parseEvents);
 	EventModel.collection.drop();
 
 	EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
