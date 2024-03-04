@@ -34,7 +34,7 @@
 		<div class="card-links">
 			<Button class="my-3 flex gap-3" on:click="{copy}">
 				<CalendarPlusSolid class="text-color dark:text-white" />
-				<P>Suscribe</P>
+				<P>Subscribe</P>
 			</Button>
 		</div>
 	</div>
