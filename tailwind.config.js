@@ -8,10 +8,8 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				// flowbite-svelte
-				// purple
 				primary: {
-					50: '#faf5ff',
+					50: '#edebfe',
 					100: '#f3e8ff',
 					200: '#e9d5ff',
 					300: '#d8b4fe',
@@ -20,7 +18,7 @@ export default {
 					600: '#9333ea',
 					700: '#7e22ce',
 					800: '#6b21a8',
-					900: '#581c87'
+					900: '#24072F'
 				}
 			}
 		}

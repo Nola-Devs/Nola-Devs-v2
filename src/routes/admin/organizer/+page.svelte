@@ -16,7 +16,7 @@
 	Welcome {user.name}
 {/if}
 
-<Modal open="{!user.group}" dismissable="{false}">
+<Modal open="{!!user.group}" dismissable="{false}">
 	{#if step === 0}
 		<div class="flex flex-col items-center">
 			<h1 class="text-3xl">👋 Welcome To NOLADevs</h1>

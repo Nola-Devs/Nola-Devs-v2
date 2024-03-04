@@ -61,7 +61,7 @@ interface Group {
 	group: string;
 	about: string;
 	calID: string;
-	links: Link;
+	links: groupLinks;
 }
 
 export { Event, Group, User };
