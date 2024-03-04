@@ -10,7 +10,7 @@ import type { RequestHandler } from './$types';
 export const GET: RequestHandler = async ({ request }) => {
 	// auth
 	const authHeader = request.headers.get('authorization');
-	if (!CRON_SECRET || authHeader !== `Bearer ${CRON_SECRET}`) {
+	if (authHeader !== `Bearer ${CRON_SECRET}`) {
 		return new Response('You Shall Not Pass!', { status: 401 });
 	}
 
