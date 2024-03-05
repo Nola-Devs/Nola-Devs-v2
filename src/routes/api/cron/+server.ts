@@ -5,14 +5,15 @@ import { eventParser } from '$lib/utils/event-parser.js';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
 import { revGeocode } from '$lib/utils/rev-geocode.js';
 import type { Event, Group } from '$types';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ request }) => {
 	// auth
-	const authHeader = request.headers.get('authorization');
-	if (authHeader !== `Bearer ${CRON_SECRET}`) {
-		return new Response('You Shall Not Pass!', { status: 401 });
-	}
+	// const authHeader = request.headers.get('authorization');
+	// if (authHeader !== `Bearer ${CRON_SECRET}`) {
+	// 	return new Response('You Shall Not Pass!', { status: 401 });
+	// }
 
 	// TODO: add error handling
 	// TODO: Check for expired sessions
@@ -24,34 +25,40 @@ export const GET: RequestHandler = async ({ request }) => {
 
 	const calList: Group[] = await GroupModel.find({}).select(['group', 'calID']);
 	// TODO: Change all Promise.all into Promise.allSettled for better error handling
-	const events = (
-		await Promise.all(
-			Object.values(calList)
-				.map((e) => e.calID)
-				.map(googleCalAPICall)
+	try {
+
+		const events = (
+			await Promise.all(
+				Object.values(calList)
+					.map((e) => e.calID)
+					.map(googleCalAPICall)
+			)
 		)
-	)
-		.map((eventsObj, i) =>
-			eventsObj.items.map((event: any): any => {
-				return { ...event, group: calList[i].group };
-			})
-		)
-		.flat();
+			.map((eventsObj, i) =>
+				eventsObj.items.map((event: any): any => {
+					return { ...event, group: calList[i].group };
+				})
+			)
+			.flat();
 
-	const eventsWithLatLon = (
-		await Promise.all(
-			Object.values(events)
-				.map((e) => e.location)
-				.map(revGeocode)
-		)
-	).map((e, i) => ({ ...events[i], latLon: e }));
+		const eventsWithLatLon = (
+			await Promise.all(
+				Object.values(events)
+					.map((e) => e.location)
+					.map(revGeocode)
+			)
+		).map((e, i) => ({ ...events[i], latLon: e }));
 
-	const parseEvents: Event[] = eventsWithLatLon.map((e) => eventParser(e));
+		const parseEvents: Event[] = eventsWithLatLon.map((e) => eventParser(e));
 
-	console.log(parseEvents);
-	EventModel.collection.drop();
+		console.log(parseEvents);
+		EventModel.collection.drop();
 
-	EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
+		EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
 
-	return new Response(JSON.stringify(parseEvents), { status: 200 });
+		return new Response(JSON.stringify(parseEvents), { status: 200 });
+	} catch (error) {
+		console.log(error)
+		throw error;
+	}
 };
