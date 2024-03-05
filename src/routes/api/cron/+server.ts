@@ -4,7 +4,7 @@ import { GroupModel } from '$lib/db/groups';
 import { eventParser } from '$lib/utils/event-parser.js';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
 import { revGeocode } from '$lib/utils/rev-geocode.js';
-import {start_db}from '$lib/db/db'
+import { start_db } from '$lib/db/db';
 import type { Event, Group } from '$types';
 import type { RequestHandler } from './$types';
 
@@ -22,10 +22,11 @@ export const GET: RequestHandler = async ({ request }) => {
 	//   This is the default calendar for the one off turn this into a pvt key
 	//  545d217a064ce6f846e820045fccdaae17db65ee1b53dc14ea249833b94d0f70@group.calendar.google.com
 	// */
+	//
 	await start_db();
 	const calList: Group[] = await GroupModel.find({}).select(['group', 'calID']);
 	// TODO: Change all Promise.all into Promise.allSettled for better error handling
-
+	console.log('calList', { calList });
 	const events = (
 		await Promise.all(
 			Object.values(calList)
@@ -40,6 +41,7 @@ export const GET: RequestHandler = async ({ request }) => {
 		)
 		.flat();
 
+	console.log('events', { events });
 	const eventsWithLatLon = (
 		await Promise.all(
 			Object.values(events)
@@ -47,10 +49,11 @@ export const GET: RequestHandler = async ({ request }) => {
 				.map(revGeocode)
 		)
 	).map((e, i) => ({ ...events[i], latLon: e }));
+	console.log('latlon', { eventsWithLatLon });
 
 	const parseEvents: Event[] = eventsWithLatLon.map((e) => eventParser(e));
+	console.log('parseEvent', { parseEvents });
 
-	console.log(parseEvents);
 	EventModel.collection.drop();
 
 	EventModel.bulkSave(parseEvents.map((e) => new EventModel(e)));
