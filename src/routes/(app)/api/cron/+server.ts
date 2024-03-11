@@ -27,6 +27,7 @@ export const GET: RequestHandler = async ({ request }) => {
 		}
 	}).flat()
 
+	console.log(resultsFromGoogleAPI)
 
 	type geocodeOnEvent = googleCalAPIType & {
 		lnglat: LngLatLike;
@@ -41,7 +42,8 @@ export const GET: RequestHandler = async ({ request }) => {
 			return e.value 
 		}
 	});
-
+	console.log(resultsFromMapBoxAPI)
+	
 	const events:Event[] = resultsFromMapBoxAPI.map(eventParser)
 	console.log(events)
 	EventModel.collection.drop();
