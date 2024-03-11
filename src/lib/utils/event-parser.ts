@@ -46,5 +46,5 @@ export const eventParser = (e:any) => {
 				  )
 				: undefined
 		}
-	} as Event;
+	} 
 };

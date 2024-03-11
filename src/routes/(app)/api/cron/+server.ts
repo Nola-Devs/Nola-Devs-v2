@@ -34,13 +34,18 @@ export const GET: RequestHandler = async ({ request }) => {
 		}
 	});
 
+	const events = resultsFromMapBoxAPI.map(e=> eventParser(e))
 
-	const events: Event[] = resultsFromMapBoxAPI.map(e=> eventParser(e))
+	const parsedEvents = (await Promise.allSettled(events)).map(e=> {
+		if(e.status == 'fulfilled') {
+			return e.value 
+		}
+	});
 
-	console.log(events)
+	console.log(parsedEvents)
 
 	EventModel.collection.drop();
-	EventModel.bulkSave(events.map((e) => new EventModel(e)));
+	EventModel.bulkSave(parsedEvents.map((e) => new EventModel(e)));
 
 	return new Response(JSON.stringify("yes"), { status: 200 });
 };
