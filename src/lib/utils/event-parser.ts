@@ -24,12 +24,11 @@ export const eventParser = (eventData: any): Event => {
 
 
 
-	const formatTime = (dateTimeString: string | undefined) =>
-		dateTimeString
-			? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
+	const formatTime = (dateTimeString: string ) =>
+		 new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
 				new Date(dateTimeString)
 			)
-			: undefined;
+			
 
 
 	const parsedEvent: Event = {
@@ -39,13 +38,13 @@ export const eventParser = (eventData: any): Event => {
 		description: description || '',
 		location: location || '',
 		lnglat: lnglat || ({} as LngLatLike),
-		dateTime: start?.dateTime ? new Date(start.dateTime) : new Date(),
+		dateTime:  new Date(start.dateTime),
 		start: {
-			date: formatDate(start?.dateTime || start?.date),
+			date: formatDate(start?.dateTime),
 			time: formatTime(start?.dateTime),
 		},
 		end: {
-			date: formatDate(end?.dateTime || end?.date),
+			date: formatDate(end?.dateTime),
 			time: formatTime(end?.dateTime),
 		},
 	};
