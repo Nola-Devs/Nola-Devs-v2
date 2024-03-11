@@ -9,7 +9,7 @@ export const geocode = async (e: any) => {
 	const locationURL = (address: string) =>
 		`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${PUBLIC_MAPBOX}`;
 
-	if (address.match(/^http/)) {
+	if (!address.match(/^http/)) {
 		const req = await (
 			await fetch(locationURL(address), { method: 'GET' })
 		).json();

@@ -1,50 +1,53 @@
 import type { Event } from '$types';
-import type { LngLatLike } from 'mapbox-gl';
 
-export const eventParser = (e:any) => {
-	return {
-		group: e.group,
-		summary: e.summary,
-		calLink: e.htmlLink,
-		description: e.description,
-		location: e.location,
-		lnglat: e.latLon,
-		dateTime: new Date(e.start?.dateTime),
-		start: {
-			date: e.start?.dateTime
-				? new Intl.DateTimeFormat('en-US', {
-						month: 'short',
-						day: 'numeric',
-						year: 'numeric'
-				  }).format(new Date(e.start.dateTime))
-				: new Intl.DateTimeFormat('en-US', {
-						month: 'short',
-						day: 'numeric',
-						year: 'numeric'
-				  }).format(new Date(e.start.date)),
-			time: e.start?.dateTime
-				? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-						new Date(e.start.dateTime)
-				  )
-				: undefined
-		},
-		end: {
-			date: e.end?.dateTime
-				? new Intl.DateTimeFormat('en-US', {
-						month: 'short',
-						day: 'numeric',
-						year: 'numeric'
-				  }).format(new Date(e.end.dateTime))
-				: new Intl.DateTimeFormat('en-US', {
-						month: 'short',
-						day: 'numeric',
-						year: 'numeric'
-				  }).format(new Date(e.end.date)),
-			time: e.end?.dateTime
-				? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-						new Date(e.end.dateTime)
-				  )
-				: undefined
-		}
-	} 
+
+// Function to parse Google Calendar event data
+export const eventParser = (eventData: any): Event => {
+  const {
+    group,
+    summary,
+    htmlLink: calLink,
+    description,
+    location,
+    latLon: lnglat,
+    start,
+    end,
+  } = eventData;
+
+  // Function to format date using Intl.DateTimeFormat
+  const formatDate = (dateString: string ) =>
+       new Intl.DateTimeFormat('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        }).format(new Date(dateString))
+
+  // Function to format time using Intl.DateTimeFormat
+  const formatTime = (dateTimeString: string | undefined) =>
+    dateTimeString
+      ? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
+          new Date(dateTimeString)
+        )
+      : undefined;
+
+  // Parse and structure event data
+  const parsedEvent: Event = {
+    group,
+    summary,
+    calLink,
+    description,
+    location,
+    lnglat,
+    dateTime: new Date(start?.dateTime),
+    start: {
+      date: formatDate(start?.dateTime || start?.date),
+      time: formatTime(start?.dateTime),
+    },
+    end: {
+      date: formatDate(end?.dateTime || end?.date),
+      time: formatTime(end?.dateTime),
+    },
+  };
+
+  return parsedEvent;
 };
