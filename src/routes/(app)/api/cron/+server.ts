@@ -9,14 +9,11 @@ import type { Event, Group } from '$types';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ request }) => {
-	// auth
 	const authHeader = request.headers.get('authorization');
 	if (authHeader !== `Bearer ${CRON_SECRET}`) {
 		return new Response('You Shall Not Pass!', { status: 401 });
 	}
 
-	await start_db();
-	// 
 	const calIDsAndGroupNames: Group[] = await GroupModel.find({}).select(['-_id', 'group', 'calID'])
 
 
@@ -35,7 +32,7 @@ export const GET: RequestHandler = async ({ request }) => {
 		if(e.status == 'fulfilled') {
 			return e.value 
 		}
-	}).flat();
+	});
 
 
 	const events: Event[] = resultsFromMapBoxAPI.map(e=> eventParser(e))

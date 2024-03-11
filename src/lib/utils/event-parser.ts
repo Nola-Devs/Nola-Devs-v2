@@ -1,16 +1,7 @@
 import type { Event } from '$types';
 import type { LngLatLike } from 'mapbox-gl';
 
-export const eventParser = (e: {
-	summary: string;
-	htmlLink: string;
-	description: string;
-	location: string;
-	latLon: LngLatLike;
-	start: { dateTime: string | number | Date; date: string | number | Date };
-	end: { dateTime: string | number | Date; date: string | number | Date };
-	group: string;
-}) => {
+export const eventParser = (e:any) => {
 	return {
 		group: e.group,
 		summary: e.summary,
