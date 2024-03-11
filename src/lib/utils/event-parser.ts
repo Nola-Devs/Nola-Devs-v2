@@ -40,12 +40,12 @@ export const eventParser = (eventData: any): Event => {
 		lnglat: lnglat || ({} as LngLatLike),
 		dateTime:  new Date(start?.dateTime),
 		start: {
-			date: formatDate(start?.dateTime),
-			time: formatTime(start?.dateTime),
+			date: formatDate(start?.dateTime) || '',
+			time: formatTime(start?.dateTime) || '',
 		},
 		end: {
-			date: formatDate(end?.dateTime),
-			time: formatTime(end?.dateTime),
+			date: formatDate(end?.dateTime) || '',
+			time: formatTime(end?.dateTime)|| '',
 		},
 	};
 
