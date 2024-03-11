@@ -19,15 +19,8 @@ interface Event {
 	description: string ;
 	location: string;
 	lnglat: LngLatLike;
-	dateTime: Date;
-	start: {
-		date: string;
-		time: string | undefined;
-	};
-	end: {
-		date: string;
-		time: string | undefined;
-	};
+	start:Date;
+	end: Date
 }
 
 type groupLinkKey =
