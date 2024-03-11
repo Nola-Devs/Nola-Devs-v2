@@ -15,7 +15,7 @@
 	</div>
 	<div>
 		<Label for="with_helper">Upload Your Profile Picture</Label>
-		<Fileupload name="pfp" />
+		<Fileupload class="after:rounded" name="pfp" />
 		<Helper>PNG, JPG</Helper>
 	</div>
 	<div class="flex flex-col gap-2">

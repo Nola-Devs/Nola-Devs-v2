@@ -1,7 +1,11 @@
 import { CAL } from '$env/static/private';
+import type { Event, Group } from '$types';
 
-export const googleCalAPICall = async (calID: string) => {
+export const googleCalAPICall = async (groupcalIDsAndGroupNames: Group) => {
 	// This is the amount of days from today for API
+	const calID = groupcalIDsAndGroupNames.calID;
+	const groupName = groupcalIDsAndGroupNames.group;
+
 	const days = 30;
 
 	const start = new Date();
@@ -18,6 +22,8 @@ export const googleCalAPICall = async (calID: string) => {
 	);
 
 	const parseReqToJson = await reqToGoogle.json();
+	
+	const namedEvents = await parseReqToJson.items.map((e: any)=>({ ...e, group: groupName}))
 
-	return parseReqToJson;
+	return namedEvents;
 };

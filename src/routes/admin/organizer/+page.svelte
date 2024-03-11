@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Tabs, TabItem, Button, Modal, Select } from 'flowbite-svelte';
+	import { Tabs, TabItem, Button, Modal, Select, P } from 'flowbite-svelte';
 	import EditUser from '$lib/components/edit-user.svelte';
 	import EditOrg from '$lib/components/edit-org.svelte';
 	import type { PageData } from './$types';
@@ -13,10 +13,12 @@
 </script>
 
 {#if user?.name}
-	Welcome {user.name}
+	<P class="m-2">
+		Welcome {user.name}
+	</P>
 {/if}
 
-<Modal open="{!!user.group}" dismissable="{false}">
+<Modal open="{!user.group}" dismissable="{true}">
 	{#if step === 0}
 		<div class="flex flex-col items-center">
 			<h1 class="text-3xl">👋 Welcome To NOLADevs</h1>
