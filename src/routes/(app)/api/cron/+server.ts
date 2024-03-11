@@ -34,11 +34,11 @@ export const GET: RequestHandler = async ({ request }) => {
 		}
 	});
 
-	const events = resultsFromMapBoxAPI.map(e=> eventParser(e))
+	const events = resultsFromMapBoxAPI.map(eventParser)
 
 
 
-	console.log(events)
+	//console.log(events)
 
 	EventModel.collection.drop();
 	EventModel.bulkSave(events.map((e) => new EventModel(e)));

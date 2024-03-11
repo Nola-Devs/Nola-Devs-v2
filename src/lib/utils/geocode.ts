@@ -13,9 +13,9 @@ export const geocode = async (e: any) => {
 		const req = await (
 			await fetch(locationURL(address), { method: 'GET' })
 		).json();
-		return {...e, latLon: req.features[0].center as LngLatLike }
+		return {...e, lnglat: req.features[0].center as LngLatLike }
 	} else {
-		return {...e, latLon:[-90.071533, 29.951065] as LngLatLike }
+		return {...e, lnglat:[-90.071533, 29.951065] as LngLatLike }
 	}
 
 
