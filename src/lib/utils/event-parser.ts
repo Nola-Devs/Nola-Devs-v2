@@ -1,8 +1,11 @@
-import type { Event } from '$types';
+import type { Event, googleCalAPIType } from '$types';
 import type { LngLatLike } from 'mapbox-gl';
 
+type geocodeOnEvent = googleCalAPIType & {
+	lnglat: LngLatLike;
+  };
 
-export const eventParser = (eventData: any): Event => {
+export const eventParser = (eventData: geocodeOnEvent|undefined ): Event => {
 	const {
 		group,
 		summary,
@@ -49,5 +52,5 @@ export const eventParser = (eventData: any): Event => {
 		},
 	};
 
-	return parsedEvent;
+	return parsedEvent as Event;
 };

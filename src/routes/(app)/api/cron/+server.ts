@@ -5,8 +5,9 @@ import { eventParser } from '$lib/utils/event-parser.js';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
 import { geocode } from '$lib/utils/geocode.js';
 import { start_db } from '$lib/db/db';
-import type { Event, Group } from '$types';
+import type { Event, Group, googleCalAPIType } from '$types';
 import type { RequestHandler } from './$types';
+import type { LngLatLike } from 'mapbox-gl';
 
 export const GET: RequestHandler = async ({ request }) => {
 	const authHeader = request.headers.get('authorization');
@@ -17,29 +18,32 @@ export const GET: RequestHandler = async ({ request }) => {
 	const calIDsAndGroupNames: Group[] = await GroupModel.find({}).select(['-_id', 'group', 'calID'])
 
 
-	const eventsFromAllCals = calIDsAndGroupNames.map(e => googleCalAPICall(e))
-
-	const resultsFromGoogleAPI = (await Promise.allSettled(eventsFromAllCals)).map(e=> {
+	const eventsFromAllCals:Promise<googleCalAPIType[]>[] = calIDsAndGroupNames.map(e => googleCalAPICall(e))
+	
+	  
+	const resultsFromGoogleAPI: (googleCalAPIType|undefined)[] = (await Promise.allSettled(eventsFromAllCals)).map(e=> {
 		if(e.status == 'fulfilled') {
 			return e.value 
 		}
-	}).flat();
+	}).flat()
 
+
+	type geocodeOnEvent = googleCalAPIType & {
+		lnglat: LngLatLike;
+	  };
 	
-	const geocodedEvents = resultsFromGoogleAPI.map(e=> geocode(e))
+
+	const geocodedEvents: Promise<geocodeOnEvent>[] = resultsFromGoogleAPI.map(e=> geocode(e))
 	
-	const resultsFromMapBoxAPI = (await Promise.allSettled(geocodedEvents)).map(e=> {
+	
+	const resultsFromMapBoxAPI:(geocodeOnEvent|undefined)[] = (await Promise.allSettled(geocodedEvents)).map(e=> {
 		if(e.status == 'fulfilled') {
 			return e.value 
 		}
 	});
 
-	const events = resultsFromMapBoxAPI.map(eventParser)
-
-
-
-	//console.log(events)
-
+	const events:Event[] = resultsFromMapBoxAPI.map(eventParser)
+	console.log(events)
 	EventModel.collection.drop();
 	EventModel.bulkSave(events.map((e) => new EventModel(e)));
 
