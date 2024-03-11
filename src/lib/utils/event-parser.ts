@@ -1,56 +1,57 @@
 import type { Event } from '$types';
+import type { LngLatLike } from 'mapbox-gl';
 
-export const eventParser = (event: {
+export const eventParser = (e: {
 	summary: string;
 	htmlLink: string;
 	description: string;
 	location: string;
-	latLon: [number, number];
+	latLon: LngLatLike;
 	start: { dateTime: string | number | Date; date: string | number | Date };
 	end: { dateTime: string | number | Date; date: string | number | Date };
 	group: string;
 }) => {
 	return {
-		group: event.group,
-		summary: event.summary,
-		calLink: event.htmlLink,
-		description: event.description,
-		location: event.location,
-		lnglat: event.latLon,
-		dateTime: new Date(event.start?.dateTime),
+		group: e.group,
+		summary: e.summary,
+		calLink: e.htmlLink,
+		description: e.description,
+		location: e.location,
+		lnglat: e.latLon,
+		dateTime: new Date(e.start?.dateTime),
 		start: {
-			date: event.start?.dateTime
+			date: e.start?.dateTime
 				? new Intl.DateTimeFormat('en-US', {
 						month: 'short',
 						day: 'numeric',
 						year: 'numeric'
-				  }).format(new Date(event.start.dateTime))
+				  }).format(new Date(e.start.dateTime))
 				: new Intl.DateTimeFormat('en-US', {
 						month: 'short',
 						day: 'numeric',
 						year: 'numeric'
-				  }).format(new Date(event.start.date)),
-			time: event.start?.dateTime
+				  }).format(new Date(e.start.date)),
+			time: e.start?.dateTime
 				? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-						new Date(event.start.dateTime)
+						new Date(e.start.dateTime)
 				  )
 				: undefined
 		},
 		end: {
-			date: event.end?.dateTime
+			date: e.end?.dateTime
 				? new Intl.DateTimeFormat('en-US', {
 						month: 'short',
 						day: 'numeric',
 						year: 'numeric'
-				  }).format(new Date(event.end.dateTime))
+				  }).format(new Date(e.end.dateTime))
 				: new Intl.DateTimeFormat('en-US', {
 						month: 'short',
 						day: 'numeric',
 						year: 'numeric'
-				  }).format(new Date(event.end.date)),
-			time: event.end?.dateTime
+				  }).format(new Date(e.end.date)),
+			time: e.end?.dateTime
 				? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
-						new Date(event.end.dateTime)
+						new Date(e.end.dateTime)
 				  )
 				: undefined
 		}
