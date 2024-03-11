@@ -13,10 +13,10 @@ declare global {
 }
 
 interface Event {
-	group: string | undefined;
-	summary: string;
+	group: string ;
+	summary: string  ;
 	calLink: string;
-	description: string;
+	description: string ;
 	location: string;
 	lnglat: LngLatLike;
 	dateTime: Date;

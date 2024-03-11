@@ -1,7 +1,7 @@
 import type { Event } from '$types';
 
 
-// Function to parse Google Calendar event data
+
 export const eventParser = (eventData: any): Event => {
   const {
     group,
@@ -14,7 +14,7 @@ export const eventParser = (eventData: any): Event => {
     end,
   } = eventData;
 
-  // Function to format date using Intl.DateTimeFormat
+  
   const formatDate = (dateString: string ) =>
        new Intl.DateTimeFormat('en-US', {
           month: 'short',
@@ -22,7 +22,7 @@ export const eventParser = (eventData: any): Event => {
           year: 'numeric',
         }).format(new Date(dateString))
 
-  // Function to format time using Intl.DateTimeFormat
+  
   const formatTime = (dateTimeString: string | undefined) =>
     dateTimeString
       ? new Intl.DateTimeFormat('en-US', { timeStyle: 'short' }).format(
@@ -30,13 +30,13 @@ export const eventParser = (eventData: any): Event => {
         )
       : undefined;
 
-  // Parse and structure event data
+  
   const parsedEvent: Event = {
-    group,
-    summary,
-    calLink,
-    description,
-    location,
+	group: group || '',
+    summary: summary || '',
+    calLink: calLink || '',
+    description: description || '',
+    location: location || '',
     lnglat,
     dateTime: new Date(start?.dateTime),
     start: {
