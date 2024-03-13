@@ -49,7 +49,7 @@ export const GET: RequestHandler = async ({ request }) => {
 	const events: Event[] = resultsFromMapBoxAPI.map(eventParser)
 
 
-	console.log({events})
+	
 
 	EventModel.collection.drop();
 	EventModel.bulkSave(events.map((e) => new EventModel(e)));
