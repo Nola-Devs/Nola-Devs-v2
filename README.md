@@ -77,7 +77,7 @@ npm run dev
 | Google Calendar API   | `CAL`            | [Follow these steps](#google-calendar-api-key)                                                                                                         |
 | Discord Webhook URL   | `DISCORD`        | Apply for [Contributor Access](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already. |
 | Mapbox Public API Key | `PUBLIC_MAPBOX`  | [Follow these steps](#mapbox-public-key)                                                                                                               |
-| Cron Secret           | _Coming soon..._ | ...                                                                                                                                                    |
+| Cron Secret           | `CRON_SECERT`    | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
 | mongodb name          | `DB_NAME`        | `noladevs`                                                                                                                                             |
 | mongodb URL           | `MONGO_URL`      | `mongodb://localhost:27017/`                                                                                                                           |
 
