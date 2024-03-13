@@ -17,39 +17,40 @@ export const GET: RequestHandler = async ({ request }) => {
 
 	const calIDsAndGroupNames: Group[] = await GroupModel.find({}).select(['-_id', 'group', 'calID'])
 
-	console.log("from DB",calIDsAndGroupNames)
 	
-	const eventsFromAllCals:Promise<googleCalAPIType[]>[] = calIDsAndGroupNames.map(e => googleCalAPICall(e))
-	console.log("promise setup",eventsFromAllCals)
-	
-	const resultsFromGoogleAPI: (googleCalAPIType|undefined)[] = (await Promise.allSettled(eventsFromAllCals)).map(e=> {
-		if(e.status == 'fulfilled') {
-			return e.value 
-		}
-	}).flat()
 
-	console.log("return from the promise", resultsFromGoogleAPI)
+	const eventsFromAllCals: Promise<googleCalAPIType[]>[] = calIDsAndGroupNames.map(e => googleCalAPICall(e))
+
+	const resultsFromGoogleAPI: (googleCalAPIType | undefined)[] =
+		(await Promise.allSettled(eventsFromAllCals)).map(e => {
+			if (e.status == 'fulfilled') {
+				return e.value
+			}
+		}).flat().filter(e=> e !== undefined)
+
+	
 
 	type geocodeOnEvent = googleCalAPIType & {
 		lnglat: LngLatLike;
-	  };
-	
+	};
 
-	const geocodedEvents: Promise<geocodeOnEvent>[] = resultsFromGoogleAPI.map(e=> geocode(e))
-	
-	//console.log()
-	
-	const resultsFromMapBoxAPI:(geocodeOnEvent|undefined)[] = (await Promise.allSettled(geocodedEvents)).map(e=> {
-		if(e.status == 'fulfilled') {
-			return e.value 
+
+	const geocodedEvents: Promise<geocodeOnEvent>[] = resultsFromGoogleAPI.map(e => geocode(e))
+
+
+
+	const resultsFromMapBoxAPI: (geocodeOnEvent | undefined)[] = (await Promise.allSettled(geocodedEvents)).map(e => {
+		if (e.status == 'fulfilled') {
+			return e.value
 		}
 	});
-	console.log(resultsFromMapBoxAPI)
-	
-	const events:Event[] = resultsFromMapBoxAPI.map(eventParser)
 
 
-	console.log(events)
+	const events: Event[] = resultsFromMapBoxAPI.map(eventParser)
+
+
+	console.log({events})
+
 	EventModel.collection.drop();
 	EventModel.bulkSave(events.map((e) => new EventModel(e)));
 

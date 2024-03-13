@@ -28,5 +28,5 @@ export const eventParser = (eventData: geocodeOnEvent|undefined ): Event => {
 		end: new Date(end?.dateTime),
 	};
 
-	return parsedEvent as Event;
+	return parsedEvent;
 };
