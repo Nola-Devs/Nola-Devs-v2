@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Banner from './banner.svelte';
 	import { writable } from 'svelte/store';
+	//import { navigate } from 'svelte'
+	
 
 	interface BannerData {
 		title: string;
@@ -17,7 +19,7 @@
 				'Dive into engaging discussions, share your insights, and stay updated on the latest news and events. Together, we build a thriving community! Take the plunge and explore the Nola Devs Slack channel — click below!',
 			buttonText: 'Join the Conversation',
 			onButtonClick: () => {
-				console.log('Join the Conversation');
+				window.open("https://join.slack.com/t/nola/shared_invite/zt-256vzyuvo-1KC88G~MLCT8KCgw4QL7zg", "_blank");
 			},
 			buttonIcon: 'slackIcon',
 		},
