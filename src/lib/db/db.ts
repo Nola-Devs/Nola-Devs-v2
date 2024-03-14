@@ -2,6 +2,15 @@ import { connect } from 'mongoose';
 import { MONGO_URL, DB_NAME } from '$env/static/private';
 
 // setting up the connection to the DB
-export const start_db = async () => {
-	return await connect(MONGO_URL + DB_NAME).then(() => console.log('connected'));
+export const connectDB = async () => {
+    const dbUri = `${MONGO_URL}${DB_NAME}`;
+    try {
+        await connect(dbUri);
+        console.log('Database connected successfully');
+    } catch (error) {
+        console.error('Database connection failed:', error);
+        process.exit(1);
+    }
 };
+
+export default connectDB;

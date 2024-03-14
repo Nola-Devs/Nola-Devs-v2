@@ -1,10 +1,10 @@
 import { CRON_SECRET } from '$env/static/private';
+import connectDB from '$lib/db/db';
 import EventModel from '$lib/db/events.js';
-import { GroupModel } from '$lib/db/groups';
+import GroupModel from '$lib/db/groups';
 import { eventParser } from '$lib/utils/event-parser.js';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
 import { geocode } from '$lib/utils/geocode.js';
-import { start_db } from '$lib/db/db';
 import type { Event, Group, googleCalAPIType } from '$types';
 import type { RequestHandler } from './$types';
 import type { LngLatLike } from 'mapbox-gl';
@@ -15,6 +15,7 @@ export const GET: RequestHandler = async ({ request }) => {
 		return new Response('You Shall Not Pass!', { status: 401 });
 	}
 
+	await connectDB();
 	const calIDsAndGroupNames: Group[] = await GroupModel.find({}).select(['-_id', 'group', 'calID'])
 
 	

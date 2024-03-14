@@ -6,6 +6,14 @@
 	export let event: Event;
 
 	const { group, summary, start, end, location } = event;
+
+	const formatDate = (date: Date) => {
+		return date.toISOString().slice(0, 10);
+	};
+
+	const formatTime = (date: Date) => {
+		return date.toLocaleTimeString('en-US', { timeStyle: 'short' });
+	};
 </script>
 
 <Card padding="none" class="bg-primary-100 dark:bg-primary-800">
@@ -27,14 +35,10 @@
 		</P>
 
 		<P class="font-extralight text-sm">
-			{start.date.slice(0, -6)}
+			{formatDate(start)} {formatTime(start)}
 		</P>
 		<P class="font-extralight  text-sm">
-			{#if start.time}
-				{start.time}
-			{:else}
-				{end.date}
-			{/if}
+			to {formatDate(end)} {formatTime(end)}
 		</P>
 	</div>
 </Card>
