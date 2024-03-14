@@ -27,7 +27,7 @@ export const GET: RequestHandler = async ({ request }) => {
 			if (e.status == 'fulfilled') {
 				return e.value
 			}
-		}).flat().filter(e=> e !== undefined)
+		}).flat().filter(e=> e!==undefined)
 
 	
 
@@ -36,7 +36,11 @@ export const GET: RequestHandler = async ({ request }) => {
 	};
 
 
-	const geocodedEvents: Promise<geocodeOnEvent>[] = resultsFromGoogleAPI.map(e => geocode(e))
+	const geocodedEvents: (Promise<geocodeOnEvent>|undefined)[] = resultsFromGoogleAPI.map(e => {
+		if(e !== undefined){
+			return geocode(e)
+		} 
+	})
 
 
 
