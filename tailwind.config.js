@@ -7,6 +7,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				'cute': 'Cute Font, sans-serif',
+			},
 			colors: {
 				primary: {
 					50: '#edebfe',
@@ -18,7 +21,9 @@ export default {
 					600: '#9333ea',
 					700: '#7e22ce',
 					800: '#6b21a8',
-					900: '#24072F'
+					900: '#24072F',
+					dark: '#0E0015',
+					light: '#F6F5FF'
 				}
 			}
 		}
