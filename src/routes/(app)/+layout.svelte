@@ -13,7 +13,7 @@
 		iconName: groupIconsMap[groupName] || null
 	}));
 
-	const getGroupPath = (groupName: string) => `/groups/${encodeURIComponent(groupName)}`;
+	const getGroupPath = (groupName: string) => `/groups/${encodeURIComponent(groupName.replace(/ /g, '-'))}`;
 </script>
 
 <div class="flex min-h-screen">
