@@ -16,7 +16,7 @@ interface Event {
 	calLink: string;
 	description: string ;
 	location: string;
-	lnglat: [Number, Number];
+	lnglat: [number, number];
 	start:Date;
 	end: Date
 }

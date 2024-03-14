@@ -32,7 +32,7 @@ export const GET: RequestHandler = async ({ request }) => {
 	
 
 	type geocodeOnEvent = googleCalAPIType & {
-		lnglat: [Number, Number];
+		lnglat: [number, number];
 	};
 
 

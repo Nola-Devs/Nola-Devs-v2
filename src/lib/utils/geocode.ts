@@ -3,7 +3,7 @@ import { PUBLIC_MAPBOX } from '$env/static/public';
 import type { googleCalAPIType } from '$types';
 
 type geocodeOnEvent = googleCalAPIType & {
-	lnglat: [Number,Number];
+	lnglat: [number,number];
 };
 
 export const geocode = async (e: googleCalAPIType): Promise<geocodeOnEvent> => {
