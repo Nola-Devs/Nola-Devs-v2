@@ -1,4 +1,4 @@
-import { SessionModel } from '$lib/db/sessions';
+import SessionModel from '$lib/db/sessions';
 import UserModel from '$lib/db/users';
 import { redirect } from '@sveltejs/kit';
 

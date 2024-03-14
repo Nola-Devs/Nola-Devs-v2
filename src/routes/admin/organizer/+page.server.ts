@@ -1,5 +1,5 @@
-import { GroupModel } from '$lib/db/groups';
-import { SessionModel } from '$lib/db/sessions';
+import GroupModel from '$lib/db/groups';
+import SessionModel from '$lib/db/sessions';
 import UserModel from '$lib/db/users';
 import type { Group, User } from '$types';
 
