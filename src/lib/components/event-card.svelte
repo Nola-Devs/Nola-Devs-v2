@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Map from './map.svelte';
-	import { Card, Heading, P, A, Img } from 'flowbite-svelte';
 	import type { Event } from '$types';
 
 	export let event: Event;
@@ -8,37 +6,37 @@
 	const { group, summary, start, end, location } = event;
 
 	const formatDate = (date: Date) => {
-		return date.toISOString().slice(0, 10);
-	};
+    return date.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
-	const formatTime = (date: Date) => {
-		return date.toLocaleTimeString('en-US', { timeStyle: 'short' });
-	};
+  const startFormatted = formatDate(new Date(start));
+  const endFormatted = formatDate(new Date(end));
 </script>
 
-<Card padding="none" class="bg-primary-100 dark:bg-primary-800">
-	<div class="w-full h-full p-3 grid grid-rows-4">
-		<Heading tag="h4" customSize="text-2xl" class="font-extrabold">
-			{summary}
-		</Heading>
-		<Heading tag="h5" customSize="lg" class="font-bold">
-			{group}
-		</Heading>
-		<P class="font-extralight text-sm">
-			{#if /^(http|https):\/\/[^ "]+$/.test(location)}
-				<A href="{location}">Virtual</A>
-			{:else}
-				<P>
-					{location.split(',')[0]}
-				</P>
-			{/if}
-		</P>
-
-		<P class="font-extralight text-sm">
-			{formatDate(start)} {formatTime(start)}
-		</P>
-		<P class="font-extralight  text-sm">
-			to {formatDate(end)} {formatTime(end)}
-		</P>
+<article>
+	<div class="rounded-lg bg-[#E8E8E8] shadow-sm p-4 space-x-3 max-h-[200px] h-full">
+		<span>Today</span>
+		<span>Weekly</span>
 	</div>
-</Card>
+	<div>
+		<h3>{summary}</h3>
+		<p>{group}</p>
+		<p>{startFormatted} • {endFormatted}</p>
+
+		{#if /^(http|https):\/\/[^ "]+$/.test(location)}
+			<a href="{location}">Virtual</a>
+		{:else}
+			<p>
+				{location.split(',')[0]}
+			</p>
+		{/if}
+	</div>
+</article>
+
