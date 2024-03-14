@@ -12,7 +12,7 @@
 	import EventList from '$lib/components/event-list.svelte';
 </script>
 
-<div class="w-full flex flex-col gap-6 h-full">
+<div class="w-full flex flex-col gap-6 h-full overflow-y-auto no-scrollbar">
 	<!-- Alert -->
 	<CustomAlert
 		type="{AlertType.Update}"
