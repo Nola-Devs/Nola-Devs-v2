@@ -1,15 +1,13 @@
 <script lang="ts">
 	import Banner from './banner.svelte';
 	import { writable } from 'svelte/store';
-    import type { SvelteComponent } from 'svelte';
-	import SlackIcon from '$lib/assets/icons/slackIcon.svelte';
 
 	interface BannerData {
 		title: string;
 		description: string;
 		buttonText: string;
 		onButtonClick: () => void;
-		buttonIcon?: typeof SvelteComponent | null;
+		buttonIcon?: string | undefined;
 	}
 
 	let banners: BannerData[] = [
@@ -21,7 +19,7 @@
 			onButtonClick: () => {
 				console.log('Join the Conversation');
 			},
-			buttonIcon: SlackIcon as typeof SvelteComponent,
+			buttonIcon: 'slackIcon',
 		},
 	];
 
