@@ -5,10 +5,9 @@
 		"links": {
 			"twitter": "https://twitter.com/dgaspard",
 			"linkedin": "https://www.linkedin.com/in/dustin-gaspard",
-			"website": "http://www.diamonddata.com/",
-			"email": "dgaspard@gmail.com"
+			"website": "http://www.diamonddata.com/"
 		},
-		"email": "test@email.com",
+		"email": "dgaspard@gmail.com",
 		"group": "Agile Nola",
 		"role": "organizer",
 		"password": "123456789"
@@ -20,7 +19,7 @@
 			"linkedin": "https://www.linkedin.com/in/garett-majoue/",
 			"website": "http://www.geocent.com/Pages/Default.aspx"
 		},
-		"email": "test@email.com",
+		"email": "garret@email.com",
 		"group": "Agile Nola",
 		"role": "organizer",
 		"password": "123456789"
@@ -30,10 +29,9 @@
 		"pfp": "benjamin_eckel.webp",
 		"links": {
 			"github": "https://github.com/bhelx",
-			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
-			"email": "bhelx@simst.im"
+			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/"
 		},
-		"email": "test@email.com",
+		"email": "bhelx@simst.im",
 		"group": "Below C Level",
 		"role": "organizer",
 		"password": "123456789"
@@ -44,10 +42,9 @@
 		"links": {
 			"github": "https://github.com/wwkeyboard",
 			"linkedin": "https://www.linkedin.com/in/aaronoralee/",
-			"website": "http://aaronosaur.us/",
-			"email": "wwkeyboard@gmail.com"
+			"website": "http://aaronosaur.us/"
 		},
-		"email": "test@email.com",
+		"email": "wwkeyboard@gmail.com",
 		"group": "Below C Level",
 		"role": "organizer",
 		"password": "123456789"
@@ -59,7 +56,7 @@
 			"website": "http://thesmilingdba.blogspot.com/",
 			"Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
 		},
-		"email": "test@email.com",
+		"email": "thomeas@email.com",
 		"group": "BR SQL Server UG",
 		"role": "organizer",
 		"password": "123456789"
@@ -73,7 +70,7 @@
 			"website": "https://www.colin-williams.dev/",
 			"email": "colin.williams.dev@gmail.com"
 		},
-		"email": "test@email.com",
+		"email": "colin.williams.dev@gmail.com",
 		"group": "FrontEnd Party",
 		"role": "organizer",
 		"password": "123456789"
@@ -84,10 +81,9 @@
 		"links": {
 			"github": "https://github.com/codingMustache",
 			"linkedin": "https://github.com/codingMustache",
-			"website": "https://codingmustache.dev",
-			"email": "contact@codingmustache.dev"
+			"website": "https://codingmustache.dev"
 		},
-		"email": "test@email.com",
+		"email": "frontendparty@codingmustache.dev",
 		"group": "FrontEnd Party",
 		"role": "organizer",
 		"password": "123456789"
@@ -100,7 +96,7 @@
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
 			"email": "bhelx@simst.im"
 		},
-		"email": "test@email.com",
+		"email": "bhelx@simst.im",
 		"group": "Hack Night",
 		"role": "organizer",
 		"password": "123456789"
@@ -111,7 +107,7 @@
 		"links": {
 			"Discord": "152092896164708352"
 		},
-		"email": "test@email.com",
+		"email": "calder@email.com",
 		"group": "NOLA Game Dev",
 		"role": "organizer",
 		"password": "123456789"
@@ -123,7 +119,7 @@
 			"linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
 			"website": "http://parallaxvisions.com/"
 		},
-		"email": "test@email.com",
+		"email": "curtis@email.com",
 		"group": "NOLA Game Dev",
 		"role": "organizer",
 		"password": "123456789"
@@ -134,59 +130,78 @@
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
 		},
-		"email": "test@email.com",
+		"email": "chris@email.com",
 		"group": "NOLA Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "David Whelen",
-		"pfp": "david_whelen.webp",
+		"pfp": "",
 		"links": {
 			"twitter": "https://twitter.com/WhelenDavid",
-			"linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/",
-			"email": "dwhelen@teksystems.com"
+			"linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/"
 		},
-		"email": "test@email.com",
+		"email": "dwhelen@teksystems.com",
 		"group": "NOLA Sec",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Lucia Berliner",
-		"pfp": "lucia_berliner.webp",
+		"pfp": "",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/luciaberliner/",
 			"email": "lucia.berliner@gmail.com"
 		},
-		"email": "test@email.com",
+		"email": "lucia.berliner@gmail.com",
+		"group": "Womxn in Tech",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
+		"name": "Manuela VanDerWerken",
+		"pfp": "",
+		"links": {
+			"linkedin": "https://www.linkedin.com/in/manuelavanderwerken/"
+		},
+		"email": "manualrovanderwerken@icloud.com",
 		"group": "Womxn in Tech",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Brook Davis",
-		"pfp": "brook_davis.webp",
+		"pfp": "",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/brookbissinger/",
 			"twitter": "https://twitter.com/brook5280",
-			"website": "https://electricalSales.com",
-			"email": "brook5280@gmail.com"
+			"website": "https://electricalSales.com"
 		},
-		"email": "test@email.com",
+		"email": "brook5280@gmail.com",
 		"group": "Work in Tech",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Evie Poitevent Sanders",
-		"pfp": "evie_poitevent_sanders.webp",
+		"pfp": "",
 		"links": {
-			"linkedin": "https://www.linkedin.com/in/eviepoitevent/",
-			"email": "epoitevent@gnoinc.org"
+			"linkedin": "https://www.linkedin.com/in/eviepoitevent/"
 		},
-		"email": "test@email.com",
+		"email": "epoitevent@gnoinc.org",
 		"group": "StrartUp EcoSystem",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
+		"name": "Sabrina Short",
+		"pfp": "",
+		"links": {
+			"linkedin": "https://www.linkedin.com/in/sabrinanshort"
+		},
+		"email": "sabrina@nolavateblack.com",
+		"group": "NOLAvate Black",
 		"role": "organizer",
 		"password": "123456789"
 	}

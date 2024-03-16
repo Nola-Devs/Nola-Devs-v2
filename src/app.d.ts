@@ -53,6 +53,7 @@ interface Group {
 	about: string;
 	calID: string;
 	links: groupLinks;
+	icon: string | undefined;
 }
 
 
