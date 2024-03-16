@@ -17,6 +17,10 @@ const groupSchema = new Schema<Group>({
 	links: {
 		type: Object,
 		required: false
+	},
+	icon:{
+		type: String,
+		required: false
 	}
 });
 
