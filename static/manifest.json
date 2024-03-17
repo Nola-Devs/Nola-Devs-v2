@@ -20,7 +20,12 @@
         {
             "src": "favicons/favicon-16x16.png",
             "sizes": "16x16",
-            "type": "image/png",
+            "type": "image/png"
+        },
+        {
+            "src": "favicons/safari-pinned-tab.svg",
+            "sizes": "16x16",
+            "type": "image/svg",
             "purpose": "maskable"
         },
         {
@@ -32,7 +37,12 @@
             "src": "favicons/mstile-150x150.png",
             "sizes": "150x150",
             "type": "image/png"
-        }
+        },
+        {
+            "src": "favicons/favicon.ico",
+            "type": "image/x-icon",
+            "sizes": "48x48"
+          }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
