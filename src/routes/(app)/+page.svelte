@@ -16,9 +16,9 @@
 	<!-- Alert -->
 	<CustomAlert
 		type="{AlertType.Update}"
-		message="We've updated our site, let us know how we're doing by filling a short survey"
+		message="We've updated our site, let us know how we're doing by filling a short"
 		link="/survey"
-		linkText="here"
+		linkText="survey"
 	/>
 	<!-- Nav -->
 	<Nav />
