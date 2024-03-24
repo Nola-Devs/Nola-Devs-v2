@@ -1,6 +1,6 @@
 import { CAL } from '$env/static/private';
-import type { Group } from '$lib/types/Group';
-import type { googleCalAPIType } from '$types';
+import type { Group } from '$lib/types/group.d.ts';
+import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
 
 export const googleCalAPICall = async (groupDetails: Group): Promise<googleCalAPIType[]> => {
 	// This is the amount of days from today for API
