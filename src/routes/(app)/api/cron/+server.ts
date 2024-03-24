@@ -5,7 +5,7 @@ import GroupModel from '$lib/db/groups';
 import { eventParser } from '$lib/utils/event-parser';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal';
 import { geocode } from '$lib/utils/geocode';
-import type { Group } from '$lib/types/Group';
+import type { Group } from '$lib/types/group.d.ts';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ request }) => {
@@ -31,7 +31,6 @@ export const GET: RequestHandler = async ({ request }) => {
 		await EventModel.collection.drop();
 		 // Insert the new events
 		 await EventModel.insertMany(parsedEvents);
-
 		 
 		return new Response(JSON.stringify({ message: 'Events updated successfully' }), {
 			status: 200
