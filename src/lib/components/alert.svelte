@@ -39,12 +39,12 @@
 	}
 </script>
 
-<Alert class="{`${colorClass} text-sm`}" dismissable transition="{fly}" params="{{ x: 200 }}">
+<Alert class="{`${colorClass} text-sm max-sm:p-2.5`}" dismissable transition="{fly}" params="{{ x: 200 }}">
 	<div
 		slot="icon"
-		class="w-6 h-6 inline-flex items-center justify-center rounded-full bg-gray-200 text-gray-900"
+		class="w-10 h-5 sm:w-6 sm:h-6 inline-flex items-center justify-center rounded-full bg-gray-200 text-gray-900"
 	>
-		<Icon name="alertIcon" size="{18}" viewBox="0 0 18 18" />
+		<Icon name="alertIcon" className="w-3 h-3 sm:w-[18px] sm:h-[18px]" viewBox="0 0 18 18" />
 	</div>
 	{@html message}
 	{#if link && linkText}
