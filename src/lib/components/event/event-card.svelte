@@ -44,6 +44,7 @@
 </script>
 
 <a
+	data-sveltekit-reload
 	href="/group/{groupSlug}/events/{eventSlug}"
 	class="flex px-4 py-2 justify-between items-center group"
 >
