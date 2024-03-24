@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-	import { Alert } from 'flowbite-svelte';
+	import { Alert, P } from 'flowbite-svelte';
 	import Icon from './icon/index.svelte';
 	import { fly } from 'svelte/transition';
 	export let type: AlertType = AlertType.Update;
@@ -51,10 +51,12 @@
 	>
 		<Icon name="alertIcon" className="w-3 h-3 sm:w-[18px] sm:h-[18px]" viewBox="0 0 18 18" />
 	</div>
-	{@html message}
-	{#if link && linkText}
-		<a href="{link}" class="{`font-semibold underline text-[#0B84FE] ${hoverTextColorClass}`}">
-			{linkText}
-		</a>
-	{/if}
+	<P
+		>{message}
+		{#if link && linkText}
+			<a href="{link}" class="{`font-semibold underline text-[#0B84FE] ${hoverTextColorClass}`}">
+				{linkText}
+			</a>
+		{/if}
+	</P>
 </Alert>
