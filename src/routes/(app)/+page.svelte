@@ -1,9 +1,8 @@
 <script lang="ts">
-	import type { Event } from '$lib/types/Event';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	let events: Partial<Event[]> = data.events;
+	let events = data.events;
 
 	import Banner from '$lib/components/banner.svelte';
 	import EventList from '$lib/components/event-list.svelte';
@@ -18,5 +17,5 @@
 		linkIcon="slackIcon"
 		bannerClass="bg-homeBanner text-white"
 	/>
-		<EventList {events} />
+	<EventList {events} />
 </div>
