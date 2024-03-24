@@ -24,6 +24,7 @@
 			{#each data.groups as { name, slug }}
 				<li class="hover:bg-purple-700 rounded-lg group transition-colors">
 					<a
+						data-sveltekit-reload
 						href="{getGroupPath(slug)}"
 						class="inline-flex items-center justify-start gap-3 py-2 px-4 text-base font-medium leading-[24px] group-hover:text-white text-gray-900 dark:text-white"
 						aria-label="{`Group ${name}`}"
