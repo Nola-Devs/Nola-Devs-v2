@@ -1,7 +1,6 @@
 import { PUBLIC_MAPBOX } from '$env/static/public';
 import type { LngLatLike } from 'mapbox-gl';
-
-import type { googleCalAPIType } from '$types';
+import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
 
 type geocodeOnEvent = googleCalAPIType & {
 	lnglat: LngLatLike;
