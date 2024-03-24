@@ -36,7 +36,7 @@ export const geocode = async (eventData: googleCalAPIType | undefined): Promise<
 		return {
 			...eventData,
 			lnglat: [-90.071533, 29.951065], // Fallback coordinates
-			kind: 'calendar#event' 
+			kind: 'calendar#event'
 		} as geocodeOnEvent;
 	}
 };

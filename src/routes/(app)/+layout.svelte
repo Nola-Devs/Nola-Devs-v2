@@ -13,7 +13,7 @@
 	<Sidebar {data} />
 	<main class="flex flex-1 w-full px-4 sm:px-8 3xl:px-0 md:overflow-hidden">
 		<div class="max-w-[85rem] mx-auto 3xl:px-10 flex flex-col gap-6 flex-1">
-			<Nav {data}/>
+			<Nav {data} />
 			<CustomAlert
 				type="{AlertType.Update}"
 				message="We've updated our site, let us know how we're doing by filling a short survey"

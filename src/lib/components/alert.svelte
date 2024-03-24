@@ -39,7 +39,12 @@
 	}
 </script>
 
-<Alert class="{`${colorClass} text-sm max-sm:p-2.5`}" dismissable transition="{fly}" params="{{ x: 200 }}">
+<Alert
+	class="{`${colorClass} text-sm max-sm:p-2.5`}"
+	dismissable
+	transition="{fly}"
+	params="{{ x: 200 }}"
+>
 	<div
 		slot="icon"
 		class="w-10 h-5 sm:w-6 sm:h-6 inline-flex items-center justify-center rounded-full bg-gray-200 text-gray-900"

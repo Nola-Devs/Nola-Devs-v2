@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		}
 
 		// Fetch related events using the group's slug
-		const events: Event[]  = await EventModel.find({ groupSlug: slug }).select('-_id -__v').lean();
+		const events: Event[] = await EventModel.find({ groupSlug: slug }).select('-_id -__v').lean();
 
 		return { group, events };
 	} catch (error) {

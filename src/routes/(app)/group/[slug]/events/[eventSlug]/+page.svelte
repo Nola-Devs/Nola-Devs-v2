@@ -71,7 +71,6 @@
 				<h3 class="font-semibold text-lg border-b border-violet-200 pb-4">Event Description</h3>
 				<p class="text-base leading-6 dark:text-violet-200">
 					{@html description || 'No description available'}
-		
 				</p>
 			</section>
 		</article>
