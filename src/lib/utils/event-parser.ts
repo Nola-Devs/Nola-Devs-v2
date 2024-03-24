@@ -1,6 +1,6 @@
 import slugify from 'slugify';
-import type { googleCalAPIType } from '$types';
-import type { Event } from '$lib/types/Event';
+import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
+import type { Event } from '$lib/types/event.d.ts';
 import type { LngLatLike } from 'mapbox-gl';
 
 type geocodeOnEvent = googleCalAPIType & {
@@ -16,10 +16,8 @@ const convertToLngLat = (lnglat?: LngLatLike): [number, number] => {
 	) {
 		return lnglat as [number, number];
 	} else if (lnglat && 'lng' in lnglat && 'lat' in lnglat) {
-		// Handle object format { lng: number, lat: number }
 		return [lnglat.lng, lnglat.lat];
 	}
-	// Default or error handling if lnglat is not as expected
 	return [0, 0];
 };
 
@@ -50,7 +48,7 @@ export const eventParser = (eventData: geocodeOnEvent | undefined): Partial<Even
 	const eventSlug = slugify(`${summary}-${dateStringForSlug}`, {
 		lower: true,
 		strict: true, // Removes characters that are not url-friendly
-		remove: /[*+~.()'"!:@]/g // Additional characters removal including dot
+		remove: /[*+~.()'"!:@]/g 
 	});
 
 	const groupSlug = slugify(group, {
