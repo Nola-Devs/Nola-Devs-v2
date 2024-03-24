@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from 'mongoose';
-import type { Event } from '$lib/types/Event';
+import type { Event } from '$lib/types/event.d.ts';
 
 const eventSchema = new Schema<Event>({
 	group: {

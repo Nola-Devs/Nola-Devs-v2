@@ -1,6 +1,6 @@
 import slugify from 'slugify';
 import mongoose, { model, Schema } from 'mongoose';
-import type { Group } from '$lib/types/Group';
+import type { Group } from '$lib/types/group.d.ts';
 
 const groupSchema = new Schema<Group>({
 	group: {
@@ -25,6 +25,10 @@ const groupSchema = new Schema<Group>({
 	links: {
 		type: Map,
 		of: String
+	},
+	icon: {
+		type: String,
+		required: false
 	}
 });
 
