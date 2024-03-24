@@ -1,13 +1,12 @@
 import { CRON_SECRET } from '$env/static/private';
 import connectDB from '$lib/db/db';
-import EventModel from '$lib/db/events.js';
+import EventModel from '$lib/db/events';
 import GroupModel from '$lib/db/groups';
-import { eventParser } from '$lib/utils/event-parser.js';
-import { googleCalAPICall } from '$lib/utils/google-cal-api-cal.js';
-import { geocode } from '$lib/utils/geocode.js';
-import type { Event, Group, googleCalAPIType } from '$types';
+import { eventParser } from '$lib/utils/event-parser';
+import { googleCalAPICall } from '$lib/utils/google-cal-api-cal';
+import { geocode } from '$lib/utils/geocode';
+import type { Group } from '$lib/types/Group';
 import type { RequestHandler } from './$types';
-import type { LngLatLike } from 'mapbox-gl';
 
 export const GET: RequestHandler = async ({ request }) => {
 	const authHeader = request.headers.get('authorization');
@@ -16,48 +15,29 @@ export const GET: RequestHandler = async ({ request }) => {
 	}
 
 	await connectDB();
-	const calIDsAndGroupNames: Group[] = await GroupModel.find({}).select(['-_id', 'group', 'calID'])
 
-	
+	// Fetch groups and their calendar IDs
+	const groups = await GroupModel.find({}, 'group calID _id').lean();
 
-	const eventsFromAllCals: Promise<googleCalAPIType[]>[] = calIDsAndGroupNames.map(e => googleCalAPICall(e))
-
-	const resultsFromGoogleAPI: (googleCalAPIType | undefined)[] =
-		(await Promise.allSettled(eventsFromAllCals)).map(e => {
-			if (e.status == 'fulfilled') {
-				return e.value
-			}
-		}).flat().filter(e=> e!==undefined)
-
-	
-
-	type geocodeOnEvent = googleCalAPIType & {
-		lnglat: [number, number];
-	};
-
-
-	const geocodedEvents: (Promise<geocodeOnEvent>|undefined)[] = resultsFromGoogleAPI.map(e => {
-		if(e !== undefined){
-			return geocode(e)
-		} 
-	})
-
-
-
-	const resultsFromMapBoxAPI: (geocodeOnEvent | undefined)[] = (await Promise.allSettled(geocodedEvents)).map(e => {
-		if (e.status == 'fulfilled') {
-			return e.value
-		}
+	const fetchedEventsPromises = groups.map(async (group) => {
+		const events = await googleCalAPICall(group as unknown as Group); 
+		return Promise.all(events.map((event) => geocode(event)));
 	});
 
+	try {
+		const fetchedAndGeocodedEvents = (await Promise.all(fetchedEventsPromises)).flat();
+		const parsedEvents = fetchedAndGeocodedEvents.map(eventParser);
 
-	const events: Event[] = resultsFromMapBoxAPI.map(eventParser)
+		await EventModel.collection.drop();
+		 // Insert the new events
+		 await EventModel.insertMany(parsedEvents);
 
-
-	
-
-	EventModel.collection.drop();
-	EventModel.bulkSave(events.map((e) => new EventModel(e)));
-
-	return new Response(JSON.stringify("yes"), { status: 200 });
+		 
+		return new Response(JSON.stringify({ message: 'Events updated successfully' }), {
+			status: 200
+		});
+	} catch (error) {
+		console.error('Failed to update events:', error);
+		return new Response(JSON.stringify({ error: 'Failed to update events' }), { status: 500 });
+	}
 };
