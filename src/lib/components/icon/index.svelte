@@ -24,6 +24,7 @@
 		fill="none"
 		aria-hidden="{ariaHidden}"
 	>
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html pathData}
 	</svg>
 {/if}
