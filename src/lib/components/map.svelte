@@ -1,17 +1,18 @@
 <script lang="ts">
 	import './mapbox-gl.css';
-	import { Map, Marker, type LngLatLike } from 'mapbox-gl';
+	import { Map, Marker, type LngLatLike, type Map as MapType } from 'mapbox-gl';
 	import { onMount, onDestroy } from 'svelte';
+	import { PUBLIC_MAPBOX } from '$env/static/public';
 	export let location: LngLatLike;
-	let map: any;
-	let mapContainer: any;
-	let zoom: any;
+
+	let map: MapType;
+	let mapContainer: HTMLElement | string;
+	let zoom: number;
 
 	zoom = 17;
 
 	const mapRender = async () => {
-		const key =
-			'pk.eyJ1IjoiY29kaW5nbXVzdGFjaGUiLCJhIjoiY2x0MHdla2xrMTJsZTJqbWN6ajVjaWpubSJ9.LkJ1K0P4rDOh4zXbYJrB8w';
+		const key = PUBLIC_MAPBOX;
 
 		map = new Map({
 			container: mapContainer,
