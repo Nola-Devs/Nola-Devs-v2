@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IconParser from './icon-parser.svelte';
 	import { P, A, Heading, Button } from 'flowbite-svelte';
-	import type { Group } from '$types';
+	import type { Group } from '$lib/types/group.d.ts';
 
 	import { CalendarPlusSolid } from 'flowbite-svelte-icons';
 
