@@ -1,47 +1,45 @@
 <script lang="ts">
-	import {
-		Sidebar,
-		SidebarWrapper,
-		SidebarGroup,
-		DarkMode,
-		SidebarItem,
-		Heading
-	} from 'flowbite-svelte';
+	import Icon from '$lib/components/icon/index.svelte';
+	import { groupIconsMap } from '$lib/components/icon/icons';
+	import { NavBrand } from 'flowbite-svelte';
 
-	export let groups: string[];
+	export let data: { groups: { name: string; slug: string }[] };
+
+	const getGroupPath = (slug: string) => `/group/${slug}`;
 </script>
 
-<Sidebar class="w-64">
-	<SidebarWrapper divClass="ml-2 ">
-		<SidebarGroup ulClass="mt-16 ">
-			<Heading tag="h2" customSize="text-lg">Groups</Heading>
+<aside
+	class="hidden lg:flex p-8 flex-col gap-12 w-full max-w-72 border-r border-[#EEE] dark:border-[#111827]"
+>
+	<NavBrand
+		href="/"
+		class="inline-flex items-center  font-cute text-5xl leading-10 text-gray-900 dark:text-violet-100"
+	>
+		N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
+	</NavBrand>
 
-			{#each groups as group}
-				<SidebarItem
-					class="text-xs p-1 ml-3 w-44"
-					label="{group}"
-					href="{'/group/' + group.replace(/ /g, '-')}"
-				/>
+	<div class="w-full space-y-4">
+		<h2 class="font-semibold leading-7 text-lg text-violet-500">Community Groups</h2>
+		<ul class="list-none p-0 space-y-1.5">
+			{#each data.groups as { name, slug }}
+				<li class="hover:bg-purple-700 rounded-lg group transition-colors">
+					<a
+						data-sveltekit-reload
+						href="{getGroupPath(slug)}"
+						class="inline-flex items-center justify-start gap-3 py-2 px-4 text-base font-medium leading-[24px] group-hover:text-white text-gray-900 dark:text-white"
+						aria-label="{`Group ${name}`}"
+					>
+						{#if groupIconsMap[slug]}
+							<Icon
+								name="{groupIconsMap[slug]}"
+								size="{24}"
+								className="text-gray-500 dark:text-violet-300 group-hover:text-white"
+							/>
+						{/if}
+						<span class="text-base font-medium leading-[24px]">{name}</span>
+					</a>
+				</li>
 			{/each}
-		</SidebarGroup>
-
-		<SidebarGroup ulClass="mt-14">
-			<Heading tag="h2" customSize="text-lg">Meet The</Heading>
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Organizers" href="/" />
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Dev/Design Team" href="/" />
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Contributors" href="/contributors" />
-		</SidebarGroup>
-
-		<SidebarGroup ulClass="mt-14">
-			<Heading tag="h2" customSize="text-lg">Other Links</Heading>
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Mission Statement" href="/" />
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Sponsors" href="/" />
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Contact" href="/" />
-			<SidebarItem class="text-xs p-1 ml-3 w-44" label="Submit An Event" href="/" />
-		</SidebarGroup>
-
-		<SidebarGroup ulClass="fixed bottom-0 p-3 w-fit">
-			<DarkMode />
-		</SidebarGroup>
-	</SidebarWrapper>
-</Sidebar>
+		</ul>
+	</div>
+</aside>

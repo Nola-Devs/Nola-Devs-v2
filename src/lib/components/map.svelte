@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Map, Marker, type LngLatLike } from 'mapbox-gl';
 	import './mapbox-gl.css';
+	import { Map, Marker, type LngLatLike } from 'mapbox-gl';
 	import { onMount, onDestroy } from 'svelte';
 	export let location: LngLatLike;
 	let map: any;
@@ -26,9 +26,9 @@
 	};
 	onMount(mapRender);
 
-	// onDestroy(() => {
-	// 	map.remove();
-	// });
+	onDestroy(() => {
+		if (map) map.remove();
+	});
 </script>
 
-<div class="w-full h-full rounded-t-lg" bind:this="{mapContainer}"></div>
+<div class="w-full h-36 rounded-b-lg" bind:this="{mapContainer}"></div>

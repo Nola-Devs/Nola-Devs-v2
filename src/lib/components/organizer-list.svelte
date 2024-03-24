@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Img, P, A } from 'flowbite-svelte';
-	import type { User } from '$types';
+	import type { User } from '$lib/types/user.d.ts';
 	import IconParser from './icon-parser.svelte';
 
 	export let organizers: User[];
