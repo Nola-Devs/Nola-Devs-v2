@@ -1,4 +1,4 @@
-import groups from './data/groups.ts' assert { type: 'json' };
+import groups from './data/groups.json' assert { type: 'json' };
 import GroupModel from '$lib/db/groups';
 
 export const loadGroups = async () => {
