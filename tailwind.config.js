@@ -7,8 +7,16 @@ export default {
 	],
 	theme: {
 		extend: {
+			screens: {
+				'3xl': '2000px'
+			},
 			fontFamily: {
-				'cute': 'Cute Font, sans-serif',
+				cute: 'Cute Font, sans-serif'
+			},
+			backgroundImage: {
+				homeBanner: "url('/src/lib/assets/banner.webp')",
+				defaultBanner: "url('/src/lib/assets/default-banner.webp')"
+				
 			},
 			colors: {
 				primary: {
