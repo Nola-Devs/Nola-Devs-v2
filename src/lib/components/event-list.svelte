@@ -3,7 +3,7 @@
 	import Icon from '$lib/components/icon/index.svelte';
 	import SortingBar from './sorting-bar.svelte';
 
-	import type { Event } from '$lib/types/Event';
+	import type { Event } from '$lib/types/event.d.ts';
 	export let events: Event[];
 	interface GroupedEvents {
 		[category: string]: Event[];
@@ -46,7 +46,9 @@
 
 <section aria-labelledby="upcoming-events-heading" class="flex flex-col flex-1">
 	<header class="flex flex-col gap-3 justify-center w-full mb-4">
-		<h2 class="text-2xl md:text-3xl font-semibold leading-[27px] text-[#24072F] dark:text-violet-100">
+		<h2
+			class="text-2xl md:text-3xl font-semibold leading-[27px] text-[#24072F] dark:text-violet-100"
+		>
 			Whats going on in the city
 		</h2>
 		<div class="flex justify-between">
@@ -62,18 +64,18 @@
 	</header>
 	{#if Object.keys(groupedEvents).length > 0}
 		<div class="md:flex-1 md:overflow-y-auto">
-			 {#each Object.keys(groupedEvents) as category}
+			{#each Object.keys(groupedEvents) as category}
 				<div class="border-b border-violet-200 py-4">
 					<h3 class="text-xl font-semibold text-gray-800 dark:text-violet-100 leading-7">
 						{category}
 					</h3>
-				</div> 
-				 <div class="flex flex-col gap-4 h-72">
+				</div>
+				<div class="flex flex-col gap-4 h-72">
 					{#each groupedEvents[category] as event}
 						<EventCard {event} />
 					{/each}
 				</div>
-			 {/each}
+			{/each}
 		</div>
 	{:else}
 		<div class="text-center font-medium text-gray-500 dark:text-violet-50">

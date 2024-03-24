@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Event } from '$lib/types/Event';
+	import type { Event } from '$lib/types/event.d.ts';
 	import Icon from '$lib/components/icon/index.svelte';
 
 	export let event: Event;
@@ -43,7 +43,10 @@
 	import { groupIconsMap } from '$lib/components/icon/icons';
 </script>
 
-<a href="/group/{groupSlug}/events/{eventSlug}" class="flex px-4 py-2 justify-between items-center group">
+<a
+	href="/group/{groupSlug}/events/{eventSlug}"
+	class="flex px-4 py-2 justify-between items-center group"
+>
 	<div class="flex flex-col md:flex-row md:gap-12 w-1/2">
 		<div>
 			<div class="hidden md:block">
