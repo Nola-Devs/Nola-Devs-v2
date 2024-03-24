@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 	$: users = data.users;
-	$: userMode = users.map((e) => false);
+	$: userMode = users.map(() => false);
 	let roles = [
 		{ value: 'organizer', name: 'Organizer' },
 		{ value: 'admin', name: 'Admin' }
