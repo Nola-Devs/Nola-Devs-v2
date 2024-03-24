@@ -50,6 +50,8 @@
 			<SidebarGroup>
 				{#each data.groups as { name, slug }}
 					<SidebarItem
+						data-sveltekit-reload
+						on:click="{() => (hidden = true)}"
 						href="{getGroupPath(slug)}"
 						label="{name}"
 						class="group dark:hover:text-white hover:text-white hover:bg-purple-700 font-medium dark:hover:bg-purple-700"
