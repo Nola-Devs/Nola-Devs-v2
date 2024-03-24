@@ -1,36 +1,42 @@
-<script>
-	import { Navbar, NavLi, NavUl, Input, DarkMode } from 'flowbite-svelte';
-	import { SearchOutline } from 'flowbite-svelte-icons';
+<script lang="ts">
+	import { Navbar, NavLi, NavBrand, NavHamburger, NavUl, DarkMode } from 'flowbite-svelte';
 	import Icon from './icon/index.svelte';
+	import Breadcrumb from './breadcrumb.svelte';
+	import MobileMenu from './mobile-menu.svelte';
+	let isMobileMenuOpen = true;
+	export let data: { groups: { name: string; slug: string }[] };
 </script>
 
-<Navbar class="flex justify-between items-center !bg-transparent !px-0">
-	<div class="flex grow items-center">
-		<div class="relative max-w-[364px] w-full">
-			<div class="flex absolute inset-y-0 start-0 items-center ps-3 pointer-events-none">
-				<SearchOutline class="w-4 h-4 text-gray-500" />
-			</div>
-			<Input
-				id="search-navbar"
-				class="ps-10 bg-white border-gray-200 dark:bg-white/10 dark:border-white/10 placeholder:text-gray-500"
-				placeholder="Search Nola Devs"
-			/>
-		</div>
-	</div>
-	<NavUl>
+<Navbar fluid class="flex justify-between items-center !bg-transparent !px-0 !pt-8">
+	<Breadcrumb />
+	<NavBrand
+		href="/"
+		class="inline-flex lg:hidden items-center  font-cute text-5xl leading-10 text-gray-900 dark:text-violet-100"
+	>
+		N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
+	</NavBrand>
+	<NavHamburger
+		onClick="{() => (isMobileMenuOpen = !isMobileMenuOpen)}"
+		class="md:block lg:hidden"
+	/>
+	<NavUl ulClass="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
 		<NavLi
 			href="/about"
-			class="font-base font-medium leading-[24px] text-gray-400 dark:text-violet-100">About</NavLi
+			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
+			>About</NavLi
 		>
 		<NavLi
 			href="/contact"
-			class="font-base font-medium leading-[24px] text-gray-400 dark:text-violet-100">Contact</NavLi
+			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
+			>Contact</NavLi
 		>
-		<NavLi>
-			<DarkMode btnClass="inline-flex">
-				<Icon name="moonIcon" slot="darkIcon" size="{24}" />
-				<Icon name="sunIcon" slot="lightIcon" size="{24}" />
-			</DarkMode>
-		</NavLi>
+		<div class="h-6 bg-gray-400 w-px dark:bg-violet-100"></div>
+
+		<DarkMode btnClass="">
+			<Icon name="moonIcon" slot="darkIcon" size="{24}" />
+			<Icon name="sunIcon" slot="lightIcon" size="{24}" />
+		</DarkMode>
 	</NavUl>
 </Navbar>
+
+<MobileMenu {data} bind:hidden="{isMobileMenuOpen}" />
