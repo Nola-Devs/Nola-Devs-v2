@@ -1,254 +1,257 @@
 [
 	{
+		"group": "Below C Level",
+		"summary": "Below C Level",
+		"calLink": "https://www.google.com/calendar/event?eid=MzkzcjhjZGlwOXB0MjRxZnA3cmlpNmRxajdfMjAyNDA0MDJUMjMwMDAwWiA0YTQyNDdlMTFiMjVmZGNlNjc1YTMyZGE3MjUyZmJhMGNlNzI4ZjZhZTBlYzQ3NjE2ZjJkZTAzMzU5MmU4NWM5QGc",
+		"description": "",
+		"location": "The Shop At the CAC, 900 Camp St 3rd floor, New Orleans, LA 70130, USA",
+		"lnglat": [
+			-90.070909,
+			29.943781
+		],
+		"start": {
+			"$date": "2024-04-02T23:00:00.000Z"
+		},
+		"end": {
+			"$date": "2024-04-03T00:45:00.000Z"
+		}
+	},
+	{
+		"group": "BR SQL Server UG",
+		"summary": "SQL/.NET User Group Meeting",
+		"calLink": "https://www.google.com/calendar/event?eid=M3ZlNGp0a3R2ZHBiOXBhNWU1djhoMmtlZWFfMjAyNDA0MTBUMjIxNTAwWiBzcWxwYXNzYnJAbQ",
+		"description": "Speaker: TBD\nSponsor: TBD",
+		"location": "EBRPL - Jones Creek Regional Branch Library, 6222 Jones Creek Rd, Baton Rouge, LA 70817, USA",
+		"lnglat": [
+			-91.018694,
+			30.396538
+		],
+		"start": {
+			"$date": "2024-04-10T22:15:00.000Z"
+		},
+		"end": {
+			"$date": "2024-04-11T01:00:00.000Z"
+		}
+	},
+	{
 		"group": "Frontend Party",
-		"summary": "FrontEnd Party",
-		"calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAyMTNUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
-		"location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
-		"lnglat": [-90.071515, 29.942946],
+		"summary": "🎉Front End Party BYOBug",
+		"calLink": "https://www.google.com/calendar/event?eid=NDJobzFyMTczcDN2MHZtdHVrNWVmZDRpbjhfMjAyNDA0MDlUMjIzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
+		"description": "<p><b>THIS MONTH:</b></p><p>Nola Coders, we will now be doing <b>a single \"Feature Speaker\"</b> presenting a 5 - 15 min lightening talk with <b>\"BYOB\" (Bring Your Own Bug)</b> and some <b>round-robin pair-programming</b> for the remainder of the event. Bring anything you would love a pair of eyes on (extra points for front end). We are also going to do a bit of <b>Show N Tell</b> re: Your Developer Workflows: config and rc files, $profiles, code snippets, tools, plugins and anything you have implemented or enjoyed that optimizes your work as a dev ⚡⚡⚡</p><p></p><p><i>@ Scale New Orleans 612 Andrew Higgins Dr 2nd floor</i></p><p></p><p><u>Code of Conduct</u></p><p>When you join our events, you’re joining a community. And like any growing community, a few ground rules about expected behavior are good for everyone. All participants (organizers, attendees, sponsors, venue, etc.) must follow our Code of Conduct which can be found here:</p><p><a href=\"http://www.frontendparty.com/code-of-conduct\">http://www.frontendparty.com/code-of-conduct</a></p>",
+		"location": "Scale New Orleans, 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130, USA",
+		"lnglat": [
+			-90.071546,
+			29.94287
+		],
 		"start": {
-			"date": "Feb 13, 2024",
-			"time": "5:30 PM"
+			"$date": "2024-04-09T22:30:00.000Z"
 		},
 		"end": {
-			"date": "Feb 13, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-04-10T00:30:00.000Z"
 		}
 	},
 	{
 		"group": "Hack Night",
 		"summary": "Hack Night",
-		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMjRUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAzMjBUMDAwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
 		"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
 		"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-		"lnglat": [-90.069152, 29.94072],
+		"lnglat": [
+			-90.069389,
+			29.940574
+		],
 		"start": {
-			"date": "Jan 23, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-03-20T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Jan 23, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-03-20T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Hack Night",
 		"summary": "Hack Night",
-		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAxMzFUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAzMjdUMDAwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
 		"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
 		"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-		"lnglat": [-90.069152, 29.94072],
+		"lnglat": [
+			-90.069389,
+			29.940574
+		],
 		"start": {
-			"date": "Jan 30, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-03-27T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Jan 30, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-03-27T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Hack Night",
 		"summary": "Hack Night",
-		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAyMDdUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDA0MDNUMDAwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
 		"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
 		"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-		"lnglat": [-90.069152, 29.94072],
+		"lnglat": [
+			-90.069389,
+			29.940574
+		],
 		"start": {
-			"date": "Feb 6, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-04-03T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Feb 6, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-04-03T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Hack Night",
 		"summary": "Hack Night",
-		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAyMTRUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDA0MTBUMDAwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
 		"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
 		"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-		"lnglat": [-90.069152, 29.94072],
+		"lnglat": [
+			-90.069389,
+			29.940574
+		],
 		"start": {
-			"date": "Feb 13, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-04-10T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Feb 13, 2024",
-			"time": "9:00 PM"
-		}
-	},
-	{
-		"group": "Hack Night",
-		"summary": "Hack Night",
-		"calLink": "https://www.google.com/calendar/event?eid=XzY5Mmo2aDloNjRvajBiOW44OTEzZ2I5azhrcGpjYmEyOGtyamViYTQ4a3M0OGMxaTZvcmppYzFpNjRfMjAyNDAyMjFUMDEwMDAwWiBkMmNlMTNkNTYwOGFlYmUwZmY3ZDNiY2VjNWVhNTgxZmVhOGNhMjRkNjZlNWY2NWMxMTJlOGNjM2RhYmRiZWMxQGc",
-		"description": "We typically convene on the street. If it's raining we may be inside or in the courtyard. We'll do our best to notice and greet you, but there is no hack night uniform. So if you see a group of nerds arguing in the street just ask \"Is this Hack Night?\" and they will greet you and introduce you to people.People show up between 7 and 8. There is no actual start time.",
-		"location": "The Rusty Nail, 1100 Constance St, New Orleans, LA 70130, USA",
-		"lnglat": [-90.069152, 29.94072],
-		"start": {
-			"date": "Feb 20, 2024",
-			"time": "7:00 PM"
-		},
-		"end": {
-			"date": "Feb 20, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-04-10T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Nola Game Dev",
 		"summary": "Hack Night ",
-		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMjRUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAzMjBUMDAwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
 		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
 		"location": "http://discord.gg/A2Ngs4w",
-		"lnglat": [-90.071533, 29.951065],
+		"lnglat": [
+			-90.071533,
+			29.951065
+		],
 		"start": {
-			"date": "Jan 23, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-03-20T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Jan 23, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-03-20T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Nola Game Dev",
 		"summary": "SHO' & TELL",
-		"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAxMjVUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAzMjFUMDAzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
 		"description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
 		"location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
-		"lnglat": [-90.045878, 29.967806],
+		"lnglat": [
+			-90.045878,
+			29.967806
+		],
 		"start": {
-			"date": "Jan 24, 2024",
-			"time": "7:30 PM"
+			"$date": "2024-03-21T00:30:00.000Z"
 		},
 		"end": {
-			"date": "Jan 24, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-03-21T02:00:00.000Z"
 		}
 	},
 	{
 		"group": "Nola Game Dev",
-		"summary": "NOGD Global Game Jam",
-		"calLink": "https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc4NTIzMmRobjYxMGsyZDFtOGNxazhlOWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNnAyazhlOWk2Y3FqOGRpMjc0cTM4aDFrNnNzamVkOW84Y28zOGRxMzg4cDMwaDFnNmtzMCBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-		"location": "NOGD DIscord",
-		"lnglat": [-122.401944, 37.764296],
-		"start": {
-			"date": "Jan 26, 2024",
-			"time": "5:00 PM"
-		},
-		"end": {
-			"date": "Jan 28, 2024",
-			"time": "4:30 PM"
-		}
-	},
-	{
-		"group": "Nola Game Dev",
-		"summary": "Hack Night ",
-		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAxMzFUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-		"location": "http://discord.gg/A2Ngs4w",
-		"lnglat": [-90.071533, 29.951065],
-		"start": {
-			"date": "Jan 30, 2024",
-			"time": "7:00 PM"
-		},
-		"end": {
-			"date": "Jan 30, 2024",
-			"time": "9:00 PM"
-		}
-	},
-	{
-		"group": "Nola Game Dev",
-		"summary": "Hack Night ",
-		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAyMDdUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-		"location": "http://discord.gg/A2Ngs4w",
-		"lnglat": [-90.071533, 29.951065],
-		"start": {
-			"date": "Feb 6, 2024",
-			"time": "7:00 PM"
-		},
-		"end": {
-			"date": "Feb 6, 2024",
-			"time": "9:00 PM"
-		}
-	},
-	{
-		"group": "Nola Game Dev",
-		"summary": "SHO' & TELL",
-		"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDAyMDhUMDEzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-		"description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
-		"location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
-		"lnglat": [-90.045878, 29.967806],
-		"start": {
-			"date": "Feb 7, 2024",
-			"time": "7:30 PM"
-		},
-		"end": {
-			"date": "Feb 7, 2024",
-			"time": "9:00 PM"
-		}
-	},
-	{
-		"group": "Nola Game Dev",
-		"summary": "Hack Night ",
-		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAyMTRUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
-		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
-		"location": "http://discord.gg/A2Ngs4w",
-		"lnglat": [-90.071533, 29.951065],
-		"start": {
-			"date": "Feb 13, 2024",
-			"time": "7:00 PM"
-		},
-		"end": {
-			"date": "Feb 13, 2024",
-			"time": "9:00 PM"
-		}
-	},
-	{
-		"group": "Nola Game Dev",
-		"summary": "NOLA Game Dev Meetup",
-		"calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyNDAyMTZUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"summary": "Education Summit - NOLA Game Dev Meetup",
+		"calLink": "https://www.google.com/calendar/event?eid=XzZjcjQ4Y2hvNzBzM2ViOWs2MHFqMGI5azhkMmpnYjlvNzEwamdiYTI2dDI0MmUyNjZsMmsyaDFuOG9fMjAyNDAzMjJUMDAwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"description": "",
 		"location": "The Shop At The CAC",
-		"lnglat": [-90.070909, 29.943781],
+		"lnglat": [
+			-90.070909,
+			29.943781
+		],
 		"start": {
-			"date": "Feb 15, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-03-22T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Feb 15, 2024",
-			"time": "9:30 PM"
+			"$date": "2024-03-22T02:30:00.000Z"
 		}
 	},
 	{
 		"group": "Nola Game Dev",
 		"summary": "Hack Night ",
-		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAyMjFUMDEwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDAzMjdUMDAwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
 		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
 		"location": "http://discord.gg/A2Ngs4w",
-		"lnglat": [-90.071533, 29.951065],
+		"lnglat": [
+			-90.071533,
+			29.951065
+		],
 		"start": {
-			"date": "Feb 20, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-03-27T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Feb 20, 2024",
-			"time": "9:00 PM"
+			"$date": "2024-03-27T02:00:00.000Z"
 		}
 	},
 	{
-		"group": "Frontend Party",
-		"summary": "FrontEnd Party",
-		"calLink": "https://www.google.com/calendar/event?eid=N2Z0Nm9yZDAxZzVjN3MyMjhzN2c1MWpjM2hfMjAyNDAyMTNUMjMzMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
-		"location": "Scale New Orleans, 612 Andrew Higgins Blvd, New Orleans, LA 70130, USA",
-		"lnglat": [-90.071515, 29.942946],
+		"group": "Nola Game Dev",
+		"summary": "Hack Night ",
+		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDA0MDNUMDAwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+		"location": "http://discord.gg/A2Ngs4w",
+		"lnglat": [
+			-90.071533,
+			29.951065
+		],
 		"start": {
-			"date": "Feb 13, 2024",
-			"time": "5:30 PM"
+			"$date": "2024-04-03T00:00:00.000Z"
 		},
 		"end": {
-			"date": "Feb 13, 2024",
-			"time": "7:00 PM"
+			"$date": "2024-04-03T02:00:00.000Z"
+		}
+	},
+	{
+		"group": "Nola Game Dev",
+		"summary": "SHO' & TELL",
+		"calLink": "https://www.google.com/calendar/event?eid=NHMyazUwNDd1bG9yZDhzc3N1OHZ1N3Y2NDJfMjAyNDA0MDRUMDAzMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"description": "It is time to Show and Tell!, hosted tonight by @thechamber69 grab the hdmi cable and show off what you've been up to! What you're working on isn't digital? WHO CARES, come by and show it off anyways!<br /><br /><br /><br />Starts at 7:30pm, hosted at Sea Cave, 3000 St. Claude.",
+		"location": "Sea Cave, 3000 St Claude Ave, New Orleans, LA 70117, USA",
+		"lnglat": [
+			-90.045878,
+			29.967806
+		],
+		"start": {
+			"$date": "2024-04-04T00:30:00.000Z"
+		},
+		"end": {
+			"$date": "2024-04-04T02:00:00.000Z"
+		}
+	},
+	{
+		"group": "Nola Game Dev",
+		"summary": "Hack Night ",
+		"calLink": "https://www.google.com/calendar/event?eid=dW02Y3E3c3RpMG5saTIxYWs0NzJlbnJoMW9fMjAyNDA0MTBUMDAwMDAwWiBjXzgxN3BzcDVlbWxnaDh2Z2c0MzJ1ZHJ0djIwQGc",
+		"description": "Join the fun on discord&nbsp;<br><a href=\"http://discord.gg/A2Ngs4w\" id=\"ow3188\" __is_owner=\"true\">http://discord.gg/A2Ngs4w</a>",
+		"location": "http://discord.gg/A2Ngs4w",
+		"lnglat": [
+			-90.071533,
+			29.951065
+		],
+		"start": {
+			"$date": "2024-04-10T00:00:00.000Z"
+		},
+		"end": {
+			"$date": "2024-04-10T02:00:00.000Z"
+		}
+	},
+	{
+		"group": "NOLA Womxn in Tech",
+		"summary": "NOLA Womxn in Tech Meetup",
+		"calLink": "https://www.google.com/calendar/event?eid=XzhwMzM0ZGhvODkwazhiYTE2MHJrY2I5azZvcWs2YmExOGNvNDhiYTU2b3JqNmdpMjhvcTM4aDFqODggYjg1ZTE4Y2JjNWEyZDFiMzk0OGMwZmU5ZTZmMjdkZTQwOWRhMTllYTU3MWJkZWEwMGQzZTI0NTZmYzA2N2YyZUBn",
+		"description": "Join the New Orleans WomXn in Tech group—an inspiring community of talented ladies. We come together monthly to foster connections, engage in tech discussions, and much more. Elevate your network and knowledge—be part of something amazing! We meet the third Tuesday of each month. Register here: https://docs.google.com/forms/d/1-iAfM9E80aK_IOLR4cgTDYro8KJtXLs1S-SLdfCoqD4/edit",
+		"location": "Ecology Beer Creative\n1401 Baronne St, New Orleans, LA  70113, United States",
+		"lnglat": [
+			-90.083852,
+			29.93567
+		],
+		"start": {
+			"$date": "2024-03-19T22:30:00.000Z"
+		},
+		"end": {
+			"$date": "2024-03-20T00:30:00.000Z"
 		}
 	}
 ]
