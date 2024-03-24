@@ -20,7 +20,7 @@
 		bannerClass="bg-defaultBanner text-white"
 	/>
 
-	<section class="p-6 flex flex-col gap-8">
+	<section class="py-6 md:p-6 flex flex-col gap-8">
 		<article class="flex flex-col md:flex-row gap-12 w-full">
 			<section class="max-w-4xl min-h-36 text-[#24072F] dark:text-violet-100 space-y-3">
 				<h3 class="font-semibold text-lg border-b border-violet-200 pb-4">About</h3>
