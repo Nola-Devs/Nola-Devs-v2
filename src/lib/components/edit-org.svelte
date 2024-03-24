@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Label, Input, Button } from 'flowbite-svelte';
 
-	export let group: any;
+	import type { Group } from '$lib/types/group.d.ts';
+
+	export let group: Group;
 
 	let links = [''];
 	const addLink = () => {
