@@ -40,6 +40,7 @@
 		"prettier": "^3.0.0",
 		"prettier-plugin-svelte": "^3.0.0",
 		"sanitize-html": "^2.11.0",
+		"slugify": "^1.6.6",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.6.0",
 		"svelte-loading-spinners": "^0.3.4",
@@ -53,7 +54,6 @@
 	"type": "module",
 	"dependencies": {
 		"bcrypt": "^5.1.1",
-		"slugify": "^1.6.6",
 		"tailwind-merge": "^2.2.2"
 	}
 }
