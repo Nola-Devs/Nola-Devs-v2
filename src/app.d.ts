@@ -1,8 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 
-import type { LngLatLike } from 'mapbox-gl';
-
 declare global {
 	namespace App {
 		// interface Error {}
@@ -12,32 +10,9 @@ declare global {
 	}
 }
 
-interface Event {
-	group: string ;
-	summary: string  ;
-	calLink: string;
-	description: string ;
-	location: string;
-	lnglat: LngLatLike;
-	start:Date;
-	end: Date
-}
-
-type groupLinkKey =
-	| 'linkedin'
-	| 'facebook'
-	| 'twitter'
-	| 'twitch'
-	| 'eventbrite'
-	| 'meetup'
-	| 'youtube'
-	| 'linktr'
-	| 'email'
-	| 'website';
 
 type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
 
-type groupLinks = { [key: groupLinkKey]: string };
 type userLinks = { [key: userLinkKey]: string };
 
 type User = {
@@ -50,12 +25,6 @@ type User = {
 	group: string;
 };
 
-interface Group {
-	group: string;
-	about: string;
-	calID: string;
-	links: groupLinks;
-}
 
 
 type googleCalAPIType = {
@@ -230,4 +199,4 @@ type googleCalAPIType = {
 	group: string
   }
 
-export { Event, Group, User, googleCalAPIType };
+export { User, googleCalAPIType };
