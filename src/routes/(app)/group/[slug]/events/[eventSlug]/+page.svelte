@@ -50,6 +50,8 @@
 	import EventBanner from '$lib/components/banners/event-banner.svelte';
 	import Icon from '$lib/components/icon/index.svelte';
 	import Map from '$lib/components/map.svelte';
+
+	import { Sanitizer } from '$lib/utils/sanitize.ts';
 </script>
 
 <div class="flex flex-col md:flex-row md:gap-8 flex-1">
@@ -70,7 +72,8 @@
 			<section class="max-w-4xl min-h-36 text-[#24072F] dark:text-violet-100 space-y-3">
 				<h3 class="font-semibold text-lg border-b border-violet-200 pb-4">Event Description</h3>
 				<p class="text-base leading-6 dark:text-violet-200">
-					{@html description || 'No description available'}
+					<!-- eslint-disable svelte/no-at-html-tags -->
+					{@html Sanitizer(description) || 'No description available'}
 				</p>
 			</section>
 		</article>
