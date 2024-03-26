@@ -1,4 +1,9 @@
 <script lang="ts">
+	import EventBanner from '$lib/components/banners/event-banner.svelte';
+	import Icon from '$lib/components/icon/index.svelte';
+	import Map from '$lib/components/map.svelte';
+
+	import { Sanitizer } from '$lib/utils/sanitize';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -46,12 +51,6 @@
 	const googleMapsCoordinatesUrl = lnglat
 		? `https://maps.apple.com/?q=${lnglat[1]},${lnglat[0]}`
 		: '';
-
-	import EventBanner from '$lib/components/banners/event-banner.svelte';
-	import Icon from '$lib/components/icon/index.svelte';
-	import Map from '$lib/components/map.svelte';
-
-	import { Sanitizer } from '$lib/utils/sanitize.ts';
 </script>
 
 <div class="flex flex-col md:flex-row md:gap-8 flex-1">
