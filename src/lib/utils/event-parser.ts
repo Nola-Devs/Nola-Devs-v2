@@ -48,7 +48,7 @@ export const eventParser = (eventData: geocodeOnEvent | undefined): Partial<Even
 	const eventSlug = slugify(`${summary}-${dateStringForSlug}`, {
 		lower: true,
 		strict: true, // Removes characters that are not url-friendly
-		remove: /[*+~.()'"!:@]/g 
+		remove: /[*+~.()'"!:@]/g
 	});
 
 	const groupSlug = slugify(group, {

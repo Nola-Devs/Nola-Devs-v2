@@ -16,7 +16,6 @@ export default {
 			backgroundImage: {
 				homeBanner: "url('/src/lib/assets/banner.webp')",
 				defaultBanner: "url('/src/lib/assets/default-banner.webp')"
-				
 			},
 			colors: {
 				primary: {

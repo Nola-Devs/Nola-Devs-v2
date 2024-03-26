@@ -44,7 +44,7 @@
 		homeClass="text-gray-400 text-base font-medium inline-flex items-center dark:text-violet-100 hover:text-gray-600 dark:hover:text-violet-300"
 		>Home</BreadcrumbItem
 	>
-	{#each pathSegments as segment, index (segment.href)}
+	{#each pathSegments as segment}
 		{#if segment.href}
 			<BreadcrumbItem href="{segment.href}">{segment.name}</BreadcrumbItem>
 		{:else}

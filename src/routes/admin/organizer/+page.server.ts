@@ -1,7 +1,8 @@
 import GroupModel from '$lib/db/groups';
 import SessionModel from '$lib/db/sessions';
 import UserModel from '$lib/db/users';
-import type { Group, User } from '$types';
+import type { Group } from '$lib/types/group.d.ts';
+import type { User } from '$lib/types/user.d.ts';
 
 import { redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';

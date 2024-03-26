@@ -2,7 +2,7 @@ type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
 
 type userLinks = { [key: userLinkKey]: string };
 
-export interface User  {
+export interface User {
 	name: string;
 	pfp: string;
 	links: userLinks;
@@ -10,4 +10,4 @@ export interface User  {
 	password: string;
 	role: string;
 	group: string;
-};
+}

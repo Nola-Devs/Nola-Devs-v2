@@ -16,14 +16,15 @@
 
 {#if pathData}
 	<svg
-		class={className}
+		class="{className}"
 		xmlns="http://www.w3.org/2000/svg"
-		width={size}
-		height={size}
-		viewBox={viewBox}
+		width="{size}"
+		height="{size}"
+		{viewBox}
 		fill="none"
-		aria-hidden={ariaHidden}
+		aria-hidden="{ariaHidden}"
 	>
+		<!-- eslint-disable svelte/no-at-html-tags -->
 		{@html pathData}
 	</svg>
 {/if}

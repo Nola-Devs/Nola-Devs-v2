@@ -1,6 +1,6 @@
 import connectDB from '$lib/db/db';
 
 export async function handle({ event, resolve }) {
-    await connectDB(); 
-    return resolve(event);
+	await connectDB();
+	return resolve(event);
 }

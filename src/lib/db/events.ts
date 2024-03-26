@@ -4,26 +4,26 @@ import type { Event } from '$lib/types/event.d.ts';
 const eventSchema = new Schema<Event>({
 	group: {
 		type: String,
-		required: true,
+		required: true
 	},
 	summary: {
 		type: String,
-		required: true,
+		required: true
 	},
 	calLink: String,
 	description: String,
 	location: String,
 	lnglat: {
 		type: [Number],
-		index: '2dsphere',
+		index: '2dsphere'
 	},
 	start: {
 		type: Date,
-		required: true,
+		required: true
 	},
 	end: Date,
 	eventSlug: { type: String, required: true, unique: true },
-	groupSlug: { type: String, required: true },  
+	groupSlug: { type: String, required: true }
 });
 
 const EventModel = mongoose.models.Event || model('Event', eventSchema);

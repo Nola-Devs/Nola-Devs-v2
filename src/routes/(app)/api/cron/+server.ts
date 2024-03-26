@@ -20,7 +20,7 @@ export const GET: RequestHandler = async ({ request }) => {
 	const groups = await GroupModel.find({}, 'group calID _id').lean();
 
 	const fetchedEventsPromises = groups.map(async (group) => {
-		const events = await googleCalAPICall(group as unknown as Group); 
+		const events = await googleCalAPICall(group as unknown as Group);
 		return Promise.all(events.map((event) => geocode(event)));
 	});
 
@@ -29,9 +29,9 @@ export const GET: RequestHandler = async ({ request }) => {
 		const parsedEvents = fetchedAndGeocodedEvents.map(eventParser);
 
 		await EventModel.collection.drop();
-		 // Insert the new events
-		 await EventModel.insertMany(parsedEvents);
-		 
+		// Insert the new events
+		await EventModel.insertMany(parsedEvents);
+
 		return new Response(JSON.stringify({ message: 'Events updated successfully' }), {
 			status: 200
 		});

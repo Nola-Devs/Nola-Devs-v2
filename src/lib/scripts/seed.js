@@ -8,15 +8,15 @@ import { loadUsers } from './addUsers.js';
 const runSeedScripts = async () => {
 	await connectDB(); // Use the centralized connection function
 	try {
-        await loadGroups();
-        await loadEvents();
-        await loadUsers();
-        console.log('Data loaded successfully');
-    } catch (error) {
-        console.error('Failed to load data:', error);
-    } finally {
-        process.exit(); // Ensure to disconnect or exit the process
-    }
+		await loadGroups();
+		await loadEvents();
+		await loadUsers();
+		console.log('Data loaded successfully');
+	} catch (error) {
+		console.error('Failed to load data:', error);
+	} finally {
+		process.exit(); // Ensure to disconnect or exit the process
+	}
 };
 
 runSeedScripts();

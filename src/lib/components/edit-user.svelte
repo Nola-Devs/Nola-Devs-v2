@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Button, Label, Input, Helper, Fileupload } from 'flowbite-svelte';
+	import type { User } from '$lib/types/user.d.ts';
 
-	export let user: any;
+	export let user: User;
 	let links = [''];
 	const addLink = () => {
 		links = [...links, ''];
