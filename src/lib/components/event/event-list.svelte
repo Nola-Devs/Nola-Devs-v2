@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon from '$lib/components/icon/index.svelte';
-	import SortingBar from '../sorting-bar.svelte';
+	import SortingBar from '$lib/components/sorting-bar.svelte';
+	import EventSubmission from '$lib/components/event-submission.svelte';
 
 	import type { Event } from '$lib/types/event.d.ts';
 	import EventGrouping from './event-grouping.svelte';
@@ -16,13 +16,7 @@
 		</h2>
 		<div class="flex justify-between">
 			<SortingBar />
-			<button
-				class="inline-flex gap-2.5 px-3 py-1 text-violet-500 border border-violet-500 rounded-lg hover:text-white hover:bg-violet-500 transition-colors text-sm font-medium items-center"
-				on:click="{() => console.log('Add an Event')}"
-			>
-				Add an Event
-				<Icon name="plusIcon" size="{20}" />
-			</button>
+			<EventSubmission />
 		</div>
 	</header>
 	<EventGrouping {events} />
