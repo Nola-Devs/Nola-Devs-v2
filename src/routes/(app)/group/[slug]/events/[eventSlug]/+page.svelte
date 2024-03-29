@@ -2,6 +2,7 @@
 	import EventBanner from '$lib/components/banners/event-banner.svelte';
 	import Icon from '$lib/components/icon/index.svelte';
 	import Map from '$lib/components/map.svelte';
+	import type { Event } from '$lib/types/event';
 
 	import { Sanitizer } from '$lib/utils/sanitize';
 	import type { PageData } from './$types';
@@ -51,6 +52,7 @@
 	const googleMapsCoordinatesUrl = lnglat
 		? `https://maps.apple.com/?q=${lnglat[1]},${lnglat[0]}`
 		: '';
+
 </script>
 
 <div class="flex flex-col md:flex-row md:gap-8 flex-1">
@@ -65,7 +67,8 @@
 			linkText="Website"
 			linkHref="{'#'}"
 			linkIcon="linkIcon"
-			bannerClass="bg-defaultBanner text-white"
+			bannerClass="bg-defaultBanner text-white",
+			event= {event}
 		/>
 		<article class="flex flex-col md:flex-row gap-12 py-6 md:px-6 w-full">
 			<section class="max-w-4xl min-h-36 text-[#24072F] dark:text-violet-100 space-y-3">

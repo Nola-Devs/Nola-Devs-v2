@@ -9,8 +9,16 @@
 	export let ctaText = '';
 	export let ctaIcon: string | undefined = undefined;
 	export let bannerClass = '';
+	export let event : Event;
+
+	import type { Event } from '$lib/types/event.d.ts';
 	import { twMerge } from 'tailwind-merge';
 	import Icon from '../icon/index.svelte';
+	import { ics } from '$lib/utils/ics-download';
+	
+	function downloadICS(event: Event): any {
+		ics(event);
+	}
 </script>
 
 <div
@@ -24,8 +32,9 @@
 		<p class="leading-[24px] sm:text-sm md:text-base dark:text-violet-100">{subtitle}</p>
 		<p class="leading-[24px] sm:text-sm md:text-base dark:text-violet-300">{description}</p>
 		<div class="flex gap-8 mt-3">
-			<a
-				href="{ctaLink}"
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<a on:click={downloadICS(event)}
+				href="javascript:void(0)"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="gap-2.5 text-blue-500 hover:underline font-medium text-sm inline-flex items-center transition-colors"
