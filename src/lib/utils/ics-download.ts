@@ -3,9 +3,7 @@ import type { Event } from '$lib/types/event.d.ts'
 
 export const ics  = (event : Event) => {
 
-    if(window.confirm("Do you wish to continue download?"))
-        downloadICS(event)
-	
+    downloadICS(event)
 };
 
 async function downloadICS(event :Event){
@@ -49,7 +47,6 @@ async function downloadICS(event :Event){
    
     URL.revokeObjectURL(url);
 
-    
     }
 
     function convertToDateTimeArray(date : Date){
