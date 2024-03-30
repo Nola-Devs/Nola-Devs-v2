@@ -6,6 +6,8 @@
 
 	import Banner from '$lib/components/banners/home-banner.svelte';
 	import EventList from '$lib/components/event/event-list.svelte';
+
+	// TODO: Setup Banner object with schema and pass into DB
 </script>
 
 <div class="flex flex-col gap-6 flex-1">
