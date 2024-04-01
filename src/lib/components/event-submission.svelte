@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/icon/index.svelte';
-	import { Heading, Input, Label, Button, Textarea, Modal } from 'flowbite-svelte';
+	import { P, A, Heading, Input, Label, Button, Textarea, Modal } from 'flowbite-svelte';
 
 	let formModal = false;
 </script>
@@ -9,13 +9,13 @@
 	class="inline-flex gap-2.5 px-3 py-1 text-violet-500 border border-violet-500 rounded-lg hover:text-white hover:bg-violet-500 transition-colors text-sm font-medium items-center"
 	on:click="{() => (formModal = true)}"
 >
-	Suggest an Event
+	Submit an Event
 	<Icon name="plusIcon" size="{20}" />
 </button>
 
-<Modal title="Event Suggestion" bind:open="{formModal}" size="md" outsideclose autoclose>
+<Modal title="Event Submission" bind:open="{formModal}" size="md" outsideclose autoclose>
 	<form>
-		<Heading class="my-2" tag="h4">Submitter Info</Heading>
+		<Heading class="my-2" tag="h4">Organizer Information</Heading>
 		<div class="grid gap-6 mb-6 md:grid-cols-3">
 			<div>
 				<Label for="organizer_name" class="mb-2">Your Name</Label>
@@ -30,7 +30,7 @@
 				<Input type="text" id="organization" placeholder="NOLA Devs" required />
 			</div>
 		</div>
-		<Heading class="my-2" tag="h4">Event Info</Heading>
+		<Heading class="my-2" tag="h4">Event Information</Heading>
 		<div class="grid gap-6 mb-6 md:grid-cols-3">
 			<div>
 				<Label for="event_name" class="mb-2">Event Name</Label>
@@ -74,6 +74,16 @@
 				required
 			/>
 		</div>
+
+		<P class="text-gray-500 dark:text-gray-400 my-2">
+			Your event will be manually reviewed by an administrator before being added to the site.
+		</P>
+
+		<P class="text-gray-500 dark:text-gray-400 my-2"
+			>If you host frequent events, please <A href="/contact">contact us</A> so that we can set you up
+			an organization and give you easier access.
+		</P>
+
 		<Button class="mt-4" type="submit">Submit event</Button>
 	</form>
 </Modal>
