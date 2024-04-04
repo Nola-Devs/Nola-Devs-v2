@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Event } from '$lib/types/event';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	let { group, events } = data;
@@ -51,7 +52,7 @@
 				</div>
 			</aside>
 		</article>
-
+		<!-- TODO: Fix the handling of events -->
 		<EventGrouping {events} />
 	</section>
 </div>
