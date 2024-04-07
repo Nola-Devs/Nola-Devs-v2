@@ -1,39 +1,37 @@
-import { createEvent, DateArray} from 'ics';
+import { createEvent } from 'ics';
 import type { Event } from '$lib/types/event.d.ts'
 
-export const ics  = (event : Event) => {
+export const ics = (event: Event) => {
 
     downloadICS(event)
 };
 
-async function downloadICS(event :Event){
+async function downloadICS(event: Event) {
     const { summary, description, start, end, location, lnglat, group, calLink } = event;
-    const startDate : DateArray = convertToDateTimeArray(start);
-    const endDate : DateArray = convertToDateTimeArray(end);
-    const geo = {lat:lnglat[0],lon:lnglat[1]};
+    const startDate: any = start.getTime()
+    const endDate: any = end.getTime()
+    const geo = { lat: lnglat[1], lon: lnglat[0] };
     let filename = summary + '.ics'
 
     const icsEvent = {
-    	start: startDate,
-    	end: endDate,
+        start: startDate,
+        end: endDate,
         title: summary,
-    	description: description,
-    	location: location,
-        geo:geo
+        description: `${group} /n ${description}`,
+        location: location,
+        geo: geo
     }
 
-   
-    let file : File;
-   
+    let file: File;
 
-      file = await new Promise((resolve, reject) => {
+    file = await new Promise((resolve, reject) => {
         createEvent(icsEvent
-        ,(error, value) => {
-            if (error) {
-            reject(error)
-            }
-            resolve(new File([value], filename, { type: 'text/calendar' }))
-        })
+            , (error, value) => {
+                if (error) {
+                    reject(error)
+                }
+                resolve(new File([value], filename, { type: 'text/calendar' }))
+            })
     })
 
     const url = URL.createObjectURL(file);
@@ -44,21 +42,7 @@ async function downloadICS(event :Event){
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
-   
+
     URL.revokeObjectURL(url);
-
-    }
-
-    function convertToDateTimeArray(date : Date){
-        const year = date.getFullYear();
-        const day = date.getDay();
-        const month = date.getMonth();
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-
-        const convertDateToArray : DateArray = [year,day,month,hours,minutes];
-
-        return convertDateToArray;
-    }
-
+}
 
