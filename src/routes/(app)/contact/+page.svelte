@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Heading, P, Input, Label, A, Button, List, Li } from 'flowbite-svelte';
+	// TODO pass card as component
 </script>
 
 <div class="flex flex-col gap-6 flex-1">
