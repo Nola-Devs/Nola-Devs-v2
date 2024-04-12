@@ -1,19 +1,15 @@
 import EventModel from '$lib/db/events';
 import type { PageServerLoad } from './$types';
 import type { Event } from '$lib/types/event.d.ts';
+import { eventService } from '$lib/services/eventService';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const { eventSlug } = params;
+	//const { eventSlug } = params;
 
-	try {
-		const event: Event | null = await EventModel.findOne({ eventSlug }).select('-_id -__v').lean();
-		if (!event) {
-			throw new Error('Event not found');
-		}
+	try{
 
-		// Perform any additional data transformations or fetches here
+		return new eventService().getEventsByEventSlug(params)
 
-		return { event };
 	} catch (error) {
 		console.error('Failed to fetch event:', error);
 		return {
