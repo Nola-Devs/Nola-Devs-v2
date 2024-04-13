@@ -4,12 +4,8 @@ import type { Event } from '$lib/types/event.d.ts';
 import { eventService } from '$lib/services/eventService';
 
 export const load: PageServerLoad = async ({ params }) => {
-	//const { eventSlug } = params;
-
-	try{
-
-		return new eventService().getEventsByEventSlug(params)
-
+	try {
+		return eventService.getEventsByEventSlug(params);
 	} catch (error) {
 		console.error('Failed to fetch event:', error);
 		return {

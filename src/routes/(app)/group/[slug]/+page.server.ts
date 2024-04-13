@@ -6,6 +6,5 @@ import type { PageServerLoad } from './$types';
 import { groupService } from '$lib/services/groupService';
 
 export const load: PageServerLoad = async ({ params }) => {
-	
-	 return new groupService().getEventsByGroup(params);
+	 return groupService.getEventsByGroup(params);
 };

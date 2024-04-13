@@ -1,42 +1,40 @@
-import type { PageServerLoad } from './$types';
 import EventModel from '$lib/db/events';
 import type { Event } from '$lib/types/event.d.ts';
-import { error } from '@sveltejs/kit';
 
-export class eventService  {
+/**
+ * @param
+ */
+export const eventService = {
+	getEvents: async () => {
+		const events = (await EventModel.find({})
+			.sort({ dateTime: 'asc' })
+			.select(['-_id', '-__v'])
+			.lean()
+			.limit(4)) as unknown as Event[];
+		return { events };
+	},
 
-  async getEvents() {
+	getEventsByGroup: async (slug: String): Promise<Event[]> => {
+		const events: Event[] | null = await EventModel.find({ groupSlug: slug })
+			.select('-_id -__v')
+			.lean();
 
-         const events = (await EventModel.find({})
-		.sort({ dateTime: 'asc' })
-		.select(['-_id', '-__v'])
-		.lean()
-		.limit(4)) as unknown as Event[];
-	return {events};
-   };
+		if (!events) {
+			throw new Error('events not found');
+		}
 
-   async getEventsByGroup(slug) :  Promise<Event[]>{
+		return events;
+	},
 
-    const events: Event[] | null = await EventModel.find({ groupSlug: slug }).select('-_id -__v').lean();
+	getEventsByEventSlug: async (params) => {
+		const { eventSlug } = params;
+		const event: Event | null = await EventModel.findOne({ eventSlug }).select('-_id -__v').lean();
 
-    if (!events) {
-    throw new Error('events not found');
-    }
-    
-    return events;
-   }
+		if (!event) {
+			throw new Error('Event not found');
+		}
 
-   async getEventsByEventSlug(params) {
-
-    const { eventSlug } = params;
-    const event: Event | null = await EventModel.findOne({ eventSlug }).select('-_id -__v').lean();
-
-    if (!event) {
-        throw new Error('Event not found');
-    }
-
-    // Perform any additional data transformations or fetches here
-    return {event};	
-}
-}
-
+		// Perform any additional data transformations or fetches here
+		return { event };
+	}
+};
