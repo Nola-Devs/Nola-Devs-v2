@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Tabs, TabItem, Button, Modal, Select, P } from 'flowbite-svelte';
 	import EditUser from '$lib/components/edit-user.svelte';
 	import EditOrg from '$lib/components/edit-org.svelte';
@@ -50,4 +50,4 @@
 	<TabItem title="Group">
 		<EditOrg {group} />
 	</TabItem>
-</Tabs>
+</Tabs> -->

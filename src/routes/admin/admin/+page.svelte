@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Button, Card, Input, Label, Select } from 'flowbite-svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
@@ -66,4 +66,4 @@
 			{/if}
 		</Card>
 	{/each}
-</div>
+</div> -->
