@@ -1,5 +1,4 @@
 import type { PageServerLoad } from './$types';
-import EventModel from '$lib/db/events';
 import type { Event } from '$lib/types/event.d.ts';
 
 export const load: PageServerLoad = async () => {
@@ -10,4 +9,13 @@ export const load: PageServerLoad = async () => {
 		.limit(4)) as unknown as Event[];
 
 	return { events };
+	try {
+		const events: Event[] = await eventController.getEvents();
+
+		return {
+			events
+		};
+	} catch {
+		throw error(404, 'Group Not Found');
+	}
 };

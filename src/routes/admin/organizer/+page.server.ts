@@ -1,6 +1,6 @@
-import GroupModel from '$lib/db/groups';
-import SessionModel from '$lib/db/sessions';
-import UserModel from '$lib/db/users';
+import GroupModel from '$lib/db/models/groups.model';
+import SessionModel from '$lib/db/models/sessions.model';
+import UserModel from '$lib/db/models/users.model';
 import type { Group } from '$lib/types/group.d.ts';
 import type { User } from '$lib/types/user.d.ts';
 

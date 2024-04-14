@@ -1,6 +1,6 @@
 // TODO: Add sitemap generation using DB
 import type { RequestHandler } from './$types';
-import GroupModel from '$lib/db/groups';
+import GroupModel from '$lib/db/models/groups.model';
 export const GET: RequestHandler = async () => {
 	const groups: string[] = await GroupModel.distinct('group');
 	const baseAddress = 'https://www.noladevs.org/';

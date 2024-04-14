@@ -1,5 +1,5 @@
-import SessionModel from '$lib/db/sessions';
-import UserModel from '$lib/db/users';
+import SessionModel from '$lib/db/models/sessions.model';
+import UserModel from '$lib/db/models/users.model';
 import { redirect } from '@sveltejs/kit';
 import bcrypt from 'bcrypt';
 import { randomBytes } from 'node:crypto';

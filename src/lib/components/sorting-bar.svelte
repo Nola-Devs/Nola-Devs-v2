@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
-	import { ChevronDownSolid } from 'flowbite-svelte-icons';
+	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 
 	let sortBy = 'time'; // Default sort option
 	const options = {
@@ -17,7 +17,7 @@
 				class="inline-flex items-center bg-transparent dark:bg-transparent dark:text-violet-300 dark:hover:bg-transparent text-gray-900 py-2 px-3 hover:bg-transparent focus:ring-0"
 			>
 				{label}
-				<ChevronDownSolid class="ml-2 w-2 h-2" />
+				<ChevronDownOutline class="ml-2 w-2 h-2" />
 			</Button>
 			<Dropdown class="w-48">
 				<DropdownItem>
@@ -34,7 +34,7 @@
 			class="inline-flex items-center bg-transparent dark:bg-transparent dark:text-violet-300 dark:hover:bg-transparent text-gray-900 py-2 px-3 hover:bg-transparent focus:ring-0"
 		>
 			Sort By
-			<ChevronDownSolid class="ml-2 w-2 h-2" />
+			<ChevronDownOutline class="ml-2 w-2 h-2" />
 		</Button>
 		<Dropdown class="w-48">
 			{#each Object.entries(options) as [value, label]}

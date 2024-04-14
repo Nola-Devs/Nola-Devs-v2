@@ -1,6 +1,7 @@
 [
 	{
-		"group": "Agile-Nola",
+		"group": "Agile Nola",
+		"slug": "Agile-Nola",
 		"calID": "4a4d1054b6f65221f9afffe5e9d1e42b8dba4f83bd241d48faca0cab50ee478d@group.calendar.google.com",
 		"links": {
 			"eventbrite": "https://www.eventbrite.com/o/agile-nola-59051586693",
@@ -10,7 +11,8 @@
 		"icon": "💼"
 	},
 	{
-		"group": "Below-C-Level",
+		"group": "Below C Level",
+		"slug": "Below-C-Level",
 		"calID": "4a4247e11b25fdce675a32da7252fba0ce728f6ae0ec47616f2de033592e85c9@group.calendar.google.com",
 		"links": {
 			"website": "https://belowclevel.org/",
@@ -21,6 +23,7 @@
 	},
 	{
 		"group": "BR SQL Server UG",
+		"slug": "BR-SQL-Server-UG",
 		"calID": "placeholder@group.calendar.google.com",
 		"links": {
 			"website": "https://www.brssug.org/",
@@ -32,6 +35,7 @@
 	},
 	{
 		"group": "Frontend Party",
+		"slug": "Frontend-Party",
 		"calID": "1c23d7fe14840e320ec0762245bf55cc32a6910417fcf76ca8ba2d1a308110f3@group.calendar.google.com",
 		"links": {
 			"website": "http://www.frontendparty.com/",
@@ -43,6 +47,7 @@
 	},
 	{
 		"group": "Hacknight",
+		"slug": "Hacknight",
 		"calID": "d2ce13d5608aebe0ff7d3bcec5ea581fea8ca24d66e5f65c112e8cc3dabdbec1@group.calendar.google.com",
 		"links": {
 			"meetup": "https://www.meetup.com/nolahacknight/",
@@ -53,6 +58,7 @@
 	},
 	{
 		"group": "Nola Game Dev",
+		"slug": "Nola-Game-Dev",
 		"calID": "d2ce13d5608aebe0ff7d3bcec5ea581fea8ca24d66e5f65c112e8cc3dabdbec1@group.calendar.google.com",
 		"links": {
 			"email": "contact@neworleansgamedev.com",
@@ -63,6 +69,7 @@
 	},
 	{
 		"group": "Work In Tech",
+		"slug": "Work-In-Tech",
 		"calID": "a879bdb86944017b5aa1756c6b31b3f87a55e3ffca183114c9baff3008423925@group.calendar.google.com",
 		"links": {
 			"linkedin": "https://www.linkedin.com/company/workintechnola/",
@@ -75,6 +82,7 @@
 	},
 	{
 		"group": "NOLA Sec",
+		"slug": "NOLA-Sec",
 		"calID": "7c851f32b1efaa8c73ef1fab80f4177ad3e3e630cf9ba4c989dbfe43788eebcb@group.calendar.google.com",
 		"links": {
 			"eventbrite": "https://www.eventbrite.com/o/the-cyber-security-and-technology-community-of-new-orleans-67934786843"
@@ -84,6 +92,7 @@
 	},
 	{
 		"group": "NOLA Women in Tech",
+		"slug": "NOLA-Women-in-Tech",
 		"calID": "b85e18cbc5a2d1b3948c0fe9e6f27de409da19ea571bdea00d3e2456fc067f2e@group.calendar.google.com",
 		"links": {
 			"linkedin": "https://www.linkedin.com/groups/12554672/"
@@ -93,6 +102,7 @@
 	},
 	{
 		"group": "StartUp Nola Now",
+		"slug": "StartUp Nola Now",
 		"calID": "398883a70f5e08ce0f331225accf6a4f9103dca6a2fe6e5f1f670cbc833652b0@group.calendar.google.com",
 		"links": {
 			"website": "https://startupnola.com",
@@ -106,6 +116,7 @@
 	},
 	{
 		"group": "NOLAvate Black",
+		"slug": "NOLAvate-Black",
 		"calID": "",
 		"links": {
 			"website": "http: //nolavateblack.com/"

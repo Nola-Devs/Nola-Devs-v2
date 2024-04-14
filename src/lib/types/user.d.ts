@@ -1,6 +1,8 @@
 type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
 
-type userLinks = { [key: userLinkKey]: string };
+type userLinks = {
+	link: string | null | undefined; [key: userLinkKey]: string 
+};
 
 export interface User {
 	name: string;

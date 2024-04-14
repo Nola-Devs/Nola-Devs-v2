@@ -44,7 +44,7 @@
 		? `${formattedStartDate} • ${formattedStartTime} - ${formattedEndTime}`
 		: `${formattedStartDate} • ${formattedStartTime} - ${formatDate(
 				endDateTime
-		  )} ${formattedEndTime}`;
+			)} ${formattedEndTime}`;
 
 	const [place, ...addressParts] = location.split(', ');
 	const address = addressParts.join(', ');

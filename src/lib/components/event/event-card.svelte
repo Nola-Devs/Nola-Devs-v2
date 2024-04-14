@@ -45,7 +45,7 @@
 
 <a
 	data-sveltekit-reload
-	href="/group/{groupSlug}/events/{eventSlug}"
+	href="/event/{eventSlug}"
 	class="flex px-4 py-2 justify-between items-center group"
 >
 	<div class="flex flex-col md:flex-row md:gap-12 w-1/2">
@@ -75,13 +75,13 @@
 		<div class="w-full md:w-1/2">
 			<h3 class="text-sm text-balance md:text-xl font-semibold text-[#333] dark:text-violet-100">
 				{summary}
-				<span class="inline-flex ml-2">
+				<!-- <span class="inline-flex ml-2">
 					<Icon
 						name="recurrenceIcon"
 						className="w-[16px] h-[16px] md:w-[18px] md:h-[18px]"
 						viewBox="0 0 18 18"
 					/>
-				</span>
+				</span> -->
 			</h3>
 			<p class="text-sm md:text-base font-medium text-[#4F4F4F] dark:text-violet-300">{group}</p>
 
