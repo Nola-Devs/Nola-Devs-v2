@@ -13,8 +13,8 @@
 		Youtube
 	} from 'svelte-simples';
 	export let icon: string = '';
-	export let size: number = 30;
-	export let color: string = 'black';
+	export let size: number = 18;
+	export let color: string = 'gray-400';
 	export let styles: string = '';
 </script>
 
