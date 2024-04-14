@@ -21,10 +21,9 @@
 	</header>
 	<div class="flex flex-col gap-4 overflow-y-auto snap-both">
 		{#each events as event}
-		<div class='snap-start'>
-
-			<EventCard {event} />
-		</div>
+			<div class="snap-start">
+				<EventCard {event} />
+			</div>
 		{/each}
 	</div>
 </section>

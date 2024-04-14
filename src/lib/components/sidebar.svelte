@@ -3,8 +3,7 @@
 	import { groupIconsMap } from '$lib/components/icon/icons';
 	import { NavBrand } from 'flowbite-svelte';
 
-	export let data: { groups: { name: string; slug: string; icon: string}[] };
-
+	export let data: { groups: { name: string; slug: string; icon: string }[] };
 </script>
 
 <aside
