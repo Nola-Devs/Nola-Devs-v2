@@ -20,7 +20,7 @@ const groupSchema = new Schema<Group>({
 	},
 	calID: {
 		type: String,
-		required: [true, 'Calendar ID is required']
+		required: [false, 'Calendar ID is required']
 	},
 	links: {
 		type: Map,

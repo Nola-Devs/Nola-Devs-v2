@@ -1,7 +1,7 @@
 import { CRON_SECRET } from '$env/static/private';
-import connectDB from '$lib/db/db';
-import EventModel from '$lib/db/events';
-import GroupModel from '$lib/db/groups';
+import connectDB from '$lib/db/connection';
+import EventModel from '$lib/db/models/events.model';
+import GroupModel from '$lib/db/models/groups.model';
 import { eventParser } from '$lib/utils/event-parser';
 import { googleCalAPICall } from '$lib/utils/google-cal-api-cal';
 import { geocode } from '$lib/utils/geocode';

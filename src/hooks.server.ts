@@ -1,6 +1,7 @@
-import connectDB from '$lib/db/db';
+import connectDB from '$lib/db/connection';
+import type { Handle } from '@sveltejs/kit';
 
-export async function handle({ event, resolve }) {
+export const handle: Handle = async ({ event, resolve }) => {
 	await connectDB();
 	return resolve(event);
-}
+};
