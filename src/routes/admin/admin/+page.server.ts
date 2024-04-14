@@ -1,5 +1,5 @@
-import SessionModel from '$lib/db/sessions';
-import UserModel from '$lib/db/users';
+import SessionModel from '$lib/db/models/sessions.model';
+import UserModel from '$lib/db/models/users.model';
 import { redirect } from '@sveltejs/kit';
 
 import bcrypt from 'bcrypt';
@@ -48,7 +48,7 @@ export const actions: Actions = {
 		const name = formData.get('name') as string;
 		const role = formData.get('role') as string;
 		const password = formData.get('password') as string;
-		console.log(email);
+		// console.log(email);
 		const user = await UserModel.findOneAndUpdate({ email }, { name, role });
 
 		if (password && user) {

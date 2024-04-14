@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import GroupModel from '$lib/db/groups';
+import GroupModel from '$lib/db/models/groups.model';
 export const GET: RequestHandler = async () => {
 	const groups: string[] = await GroupModel.distinct('group');
 	// TODO add EVENTS into allow
