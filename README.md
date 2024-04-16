@@ -51,12 +51,17 @@ To contribute please follow the [contributing](./CONTRIBUTING.md) guide.
 
 ## Development Environment
 
-1. Install [mongodb](https://www.mongodb.com/docs/manual/installation/) if not already installed locally.
+1. Install [mongodb v7.x.x Community Edition](https://www.mongodb.com/docs/manual/installation/) if not already installed locally.
+    1. [Mac](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/)
+        1. [Start the database](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/#run-mongodb-community-edition)
+    2. [Windows](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
+        1. [Start the database](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition-as-a-windows-service)
 2. Copy example env to get local up and running.
 
 ```sh
 cp .env.example .env.local
 ```
+**Note: On node >=17, you'll need to replace localhost with 0.0.0.0 ([src](https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017))**
 
 4. Install dependencies and start app
 
