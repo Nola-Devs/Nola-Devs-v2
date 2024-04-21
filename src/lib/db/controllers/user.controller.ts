@@ -12,5 +12,16 @@ export const userController = {
 		} catch (e) {
 			throw error(404, 'Error looking up organizers');
 		}
+	},
+	getAllOrganizers: async () => {
+		try {
+			const users: User[] = await UserModel.find({ group: { $ne: null } })
+				.select(['-_id', '-__v', '-role'])
+				.lean();
+
+			return users;
+		} catch (e) {
+			throw error(404, 'Error looking up organizers');
+		}
 	}
 };
