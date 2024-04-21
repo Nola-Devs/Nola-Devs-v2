@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		const slug = params.group;
 
 		const events: Event[] = await eventController.getEventsByGroup(slug);
-		const group: Group = await groupController.getGroup(slug);
+		const group: Group = await groupController.getGroupBySlug(slug);
 		const users = await userController.getAllUsersByGroup(group?.group);
 
 		return {
