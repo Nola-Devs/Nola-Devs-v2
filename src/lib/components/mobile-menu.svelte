@@ -15,7 +15,7 @@
 	import { groupIconsMap } from './icon/icons';
 	import Icon from './icon/index.svelte';
 	export let hidden: boolean = true;
-	export let data: { groups: { name: string; slug: string }[] };
+	export let data: { groups: { name: string; slug: string; icon: string }[] };
 
 	let transitionParams = {
 		x: -320,
@@ -48,22 +48,22 @@
 		<SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded ">
 			<h2 class="font-semibold leading-7 text-lg text-violet-500 mb-4">Community Groups</h2>
 			<SidebarGroup>
-				{#each data.groups as { name, slug }}
+				{#each data.groups as { name, slug, icon }}
 					<SidebarItem
 						data-sveltekit-reload
 						on:click="{() => (hidden = true)}"
 						href="{getGroupPath(slug)}"
-						label="{name}"
+						label="{`${icon} ${name}`}"
 						class="group dark:hover:text-white hover:text-white hover:bg-purple-700 font-medium dark:hover:bg-purple-700"
 					>
-						<svelte:fragment slot="icon">
+						<!-- <svelte:fragment slot="icon">
 							{#if groupIconsMap[slug]}
 								<Icon
 									name="{groupIconsMap[slug]}"
 									className="h-6 w-6 text-gray-500 dark:text-violet-300 group-hover:text-white"
 								/>
 							{/if}
-						</svelte:fragment>
+						</svelte:fragment> -->
 					</SidebarItem>
 				{/each}
 			</SidebarGroup>

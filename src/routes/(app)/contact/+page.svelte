@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Heading, P, Input, Label, A, Button } from 'flowbite-svelte';
+	import { Heading, P, Input, Label, A, Button, Textarea } from 'flowbite-svelte';
 	// TODO pass card as component
 </script>
 
@@ -15,15 +15,21 @@
 				></P
 			>
 		</div>
-		<form>
+		<form method="post" action="?/sendMsg" autocomplete="on">
 			<div class="flex flex-col gap-4">
 				<div>
 					<Label for="email" class="mb-2">Email address</Label>
-					<Input type="email" id="email" placeholder="john.doe@company.com" required />
+					<Input
+						class="bg-primary-100"
+						type="email"
+						id="email"
+						placeholder="john.doe@company.com"
+						required
+					/>
 				</div>
 				<div>
 					<Label for="message" class="mb-2">Message</Label>
-					<Input type="text" id="message" placeholder="Message" required />
+					<Textarea type="text" rows="5" id="message" placeholder="Message" required />
 				</div>
 			</div>
 			<Button class="mt-4" type="submit">Submit</Button>
