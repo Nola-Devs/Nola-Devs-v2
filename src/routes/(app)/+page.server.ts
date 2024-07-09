@@ -7,7 +7,9 @@ import type { Event } from '$lib/types/event.d.ts';
 
 export const load: PageServerLoad = async () => {
 	try {
-		const events: Event[] = await eventController.getEvents();
+		const events: Event[] = (await eventController.getEvents()).sort(
+			(a, b) => a.start.getTime() - b.start.getTime()
+		);
 
 		return {
 			events
