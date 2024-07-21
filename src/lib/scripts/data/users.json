@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Dustin Gaspard",
-		"pfp": "dustin_gaspard.webp",
+		"pfp": "https://media.licdn.com/dms/image/C4E03AQG_YZHb62jsww/profile-displayphoto-shrink_800_800/0/1595785104288?e=1727308800&v=beta&t=gSW6XXGnOwb8PNPnM1J0x2xuY8yj0njw9h0BhTsf4WM",
 		"links": {
 			"twitter": "https://twitter.com/dgaspard",
 			"linkedin": "https://www.linkedin.com/in/dustin-gaspard",
@@ -14,7 +14,7 @@
 	},
 	{
 		"name": "Garett Majoue",
-		"pfp": "garett_majoue.webp",
+		"pfp": "https://media.licdn.com/dms/image/C4E03AQEzavAs175b_Q/profile-displayphoto-shrink_800_800/0/1516311675296?e=1727308800&v=beta&t=eajd9vUvj6Q0MRh0oVB--DB_MkcAPgA1b5_o3Z2YxFg",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/garett-majoue/",
 			"website": "http://www.geocent.com/Pages/Default.aspx"
@@ -26,7 +26,7 @@
 	},
 	{
 		"name": "Benjamin Eckel",
-		"pfp": "benjamin_eckel.webp",
+		"pfp": "https://media.licdn.com/dms/image/C4E03AQHuAnxgPrYWAQ/profile-displayphoto-shrink_800_800/0/1583364961362?e=1727308800&v=beta&t=IpZeEe-B3zqH7OlxSAg_0oH415w2UHh354ckQm0GRec",
 		"links": {
 			"github": "https://github.com/bhelx",
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/"
@@ -38,7 +38,7 @@
 	},
 	{
 		"name": "Aaron Lee",
-		"pfp": "aaron_lee.webp",
+		"pfp": "https://media.licdn.com/dms/image/D5603AQGboIh6Fsq_CQ/profile-displayphoto-shrink_800_800/0/1691618124081?e=1727308800&v=beta&t=jBy5bydJpS5PAtjTSHelIWNonaQEBcrP7pZ1AKb0tw4",
 		"links": {
 			"github": "https://github.com/wwkeyboard",
 			"linkedin": "https://www.linkedin.com/in/aaronoralee/",
@@ -51,7 +51,7 @@
 	},
 	{
 		"name": "Thomas LeBlanc",
-		"pfp": "thomas_leblanc.webp",
+		"pfp": "https://media.licdn.com/dms/image/C5603AQHMUR3rcaaOiw/profile-displayphoto-shrink_800_800/0/1517675687435?e=1727308800&v=beta&t=orpHxTJm5txE1WjOsuvYDkot1-m4sTmhMqgyK7Wbb2k",
 		"links": {
 			"website": "http://thesmilingdba.blogspot.com/",
 			"Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
@@ -63,7 +63,7 @@
 	},
 	{
 		"name": "Colin Williams",
-		"pfp": "colin_williams.webp",
+		"pfp": "https://res.cloudinary.com/dbdyc4klu/image/upload/v1696603918/pfpmaker_11_uqkrji.png",
 		"links": {
 			"github": "https://github.com/colinwilliams91",
 			"linkedin": "https://www.linkedin.com/in/colin-williams-dev",
@@ -71,73 +71,73 @@
 			"email": "colin.williams.dev@gmail.com"
 		},
 		"email": "colin.williams.dev@gmail.com",
-		"group": "FrontEnd Party",
+		"group": "Frontend Party",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Jorge Carvajal",
-		"pfp": "jorge_carvajal.webp",
+		"pfp": "https://media.licdn.com/dms/image/D5603AQE_fzyM0PILsg/profile-displayphoto-shrink_800_800/0/1712325559572?e=1727308800&v=beta&t=RuY6iHTdKizFx3qxD2d4Q_pzxrbkZORPeZLgE18qCEI",
 		"links": {
 			"github": "https://github.com/codingMustache",
 			"linkedin": "https://github.com/codingMustache",
 			"website": "https://codingmustache.dev"
 		},
 		"email": "frontendparty@codingmustache.dev",
-		"group": "FrontEnd Party",
+		"group": "Frontend Party",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Benjamin Eckel",
-		"pfp": "benjamin_eckel.webp",
+		"pfp": "https://media.licdn.com/dms/image/C4E03AQHuAnxgPrYWAQ/profile-displayphoto-shrink_800_800/0/1583364961362?e=1727308800&v=beta&t=IpZeEe-B3zqH7OlxSAg_0oH415w2UHh354ckQm0GRec",
 		"links": {
 			"github": "https://github.com/bhelx",
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
 			"email": "bhelx@simst.im"
 		},
 		"email": "bhelx@simst.im",
-		"group": "Hack Night",
+		"group": "Hacknight",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Calder Tillet",
-		"pfp": "calder_tillet.webp",
+		"pfp": "https://media.licdn.com/dms/image/C5603AQGQb1WThvfvFQ/profile-displayphoto-shrink_800_800/0/1601423859891?e=1727308800&v=beta&t=9aWnwuG8W7yXyu8i5ANfhtWCEueH6hrZ-PdCuqP1IIk",
 		"links": {
 			"Discord": "152092896164708352"
 		},
 		"email": "calder@email.com",
-		"group": "NOLA Game Dev",
+		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Curtis Cummings",
-		"pfp": "curtis_cummings.webp",
+		"pfp": "https://media.licdn.com/dms/image/C5603AQFpeXEQO4dJTA/profile-displayphoto-shrink_800_800/0/1565811722212?e=1727308800&v=beta&t=TReDkgyElqwe9q69rz1KtbG9BVLRNbc2kpv3ZQOYXMs",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
 			"website": "http://parallaxvisions.com/"
 		},
 		"email": "curtis@email.com",
-		"group": "NOLA Game Dev",
+		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Chris Morison",
-		"pfp": "chris_morrison.webp",
+		"pfp": "https://media.licdn.com/dms/image/D5603AQGOjCQ7b6vbpA/profile-displayphoto-shrink_800_800/0/1696542107080?e=1727308800&v=beta&t=PkNEBQFLa63-zYXup1wDslM2_1t1wFGwV_vvozfkNmw",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
 		},
 		"email": "chris@email.com",
-		"group": "NOLA Game Dev",
+		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "David Whelen",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/C4E03AQE3U9V7tByogw/profile-displayphoto-shrink_800_800/0/1516901879972?e=1727308800&v=beta&t=PWok8a0dHemI6tEABuFWO778R95eV-WLdM9eVlCfMXk",
 		"links": {
 			"twitter": "https://twitter.com/WhelenDavid",
 			"linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/"
@@ -149,7 +149,7 @@
 	},
 	{
 		"name": "Lucia Berliner",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/C5603AQHDGGYP_pYqmg/profile-displayphoto-shrink_800_800/0/1630620724447?e=1727308800&v=beta&t=5btPyN4MIvDwWg90-IaEcsJrdJviBiAvCLZaaLjpTuE",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/luciaberliner/",
 			"email": "lucia.berliner@gmail.com"
@@ -161,7 +161,7 @@
 	},
 	{
 		"name": "Manuela VanDerWerken",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/D5635AQEpqJp1Y7VuAw/profile-framedphoto-shrink_800_800/0/1712353100210?e=1722132000&v=beta&t=m_uwLOLg9v9crVzEYgHw9Tt_r5_ueK8BctN_Jt7l4HQ",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/manuelavanderwerken/"
 		},
@@ -172,31 +172,31 @@
 	},
 	{
 		"name": "Brook Davis",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/D5635AQFM9WljZpzWng/profile-framedphoto-shrink_800_800/0/1719170590930?e=1722132000&v=beta&t=avwxoMzPY_n2MqSf9f9lOu8QNIW3-twfMpCjceRrr9k",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/brookbissinger/",
 			"twitter": "https://twitter.com/brook5280",
 			"website": "https://electricalSales.com"
 		},
 		"email": "brook5280@gmail.com",
-		"group": "Work in Tech",
+		"group": "Work In Tech",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Evie Poitevent Sanders",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/D5603AQHjBtnbQBriQg/profile-displayphoto-shrink_800_800/0/1718260190722?e=1727308800&v=beta&t=FHVl8q1CctOlhbqxKlOJ3jCvGpdSvoy36P8UaOt4VSY",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/eviepoitevent/"
 		},
 		"email": "epoitevent@gnoinc.org",
-		"group": "StrartUp EcoSystem",
+		"group": "StartUp Nola Now",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Sabrina Short",
-		"pfp": "",
+		"pfp": "https://media.licdn.com/dms/image/C5603AQEUiLSHYiugHw/profile-displayphoto-shrink_800_800/0/1609943507182?e=1727308800&v=beta&t=LH4ZIG0lIxO45CAbwtNeb40R0F3dHyD2jg_F_Fw8dWA",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/sabrinanshort"
 		},

@@ -1,22 +1,30 @@
-import connectDB from '$lib/db/db';
-
+import { connect } from 'mongoose';
+const { MONGO_URL, DB_NAME } = process.env;
 import { loadGroups } from './addGroups.js';
-import { loadEvents } from './addEvents.js';
 import { loadUsers } from './addUsers.js';
+import { loadEvents } from './addEvents.js';
 
-// setting up the connection to the DB
-const runSeedScripts = async () => {
-	await connectDB(); // Use the centralized connection function
+const connectDB = async () => {
+	const dbUri = `${MONGO_URL}${DB_NAME}`;
+
 	try {
-		await loadGroups();
-		await loadEvents();
-		await loadUsers();
-		console.log('Data loaded successfully');
+		await connect(dbUri);
+		console.log('Database connected successfully');
 	} catch (error) {
-		console.error('Failed to load data:', error);
-	} finally {
-		process.exit(); // Ensure to disconnect or exit the process
+		console.error('Database connection failed:', error);
+		process.exit(1);
 	}
 };
 
-runSeedScripts();
+console.log('test');
+try {
+	await connectDB();
+	await loadGroups();
+	await loadUsers();
+	await loadEvents();
+	console.log('Data loaded successfully');
+} catch (error) {
+	console.error('Failed to load data:', error);
+} finally {
+	process.exit();
+}
