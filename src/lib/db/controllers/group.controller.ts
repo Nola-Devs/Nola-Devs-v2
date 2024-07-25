@@ -12,7 +12,7 @@ export const groupController = {
 			const group: Group = await GroupModel.findOne({ group: groupName })
 				.select('-_id -__v')
 				.lean();
-			console.log(group);
+
 			return group;
 		} catch (e) {
 			throw error(404, 'Group Not Found');
@@ -21,7 +21,7 @@ export const groupController = {
 	getGroupBySlug: async (slug: string): Promise<Group> => {
 		try {
 			const group: Group = await GroupModel.findOne({ slug }).select('-_id -__v').lean();
-			console.log(group);
+
 			return group;
 		} catch (e) {
 			throw error(404, 'Group Not Found');

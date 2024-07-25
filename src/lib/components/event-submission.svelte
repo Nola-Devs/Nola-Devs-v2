@@ -14,12 +14,12 @@
 </button>
 
 <Modal title="Event Suggestion" bind:open="{formModal}" size="md" outsideclose autoclose>
-	<form>
+	<form action="?/submitEvent" method="POST">
 		<Heading class="my-2" tag="h4">Submitter Info</Heading>
 		<div class="grid gap-6 mb-6 md:grid-cols-3">
 			<div>
 				<Label for="organizer_name" class="mb-2">Your Name</Label>
-				<Input type="text" id="organizer_name" placeholder="John Doe" required />
+				<Input name="name" type="text" id="organizer_name" placeholder="John Doe" required />
 			</div>
 			<div>
 				<Label for="email" class="mb-2">Your Email</Label>
@@ -74,6 +74,7 @@
 				required
 			/>
 		</div>
-		<Button class="mt-4" type="submit">Submit event</Button>
+		<Button class="mt-4" formaction="?/submitEvent" method="POST" type="submit">Submit event</Button
+		>
 	</form>
 </Modal>

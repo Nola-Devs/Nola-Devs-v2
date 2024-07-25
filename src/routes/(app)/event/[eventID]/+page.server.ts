@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		const event = await eventController.getEventsByEventSlug(eventID);
 		const group = await groupController.getGroupByName(event.group);
 		const users = await userController.getAllUsersByGroup(group?.group);
-		console.log(event);
+
 		return {
 			event,
 			group,

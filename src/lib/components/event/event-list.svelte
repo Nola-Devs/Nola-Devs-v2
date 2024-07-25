@@ -15,9 +15,9 @@
 		>
 			Whats going on in the city
 		</h2>
-		<div class="flex self-end">
+		<!-- <div class="flex self-end">
 			<EventSubmission />
-		</div>
+		</div> -->
 	</header>
 	<div class="flex flex-col gap-4 overflow-y-auto snap-both">
 		{#each events as event}

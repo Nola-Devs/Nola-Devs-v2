@@ -13,6 +13,6 @@ export const load: PageServerLoad = async () => {
 	).json();
 
 	const organizers = await userController.getAllOrganizers();
-	console.log(organizers);
+
 	return { contributorsList, organizers };
 };
