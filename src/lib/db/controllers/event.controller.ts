@@ -9,7 +9,7 @@ export const eventController = {
 	getEvents: async (): Promise<Event[]> => {
 		try {
 			const events: Event[] = await EventModel.find({})
-				.sort({ dateTime: 'asc' })
+				.sort({ start: 'asc' })
 				.select(['-_id', '-__v'])
 				.lean()
 				.limit(10);

@@ -86,6 +86,7 @@ npm run dev
 | Cron Secret           | `CRON_SECERT`   | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
 | mongodb name          | `DB_NAME`       | `noladevs`                                                                                                                                             |
 | mongodb URL           | `MONGO_URL`     | `mongodb://localhost:27017/`                                                                                                                           |
+| Discord Webhook URL   | `DISCORD_WEBHOOK_URL`     | A webhook Channel URL                                                                                                                 |
 
 Make sure you have created the above keys with provided values or your own where indicated.
 Once you have both created (copy `.env.example`) and added to your `.env.local` file (or any other equivalent environment variable system), you can actually deploy it. (_instructions in hyperlinks_)
