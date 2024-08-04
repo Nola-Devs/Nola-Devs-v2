@@ -18,7 +18,7 @@
 <div class="flex flex-col flex-1">
 	<GroupBanner
 		title="{group?.group || 'Group Name'}"
-		description="Every Second Tuesday  • 5:30 P.M. - 7:00 P.M."
+		description=""
 		linkText="Website"
 		linkHref="{group?.links.website || '#'}"
 		linkIcon="linkIcon"
