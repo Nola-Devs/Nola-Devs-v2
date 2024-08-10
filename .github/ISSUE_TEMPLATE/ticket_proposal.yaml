@@ -12,7 +12,7 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: '<h2>Describe the Problem</h2>'
+      label: 'Describe the Problem<'
       description: Please provide a short user story **DESCRIPTION** of the **PROBLEM**
       placeholder: As a user I...
     validations:
@@ -21,13 +21,13 @@ body:
   - type: textarea
     id: references
     attributes:
-      label: '<h2>References</h2>'
+      label: 'References'
       description: Please provide any **SCREENSHOTS**, **CODE SNIPPETS** or **LINKS** to the codebase or documentation which will help implement a solution.
 
   - type: textarea
     id: solution
     attributes:
-      label: '<h2>Describe the Proposed Solution</h2>'
+      label: 'Describe the Proposed Solution'
       description: Try to provide an EXAMPLE or CONCEPT of a design pattern that will lead to a SOLUTION
       placeholder: Implementing x, y, & z will...
     validations:
