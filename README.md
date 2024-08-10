@@ -52,10 +52,12 @@ To contribute please follow the [contributing](./CONTRIBUTING.md) guide.
 ## Development Environment
 
 1. Install [mongodb v7.x.x Community Edition](https://www.mongodb.com/docs/manual/installation/) if not already installed locally.
+
    1. [Mac](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/)
       1. [Start the database](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/#run-mongodb-community-edition)
    2. [Windows](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
       1. [Start the database](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition-as-a-windows-service)
+
 2. Copy example env to get local up and running.
 
 ```sh
@@ -64,29 +66,34 @@ cp .env.example .env.local
 
 **Note: On node >=17, you'll need to replace localhost with 0.0.0.0 ([src](https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017))**
 
-4. Install dependencies and start app
+4. Install Dependencies and seed Database
 
 ```sh
 npm i
+npm run seed
+```
+
+5. Start app. It will run the web app in a _development_ node environment, meaning that it will not load any external resources which may require secrets (API Keys, etc).
+
+```sh
 npm run dev
 ```
 
-5. This will run the web app under a _development_ node environment, meaning that it will not load any external resources which may require secrets (API Keys, etc).
-6. You now should be up and running to start developing 🥸
+1. You now should be up and running to start developing 🥸
 
 ## Production Environment
 
 ### API Keys you will need
 
-| name                  | env key         | env value                                                                                                                                              |
-| --------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Google Calendar API   | `CAL`           | [Follow these steps](#google-calendar-api-key)                                                                                                         |
-| Discord Webhook URL   | `DISCORD`       | Apply for [Contributor Access](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already. |
-| Mapbox Public API Key | `PUBLIC_MAPBOX` | [Follow these steps](#mapbox-public-key)                                                                                                               |
-| Cron Secret           | `CRON_SECERT`   | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
-| mongodb name          | `DB_NAME`       | `noladevs`                                                                                                                                             |
-| mongodb URL           | `MONGO_URL`     | `mongodb://localhost:27017/`                                                                                                                           |
-| Discord Webhook URL   | `DISCORD_WEBHOOK_URL`     | A webhook Channel URL                                                                                                                 |
+| name                  | env key               | env value                                                                                                                                              |
+| --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Google Calendar API   | `CAL`                 | [Follow these steps](#google-calendar-api-key)                                                                                                         |
+| Discord Webhook URL   | `DISCORD`             | Apply for [Contributor Access](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already. |
+| Mapbox Public API Key | `PUBLIC_MAPBOX`       | [Follow these steps](#mapbox-public-key)                                                                                                               |
+| Cron Secret           | `CRON_SECERT`         | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
+| mongodb name          | `DB_NAME`             | `noladevs`                                                                                                                                             |
+| mongodb URL           | `MONGO_URL`           | `mongodb://localhost:27017/`                                                                                                                           |
+| Discord Webhook URL   | `DISCORD_WEBHOOK_URL` | A webhook Channel URL                                                                                                                                  |
 
 Make sure you have created the above keys with provided values or your own where indicated.
 Once you have both created (copy `.env.example`) and added to your `.env.local` file (or any other equivalent environment variable system), you can actually deploy it. (_instructions in hyperlinks_)
