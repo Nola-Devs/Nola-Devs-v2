@@ -58,6 +58,6 @@
 		"tailwind-merge": "^2.2.2"
 	},
 	"engines": {
-		"node": ">20"
+		"node": ">20.6.0"
 	}
 }
