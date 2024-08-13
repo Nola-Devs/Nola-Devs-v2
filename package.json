@@ -6,7 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"seed": "node --env-file=.env ./src/lib/scripts/seed.js",
+		"seed": "node --env-file=.env.local ./src/lib/scripts/seed.js",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -56,5 +56,8 @@
 		"bcrypt": "^5.1.1",
 		"ics": "^3.7.2",
 		"tailwind-merge": "^2.2.2"
+	},
+	"engines": {
+		"node": ">=20.6.0"
 	}
 }
