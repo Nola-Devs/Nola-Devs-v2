@@ -11,7 +11,8 @@ const UserSchema = new Schema<User>({
 		required: false
 	},
 	links: {
-		type: Object,
+		type: Map,
+		of: String,
 		required: false
 	},
 	email: {
