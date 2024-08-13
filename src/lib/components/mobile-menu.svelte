@@ -23,6 +23,7 @@
 		easing: sineIn
 	};
 
+	const closeSidebar = () => (hidden = true);
 	const getGroupPath = (slug: string) => `/group/${slug}`;
 </script>
 
@@ -40,9 +41,11 @@
 			href="/"
 			class="inline-flex items-center  font-cute text-5xl leading-10 text-gray-900 dark:text-violet-100"
 		>
-			N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
+			<button on:click="{closeSidebar}">
+				N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
+			</button>
 		</NavBrand>
-		<CloseButton on:click="{() => (hidden = true)}" class="mb-4 dark:text-white" />
+		<CloseButton on:click="{closeSidebar}" class="mb-4 dark:text-white" />
 	</div>
 	<Sidebar>
 		<SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded ">
@@ -51,7 +54,7 @@
 				{#each data.groups as { name, slug, icon }}
 					<SidebarItem
 						data-sveltekit-reload
-						on:click="{() => (hidden = true)}"
+						on:click="{closeSidebar}"
 						href="{getGroupPath(slug)}"
 						label="{`${icon} ${name}`}"
 						class="group dark:hover:text-white hover:text-white hover:bg-purple-700 font-medium dark:hover:bg-purple-700"
@@ -76,12 +79,14 @@
 				label="About"
 				class="font-base px-2 py-1 hover:bg-transparent dark:hover:bg-transparent leading-[24px] text-gray-400 hover:text-gray-600 dark:text-violet-100 dark:hover:text-violet-300"
 				spanClass=""
+				on:click="{closeSidebar}"
 			></SidebarItem>
 			<SidebarItem
 				href="/contact"
 				label="Contact"
 				class="font-base px-2 py-1 hover:bg-transparent dark:hover:bg-transparent leading-[24px] text-gray-400 hover:text-gray-600 dark:text-violet-100 dark:hover:text-violet-300"
 				spanClass=""
+				on:click="{closeSidebar}"
 			></SidebarItem>
 			<DarkMode btnClass="ml-5">
 				<Icon name="moonIcon" slot="darkIcon" size="{24}" />
