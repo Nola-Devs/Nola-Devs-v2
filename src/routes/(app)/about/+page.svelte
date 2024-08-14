@@ -47,7 +47,7 @@
 	<div class="flex flex-wrap justify-center">
 		{#each data.organizers as { name, pfp, email, links, group }}
 			<div
-				class="border rounded p-1 grid grid-cols-[50px_150px_50px] items-center duration-75 hover:scale-105 m-2"
+				class="border rounded p-1 grid grid-cols-[50px_150px_50px] bg-red-500 items-center duration-75 hover:scale-105 m-2"
 			>
 				{#if !pfp}
 					<img
