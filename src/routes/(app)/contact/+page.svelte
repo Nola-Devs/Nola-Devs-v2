@@ -23,13 +23,21 @@
 						class="bg-primary-100"
 						type="email"
 						id="email"
+						name="email"
 						placeholder="john.doe@company.com"
 						required
 					/>
 				</div>
 				<div>
 					<Label for="message" class="mb-2">Message</Label>
-					<Textarea type="text" rows="5" id="message" placeholder="Message" required />
+					<Textarea
+						type="text"
+						rows="5"
+						id="message"
+						name="message"
+						placeholder="Message"
+						required
+					/>
 				</div>
 			</div>
 			<Button class="mt-4" type="submit">Submit</Button>
