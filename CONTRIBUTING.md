@@ -3,16 +3,16 @@ Join our [Discord](https://discord.gg/Hea5n85VEv)
 ### Contribution Protocol:
 
 - 🌟Star the repository :)
-- 📌Fork and clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
-- 📌Find a "Ticket" from our [Project Board](https://github.com/orgs/Nola-Devs/projects/1) that you would like to work on
+- 📌 Clone down the organization's repo as your `origin` ("the trunk" | "the org repo" | "org remote" | "origin")
+- 📌 Find a "Ticket" from our [Project Board](https://github.com/orgs/Nola-Devs/projects/1) that you would like to work on
   - If you have a suggestion open a [new Issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues/new/choose) with the Issue Template provided
   - Assign yourself to the ticket and move it into the "In Progress" lane inside it's respective "Project Board"
-- 📌Fetch from `upstream main` and checkout your new feature-branch which should share the same name as the issuing ticket
-- 📌Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
-- 📌Push your feature-branch to the trunk remote `git push origin feature-branch`
-- 📌PR to upstream main for Code Review
+- 📌 Fetch from `upstream main` and checkout your new feature-branch which should share the same name as the issuing ticket
+- 📌 Use [Semantic Commit-Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) for feature development
+- 📌 Push your feature-branch to the trunk remote `git push origin feature-branch`
+- 📌 PR to upstream main for Code Review
   - We will review <= 48 hours
-- 🎇Merge your _approved_ PR branch to main or revise and repeat
+- 🎇 Merge your _approved_ PR branch to main or revise and repeat
 
 **Thank you for your interest in building a tool for the Greater New Orleans Tech community.**
 

@@ -2,9 +2,9 @@ import type { Action, RequestEvent } from './$types';
 import { DISCORD } from '$env/static/private';
 
 export const actions: Action = {
-	sendMsg: async (event: RequestEvent) => {
+	sendMsg: async ({request}) => {
 		// Parse the form data
-		const data = await event.request.formData();
+		const data = await request.formData();
 		const email = data.get('email');
 		const message = data.get('message');
 
