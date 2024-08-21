@@ -19,6 +19,13 @@ export const eventController = {
 		}
 	},
 
+	/**
+	 * @ param {string} slug - The slug of the group to get events for
+	 * @ returns {Promise<Event[]>} - An array of events for the group
+	 * @ throws {Error} - Throws an error if the group is not found
+	 *
+	 * Example usage: eventController.getEventsByGroup('slug')
+	 **/
 	getEventsByGroup: async (slug: string): Promise<Event[]> => {
 		const events: Event[] = await EventModel.find({ groupSlug: slug }).select('-_id -__v').lean();
 
