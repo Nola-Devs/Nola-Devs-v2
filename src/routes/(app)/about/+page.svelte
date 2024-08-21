@@ -47,7 +47,7 @@
 	<div class="flex flex-wrap justify-center">
 		{#each data.organizers as { name, pfp, email, links, group }}
 			<div
-				class="border rounded p-1 grid grid-cols-[75px_175px] bg-red-500 items-center duration-75 hover:scale-105 m-2"
+				class="border rounded p-1 grid grid-cols-[75px_175px] items-center duration-75 hover:scale-105 m-2"
 			>
 				{#if !pfp}
 					<img
@@ -59,8 +59,8 @@
 					<img class="w-15 h-15 rounded" src="{pfp}" alt="Organizer 1" />
 				{/if}
 				<div class="flex flex-col gap-1 ml-2">
-					<p class="text-base text-gray-800 dark:text-orange-700">{name}</p>
-					<p class="text-base text-gray-800 dark:text-orange-700">{group}</p>
+					<p class="text-base text-gray-800 dark:text-white">{name}</p>
+					<p class="text-base text-gray-800 dark:text-white">{group}</p>
 					<div class="flex gap-3 items-center dark:text-white">
 						<a href="mailto:{email}">
 							<Icon name="mailIcon" size="{18}" viewBox="0 0 23 16" />
