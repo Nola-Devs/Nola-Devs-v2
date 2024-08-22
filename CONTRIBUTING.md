@@ -1,5 +1,3 @@
-Join our [Discord](https://discord.gg/Hea5n85VEv)
-
 ### Contribution Protocol:
 
 - 🌟Star the repository :)
@@ -22,6 +20,4 @@ _if that isn't enough to give you a sense of pride in your contributions, engagi
 
 ### Thank you for supporting our flourishing local tech community in New Orleans 💜💛💚
 
-If you have any questions regarding the git workflow or the tickets @colinwilliams91.
-If you have any questions regarding design @HauntedHamburger or @codingMustache.
-And if you have any architectural, feature, or development question @codingMustache.
+If you have any questions about anything use the [Discussions](https://github.com/Nola-Devs/Nola-Devs-v2/discussions) tab
