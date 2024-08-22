@@ -134,9 +134,3 @@ Basic Abridged Guide:
 
 > [!NOTE]
 > if your api key doesn't start with `pk` it isn't the right one
-
----
-
-# Other links
-
-Join our [Discord](https://discord.gg/Hea5n85VEv)
