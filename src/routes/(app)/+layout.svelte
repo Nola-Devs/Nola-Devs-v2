@@ -8,6 +8,10 @@
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
 
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+	inject({ mode: dev ? 'development' : 'production' })
+
 	// TODO: Add to cookies for alert if dismissed or done to not show again
 </script>
 
