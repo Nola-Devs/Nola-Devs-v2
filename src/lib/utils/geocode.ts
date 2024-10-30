@@ -6,6 +6,11 @@ type geocodeOnEvent = googleCalAPIType & {
 	lnglat: LngLatLike;
 };
 
+/**
+ * Geocode the location of a calendar event.
+ * @param eventData An object conforming to the `googleCalAPIType` type.
+ * @returns {Object} success: event with geocoded location. fallback: event with default location of New Orleans.
+ */
 export const geocode = async (eventData: googleCalAPIType | undefined): Promise<geocodeOnEvent> => {
 	if (!eventData || !eventData.location || eventData.location.match(/^http/)) {
 		return {
