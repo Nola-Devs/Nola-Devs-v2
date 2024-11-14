@@ -4,7 +4,7 @@ import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
 
 /**
  * Fetch events from Google Calendar API by group.
- * @param {Group} groupDetails An object conforming to the `Group` type.
+ * @param {Group} groupDetails
  * @returns {Array} success: array with events from Google Calendar. error: empty array
  */
 export const googleCalAPICall = async (groupDetails: Group): Promise<googleCalAPIType[]> => {

@@ -7,7 +7,6 @@ export const ics = (event: Event) => {
 
 /**
  * Creates a downloadable iCalendar file from passed in event.
- * @async
  * @param {Event} event
  * @see {@link }{@link https://www.npmjs.com/package/ics}
  */

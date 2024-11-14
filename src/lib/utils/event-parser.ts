@@ -29,9 +29,9 @@ const formatDateForSlug = (date: Date) => {
 };
 
 /**
- * Parse and slugify event and group info, generate `eventSlug` and `groupSlug` values for an `Event`.
- * @param eventData An object conforming to the `geocodeOnEvent` type.
- * @returns {Object} An object conforming to `Event` type, `eventSlug` and `groupSlug` properties newly generated.
+ * Parse and slugify event and group info: generate `eventSlug` and `groupSlug` values for an `Event`.
+ * @param {geocodeOnEvent} eventData
+ * @returns {Event} An `Event` with generated `eventSlug` and `groupSlug` properties.
  */
 export const eventParser = (eventData: geocodeOnEvent | undefined): Partial<Event> => {
 	const {
