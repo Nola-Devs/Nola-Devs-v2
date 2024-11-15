@@ -5,6 +5,11 @@ export const ics = (event: Event) => {
 	downloadICS(event);
 };
 
+/**
+ * Creates a downloadable iCalendar file from passed in event.
+ * @param {Event} event
+ * @see {@link }{@link https://www.npmjs.com/package/ics}
+ */
 async function downloadICS(event: Event) {
 	const { summary, description, start, end, location, lnglat, group, calLink } = event;
 	const startDate: any = start.getTime();

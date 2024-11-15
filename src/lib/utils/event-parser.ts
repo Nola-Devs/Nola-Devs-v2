@@ -28,6 +28,11 @@ const formatDateForSlug = (date: Date) => {
 		.padStart(2, '0')}${date.getFullYear()}`;
 };
 
+/**
+ * Parse and slugify event and group info: generate `eventSlug` and `groupSlug` values for an `Event`.
+ * @param {geocodeOnEvent} eventData
+ * @returns {Event} An `Event` with generated `eventSlug` and `groupSlug` properties.
+ */
 export const eventParser = (eventData: geocodeOnEvent | undefined): Partial<Event> => {
 	const {
 		group = '',
