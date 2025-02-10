@@ -15,7 +15,7 @@
 		title="Developers, Designers, Lend Me Your Ears"
 		description="We’re a community of developers, entrepreneurs, students, and enthusiasts who are excited about the future of technology.  Join us to share projects, attend events, and learn something new!"
 		linkText="Community Slack"
-		linkHref="https://join.slack.com/t/nola/shared_invite/zt-256vzyuvo-1KC88G~MLCT8KCgw4QL7zg"
+		linkHref="https://join.slack.com/t/nola/shared_invite/zt-2zeiwayiv-pmIaaaYAV1SmYSx5m5en6w"
 		linkIcon="slackIcon"
 		bannerClass="bg-homeBanner text-white"
 	/>
