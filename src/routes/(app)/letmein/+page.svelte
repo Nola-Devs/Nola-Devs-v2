@@ -127,8 +127,6 @@ async function cycleDisplayStates(delay = 5000) {
 	await new Promise(resolve => setTimeout(resolve, delay));
 	console.log("isClicked = true;")
 	isClicked = true;
-	console.log("isClicked: ", isClicked);
-	console.log("buttonState: ", buttonState);
 
 	await new Promise(resolve => setTimeout(resolve, delay));
 	console.log("isDingDongRequestFailed = true;")
