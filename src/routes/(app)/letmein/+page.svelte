@@ -35,7 +35,7 @@ $: {
 			buttonState = null;
 			break;
 		case isSomeoneComing === false: // ding dong request went through but no one has responded in five minutes
-			bodyText = "Ding Dong has been on for a couple minutes and no one has responded...\n" +
+			bodyText = "Ding Dong has been active for a couple minutes and no one has responded...\n" +
 				"You might want to contact someone in slack to let them know you are locked out.";
 			buttonState = 'Slack';
 			break;
