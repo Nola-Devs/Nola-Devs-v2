@@ -36,7 +36,7 @@ $: {
 			break;
 		case isSomeoneComing === false: // ding dong request went through but no one has responded in five minutes
 			bodyText = "Ding Dong has been active for a couple minutes and no one has responded...\n" +
-				"You might want to contact someone in slack to let them know you are locked out.";
+				"You might want to contact someone in slack to let them know you are outside.";
 			buttonState = 'Slack';
 			break;
 		case isDingDongTurnedOn === true: // ding dong light is on, waiting for someone to respond
@@ -44,7 +44,7 @@ $: {
 			buttonState = 'Circle2';
 			break;
 		case isDingDongRequestFailed === true: // ding dong request did not go through
-			bodyText = "Ding Dong's request failed.\n" + "Contact someone in slack to let them know you're locked out.";
+			bodyText = "Ding Dong's request failed.\n" + "Contact someone in slack to let them know you're outside.";
 			buttonState = 'Slack';
 			break;
 		case isClicked === true: // waiting for feedback from server
@@ -56,7 +56,7 @@ $: {
 			buttonState = 'DingDong'
 			break;
 		case isOnline === false: // server is online
-			bodyText = "Contact someone in slack to let them know you're locked out.";
+			bodyText = "Contact someone in slack to let them know you're outside.";
 			buttonState = 'Slack'
 			break;
 		case isOnline === null: //also the starting state, waiting for user interaction
