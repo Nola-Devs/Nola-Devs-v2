@@ -4,6 +4,7 @@ import { ScaleOut, Circle2 } from 'svelte-loading-spinners';
 import { onMount } from 'svelte';
 import Icon from '$lib/components/icon/index.svelte';
 import Banner from '$lib/components/banners/group-banner.svelte';
+import ScaleIcon from '$lib/assets/icons/ScaleIcon.svelte';
 
 const TEMP_DINGDONG_ENDPOINT = 'http://127.0.0.1:8080';
 
@@ -22,7 +23,7 @@ let bodyText: string = '';
 // REACTIVE BANNER DESCRIPTION
 $: bannerDescription = (() => {
     if (isOnline === null) return "Checking status...";
-    if (isOnline === false) return "";
+    if (isOnline === false) return "Ding Dong's server is offline.";
     return "Are you locked out of Scale?";
 })();
 
@@ -150,12 +151,15 @@ async function cycleDisplayStates(delay = 5000) {
 
 
 <!-- todo: add light mode color options :( ' -->
-<div class="flex flex-col gap-6 flex-1">
-	<Banner
-	title="Ding Dong{isOnline === false ? ' is Offline' : ''}"
-	description={bannerDescription}
-	bannerClass="bg-scaleBanner text-white"
-/>
+<div class="flex flex-col gap-6 flex-1 relative">
+	<div class="relative w-fit overflow-hidden w-full justify-center align-center flex">
+		<Banner
+			title="Ding Dong"
+			description={bannerDescription}
+			bannerClass="bg-scaleBanner text-white relative w-full"
+		/>
+		<ScaleIcon class="absolute md:opacity-30 md:scale-[.8] md:left-0 sm:scale-[1.2] opacity-[0.08] scale-[1.2] top-5" />
+	</div>
 </div>
 
 <div class="grid grid-rows-2 place-items-center h-full mt-4 w-50">
