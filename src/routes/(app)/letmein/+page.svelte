@@ -150,7 +150,6 @@ async function cycleDisplayStates(delay = 5000) {
 </script>
 
 
-<!-- todo: add light mode color options :( ' -->
 <div class="flex flex-col gap-6 flex-1 relative">
 	<div class="relative w-fit overflow-hidden w-full justify-center align-center flex">
 		<Banner
