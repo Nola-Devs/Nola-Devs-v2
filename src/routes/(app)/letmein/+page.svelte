@@ -113,7 +113,7 @@ function handleClick() {
 // 	}
 // }
 
-async function cycleDisplayStates(delay = 5000) {
+async function cycleDisplayStates(delay = 2000) {
 	// Utility function to make sure the various display states look okay
 	
 	await new Promise(resolve => setTimeout(resolve, delay));
