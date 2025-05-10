@@ -1,11 +1,11 @@
 import { connect } from 'mongoose';
-const { MONGO_URL, DB_NAME } = process.env;
+const { MONGODB_URI, DB_NAME } = process.env;
 import { loadGroups } from './addGroups.js';
 import { loadUsers } from './addUsers.js';
 import { loadEvents } from './addEvents.js';
 
 const connectDB = async () => {
-	const dbUri = `${MONGO_URL}${DB_NAME}`;
+	const dbUri = `${MONGODB_URI}${DB_NAME}`;
 
 	try {
 		await connect(dbUri);
