@@ -68,7 +68,6 @@
 			linkHref="{'#'}"
 			linkIcon="linkIcon"
 			bannerClass="bg-defaultBanner text-white"
-			,
 			{event}
 		/>
 		<article class="flex flex-col md:flex-row gap-12 py-6 md:px-6 w-full">

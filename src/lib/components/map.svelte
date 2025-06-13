@@ -17,7 +17,7 @@
 		map = new Map({
 			container: mapContainer,
 			accessToken: key,
-			style: `mapbox://styles/mapbox/standard-beta`,
+			style: `mapbox://styles/mapbox/standard`,
 			center: location,
 			zoom: zoom,
 			pitch: 30
