@@ -1,7 +1,6 @@
 <script lang="ts">
 	import EventBanner from '$lib/components/banners/event-banner.svelte';
 	import Icon from '$lib/components/icon/index.svelte';
-	import Map from '$lib/components/map.svelte';
 	import OrganizerList from '$lib/components/organizer-list.svelte';
 	import type { Event } from '$lib/types/event';
 
@@ -68,7 +67,6 @@
 			linkHref="{'#'}"
 			linkIcon="linkIcon"
 			bannerClass="bg-defaultBanner text-white"
-			,
 			{event}
 		/>
 		<article class="flex flex-col md:flex-row gap-12 py-6 md:px-6 w-full">
@@ -126,7 +124,6 @@
 						>
 					</li>
 				</ul>
-				<Map location="{lnglat}" />
 			</div>
 		</div>
 		<OrganizerList organizers="{data.users}" />
