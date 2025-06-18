@@ -2,7 +2,6 @@
 	import EventBanner from '$lib/components/banners/event-banner.svelte';
 	import Icon from '$lib/components/icon/index.svelte';
 	import OrganizerList from '$lib/components/organizer-list.svelte';
-	import type { Event } from '$lib/types/event';
 
 	import { Sanitizer } from '$lib/utils/sanitize';
 	import type { PageData } from './$types';
@@ -49,8 +48,8 @@
 	const [place, ...addressParts] = location.split(', ');
 	const address = addressParts.join(', ');
 
-	const googleMapsCoordinatesUrl = lnglat
-		? `https://maps.apple.com/?q=${lnglat[1]},${lnglat[0]}`
+	const googleMapsSearchUrl = location
+		? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
 		: '';
 </script>
 
@@ -108,19 +107,25 @@
 					<li class="flex gap-3 items-center">
 						<Icon name="locationIcon" size="{24}" />
 						<a
-							href="{googleMapsCoordinatesUrl}"
+							href="{googleMapsSearchUrl}"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200">{place}</a
+							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
+							>
+								{place}
+							</a
 						>
 					</li>
 					<li class="flex gap-3 items-center">
 						<Icon name="addressIcon" className="w-7 h-7 md:w-11 md:h-11" />
 						<a
-							href="{googleMapsCoordinatesUrl}"
+							href="{googleMapsSearchUrl}"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200">{address}</a
+							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
+							>
+								{address}
+							</a
 						>
 					</li>
 				</ul>
