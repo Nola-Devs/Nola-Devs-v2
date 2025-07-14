@@ -9,40 +9,6 @@
 
 	export let data: PageData;
 
-	// STATE MACHINE
-
-	/**
-	 * Events
-	 * 		Internal
-	 * 		CONNECTED_TO_SSE
-	 * 		DISCONNECTED_FROM_SSE
-	 * 		PRESSED_DINGDONG_BUTTON
-	 * 		External
-	 * 		BAT_SIGNAL_WAS_RAISED
-	 * 		SOMEONE_RESPONDED
-	 *
-	 *
-	 * State
-	 * 		Initial
-	 * 			{
-	 * 				sseState: "CONNECTED | DISCONNECTED | CONNECTING",
-	 * 				isDingDongTurnedOn: false,
-	 * 				isSomeoneComing: false,
-	 * 			}
-	 */
-
-	// interface DingDongState {
-	// 	sse: 'CONNECTING' | 'CONNECTED' | 'DISCONNECTED';
-	// 	button: 'SLACK' | 'DINGDONG' | 'SCALEOUT' | 'CIRCLE2' | null;
-	// 	dingDong: 'IDLE' | 'AWAITING_DINGDONG_RESPONSE' | 'DINGDONG_IS_ON' | 'SOMEONE_IS_COMING';
-	// }
-
-	// let state: DingDongState = {
-	// 	sse: 'CONNECTING',
-	// 	button: null,
-	// 	dingDong: 'IDLE'
-	// };
-
 	interface SseMessage {
 		is_bat_signal_busy: boolean;
 		is_someone_coming: boolean;
@@ -51,9 +17,10 @@
 	onMount(async () => {
 		if (!browser) return;
 
+		// DEBUG
 		console.clear();
 
-		console.log('CONNECTING...');
+		console.log('CONNECTING TO SSE...');
 
 		let reader: ReadableStreamDefaultReader;
 
@@ -72,16 +39,16 @@
 				if (done) break;
 				const text = decoder.decode(value);
 				const sseMessage: SseMessage = await JSON.parse(text.replace(/^data:/, ''));
-
-				// console.log("SSE:", { is_bat_signal_busy, is_someone_coming })
-
 				dispatch({ msg: 'RECEIVED_SSE_MESSAGE', data: { sseMessage } });
 			}
 		} catch (err) {
+			// debugger
 			console.error(err);
 			// TODO: do this only on a disconnect error
-			dispatch({ msg: 'DISCONNECTED_FROM_SSE' });
+			(err as Error).message === 'Failed to fetch' && dispatch({ msg: 'DISCONNECTED_FROM_SSE' });
 		}
+
+		// TODO: reconnect on error/disconnect
 
 		return () => {
 			reader?.cancel();
@@ -99,9 +66,30 @@
 		| 'DINGDONG_IS_ON'
 		| 'SOMEONE_IS_COMING' = 'READY';
 
-	let bannerDescription = 'Checking status...'; // or "Connecting" ?
+	$: bannerDescription = (() => {
+		switch (sseState) {
+			case 'CONNECTING':
+				return 'Connecting...';
+			case 'CONNECTED':
+				return 'Are you locked out of Scale?';
+			case 'DISCONNECTED':
+				return "Ding Dong's server is offline";
+		}
+	})();
 
-	let bodyText = '';
+	$: bodyText = (() => {
+		switch (dingDongState) {
+			case 'NO_SERVER':
+				return "Whoops! Ding Dong isn't working right now.\nContact someone in slack to let them know you're outside.";
+			case 'READY':
+				return "Click here to let someone know you're outside";
+			case 'DINGDONG_IS_ON':
+				return 'The Bat Signal has been raised!\nWaiting for someone to respond...';
+			case 'SOMEONE_IS_COMING':
+				return 'Someone is on their way to let you in! Give it a minute or two.';
+		}
+		return '';
+	})();
 
 	interface DingDongEvent {
 		msg:
@@ -109,6 +97,7 @@
 			| 'DISCONNECTED_FROM_SSE'
 			| 'RECEIVED_SSE_MESSAGE'
 			| 'MADE_DINGDONG_REQUEST'
+			| 'DINGDONG_REQUEST_FAILED'
 			| 'DINGDONG_TURNED_ON'
 			| 'SOMEONE_RESPONDED'
 			| 'TIMED_OUT'; // tuned on and someone responded time out
@@ -117,43 +106,67 @@
 		};
 	}
 
-	let dingDongTimeout: number;
-
 	/** Should match the timeout in the Arduino sketch */
 	const DINGDONG_TIMEOUT_MS = 30_000;
+	let dingDongTimeout: number;
 
 	function dispatch(event: DingDongEvent) {
 		const { msg, data } = event;
 		switch (msg) {
 			case 'CONNECTED_TO_SSE':
 				sseState = 'CONNECTED';
+				dingDongState = 'READY';
 				break;
 
 			case 'DISCONNECTED_FROM_SSE':
 				sseState = 'DISCONNECTED';
+				dingDongState = 'NO_SERVER';
 				break;
 
 			case 'RECEIVED_SSE_MESSAGE': {
+				/* INTENDED BEHAVIOR
+				CASES
+				- system is ready and device is idle/ready
+					- user visits page
+					- ding dong! (button press)
+					- UI indicates that the bat signal is raised and waiting for someone to respond
+					- someone is coming! (someone pressed the button on the device)
+					- UI indicates that someone is on the way to open the door
+				- bat signal is already raised
+					- user visits page
+					- (pick one below -- 2nd implemented currently)
+						- UI indicates that the bat signal is raised
+						- UI indicates that bat signal is raised only after button is pressed 
+					- someone is coming!
+					- UI indicates that someone is on the way to open the door
+				- someone is already coming to open the door
+					- user visits page
+					- (pick one below -- 2nd implemented currently)
+						- UI indicates that someone is coming
+						- UI indicates someone is coming only after button is pressed 
+				*/
 				const {
 					sseMessage: { is_bat_signal_busy, is_someone_coming }
 				} = data!;
-
 				if (is_someone_coming) {
-					dingDongState === 'DINGDONG_IS_ON' && dispatch({ msg: 'SOMEONE_RESPONDED' });
-					// loaded the page when someone was already on their way to open the door
-					dingDongState === 'READY' && (dingDongState = 'SOMEONE_IS_COMING');
-				} else if (is_bat_signal_busy) {
-					// NOTE: dispatching 'DINGDONG_TURNED_ON' happens on successful dingDong() in onClick
-					// loaded the page when the bat signal was already raised (ding dong already on)
-					dingDongState === 'READY' && (dingDongState = 'DINGDONG_IS_ON');
+					if (dingDongState === 'DINGDONG_IS_ON') dispatch({ msg: 'SOMEONE_RESPONDED' });
 				} else if (!is_bat_signal_busy && !is_someone_coming) {
-					dingDongState = 'READY';
+					// NOTE: The bat signal device controls is_bat_signal_busy and is_someone_coming.
+					// If is_someone_coming, then !is_bat_signal_busy.
+					// Both timeout to false after 30 seconds.
+					if (dingDongState === 'DINGDONG_IS_ON' || dingDongState === 'SOMEONE_IS_COMING') {
+						dingDongState = 'READY';
+					}
 				}
 				break;
 			}
 
 			case 'MADE_DINGDONG_REQUEST':
 				dingDongState = 'AWAITING_DINGDONG_HTTP_RESP';
+				break;
+
+			case 'DINGDONG_REQUEST_FAILED':
+				dingDongState = 'NO_SERVER';
 				break;
 
 			case 'DINGDONG_TURNED_ON':
@@ -166,8 +179,7 @@
 
 			case 'SOMEONE_RESPONDED':
 				clearTimeout(dingDongTimeout);
-				dingDongTimeout = setTimeout(() => {
-					dispatch({ msg: 'TIMED_OUT' });
+				dingDongTimeout = setTimeout(() => { dispatch({ msg: 'TIMED_OUT' });
 				}, DINGDONG_TIMEOUT_MS);
 				dingDongState = 'SOMEONE_IS_COMING';
 				break;
@@ -185,18 +197,6 @@
 			data?.sseMessage ?? ''
 		);
 	}
-
-	// REACTIVE BANNER DESCRIPTION
-	$: bannerDescription = (() => {
-		switch (sseState) {
-			case 'CONNECTING':
-				return 'Checking status...';
-			case 'CONNECTED':
-				return "Ding Dong's server is offline";
-			case 'DISCONNECTED':
-				return 'Are you locked out of Scale?';
-		}
-	})();
 
 	async function onClickDingDongButton() {
 		dispatch({ msg: 'MADE_DINGDONG_REQUEST' });
@@ -235,15 +235,17 @@
 <div class="grid grid-rows-2 place-items-center h-full mt-4 w-50">
 	<div class="flex flex-col items-center gap-4">
 		<!-- TEXT -->
-		{#each bodyText.split('\n') as line}
-			<P>{line}</P>
-		{/each}
+		
+		<div class="text-center max-w-[50ch] ">
+			{#each bodyText.split('\n') as line}
+				<P class="text-center">{line}</P>
+			{/each}
+		</div>
 
 		<!-- BUTTON -->
-		<!-- {#if buttonState === "Slack"} -->
 		{#if dingDongState === 'NO_SERVER' || dingDongState === 'DEVICE_IS_DISCONNECTED'}
 			<a
-				href="https://join.slack.com/t/nola/shared_invite/zt-31zf5522p-QgwI5Mca_he6jku5xfGVlA"
+				href="https://join.slack.com/t/nola/shared_invite/zt-2wwyu8rif-TCXX17XO~xSet3MCheK8uw"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="bg-white dark:border-white hover:bg-gray-200 gap-2.5 border text-gray-900 font-medium py-1.5 md:py-2 px-3 rounded-lg text-sm md:text-base shadow-sm inline-flex items-center transition-colors"
@@ -254,33 +256,32 @@
 		{:else}
 			<Button
 				id="dingDong"
-				class="mt-4 w-40 h-14 active:dark:bg-primary-800 hover:dark:bg-primary-700
-				{dingDongState === 'AWAITING_DINGDONG_HTTP_RESP'
+				class="
+					mt-4 w-40 h-14 active:dark:bg-primary-800 hover:dark:bg-primary-700
+					{dingDongState === 'AWAITING_DINGDONG_HTTP_RESP'
 					? ' dark:bg-primary-800 hover:dark:bg-primary-800 cursor-default'
-					: ' hover:dark:bg-primary-700 dark:bg-primary-600'}"
+					: ' hover:dark:bg-primary-700 dark:bg-primary-600'}
+					{dingDongState !== 'READY' ? ' opacity-100 cursor-wait' : ''} 
+				"
+				disabled="{dingDongState !== 'READY'}"
 				on:click="{onClickDingDongButton}"
 			>
-				<!-- {#if buttonState === "DINGDONG"} -->
 				{#if dingDongState === 'READY'}
 					Ding Dong
-					<!-- {:else if buttonState === 'SCALEOUT'} -->
-				{:else if dingDongState === 'AWAITING_DINGDONG_HTTP_RESP'}
+				{:else if dingDongState === 'AWAITING_DINGDONG_HTTP_RESP' || dingDongState === 'DINGDONG_IS_ON'}
 					<!-- TODO: do we need this dingDongState and buttonState?  -->
-					<ScaleOut size="50" color="#a855f7" unit="px" duration="1.2s" />
-					<!-- {:else if buttonState === "Circle2"} -->
-				{:else if dingDongState === 'DINGDONG_IS_ON' || dingDongState === 'SOMEONE_IS_COMING'}
+					<ScaleOut size="50" unit="px" color="#a855f7" duration="1.2s" />
+				{:else if dingDongState === 'SOMEONE_IS_COMING'}
 					<Circle2
 						size="50"
+						unit="px"
 						colorOuter="#a855f7"
 						colorInner="#c084fc"
 						colorCenter="#d8b4fe"
-						unit="px"
 						durationOuter="1.2s"
 					/>
 				{/if}
 			</Button>
 		{/if}
-
-		<!-- LOADER -->
 	</div>
 </div>
