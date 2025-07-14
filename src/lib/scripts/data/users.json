@@ -25,8 +25,31 @@
 		"password": "123456789"
 	},
 	{
+		"name": "Vanessa Pyne",
+		"pfp": "https://2021.commcon.xyz/avatars/v_pyne_crop.jpeg?w=640",
+		"links": {
+			"github": "http://github.com/vipyne",
+			"linkedin": "https://www.linkedin.com/in/vanessapyne/"
+		},
+		"email": "noladevsorg@gmail.com",
+		"group": "Below C Level",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
+		"name": "Ian Painter",
+		"pfp": "https://belowclevel.org/images/ian.jpg",
+		"links": {
+			"github": "https://github.com/its-all-waves"
+		},
+		"email": "noladevsorg@gmail.com",
+		"group": "Below C Level",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
 		"name": "Benjamin Eckel",
-		"pfp": "https://media.licdn.com/dms/image/C4E03AQHuAnxgPrYWAQ/profile-displayphoto-shrink_800_800/0/1583364961362?e=1727308800&v=beta&t=IpZeEe-B3zqH7OlxSAg_0oH415w2UHh354ckQm0GRec",
+		"pfp": "https://ca.slack-edge.com/T028DDR96-U029DEE5F-52acc63a10a8-512",
 		"links": {
 			"github": "https://github.com/bhelx",
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/"
@@ -38,7 +61,7 @@
 	},
 	{
 		"name": "Aaron Lee",
-		"pfp": "https://media.licdn.com/dms/image/D5603AQGboIh6Fsq_CQ/profile-displayphoto-shrink_800_800/0/1691618124081?e=1727308800&v=beta&t=jBy5bydJpS5PAtjTSHelIWNonaQEBcrP7pZ1AKb0tw4",
+		"pfp": "https://belowclevel.org/images/aaron.jpg",
 		"links": {
 			"github": "https://github.com/wwkeyboard",
 			"linkedin": "https://www.linkedin.com/in/aaronoralee/",
@@ -76,21 +99,21 @@
 		"password": "123456789"
 	},
 	{
-		"name": "Jorge Carvajal",
-		"pfp": "https://media.licdn.com/dms/image/D5603AQE_fzyM0PILsg/profile-displayphoto-shrink_800_800/0/1712325559572?e=1727308800&v=beta&t=RuY6iHTdKizFx3qxD2d4Q_pzxrbkZORPeZLgE18qCEI",
+		"name": "Kalypso Homan",
+		"pfp": "https://avatars.githubusercontent.com/u/97084470?v=4",
 		"links": {
-			"github": "https://github.com/codingMustache",
-			"linkedin": "https://github.com/codingMustache",
-			"website": "https://codingmustache.dev"
+			"github": "http://github.com/kalypsohoman",
+			"linkedin": "https://www.linkedin.com/in/kalypsohoman/",
+			"website": "http://kalypsohoman.com/"
 		},
-		"email": "frontendparty@codingmustache.dev",
+		"email": "kalypsohomandev@gmail.com",
 		"group": "Frontend Party",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Benjamin Eckel",
-		"pfp": "https://media.licdn.com/dms/image/C4E03AQHuAnxgPrYWAQ/profile-displayphoto-shrink_800_800/0/1583364961362?e=1727308800&v=beta&t=IpZeEe-B3zqH7OlxSAg_0oH415w2UHh354ckQm0GRec",
+		"pfp": "https://ca.slack-edge.com/T028DDR96-U029DEE5F-52acc63a10a8-512",
 		"links": {
 			"github": "https://github.com/bhelx",
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",

@@ -25,7 +25,7 @@
 		"@types/sanitize-html": "^2.9.5",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
-		"@vercel/analytics": "^1.3.1",
+		"@vercel/analytics": "^1.5.0",
 		"@vercel/node": "^3.0.11",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.28.0",
@@ -58,6 +58,6 @@
 		"tailwind-merge": "^2.2.2"
 	},
 	"engines": {
-		"node": ">=20.6.0"
+		"node": "20.x"
 	}
 }
