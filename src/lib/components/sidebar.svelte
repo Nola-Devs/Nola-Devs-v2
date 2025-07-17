@@ -5,7 +5,7 @@
 </script>
 
 <aside
-	class="hidden lg:flex p-8 flex-col gap-12 w-full max-w-72 border-r border-[#EEE] dark:border-[#111827]"
+	class="hidden lg:flex p-8 flex-col gap-6 w-full max-w-72 border-r border-[#EEE] dark:border-[#111827]"
 >
 	<NavBrand
 		href="/"
@@ -13,6 +13,17 @@
 	>
 		N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
 	</NavBrand>
+
+	<div class="hover:bg-purple-700 rounded-lg group transition-colors">
+		<a
+			data-sveltekit-reload
+			href="/letmein"
+			class="inline-flex items-center justify-start py-2 px-4 text-base leading-[24px] group-hover:text-white text-gray-900 dark:text-white w-full h-full font-semibold"
+			aria-label="Let Me In!"
+		>
+			<span class="text-base font-medium leading-[24px]">Let Me In!</span>
+		</a>
+	</div>
 
 	<div class="w-full space-y-4">
 		<h2 class="font-semibold leading-7 text-lg text-violet-500">Community Groups</h2>
