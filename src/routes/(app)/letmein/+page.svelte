@@ -27,7 +27,7 @@
 		let reader: ReadableStreamDefaultReader;
 
 		try {
-			const response = await fetch(data.DINGDONG_ENDPOINT + '/connect', {
+			const response = await fetch(data.DINGDONG_HOST + '/connect', {
 				method: 'POST',
 				body: data.DINGDONG_PHRASE
 			});
@@ -186,7 +186,7 @@
 
 	async function dingDong(): Promise<boolean> {
 		try {
-			const resp = await fetch(data.DINGDONG_ENDPOINT + '/dingDong', {
+			const resp = await fetch(data.DINGDONG_HOST + '/dingDong', {
 				method: 'POST',
 				body: data.DINGDONG_PHRASE
 			});

@@ -94,7 +94,7 @@ npm run dev
 | mongodb name          | `DB_NAME`                  | `noladevs`                                                                                                                                             |
 | mongodb URL           | `MONGODB_URI`              | `mongodb://localhost:27017`                                                                                                                            |
 | Discord Webhook URL   | `DISCORD_WEBHOOK_URL`      | A webhook Channel URL                                                                                                                                  |
-| Ding Dong Endpoint    | `PUBLIC_DINGDONG_ENDPOINT` | Endpoint handling Ding Dong requests                                                                                                                   |
+| Ding Dong Endpoint    | `PUBLIC_DINGDONG_HOST`     | Endpoint handling Ding Dong requests                                                                                                                   |
 | Ding Dong Phrase      | `PUBLIC_DINGDONG_PHRASE`   | Used in POSTs to Ding Dong endpoint                                                                                                                    |
 
 Make sure you have created the above keys with provided values or your own where indicated.
