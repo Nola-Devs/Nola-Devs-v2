@@ -29,7 +29,7 @@
 		try {
 			const response = await fetch(data.DINGDONG_ENDPOINT + '/connect', {
 				method: 'POST',
-				body: data.DINGDONG_SECRET
+				body: data.DINGDONG_PHRASE
 			});
 			reader = response.body!.getReader();
 			const decoder = new TextDecoder();
@@ -83,11 +83,11 @@
 			case 'NO_SERVER':
 				return "Whoops! Ding Dong isn't working right now.\nContact someone in slack to let them know you're outside.";
 			case 'READY':
-				return "Click here to let someone know you're outside";
+				return "Click here to let someone know you're outside.";
 			case 'DINGDONG_IS_ON':
 				return 'The Bat Signal has been raised!\nWaiting for someone to respond...';
 			case 'SOMEONE_IS_COMING':
-				return 'Someone is on their way to let you in!\nGive it a minute or two.';
+				return 'Someone is on their way to let you in!\nGive it a minute or two...';
 		}
 		return '';
 	})();
@@ -171,7 +171,7 @@
 
 		// DEBUG
 		console.log(
-			`EVENT: ${msg} ::`,
+			`${msg} ->`,
 			dingDongState,
 			data?.sseMessage ? `\nSSE:` : '',
 			data?.sseMessage ?? ''
@@ -188,7 +188,7 @@
 		try {
 			const resp = await fetch(data.DINGDONG_ENDPOINT + '/dingDong', {
 				method: 'POST',
-				body: data.DINGDONG_SECRET 
+				body: data.DINGDONG_PHRASE
 			});
 			const { success } = await resp.json();
 			return success;
@@ -237,7 +237,7 @@
 			<Button
 				id="dingDong"
 				class="
-					mt-4 w-40 h-14 active:dark:bg-primary-800 hover:dark:bg-primary-700
+					mt-4 w-40 h-20 active:dark:bg-primary-800 hover:dark:bg-primary-700 text-xl 
 					{dingDongState === 'AWAITING_DINGDONG_HTTP_RESP'
 					? ' dark:bg-primary-800 hover:dark:bg-primary-800 cursor-default'
 					: ' hover:dark:bg-primary-700 dark:bg-primary-600'}
