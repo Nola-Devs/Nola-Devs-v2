@@ -6,6 +6,7 @@
 	import Icon from '$lib/components/icon/index.svelte';
 	import Banner from '$lib/components/banners/group-banner.svelte';
 	import ScaleIcon from '$lib/assets/icons/ScaleIcon.svelte';
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 
@@ -28,7 +29,7 @@
 		try {
 			const response = await fetch(data.DINGDONG_ENDPOINT + '/connect', {
 				method: 'POST',
-				body: JSON.stringify({ isAuthorizedLOL: true })
+				body: data.DINGDONG_SECRET
 			});
 			reader = response.body!.getReader();
 			const decoder = new TextDecoder();
@@ -187,7 +188,7 @@
 		try {
 			const resp = await fetch(data.DINGDONG_ENDPOINT + '/dingDong', {
 				method: 'POST',
-				body: JSON.stringify({ isAuthorizedLOL: true })
+				body: data.DINGDONG_SECRET 
 			});
 			const { success } = await resp.json();
 			return success;
@@ -248,7 +249,6 @@
 				{#if dingDongState === 'READY'}
 					Ding Dong
 				{:else if dingDongState === 'AWAITING_DINGDONG_HTTP_RESP' || dingDongState === 'DINGDONG_IS_ON'}
-					<!-- TODO: do we need this dingDongState and buttonState?  -->
 					<ScaleOut size="50" unit="px" color="#a855f7" duration="1.2s" />
 				{:else if dingDongState === 'SOMEONE_IS_COMING'}
 					<Circle2
