@@ -10,8 +10,9 @@
 	export let data: PageData;
 
 	interface SseMessage {
-		is_bat_signal_busy: boolean;
-		is_someone_coming: boolean;
+		heartbeat?: number;
+		is_bat_signal_busy?: boolean;
+		is_someone_coming?: boolean;
 	}
 
 	onMount(async () => {
@@ -39,10 +40,9 @@
 				if (done) break;
 				const text = decoder.decode(value);
 				const sseMessage: SseMessage = await JSON.parse(text.replace(/^data:/, ''));
-				dispatch({ msg: 'RECEIVED_SSE_MESSAGE', data: { sseMessage } });
+				!sseMessage.heartbeat && dispatch({ msg: 'RECEIVED_SSE_MESSAGE', data: { sseMessage } });
 			}
 		} catch (err) {
-			// debugger
 			console.error(err);
 			// TODO: do this only on a disconnect error
 			(err as Error).message === 'Failed to fetch' && dispatch({ msg: 'DISCONNECTED_FROM_SSE' });
@@ -86,7 +86,7 @@
 			case 'DINGDONG_IS_ON':
 				return 'The Bat Signal has been raised!\nWaiting for someone to respond...';
 			case 'SOMEONE_IS_COMING':
-				return 'Someone is on their way to let you in! Give it a minute or two.';
+				return 'Someone is on their way to let you in!\nGive it a minute or two.';
 		}
 		return '';
 	})();
@@ -124,40 +124,18 @@
 				break;
 
 			case 'RECEIVED_SSE_MESSAGE': {
-				/* INTENDED BEHAVIOR
-				CASES
-				- system is ready and device is idle/ready
-					- user visits page
-					- ding dong! (button press)
-					- UI indicates that the bat signal is raised and waiting for someone to respond
-					- someone is coming! (someone pressed the button on the device)
-					- UI indicates that someone is on the way to open the door
-				- bat signal is already raised
-					- user visits page
-					- (pick one below -- 2nd implemented currently)
-						- UI indicates that the bat signal is raised
-						- UI indicates that bat signal is raised only after button is pressed 
-					- someone is coming!
-					- UI indicates that someone is on the way to open the door
-				- someone is already coming to open the door
-					- user visits page
-					- (pick one below -- 2nd implemented currently)
-						- UI indicates that someone is coming
-						- UI indicates someone is coming only after button is pressed 
-				*/
 				const {
 					sseMessage: { is_bat_signal_busy, is_someone_coming }
 				} = data!;
 				if (is_someone_coming) {
-					if (dingDongState === 'DINGDONG_IS_ON') dispatch({ msg: 'SOMEONE_RESPONDED' });
-				} else if (!is_bat_signal_busy && !is_someone_coming) {
-					// NOTE: The bat signal device controls is_bat_signal_busy and is_someone_coming.
-					// If is_someone_coming, then !is_bat_signal_busy.
-					// Both timeout to false after 30 seconds.
-					if (dingDongState === 'DINGDONG_IS_ON' || dingDongState === 'SOMEONE_IS_COMING') {
-						dingDongState = 'READY';
-					}
+					dispatch({ msg: 'SOMEONE_RESPONDED' });
+					break;
 				}
+				if (is_bat_signal_busy) {
+					dispatch({ msg: 'DINGDONG_TURNED_ON' });
+					break;
+				}
+				dingDongState = 'READY';
 				break;
 			}
 
@@ -179,7 +157,8 @@
 
 			case 'SOMEONE_RESPONDED':
 				clearTimeout(dingDongTimeout);
-				dingDongTimeout = setTimeout(() => { dispatch({ msg: 'TIMED_OUT' });
+				dingDongTimeout = setTimeout(() => {
+					dispatch({ msg: 'TIMED_OUT' });
 				}, DINGDONG_TIMEOUT_MS);
 				dingDongState = 'SOMEONE_IS_COMING';
 				break;
@@ -235,8 +214,8 @@
 <div class="grid grid-rows-2 place-items-center h-full mt-4 w-50">
 	<div class="flex flex-col items-center gap-4">
 		<!-- TEXT -->
-		
-		<div class="text-center max-w-[50ch] ">
+
+		<div class="text-center max-w-[50ch]">
 			{#each bodyText.split('\n') as line}
 				<P class="text-center">{line}</P>
 			{/each}
