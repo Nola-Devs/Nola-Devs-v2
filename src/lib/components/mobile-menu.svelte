@@ -49,6 +49,15 @@
 	</div>
 	<Sidebar>
 		<SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded ">
+			<SidebarGroup>
+				<SidebarItem
+					data-sveltekit-reload
+					on:click="{closeSidebar}"
+					href="/letmein"
+					label="Let Me In!"
+					class="group dark:hover:text-white hover:text-white hover:bg-purple-700 font-bold dark:hover:bg-purple-700 mb-4"
+				/>
+			</SidebarGroup>
 			<h2 class="font-semibold leading-7 text-lg text-violet-500 mb-4">Community Groups</h2>
 			<SidebarGroup>
 				{#each data.groups as { name, slug, icon }}
