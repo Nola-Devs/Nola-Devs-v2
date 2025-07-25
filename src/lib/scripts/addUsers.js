@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import { model, Schema } from 'mongoose';
+import { connectDB } from './seed.js';
 
 const UserSchema = new Schema({
 	name: {
@@ -41,3 +42,13 @@ export const loadUsers = async () => {
 	await UserModel.collection.drop();
 	await UserModel.bulkSave(users.map((e) => new UserModel(e)));
 };
+
+try {
+	await connectDB();
+	await loadUsers();
+	console.log('Data loaded successfully');
+} catch (error) {
+	console.error('Failed to load data:', error);
+} finally {
+	process.exit();
+}

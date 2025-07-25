@@ -4,7 +4,7 @@ import { loadGroups } from './addGroups.js';
 import { loadUsers } from './addUsers.js';
 import { loadEvents } from './addEvents.js';
 
-const connectDB = async () => {
+export const connectDB = async () => {
 	const dbUri = `${MONGODB_URI}${DB_NAME}`;
 
 	try {

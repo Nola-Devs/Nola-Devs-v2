@@ -159,13 +159,12 @@
 		"password": "123456789"
 	},
 	{
-		"name": "David Whelen",
-		"pfp": "https://media.licdn.com/dms/image/C4E03AQE3U9V7tByogw/profile-displayphoto-shrink_800_800/0/1516901879972?e=1727308800&v=beta&t=PWok8a0dHemI6tEABuFWO778R95eV-WLdM9eVlCfMXk",
+		"name": "Miguel Solis",
+		"pfp": "",
 		"links": {
-			"twitter": "https://twitter.com/WhelenDavid",
-			"linkedin": "https://www.linkedin.com/in/david-whelen-21361a99/"
+			"linkedin": "https://www.linkedin.com/in/miguel-solis-/"
 		},
-		"email": "dwhelen@teksystems.com",
+		"email": "example@example.com",
 		"group": "NOLA Sec",
 		"role": "organizer",
 		"password": "123456789"
