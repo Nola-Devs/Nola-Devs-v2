@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import { model, Schema } from 'mongoose';
+import { connectDB } from './seed.js';
 
 const groupSchema = new Schema({
 	group: {
@@ -40,3 +41,13 @@ export const loadGroups = async () => {
 	await GroupModel.collection.drop();
 	await GroupModel.bulkSave(groups.map((e) => new GroupModel(e)));
 };
+
+try {
+	await connectDB();
+	await loadGroups();
+	console.log('Data loaded successfully');
+} catch (error) {
+	console.error('Failed to load data:', error);
+} finally {
+	process.exit();
+}
