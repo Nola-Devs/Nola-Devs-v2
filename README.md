@@ -40,7 +40,7 @@ Currently, all events are aggregated from Google Calendars belonging to establis
 
 For example: the Below C Level is a group that has a Google Calendar. They add upcoming events to their calendar, then once a day from that calendar, we grab all the events that are happening in the next 30 days.
 
-If you have a new group you want to establish, please ping @mikesamm on the [community Slack](https://join.slack.com/t/nola/shared_invite/zt-33so6nl8m-qDq5rDFrMnw5eeXcERP7jA) or create an [issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues) for this repo and ping @mikesamm on it.
+If you have a new group you want to establish, please leave a message on the #general channel in the [community Slack](https://join.slack.com/t/nola/shared_invite/zt-33so6nl8m-qDq5rDFrMnw5eeXcERP7jA) or create an [issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues) on the repository for the site. We will respond shortly after.
 
 # Contribute
 

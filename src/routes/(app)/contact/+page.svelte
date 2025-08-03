@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Heading, P, Input, Label, A, Button, Textarea } from 'flowbite-svelte';
-	// TODO pass card as component
 </script>
 
 <div class="flex flex-col gap-6 flex-1">
@@ -42,5 +41,24 @@
 			</div>
 			<Button class="mt-4" type="submit">Submit</Button>
 		</form>
+	</div>
+	<Heading tag="h2">Submit an Event</Heading>
+	<div>
+		<P class="mb-4">
+			Currently, all events are aggregated from Google Calendars belonging to established groups.</P
+		>
+		<P class="mb-4">
+			For example: the Below C Level is a group that has a Google Calendar. They add upcoming events
+			to their calendar, then once a day from that calendar, we grab all the events that are
+			happening in the next 30 days.</P
+		>
+		<P
+			>If you have a new group you want to establish, please leave a message on the #general channel
+			in the <A
+				href="https://join.slack.com/t/nola/shared_invite/zt-33so6nl8m-qDq5rDFrMnw5eeXcERP7jA"
+				>community Slack</A
+			> or <A href="https://github.com/Nola-Devs/Nola-Devs-v2/issues">create an issue</A> on the repository
+			for the site. We will respond shortly after.</P
+		>
 	</div>
 </div>
