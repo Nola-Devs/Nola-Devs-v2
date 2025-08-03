@@ -9,6 +9,7 @@
 - [Nola Devs](#nola-devs)
 - [What is this?](#what-is-this)
 - [Who is this for?](#who-is-this-for)
+  - [Submit an event](#submit-an-event)
 - [Contribute](#contribute)
 - [Tech Stack](#tech-stack)
 - [Set up](#set-up)
@@ -32,6 +33,16 @@ MVP is currently live at this domain: [https://www.noladevs.org/](https://www.no
 # Who is this for?
 
 The purpose of this app is to be a central hub for for the NOLA dev community
+
+## Submit an event
+
+Currently, all events are aggregated from Google Calendars belonging to established groups.
+
+For example: the Below C Level is a group that has a Google Calendar. They add upcoming events to their calendar, then once a day from that calendar, we grab all the events that are happening in the next 30 days.
+
+Add an event to your group's calendar and it will be listed on the landing page the next day.
+
+If you have a new group you want to establish, please leave a message on the #general channel in the [community Slack](https://join.slack.com/t/nola/shared_invite/zt-33so6nl8m-qDq5rDFrMnw5eeXcERP7jA) or create an [issue](https://github.com/Nola-Devs/Nola-Devs-v2/issues) on the repository for the site. We will respond shortly after.
 
 # Contribute
 
@@ -85,17 +96,17 @@ npm run dev
 
 ### API Keys you will need
 
-| name                  | env key                    | env value                                                                                                                                              |
-| --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Google Calendar API   | `CAL`                      | [Follow these steps](#google-calendar-api-key)                                                                                                         |
-| Discord Webhook URL   | `DISCORD`                  | Apply for [Contributor Access](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already. |
-| Mapbox Public API Key | `PUBLIC_MAPBOX`            | [Follow these steps](#mapbox-public-key)                                                                                                               |
-| Cron Secret           | `CRON_SECERT`              | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
-| mongodb name          | `DB_NAME`                  | `noladevs`                                                                                                                                             |
-| mongodb URL           | `MONGODB_URI`              | `mongodb://localhost:27017`                                                                                                                            |
-| Discord Webhook URL   | `DISCORD_WEBHOOK_URL`      | A webhook Channel URL                                                                                                                                  |
-| Ding Dong Endpoint    | `PUBLIC_DINGDONG_HOST`     | Endpoint handling Ding Dong requests                                                                                                                   |
-| Ding Dong Phrase      | `PUBLIC_DINGDONG_PHRASE`   | Used in POSTs to Ding Dong endpoint                                                                                                                    |
+| name                  | env key                  | env value                                                                                                                                              |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Google Calendar API   | `CAL`                    | [Follow these steps](#google-calendar-api-key)                                                                                                         |
+| Discord Webhook URL   | `DISCORD`                | Apply for [Contributor Access](https://discord.com/channels/1117944495099613254/1166366239652847687/1166367256356335636) if you don't have it already. |
+| Mapbox Public API Key | `PUBLIC_MAPBOX`          | [Follow these steps](#mapbox-public-key)                                                                                                               |
+| Cron Secret           | `CRON_SECERT`            | This is an arbitary value, For local testing set and use in Postman or other API testing tool                                                          |
+| mongodb name          | `DB_NAME`                | `noladevs`                                                                                                                                             |
+| mongodb URL           | `MONGODB_URI`            | `mongodb://localhost:27017`                                                                                                                            |
+| Discord Webhook URL   | `DISCORD_WEBHOOK_URL`    | A webhook Channel URL                                                                                                                                  |
+| Ding Dong Endpoint    | `PUBLIC_DINGDONG_HOST`   | Endpoint handling Ding Dong requests                                                                                                                   |
+| Ding Dong Phrase      | `PUBLIC_DINGDONG_PHRASE` | Used in POSTs to Ding Dong endpoint                                                                                                                    |
 
 Make sure you have created the above keys with provided values or your own where indicated.
 Once you have both created (copy `.env.example`) and added to your `.env.local` file (or any other equivalent environment variable system), you can actually deploy it. (_instructions in hyperlinks_)
