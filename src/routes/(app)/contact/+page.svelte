@@ -52,6 +52,9 @@
 			to their calendar, then once a day from that calendar, we grab all the events that are
 			happening in the next 30 days.</P
 		>
+		<P class="mb-4">
+			Add an event to your group's calendar and it will be listed on the landing page the next day.
+		</P>
 		<P
 			>If you have a new group you want to establish, please leave a message on the #general channel
 			in the <A
