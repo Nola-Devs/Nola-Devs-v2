@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        _Thank you for taking the time to propose a new idea_
+        _Thank you for taking the time to propose a solution or new idea_
 
   - type: textarea
     id: problem
