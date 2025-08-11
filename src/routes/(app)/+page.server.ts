@@ -7,9 +7,12 @@ import type { Event } from '$lib/types/event.d.ts';
 
 export const load: PageServerLoad = async () => {
 	try {
-		const events: Event[] = (await eventController.getEvents()).sort(
-			(a, b) => a.start.getTime() - b.start.getTime()
-		);
+		const events: Event[] = (await eventController.getEvents())
+			.sort((a, b) => a.start.getTime() - b.start.getTime())
+			.filter((event) => {
+				// avoid duplicate 'Hack Night' event on the events list
+				return !(event.group === 'Nola Game Dev' && event.summary === 'Hack Night');
+			});
 
 		return {
 			events
