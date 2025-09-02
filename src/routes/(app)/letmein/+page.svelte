@@ -19,9 +19,6 @@
 	onMount(async () => {
 		if (!browser) return;
 
-		// DEBUG
-		console.clear();
-
 		console.log('CONNECTING TO SSE...');
 
 		let reader: ReadableStreamDefaultReader;
@@ -39,8 +36,13 @@
 			while (true) {
 				const { value, done } = await reader.read();
 				if (done) break;
-				const text = decoder.decode(value);
-				const sseMessage: SseMessage = await JSON.parse(text.replace(/^data:/, ''));
+				const messages = decoder
+					.decode(value)
+					.split('\n')
+					.filter(m => !!m); // TODO: why is this necessary? shouldn't be! 
+
+				// take only the last message 
+				const sseMessage: SseMessage = await JSON.parse(messages[messages.length - 1]);
 				!sseMessage.heartbeat && dispatch({ msg: 'RECEIVED_SSE_MESSAGE', data: { sseMessage } });
 			}
 		} catch (err) {
@@ -168,14 +170,6 @@
 				dingDongState = 'READY';
 				break;
 		}
-
-		// DEBUG
-		console.log(
-			`${msg} ->`,
-			dingDongState,
-			data?.sseMessage ? `\nSSE:` : '',
-			data?.sseMessage ?? ''
-		);
 	}
 
 	async function onClickDingDongButton() {
