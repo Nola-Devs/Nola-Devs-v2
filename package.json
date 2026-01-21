@@ -53,6 +53,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@slack/web-api": "^7.13.0",
 		"bcrypt": "^5.1.1",
 		"ics": "^3.7.2",
 		"tailwind-merge": "^2.2.2"
