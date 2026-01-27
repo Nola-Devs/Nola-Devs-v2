@@ -8,14 +8,20 @@ export const POST: RequestHandler = async ({ request }) => {
 	const formData = await request.formData();
 
 	const trigger_id = formData.get('trigger_id') as string;
-	if (!trigger_id) {
-		return new Response('trigger_id absent or invalid');
+	const channel_id = formData.get('channel_id') as string;
+	const user_id = formData.get('user_id') as string;
+	if (!trigger_id || !channel_id || !user_id) {
+		return new Response('Required data not present. Check trigger_id, channel_id, and user_id.');
 	}
 
 	await slackClient.views.open({
 		trigger_id: trigger_id,
 		view: {
 			type: 'modal',
+			private_metadata: JSON.stringify({
+				channel_id: channel_id,
+				user_id: user_id
+			}),
 			close: {
 				type: 'plain_text',
 				text: 'Cancel',
