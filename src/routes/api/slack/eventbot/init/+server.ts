@@ -29,7 +29,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			},
 			title: {
 				type: 'plain_text',
-				text: 'Create an Event',
+				text: 'Eventbot',
 				emoji: true
 			},
 			blocks: [
@@ -51,13 +51,14 @@ export const POST: RequestHandler = async ({ request }) => {
 					},
 					accessory: {
 						type: 'button',
+						action_id: 'create_event',
 						text: {
 							type: 'plain_text',
 							text: 'Create',
 							emoji: true
 						},
 						style: 'primary',
-						value: 'click_me_123'
+						value: 'create_event'
 					}
 				},
 				{
@@ -68,12 +69,13 @@ export const POST: RequestHandler = async ({ request }) => {
 					},
 					accessory: {
 						type: 'button',
+						action_id: 'edit_event',
 						text: {
 							type: 'plain_text',
 							text: 'Edit',
 							emoji: true
 						},
-						value: 'click_me_123'
+						value: 'edit_event'
 					}
 				},
 				{
@@ -84,13 +86,14 @@ export const POST: RequestHandler = async ({ request }) => {
 					},
 					accessory: {
 						type: 'button',
+						action_id: 'cancel event',
 						text: {
 							type: 'plain_text',
 							text: 'Cancel',
 							emoji: true
 						},
 						style: 'danger',
-						value: 'click_me_123'
+						value: 'cancel_event'
 					}
 				}
 			]
