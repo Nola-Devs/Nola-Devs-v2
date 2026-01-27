@@ -1,8 +1,8 @@
+import { SLACK_BOT_TOKEN } from '$env/static/private';
 import { WebClient } from '@slack/web-api';
 import { RequestHandler } from '@sveltejs/kit';
-import { SLACK_BOT_TOKEN } from '$env/static/private';
 
-const wc = new WebClient(SLACK_BOT_TOKEN);
+const slackClient = new WebClient(SLACK_BOT_TOKEN);
 
 export const POST: RequestHandler = async ({ request }) => {
 	const formData = await request.formData();
@@ -12,57 +12,84 @@ export const POST: RequestHandler = async ({ request }) => {
 		return new Response('trigger_id absent or invalid');
 	}
 
-	await wc.views.open({
+	await slackClient.views.open({
 		trigger_id: trigger_id,
 		view: {
 			type: 'modal',
-			title: { type: 'plain_text', text: 'Create Event' },
+			close: {
+				type: 'plain_text',
+				text: 'Cancel',
+				emoji: true
+			},
+			title: {
+				type: 'plain_text',
+				text: 'Create an Event',
+				emoji: true
+			},
 			blocks: [
 				{
 					type: 'section',
 					text: {
 						type: 'mrkdwn',
-						text: "It's Block Kit...but _in a modal_"
+						text: 'List and manage events on noladevs.org!'
+					}
+				},
+				{
+					type: 'divider'
+				},
+				{
+					type: 'section',
+					text: {
+						type: 'mrkdwn',
+						text: ':calendar:  *Create an upcoming event*'
 					},
-					block_id: 'section1',
 					accessory: {
 						type: 'button',
 						text: {
 							type: 'plain_text',
-							text: 'Click me'
+							text: 'Create',
+							emoji: true
 						},
-						action_id: 'button_abc',
-						value: 'Button value',
-						style: 'danger'
+						style: 'primary',
+						value: 'click_me_123'
 					}
 				},
 				{
-					type: 'input',
-					label: {
-						type: 'plain_text',
-						text: 'Input label'
+					type: 'section',
+					text: {
+						type: 'mrkdwn',
+						text: ':pencil2:  *Edit an upcoming event*'
 					},
-					element: {
-						type: 'plain_text_input',
-						action_id: 'input1',
-						placeholder: {
+					accessory: {
+						type: 'button',
+						text: {
 							type: 'plain_text',
-							text: 'Type in here'
+							text: 'Edit',
+							emoji: true
 						},
-						multiline: false
+						value: 'click_me_123'
+					}
+				},
+				{
+					type: 'section',
+					text: {
+						type: 'mrkdwn',
+						text: ':x:  *Cancel an upcoming event*'
 					},
-					optional: false
+					accessory: {
+						type: 'button',
+						text: {
+							type: 'plain_text',
+							text: 'Cancel',
+							emoji: true
+						},
+						style: 'danger',
+						value: 'click_me_123'
+					}
 				}
-			],
-			close: {
-				type: 'plain_text',
-				text: 'Cancel'
-			},
-			submit: { type: 'plain_text', text: 'Submit' }
+			]
 		}
 	});
-
-	// TODO: handle errors
 
 	// respond with opening modal and 200 success response
 	return new Response(`Please submit your event through the form`, { status: 200 });
