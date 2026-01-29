@@ -10,6 +10,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	const trigger_id = formData.get('trigger_id') as string;
 	const channel_id = formData.get('channel_id') as string;
 	const user_id = formData.get('user_id') as string;
+
 	if (!trigger_id || !channel_id || !user_id) {
 		return new Response('Required data not present. Check trigger_id, channel_id, and user_id.');
 	}
@@ -86,7 +87,7 @@ export const POST: RequestHandler = async ({ request }) => {
 					},
 					accessory: {
 						type: 'button',
-						action_id: 'cancel event',
+						action_id: 'cancel_	event',
 						text: {
 							type: 'plain_text',
 							text: 'Cancel',
