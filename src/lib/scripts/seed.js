@@ -3,6 +3,7 @@ const { MONGODB_URI, DB_NAME } = process.env;
 import { loadGroups } from './addGroups.js';
 import { loadUsers } from './addUsers.js';
 import { loadEvents } from './addEvents.js';
+import { loadLocations } from './addLocations.js';
 
 export const connectDB = async () => {
 	const dbUri = `${MONGODB_URI}${DB_NAME}`;
@@ -22,6 +23,7 @@ try {
 	await loadGroups();
 	await loadUsers();
 	await loadEvents();
+	await loadLocations();
 	console.log('Data loaded successfully');
 } catch (error) {
 	console.error('Failed to load data:', error);

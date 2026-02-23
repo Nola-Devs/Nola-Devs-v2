@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Scale",
+		"street": "612 Andrew Higgins Dr 2nd floor",
+		"city": "New Orleans",
+		"state": "LA",
+		"zip": "70130",
+		"slug": "scale"
+	},
+	{
+		"name": "The Shop at CAC",
+		"street": "900 Camp St 3rd floor",
+		"city": "New Orleans",
+		"state": "LA",
+		"zip": "70130",
+		"slug": "the-shop-at-cac"
+	},
+	{
+		"name": "The Rusty Nail",
+		"street": "1100 Constance St",
+		"city": "New Orleans",
+		"state": "LA",
+		"zip": "70130",
+		"slug": "the-rusty-nail"
+	}
+]
