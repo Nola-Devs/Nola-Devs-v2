@@ -2,6 +2,7 @@ import { SLACK_BOT_TOKEN } from '$env/static/private';
 import { WebClient } from '@slack/web-api';
 import { json } from '@sveltejs/kit';
 import GroupModel from '$lib/db/models/groups.model';
+import { LocationModel } from '$lib/scripts/addLocations';
 import {
 	createGroupOptions,
 	buildCreateEventModalBlocks,
@@ -11,49 +12,6 @@ import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 import type { Group } from '$lib/types/group';
 
 const slackClient = new WebClient(SLACK_BOT_TOKEN);
-
-const dummyLocations = [
-	{
-		name: 'City Park Pavilion',
-		street: '123 Park Avenue',
-		city: 'New Orleans',
-		state: 'LA',
-		zip: '70115',
-		slug: 'city-park-pavilion'
-	},
-	{
-		name: 'Downtown Coffee House',
-		street: '456 Magazine Street',
-		city: 'New Orleans',
-		state: 'LA',
-		zip: '70130',
-		slug: 'downtown-coffee-house'
-	},
-	{
-		name: 'Riverwalk Community Center',
-		street: '789 Canal Street',
-		city: 'New Orleans',
-		state: 'LA',
-		zip: null,
-		slug: 'riverwalk-community-center'
-	},
-	{
-		name: 'The French Quarter Gallery',
-		street: '321 Royal Street',
-		city: 'New Orleans',
-		state: 'LA',
-		zip: '70116',
-		slug: 'the-french-quarter-gallery'
-	},
-	{
-		name: 'Warehouse District Studio',
-		street: '654 Julia Street',
-		city: 'New Orleans',
-		state: 'LA',
-		zip: '70113',
-		slug: 'warehouse-district-studio'
-	}
-];
 
 export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	console.log('submit endpoint reached');
@@ -74,11 +32,13 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		if (action.action_id === 'create_event') {
 			const groups: Group[] = await GroupModel.find({}, 'group slug');
 			const groupOptions = createGroupOptions(groups);
-			const locationOptions = createLocationOptions(dummyLocations);
+			const locations = await LocationModel.find({});
+			const locationOptions = createLocationOptions(locations);
 
 			const updatedMetadata = {
 				...metadata,
-				groups
+				groups,
+				locations
 			};
 
 			await slackClient.views.push({
