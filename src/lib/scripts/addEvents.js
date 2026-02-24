@@ -2,28 +2,55 @@ import { promises as fs } from 'fs';
 import { model, Schema } from 'mongoose';
 
 const eventSchema = new Schema({
-	group: {
+	meetupName: {
 		type: String,
 		required: true
 	},
-	summary: {
+	groupName: {
 		type: String,
 		required: true
 	},
-	calLink: String,
-	description: String,
-	location: String,
-	lnglat: {
-		type: [Number],
-		index: '2dsphere'
+	description: {
+		type: String,
+		required: false
 	},
 	start: {
 		type: Date,
 		required: true
 	},
-	end: Date,
-	eventSlug: { type: String, required: true, unique: true },
-	groupSlug: { type: String, required: true }
+	end: {
+		type: Date,
+		required: true
+	},
+	location: {
+		type: String,
+		required: true
+	},
+	locationNotes: {
+		type: String,
+		required: false
+	},
+	eventLink: {
+		type: String,
+		required: false
+	},
+	rsvpLink: {
+		type: String,
+		required: false
+	},
+	announcementHeading: {
+		type: String,
+		required: false
+	},
+	eventSlug: {
+		type: String,
+		required: true,
+		unique: true
+	},
+	groupSlug: {
+		type: String,
+		required: true
+	}
 });
 
 const EventModel = model('Event', eventSchema);
