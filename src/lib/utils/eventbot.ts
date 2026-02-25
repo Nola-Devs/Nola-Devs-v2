@@ -21,11 +21,11 @@ export const createGroupOptions = (fetchedGroups: Group[]) => {
 	});
 };
 
-export const createLocationOptions = (locations: any) => {
-	return locations.map((loc: any) => {
+export const createLocationOptions = (fetchedLocations: any) => {
+	return fetchedLocations.map((fetchedLoc: any) => {
 		return {
-			text: loc.name,
-			value: loc.slug
+			text: fetchedLoc.name,
+			value: fetchedLoc.slug
 		};
 	});
 };
@@ -54,10 +54,10 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		},
 		{
 			// Group select
-			type: 'input',
-			block_id: 'group_block',
-			label: { type: 'plain_text', text: 'Group' },
-			element: {
+			type: 'section',
+			block_id: 'group_section_block',
+			text: { type: 'mrkdwn', text: '*Group*' },
+			accessory: {
 				type: 'static_select',
 				action_id: 'group_select',
 				placeholder: { type: 'plain_text', text: 'Select a group' },
@@ -67,12 +67,11 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 						value: g.value
 					})),
 					{
-						text: { type: 'plain_text' as const, text: 'New Group' },
+						text: { type: 'plain_text' as const, text: 'Other Group' },
 						value: 'other-group'
 					}
 				]
-			},
-			optional: false
+			}
 		}
 	];
 
@@ -82,7 +81,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			block_id: 'other_group_block',
 			label: {
 				type: 'plain_text',
-				text: 'Other Group'
+				text: 'Group Name'
 			},
 			element: {
 				type: 'plain_text_input',
@@ -143,7 +142,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		element: {
 			type: 'url_text_input',
 			action_id: 'event_input',
-			placeholder: { type: 'plain_text', text: 'Enter Event link (optional)' }
+			placeholder: { type: 'plain_text', text: 'belowclevel.org, etc...' }
 		},
 		optional: true
 	});
@@ -156,17 +155,17 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		element: {
 			type: 'url_text_input',
 			action_id: 'rsvp_input',
-			placeholder: { type: 'plain_text', text: 'Enter RSVP link (optional)' }
+			placeholder: { type: 'plain_text', text: 'eventbrite.com, etc...' }
 		},
 		optional: true
 	});
 
 	// Location dropdown
 	blocks.push({
-		type: 'input',
-		block_id: 'location_block',
-		label: { type: 'plain_text', text: 'Location' },
-		element: {
+		type: 'section',
+		block_id: 'location_section_block',
+		text: { type: 'mrkdwn', text: '*Location*' },
+		accessory: {
 			type: 'static_select',
 			action_id: 'location_select',
 			placeholder: { type: 'plain_text', text: 'Select a location' },
@@ -180,13 +179,23 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					value: 'other-location'
 				}
 			]
-		},
-		optional: false
+		}
 	});
 
 	// Conditionally add "Other Location" address fields
 	if (showOtherLocationFields) {
 		blocks.push(
+			{
+				type: 'input',
+				block_id: 'location_name_block',
+				label: { type: 'plain_text', text: 'Location Name' },
+				element: {
+					type: 'plain_text_input',
+					action_id: 'street_address_input',
+					placeholder: { type: 'plain_text', text: 'Location Name' }
+				},
+				optional: false
+			},
 			{
 				type: 'input',
 				block_id: 'street_address_block',
@@ -195,7 +204,8 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					type: 'plain_text_input',
 					action_id: 'street_address_input',
 					placeholder: { type: 'plain_text', text: 'Enter street address' }
-				}
+				},
+				optional: true
 			},
 			{
 				type: 'input',
@@ -205,7 +215,8 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					type: 'plain_text_input',
 					action_id: 'city_input',
 					placeholder: { type: 'plain_text', text: 'Enter city' }
-				}
+				},
+				optional: false
 			},
 			{
 				type: 'input',
@@ -215,7 +226,8 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					type: 'plain_text_input',
 					action_id: 'state_input',
 					placeholder: { type: 'plain_text', text: 'Enter state' }
-				}
+				},
+				optional: false
 			},
 			{
 				type: 'input',
@@ -225,7 +237,8 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					type: 'plain_text_input',
 					action_id: 'zip_input',
 					placeholder: { type: 'plain_text', text: 'Enter ZIP code' }
-				}
+				},
+				optional: true
 			}
 		);
 	}
@@ -238,7 +251,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		element: {
 			type: 'plain_text_input',
 			action_id: 'location_notes_input',
-			placeholder: { type: 'plain_text', text: 'ex: Parking is located...' }
+			placeholder: { type: 'plain_text', text: 'e.g.: Parking is located...' }
 		},
 		optional: true
 	});
@@ -251,7 +264,10 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		element: {
 			type: 'plain_text_input',
 			action_id: 'announcement_input',
-			placeholder: { type: 'plain_text', text: 'Custom text for the event announcement' }
+			placeholder: {
+				type: 'plain_text',
+				text: 'e.g.: "Hey everyone, we have an awesome meetup coming up..."'
+			}
 		},
 		optional: true
 	});
