@@ -23,7 +23,19 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	}
 
 	const payload = JSON.parse(payloadString);
-	const metadata = JSON.parse(payload.view.private_metadata || {}); // private_metadata set in /init endpoint
+
+	let metadata;
+	try {
+		metadata =
+			typeof payload.view.private_metadata === 'string'
+				? JSON.parse(payload.view.private_metadata)
+				: payload.view.private_metadata;
+	} catch (err) {
+		console.error('Metadata parse error:', err);
+		console.log('Raw metadata:', payload.view.private_metadata);
+		return new Response('', { status: 200 });
+	}
+	// const metadata = JSON.parse(payload.view.private_metadata || {}); // private_metadata set in /init endpoint
 
 	console.log('Payload type:', payload.type);
 	if (payload.type === 'block_actions') {
@@ -39,7 +51,9 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			const updatedMetadata = {
 				...metadata,
 				groups,
-				locations
+				locations,
+				showOtherGroupField: false,
+				showOtherLocationFields: false
 			};
 
 			await slackClient.views.push({
@@ -63,31 +77,33 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 					blocks: buildCreateEventModalBlocks({
 						groups: groupOptions,
 						locations: locationOptions,
-						showOtherGroupField: false,
-						showOtherLocationFields: false
+						showOtherGroupField: metadata.showOtherGroupField,
+						showOtherLocationFields: metadata.showOtherLocationFields
 					})
 				}
 			});
 		}
 
 		if (action.action_id === 'group_select') {
-			// if it's a group_select
-			// we have to build the modal blocks again
-			// if the other-group option is chosen, then a new field needs
-			// included in between group select and others
 			const selectedGroup = action.selected_option.value;
 			console.log('🚀 ~ POST ~ selectedGroup:', selectedGroup);
 			const groupOptions = createGroupOptions(metadata.groups);
 			const locationOptions = createLocationOptions(metadata.locations);
-			// console.log('🚀 ~ POST ~ currentGroupOptions:', groupOptions);
-			// console.log('Groups from metadata:', metadata.groups);
-			// console.log('Locations from metadata:', metadata.locations);
+			// console.log('🚀 ~ POST ~ metadata:', metadata);
+
+			const updatedMetadata = {
+				...metadata,
+				groups: metadata.groups,
+				locations: metadata.locations,
+				showOtherGroupField: selectedGroup === 'other-group',
+				showOtherLocationFields: metadata.showOtherLocationFields
+			};
 
 			const blocks = buildCreateEventModalBlocks({
 				groups: groupOptions,
 				locations: locationOptions,
-				showOtherGroupField: selectedGroup === 'other-group',
-				showOtherLocationFields: false
+				showOtherGroupField: updatedMetadata.showOtherGroupField,
+				showOtherLocationFields: updatedMetadata.showOtherLocationFields
 			});
 
 			await slackClient.views.update({
@@ -96,7 +112,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 				view: {
 					type: 'modal',
 					callback_id: 'create_event_modal',
-					// private_metadata: JSON.stringify(updatedMetadata),
+					private_metadata: JSON.stringify(updatedMetadata),
 					title: {
 						type: 'plain_text',
 						text: 'Create an Event'
@@ -115,7 +131,49 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		}
 
 		if (action.action_id === 'location_select') {
-			// then do this
+			const selectedLocation = action.selected_option.value;
+			console.log('🚀 ~ POST ~ selectedLocation:', selectedLocation);
+			const groupOptions = createGroupOptions(metadata.groups);
+			const locationOptions = createLocationOptions(metadata.locations);
+			// console.log('🚀 ~ POST ~ metadata:', metadata);
+
+			const updatedMetadata = {
+				...metadata,
+				groups: metadata.groups,
+				locations: metadata.locations,
+				showOtherGroupField: metadata.showOtherGroupField,
+				showOtherLocationFields: selectedLocation === 'other-location'
+			};
+
+			const blocks = buildCreateEventModalBlocks({
+				groups: groupOptions,
+				locations: locationOptions,
+				showOtherGroupField: updatedMetadata.showOtherGroupField,
+				showOtherLocationFields: updatedMetadata.showOtherLocationFields
+			});
+
+			await slackClient.views.update({
+				view_id: payload.view.id,
+				hash: payload.view.hash,
+				view: {
+					type: 'modal',
+					callback_id: 'create_event_modal',
+					private_metadata: JSON.stringify(updatedMetadata),
+					title: {
+						type: 'plain_text',
+						text: 'Create an Event'
+					},
+					submit: {
+						type: 'plain_text',
+						text: 'Submit'
+					},
+					close: {
+						type: 'plain_text',
+						text: 'Cancel'
+					},
+					blocks
+				}
+			});
 		}
 
 		if (action.action_id === 'edit_event') {
