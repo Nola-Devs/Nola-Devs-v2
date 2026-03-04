@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { model, Schema } from 'mongoose';
 
-const LocationSchema = new Schema({
+const eventLocationSchema = new Schema({
 	name: {
 		type: String,
 		required: true
@@ -28,12 +28,12 @@ const LocationSchema = new Schema({
 	}
 });
 
-export const LocationModel = model('Location', LocationSchema);
+export const EventLocationModel = model('EventLocation', eventLocationSchema);
 
 export const loadLocations = async () => {
-	const data = await fs.readFile('src/lib/scripts/data/locations.json', 'utf-8');
+	const data = await fs.readFile('src/lib/scripts/data/event-locations.json', 'utf-8');
 	const locations = JSON.parse(data);
 
-	await LocationModel.collection.drop();
-	await LocationModel.bulkSave(locations.map((e) => new LocationModel(e)));
+	await EventLocationModel.collection.drop();
+	await EventLocationModel.bulkSave(locations.map((e) => new EventLocationModel(e)));
 };

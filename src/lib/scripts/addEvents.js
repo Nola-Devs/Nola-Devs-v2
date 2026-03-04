@@ -2,17 +2,17 @@ import { promises as fs } from 'fs';
 import { model, Schema } from 'mongoose';
 
 const eventSchema = new Schema({
-	meetupName: {
+	groupName: {
 		type: String,
 		required: true
 	},
-	groupName: {
+	meetupName: {
 		type: String,
 		required: true
 	},
 	description: {
 		type: String,
-		required: false
+		required: true
 	},
 	start: {
 		type: Date,
@@ -23,8 +23,12 @@ const eventSchema = new Schema({
 		required: true
 	},
 	location: {
-		type: String,
-		required: true
+		name: { type: String, required: true },
+		street: { type: String },
+		city: { type: String, required: true },
+		state: { type: String, required: true },
+		zip: { type: String },
+		slug: { type: String, required: true }
 	},
 	locationNotes: {
 		type: String,
@@ -38,17 +42,21 @@ const eventSchema = new Schema({
 		type: String,
 		required: false
 	},
-	announcementHeading: {
+	announcement: {
 		type: String,
 		required: false
 	},
 	eventSlug: {
 		type: String,
 		required: true,
-		unique: true
+		unique: false
 	},
 	groupSlug: {
 		type: String,
+		required: false
+	},
+	createdAt: {
+		type: Date,
 		required: true
 	}
 });

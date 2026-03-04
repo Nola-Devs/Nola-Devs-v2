@@ -3,7 +3,7 @@ const { MONGODB_URI, DB_NAME } = process.env;
 import { loadGroups } from './addGroups.js';
 import { loadUsers } from './addUsers.js';
 import { loadEvents } from './addEvents.js';
-import { loadLocations } from './addLocations.js';
+import { loadLocations } from './addEventLocations.js';
 
 export const connectDB = async () => {
 	const dbUri = `${MONGODB_URI}${DB_NAME}`;
