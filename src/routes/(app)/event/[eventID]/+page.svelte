@@ -10,7 +10,7 @@
 	if (!data?.event) throw new Error('Event not found');
 
 	const { event } = data;
-	const { summary, description, start, end, location, lnglat, group, calLink } = event;
+	const { meetupName, description, start, end, location, groupName } = event;
 
 	const startDateTime = new Date(start);
 	const endDateTime = new Date(end);
@@ -45,22 +45,21 @@
 				endDateTime
 			)} ${formattedEndTime}`;
 
-	const [place, ...addressParts] = location.split(', ');
-	const address = addressParts.join(', ');
+	const { name: place, street, city, state, zip } = location;
+	const address = [street, city, state, zip].filter(Boolean).join(', ');
 
-	const googleMapsSearchUrl = location
-		? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
+	const googleMapsSearchUrl = address
+		? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
 		: '';
 </script>
 
 <div class="flex flex-col md:flex-row md:gap-8 flex-1">
 	<section class="flex flex-col w-full md:w-3/4 gap-6">
 		<EventBanner
-			title="{summary || 'Group Name'}"
-			subtitle="{'Hosted by ' + group}"
+			title="{meetupName || 'Group Name'}"
+			subtitle="{'Hosted by ' + groupName}"
 			description="{dateTimeDisplay}"
 			ctaText="Add to My Calendar"
-			ctaLink="{calLink || '#'}"
 			ctaIcon="downLoadIcon"
 			linkText="Website"
 			linkHref="{'#'}"
@@ -111,10 +110,9 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
-							>
-								{place}
-							</a
 						>
+							{place}
+						</a>
 					</li>
 					<li class="flex gap-3 items-center">
 						<Icon name="addressIcon" className="w-7 h-7 md:w-11 md:h-11" />
@@ -123,10 +121,9 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
-							>
-								{address}
-							</a
 						>
+							{address}
+						</a>
 					</li>
 				</ul>
 			</div>

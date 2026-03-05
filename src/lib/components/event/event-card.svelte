@@ -4,7 +4,7 @@
 
 	export let event: Event;
 
-	const { group, groupSlug, eventSlug, summary, start, end, location } = event;
+	const { groupName, groupSlug, eventSlug, meetupName, start, end, location } = event;
 
 	const startDateTime = new Date(start);
 	const endDateTime = new Date(end);
@@ -74,7 +74,7 @@
 
 		<div class="w-full md:w-1/2">
 			<h3 class="text-sm text-balance md:text-xl font-semibold text-[#333] dark:text-violet-100">
-				{summary}
+				{meetupName}
 				<!-- <span class="inline-flex ml-2">
 					<Icon
 						name="recurrenceIcon"
@@ -83,7 +83,9 @@
 					/>
 				</span> -->
 			</h3>
-			<p class="text-sm md:text-base font-medium text-[#4F4F4F] dark:text-violet-300">{group}</p>
+			<p class="text-sm md:text-base font-medium text-[#4F4F4F] dark:text-violet-300">
+				{groupName}
+			</p>
 
 			{#if /^(http|https):\/\/[^ "]+$/.test(location)}
 				<a
@@ -93,7 +95,7 @@
 				>
 			{:else}
 				<p class="text-sm md:text-base text-gray-500 dark:text-violet-50">
-					{location.split(',')[0]}
+					{location.name}
 				</p>
 			{/if}
 		</div>
