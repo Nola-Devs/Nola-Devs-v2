@@ -219,6 +219,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		if (selectedGroup !== 'other-group') {
 			const { group } = await GroupModel.findOne({ slug: selectedGroup }, 'group');
 			groupName = group;
+		} else {
+			groupName = getInputValue(state, 'other_group_block', 'other_group_input');
 		}
 
 		if (selectedLocation !== 'other-location') {

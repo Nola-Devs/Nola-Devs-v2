@@ -143,7 +143,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			},
 			element: {
 				type: 'plain_text_input',
-				action_id: 'plain_text_input-action',
+				action_id: 'other_group_input',
 				placeholder: {
 					type: 'plain_text',
 					text: 'Group name'
