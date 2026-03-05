@@ -191,32 +191,6 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		}
 	);
 
-	// Event link (optional)
-	blocks.push({
-		type: 'input',
-		block_id: 'event_block',
-		label: { type: 'plain_text', text: 'Event Link' },
-		element: {
-			type: 'url_text_input',
-			action_id: 'event_input',
-			placeholder: { type: 'plain_text', text: 'belowclevel.org, etc...' }
-		},
-		optional: true
-	});
-
-	// RSVP link (optional)
-	blocks.push({
-		type: 'input',
-		block_id: 'rsvp_block',
-		label: { type: 'plain_text', text: 'RSVP Link' },
-		element: {
-			type: 'url_text_input',
-			action_id: 'rsvp_input',
-			placeholder: { type: 'plain_text', text: 'eventbrite.com, etc...' }
-		},
-		optional: true
-	});
-
 	// Location dropdown
 	blocks.push({
 		type: 'section',
@@ -313,6 +287,32 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		optional: true
 	});
 
+	// Event link (optional)
+	blocks.push({
+		type: 'input',
+		block_id: 'event_block',
+		label: { type: 'plain_text', text: 'Event Link' },
+		element: {
+			type: 'url_text_input',
+			action_id: 'event_input',
+			placeholder: { type: 'plain_text', text: 'belowclevel.org, etc...' }
+		},
+		optional: true
+	});
+
+	// RSVP link (optional)
+	blocks.push({
+		type: 'input',
+		block_id: 'rsvp_block',
+		label: { type: 'plain_text', text: 'RSVP Link' },
+		element: {
+			type: 'url_text_input',
+			action_id: 'rsvp_input',
+			placeholder: { type: 'plain_text', text: 'eventbrite.com, etc...' }
+		},
+		optional: true
+	});
+
 	// Announcement text
 	blocks.push({
 		type: 'input',
@@ -323,7 +323,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			action_id: 'announcement_input',
 			placeholder: {
 				type: 'plain_text',
-				text: 'e.g.: "Hey everyone, we have an awesome meetup coming up..."'
+				text: 'e.g.: "Hey @channel, we have an awesome meetup coming up!"'
 			}
 		},
 		optional: true
