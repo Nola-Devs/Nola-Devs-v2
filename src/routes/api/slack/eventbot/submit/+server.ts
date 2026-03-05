@@ -2,11 +2,14 @@ import { SLACK_BOT_TOKEN } from '$env/static/private';
 import { WebClient } from '@slack/web-api';
 import { json } from '@sveltejs/kit';
 import GroupModel from '$lib/db/models/groups.model';
-import { LocationModel } from '$lib/scripts/addLocations';
+import { EventLocationModel } from '$lib/scripts/addEventLocations';
 import {
-	createGroupOptions,
 	buildCreateEventModalBlocks,
-	createLocationOptions
+	buildAnnouncementBlocks,
+	createGroupOptions,
+	createLocationOptions,
+	getDateTimeValue,
+	getInputValue
 } from '$lib/utils/eventbot';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 import type { Group } from '$lib/types/group';
@@ -23,6 +26,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 	}
 
 	const payload = JSON.parse(payloadString);
+	const state = payload.view.state;
+	console.log('🚀 ~ POST ~ state:', state);
 
 	let metadata;
 	try {
@@ -35,7 +40,6 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		console.log('Raw metadata:', payload.view.private_metadata);
 		return new Response('', { status: 200 });
 	}
-	// const metadata = JSON.parse(payload.view.private_metadata || {}); // private_metadata set in /init endpoint
 
 	console.log('Payload type:', payload.type);
 	if (payload.type === 'block_actions') {
@@ -45,7 +49,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		if (action.action_id === 'create_event') {
 			const groups: Group[] = await GroupModel.find({}, 'group slug');
 			const groupOptions = createGroupOptions(groups);
-			const locations = await LocationModel.find({});
+			const locations = await EventLocationModel.find({});
 			const locationOptions = createLocationOptions(locations);
 
 			const updatedMetadata = {
@@ -185,20 +189,104 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		}
 	}
 
-	if (payload.type === 'view_submission') {
-		// finalize the event and save it to the database
-	}
+	if (payload.type === 'view_submission' && payload.view.callback_id === 'create_event_modal') {
+		const state = payload.view.state;
 
-	// TODO: send confirmation message with all event details
-	// try {
-	// 	await slackClient.chat.postMessage({
-	// 		channel: metadata.channel_id,
-	// 		text: 'Event created!'
-	// 	});
-	// 	console.log('Message posted!');
-	// } catch (error) {
-	// 	console.log(error);
-	// }
+		const title = getInputValue(state, 'title_block', 'title_input');
+		const otherGroup = getInputValue(state, 'other_group_block', 'plain_text_input-action');
+		const startTime = getDateTimeValue(state, 'starttime_block', 'datetimepicker_start');
+		const endTime = getDateTimeValue(state, 'endtime_block', 'datetimepicker_end');
+		const eventLink = getInputValue(state, 'event_block', 'event_input');
+		const rsvpLink = getInputValue(state, 'rsvp_block', 'rsvp_input');
+		const locationNotes = getInputValue(state, 'location_notes_block', 'location_notes_input');
+		const announcement = getInputValue(state, 'announcement_block', 'announcement_input');
+
+		// Section blocks (reactive dropdowns) — read from metadata since they
+		// don't appear in state.values the same way input blocks do
+		const selectedGroup = metadata.showOtherGroupField
+			? 'other-group'
+			: // Slack does store the last selected_option for section accessories in state
+				state.values?.group_section_block?.group_select?.selected_option?.value ?? null;
+		const selectedLocation = metadata.showOtherLocationFields
+			? 'other-location'
+			: state.values?.location_section_block?.location_select?.selected_option?.value ?? null;
+
+		// Other location fields (only present if showOtherLocationFields)
+		const locationName = getInputValue(state, 'location_name_block', 'street_address_input');
+		const streetAddress = getInputValue(state, 'street_address_block', 'street_address_input');
+		const city = getInputValue(state, 'city_block', 'city_input');
+		const stateField = getInputValue(state, 'state_block', 'state_input');
+		const zip = getInputValue(state, 'zip_block', 'zip_input');
+
+		// Description (rich_text_input — stored differently)
+		const descriptionRaw = state.values?.description_block?.description_input?.rich_text_value;
+		const description = descriptionRaw
+			? descriptionRaw.elements
+					?.flatMap((el: any) => el.elements ?? [])
+					?.map((el: any) => el.text ?? '')
+					?.join('')
+			: null;
+
+		const startDate = startTime ? new Date(startTime * 1000) : null;
+		const endDate = endTime ? new Date(endTime * 1000) : null;
+
+		const eventData = {
+			title,
+			group: selectedGroup === 'other-group' ? otherGroup : selectedGroup,
+			description,
+			startTime: startDate,
+			endTime: endDate,
+			eventLink,
+			rsvpLink,
+			locationSlug: selectedLocation,
+			locationName,
+			streetAddress,
+			city,
+			state: stateField,
+			zip,
+			locationNotes,
+			announcement,
+			channelId: metadata.channel_id,
+			createdBy: metadata.user_id,
+			createdAt: new Date()
+		};
+
+		console.log('📦 Event data to save:', eventData);
+
+		// --- Save to MongoDB ---
+		// Swap this import for your actual Event model
+		// const newEvent = await EventModel.create(eventData);
+
+		// --- Post announcement to Slack ---
+		try {
+			await slackClient.chat.postMessage({
+				channel: metadata.channel_id,
+				text: `New event: ${title}`, // fallback for notifications
+				blocks: buildAnnouncementBlocks(eventData)
+			});
+		} catch (err) {
+			console.error('Failed to post announcement:', err);
+		}
+
+		// --- Return success modal (replaces the form) ---
+		return json({
+			response_action: 'update',
+			view: {
+				type: 'modal',
+				title: { type: 'plain_text', text: 'Event Created! 🎉' },
+				close: { type: 'plain_text', text: 'Close' },
+				blocks: [
+					{
+						type: 'section',
+						text: {
+							type: 'mrkdwn',
+							text: `*${title}* has been saved and announced in the channel.`
+						}
+					}
+				]
+			}
+		});
+	}
 
 	return new Response('see payload', { status: 200 });
 };
