@@ -2,7 +2,8 @@ import { SLACK_BOT_TOKEN } from '$env/static/private';
 import { WebClient } from '@slack/web-api';
 import { json } from '@sveltejs/kit';
 import GroupModel from '$lib/db/models/groups.model';
-import { EventLocationModel } from '$lib/scripts/addEventLocations';
+import EventLocationModel from '$lib/db/models/event-locations.model';
+import EventModel from '$lib/db/models/events.model';
 import {
 	buildCreateEventModalBlocks,
 	buildAnnouncementBlocks,
@@ -13,6 +14,7 @@ import {
 } from '$lib/utils/eventbot';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 import type { Group } from '$lib/types/group';
+import slugify from 'slugify';
 
 const slackClient = new WebClient(SLACK_BOT_TOKEN);
 
@@ -193,7 +195,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const state = payload.view.state;
 
 		const title = getInputValue(state, 'title_block', 'title_input');
-		const otherGroup = getInputValue(state, 'other_group_block', 'plain_text_input-action');
+		const description = getInputValue(state, 'description_block', 'description_input');
 		const startTime = getDateTimeValue(state, 'starttime_block', 'datetimepicker_start');
 		const endTime = getDateTimeValue(state, 'endtime_block', 'datetimepicker_end');
 		const eventLink = getInputValue(state, 'event_block', 'event_input');
@@ -201,38 +203,43 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const locationNotes = getInputValue(state, 'location_notes_block', 'location_notes_input');
 		const announcement = getInputValue(state, 'announcement_block', 'announcement_input');
 
-		// Section blocks (reactive dropdowns) — read from metadata since they
-		// don't appear in state.values the same way input blocks do
-		const selectedGroup = metadata.showOtherGroupField
-			? 'other-group'
-			: // Slack does store the last selected_option for section accessories in state
-				state.values?.group_section_block?.group_select?.selected_option?.value ?? null;
-		const selectedLocation = metadata.showOtherLocationFields
-			? 'other-location'
-			: state.values?.location_section_block?.location_select?.selected_option?.value ?? null;
+		const selectedGroup =
+			state.values?.group_section_block?.group_select?.selected_option?.value ?? 'other-group';
+		const selectedLocation =
+			state.values?.location_section_block?.location_select?.selected_option?.value ??
+			'other-location';
 
-		// Other location fields (only present if showOtherLocationFields)
-		const locationName = getInputValue(state, 'location_name_block', 'street_address_input');
-		const streetAddress = getInputValue(state, 'street_address_block', 'street_address_input');
-		const city = getInputValue(state, 'city_block', 'city_input');
-		const stateField = getInputValue(state, 'state_block', 'state_input');
-		const zip = getInputValue(state, 'zip_block', 'zip_input');
+		let groupName;
+		let locationName = getInputValue(state, 'location_name_block', 'street_address_input');
+		let streetAddress = getInputValue(state, 'street_address_block', 'street_address_input');
+		let locationCity = getInputValue(state, 'city_block', 'city_input');
+		let locationState = getInputValue(state, 'state_block', 'state_input');
+		let locationZip = getInputValue(state, 'zip_block', 'zip_input');
 
-		// Description (rich_text_input — stored differently)
-		const descriptionRaw = state.values?.description_block?.description_input?.rich_text_value;
-		const description = descriptionRaw
-			? descriptionRaw.elements
-					?.flatMap((el: any) => el.elements ?? [])
-					?.map((el: any) => el.text ?? '')
-					?.join('')
-			: null;
+		if (selectedGroup !== 'other-group') {
+			const { group } = await GroupModel.findOne({ slug: selectedGroup }, 'group');
+			groupName = group;
+		}
+
+		if (selectedLocation !== 'other-location') {
+			const { name, street, city, state, zip } = await EventLocationModel.findOne({
+				slug: selectedLocation
+			});
+
+			locationName = name;
+			streetAddress = street;
+			locationCity = city;
+			locationState = state;
+			locationZip = zip;
+		}
 
 		const startDate = startTime ? new Date(startTime * 1000) : null;
 		const endDate = endTime ? new Date(endTime * 1000) : null;
 
 		const eventData = {
 			title,
-			group: selectedGroup === 'other-group' ? otherGroup : selectedGroup,
+			groupSlug: selectedGroup === 'other-group' ? 'other-group' : selectedGroup,
+			groupName,
 			description,
 			startTime: startDate,
 			endTime: endDate,
@@ -241,9 +248,9 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			locationSlug: selectedLocation,
 			locationName,
 			streetAddress,
-			city,
-			state: stateField,
-			zip,
+			locationCity,
+			state: locationState,
+			locationZip,
 			locationNotes,
 			announcement,
 			channelId: metadata.channel_id,
@@ -251,11 +258,44 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			createdAt: new Date()
 		};
 
-		console.log('📦 Event data to save:', eventData);
+		const eventSlug = slugify(`${groupName} ${eventData.startTime}`, {
+			replacement: '-',
+			lower: true,
+			locale: 'en'
+		});
 
 		// --- Save to MongoDB ---
-		// Swap this import for your actual Event model
-		// const newEvent = await EventModel.create(eventData);
+		const newEvent: Event = {
+			groupSlug: eventData.groupSlug,
+			groupName,
+			meetupName: eventData.title,
+			description: eventData.description,
+			start: eventData.startTime,
+			end: eventData.endTime,
+			location: {
+				name: eventData.locationName,
+				street: eventData.streetAddress,
+				city: eventData.locationCity,
+				state: eventData.state,
+				zip: eventData.locationZip,
+				slug: eventData.locationSlug
+			},
+			locationNotes: eventData.locationNotes,
+			eventLink: eventData.eventLink,
+			rsvpLink: eventData.rsvpLink,
+			announcement: eventData.announcement,
+			eventSlug,
+			createdAt: eventData.createdAt
+		};
+
+		try {
+			await EventModel.create(newEvent);
+		} catch (e) {
+			console.error('Error saving to database', e);
+		}
+
+		console.log('📦 Raw event data:', eventData);
+		console.log('📦 Event data to save:', newEvent);
 
 		// --- Post announcement to Slack ---
 		try {

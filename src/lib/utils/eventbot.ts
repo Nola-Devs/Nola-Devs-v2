@@ -44,7 +44,7 @@ export const getDateTimeValue = (state: any, blockId: string, actionId: string):
 /**
  *
  * @param event
- * @returns
+ * @returns Slack Block Kit Blocks
  */
 export const buildAnnouncementBlocks = (event: any) => {
 	const startDay = new Date(event.startTime).toLocaleDateString('en-US', { weekday: 'long' });
@@ -66,7 +66,7 @@ export const buildAnnouncementBlocks = (event: any) => {
 		`\n📅 ${startDay} from ${startTime} to ${endDay === startDay ? '' : endDay + ' '}${endTime}`,
 		event.locationName ? `📍 ${event.locationName}` : '',
 		event.streetAddress
-			? `${event.streetAddress}, ${event.city}, ${event.state} ${event.zip ?? ''}`.trim()
+			? `${event.streetAddress}, ${event.locationCity}, ${event.state} ${event.locationZip ?? ''}`.trim()
 			: '',
 		event.locationNotes ? `_Note: ${event.locationNotes}_` : '',
 		event.eventLink ? `🔗 Event: ${event.eventLink}` : '',
