@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import './mapbox-gl.css';
 	import { Map, Marker, type LngLatLike, type Map as MapType } from 'mapbox-gl';
 	import { onMount, onDestroy } from 'svelte';
@@ -32,4 +32,4 @@
 	});
 </script>
 
-<div class="w-full h-36 rounded-b-lg" bind:this="{mapContainer}"></div>
+<div class="w-full h-36 rounded-b-lg" bind:this="{mapContainer}"></div> -->
