@@ -9,22 +9,12 @@
 	const startDateTime = new Date(start);
 	const endDateTime = new Date(end);
 
-	const isSameDay = startDateTime.toDateString() === endDateTime.toDateString();
-
 	function formatDateComponents(date: Date) {
 		const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
 		const month = date.toLocaleDateString('en-US', { month: 'long' });
 		const day = date.toLocaleDateString('en-US', { day: 'numeric' });
 		return { weekday, month, day };
 	}
-	const formatDate = (date: Date) => {
-		return date.toLocaleDateString('en-US', {
-			weekday: 'long',
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric'
-		});
-	};
 
 	const formatTime = (date: Date) => {
 		return date
@@ -36,9 +26,21 @@
 			.replace(' ', '');
 	};
 
-	const { weekday, month, day } = formatDateComponents(startDateTime);
+	const {
+		weekday: startWeekday,
+		month: startMonth,
+		day: startDay
+	} = formatDateComponents(startDateTime);
+	const { weekday: endWeekday, month: endMonth, day: endDay } = formatDateComponents(endDateTime);
 	const formattedStartTime = formatTime(startDateTime);
 	const formattedEndTime = formatTime(endDateTime);
+
+	const isSameDay =
+		startDateTime.getFullYear() === endDateTime.getFullYear() &&
+		startDateTime.getMonth() === endDateTime.getMonth() &&
+		startDateTime.getDate() === endDateTime.getDate();
+
+	const isSameMonth = (a: Date, b: Date) => (a.getMonth() === b.getMonth() ? '' : `${endMonth}`);
 
 	import { groupIconsMap } from '$lib/components/icon/icons';
 </script>
@@ -52,23 +54,22 @@
 		<div>
 			<div class="hidden md:block">
 				<time class="block text-xs md:text-base font-semibold text-[#6628CC] dark:text-violet-300">
-					{weekday}
+					{isSameDay ? startWeekday : `${startWeekday} - ${endWeekday}`}
 				</time>
 				<time class="block text-xs md:text-base font-semibold text-[#6628CC] dark:text-violet-300">
-					{month}
-					{day}
+					{isSameDay
+						? `${startMonth} ${startDay}`
+						: `${startMonth} ${startDay} - ${isSameMonth(startDateTime, endDateTime)} ${endDay}`}
 				</time>
 			</div>
 			<div class="md:hidden">
 				<time class="text-sm font-semibold text-[#6628CC] dark:text-violet-300">
-					{weekday}, {month}
-					{day}
+					{startWeekday}, {startMonth}
+					{startDay}
 				</time>
 			</div>
 			<time class="block text-xs md:text-sm text-gray-800 dark:text-gray-300">
-				{isSameDay
-					? `${formattedStartTime} - ${formattedEndTime}`
-					: `${formattedStartTime} - ${formatDate(endDateTime)} ${formattedEndTime}`}
+				{formattedStartTime} - {formattedEndTime}
 			</time>
 		</div>
 
