@@ -64,8 +64,10 @@
 			</div>
 			<div class="md:hidden">
 				<time class="text-sm font-semibold text-[#6628CC] dark:text-violet-300">
-					{startWeekday}, {startMonth}
-					{startDay}
+					{isSameDay ? startWeekday : `${startWeekday} - ${endWeekday}`},
+					{isSameDay
+						? `${startMonth} ${startDay}`
+						: `${startMonth} ${startDay} - ${isSameMonth(startDateTime, endDateTime)} ${endDay}`}
 				</time>
 			</div>
 			<time class="block text-xs md:text-sm text-gray-800 dark:text-gray-300">
