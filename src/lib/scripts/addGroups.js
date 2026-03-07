@@ -12,14 +12,10 @@ const groupSchema = new Schema({
 		lowercase: true,
 		trim: true
 	},
-	about: {
+	description: {
 		type: String,
 		required: [true, 'About description is required'],
 		maxlength: [2000, 'About description cannot exceed 2000 characters']
-	},
-	calID: {
-		type: String,
-		required: [false, 'Calendar ID is required']
 	},
 	links: {
 		type: Map,

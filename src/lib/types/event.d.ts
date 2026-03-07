@@ -1,12 +1,17 @@
+import { EventLocation } from './event-location';
+
 export interface Event {
-	group: string;
-	summary: string;
-	calLink: string;
+	groupName: string;
+	meetupName: string;
 	description: string;
-	location: string;
-	lnglat: [number, number];
 	start: Date;
 	end: Date;
+	location: EventLocation;
+	locationNotes?: string;
+	eventLink?: string;
+	rsvpLink?: string;
+	announcement?: string;
 	eventSlug?: string;
 	groupSlug?: string;
+	createdAt: Date;
 }

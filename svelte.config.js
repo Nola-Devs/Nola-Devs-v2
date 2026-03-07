@@ -9,6 +9,9 @@ const config = {
 		alias: {
 			$components: 'src/components/index.ts',
 			$types: 'src/app.d.ts'
+		},
+		csrf: {
+			checkOrigin: false
 		}
 	}
 };

@@ -4,12 +4,10 @@
 
 	export let event: Event;
 
-	const { group, groupSlug, eventSlug, summary, start, end, location } = event;
+	const { groupName, groupSlug, eventSlug, meetupName, start, end, location } = event;
 
 	const startDateTime = new Date(start);
 	const endDateTime = new Date(end);
-
-	const isSameDay = startDateTime.toDateString() === endDateTime.toDateString();
 
 	function formatDateComponents(date: Date) {
 		const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
@@ -17,14 +15,6 @@
 		const day = date.toLocaleDateString('en-US', { day: 'numeric' });
 		return { weekday, month, day };
 	}
-	const formatDate = (date: Date) => {
-		return date.toLocaleDateString('en-US', {
-			weekday: 'long',
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric'
-		});
-	};
 
 	const formatTime = (date: Date) => {
 		return date
@@ -36,9 +26,21 @@
 			.replace(' ', '');
 	};
 
-	const { weekday, month, day } = formatDateComponents(startDateTime);
+	const {
+		weekday: startWeekday,
+		month: startMonth,
+		day: startDay
+	} = formatDateComponents(startDateTime);
+	const { weekday: endWeekday, month: endMonth, day: endDay } = formatDateComponents(endDateTime);
 	const formattedStartTime = formatTime(startDateTime);
 	const formattedEndTime = formatTime(endDateTime);
+
+	const isSameDay =
+		startDateTime.getFullYear() === endDateTime.getFullYear() &&
+		startDateTime.getMonth() === endDateTime.getMonth() &&
+		startDateTime.getDate() === endDateTime.getDate();
+
+	const isSameMonth = (a: Date, b: Date) => (a.getMonth() === b.getMonth() ? '' : `${endMonth}`);
 
 	import { groupIconsMap } from '$lib/components/icon/icons';
 </script>
@@ -52,29 +54,30 @@
 		<div>
 			<div class="hidden md:block">
 				<time class="block text-xs md:text-base font-semibold text-[#6628CC] dark:text-violet-300">
-					{weekday}
+					{isSameDay ? startWeekday : `${startWeekday} - ${endWeekday}`}
 				</time>
 				<time class="block text-xs md:text-base font-semibold text-[#6628CC] dark:text-violet-300">
-					{month}
-					{day}
+					{isSameDay
+						? `${startMonth} ${startDay}`
+						: `${startMonth} ${startDay} - ${isSameMonth(startDateTime, endDateTime)} ${endDay}`}
 				</time>
 			</div>
 			<div class="md:hidden">
 				<time class="text-sm font-semibold text-[#6628CC] dark:text-violet-300">
-					{weekday}, {month}
-					{day}
+					{isSameDay ? startWeekday : `${startWeekday} - ${endWeekday}`},
+					{isSameDay
+						? `${startMonth} ${startDay}`
+						: `${startMonth} ${startDay} - ${isSameMonth(startDateTime, endDateTime)} ${endDay}`}
 				</time>
 			</div>
 			<time class="block text-xs md:text-sm text-gray-800 dark:text-gray-300">
-				{isSameDay
-					? `${formattedStartTime} - ${formattedEndTime}`
-					: `${formattedStartTime} - ${formatDate(endDateTime)} ${formattedEndTime}`}
+				{formattedStartTime} - {formattedEndTime}
 			</time>
 		</div>
 
 		<div class="w-full md:w-1/2">
 			<h3 class="text-sm text-balance md:text-xl font-semibold text-[#333] dark:text-violet-100">
-				{summary}
+				{meetupName}
 				<!-- <span class="inline-flex ml-2">
 					<Icon
 						name="recurrenceIcon"
@@ -83,7 +86,9 @@
 					/>
 				</span> -->
 			</h3>
-			<p class="text-sm md:text-base font-medium text-[#4F4F4F] dark:text-violet-300">{group}</p>
+			<p class="text-sm md:text-base font-medium text-[#4F4F4F] dark:text-violet-300">
+				{groupName}
+			</p>
 
 			{#if /^(http|https):\/\/[^ "]+$/.test(location)}
 				<a
@@ -93,7 +98,7 @@
 				>
 			{:else}
 				<p class="text-sm md:text-base text-gray-500 dark:text-violet-50">
-					{location.split(',')[0]}
+					{location.name}
 				</p>
 			{/if}
 		</div>

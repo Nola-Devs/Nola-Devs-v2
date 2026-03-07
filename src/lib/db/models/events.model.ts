@@ -2,28 +2,63 @@ import mongoose, { model, Schema } from 'mongoose';
 import type { Event } from '$lib/types/event.d.ts';
 
 const eventSchema = new Schema<Event>({
-	group: {
+	groupName: {
 		type: String,
 		required: true
 	},
-	summary: {
+	meetupName: {
 		type: String,
 		required: true
 	},
-	calLink: String,
-	description: String,
-	location: String,
-	lnglat: {
-		type: [Number],
-		index: '2dsphere'
+	description: {
+		type: String,
+		required: true
 	},
 	start: {
 		type: Date,
 		required: true
 	},
-	end: Date,
-	eventSlug: { type: String, required: true, unique: true },
-	groupSlug: { type: String, required: true }
+	end: {
+		type: Date,
+		required: true
+	},
+	location: {
+		name: { type: String, required: true },
+		street: { type: String },
+		city: { type: String, required: true },
+		state: { type: String, required: true },
+		zip: { type: String },
+		slug: { type: String, required: true }
+	},
+	locationNotes: {
+		type: String,
+		required: false
+	},
+	eventLink: {
+		type: String,
+		required: false
+	},
+	rsvpLink: {
+		type: String,
+		required: false
+	},
+	announcement: {
+		type: String,
+		required: false
+	},
+	eventSlug: {
+		type: String,
+		required: true,
+		unique: false
+	},
+	groupSlug: {
+		type: String,
+		required: false
+	},
+	createdAt: {
+		type: Date,
+		required: true
+	}
 });
 
 const EventModel = mongoose.models.Event || model('Event', eventSchema);

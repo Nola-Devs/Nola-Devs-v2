@@ -10,20 +10,17 @@
 	if (!data?.event) throw new Error('Event not found');
 
 	const { event } = data;
-	const { summary, description, start, end, location, lnglat, group, calLink } = event;
+	const { groupName, meetupName, description, start, end, location } = event;
 
 	const startDateTime = new Date(start);
 	const endDateTime = new Date(end);
 
-	const isSameDay = startDateTime.toDateString() === endDateTime.toDateString();
-
-	const formatDate = (date: Date) => {
-		return date.toLocaleDateString('en-US', {
-			weekday: 'long',
-			month: 'long',
-			day: 'numeric'
-		});
-	};
+	function formatDateComponents(date: Date) {
+		const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+		const month = date.toLocaleDateString('en-US', { month: 'long' });
+		const day = date.toLocaleDateString('en-US', { day: 'numeric' });
+		return { weekday, month, day };
+	}
 
 	const formatTime = (date: Date) => {
 		return date
@@ -35,32 +32,42 @@
 			.replace(' ', '');
 	};
 
-	const formattedStartDate = formatDate(startDateTime);
+	const {
+		weekday: startWeekday,
+		month: startMonth,
+		day: startDay
+	} = formatDateComponents(startDateTime);
+	const { weekday: endWeekday, month: endMonth, day: endDay } = formatDateComponents(endDateTime);
 	const formattedStartTime = formatTime(startDateTime);
 	const formattedEndTime = formatTime(endDateTime);
 
+	const isSameDay =
+		startDateTime.getFullYear() === endDateTime.getFullYear() &&
+		startDateTime.getMonth() === endDateTime.getMonth() &&
+		startDateTime.getDate() === endDateTime.getDate();
+
+	const isSameMonth = (a: Date, b: Date) => (a.getMonth() === b.getMonth() ? '' : `${endMonth}`);
+
 	let dateTimeDisplay = isSameDay
-		? `${formattedStartDate} • ${formattedStartTime} - ${formattedEndTime}`
-		: `${formattedStartDate} • ${formattedStartTime} - ${formatDate(
-				endDateTime
-			)} ${formattedEndTime}`;
+		? `${startWeekday}, ${startMonth} ${startDay} ${formattedStartTime} - ${formattedEndTime}`
+		: `${startWeekday}, ${startMonth} ${startDay} ${formattedStartTime} -
+		${endWeekday}, ${endMonth} ${endDay} ${formattedEndTime}`;
 
-	const [place, ...addressParts] = location.split(', ');
-	const address = addressParts.join(', ');
+	const { name: place, street, city, state, zip } = location;
+	const address = [street, city, state, zip].filter(Boolean).join(', ');
 
-	const googleMapsSearchUrl = location
-		? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`
+	const googleMapsSearchUrl = address
+		? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
 		: '';
 </script>
 
 <div class="flex flex-col md:flex-row md:gap-8 flex-1">
 	<section class="flex flex-col w-full md:w-3/4 gap-6">
 		<EventBanner
-			title="{summary || 'Group Name'}"
-			subtitle="{'Hosted by ' + group}"
+			title="{meetupName || 'Group Name'}"
+			subtitle="{'Hosted by ' + groupName}"
 			description="{dateTimeDisplay}"
 			ctaText="Add to My Calendar"
-			ctaLink="{calLink || '#'}"
 			ctaIcon="downLoadIcon"
 			linkText="Website"
 			linkHref="{'#'}"
@@ -95,7 +102,9 @@
 					<li class="flex gap-3 items-center">
 						<Icon name="calendarIcon" size="{24}" />
 						<p class="text-sm md:text-base text-gray-800 dark:text-violet-200">
-							{formattedStartDate}
+							{isSameDay
+								? `${startMonth} ${startDay}`
+								: `${startMonth} ${startDay} - ${isSameMonth(startDateTime, endDateTime)} ${endDay}`}
 						</p>
 					</li>
 					<li class="flex gap-3 items-center">
@@ -111,10 +120,9 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
-							>
-								{place}
-							</a
 						>
+							{place}
+						</a>
 					</li>
 					<li class="flex gap-3 items-center">
 						<Icon name="addressIcon" className="w-7 h-7 md:w-11 md:h-11" />
@@ -123,10 +131,9 @@
 							target="_blank"
 							rel="noopener noreferrer"
 							class="text-sm md:text-base underline text-gray-800 dark:text-violet-200"
-							>
-								{address}
-							</a
 						>
+							{address}
+						</a>
 					</li>
 				</ul>
 			</div>
