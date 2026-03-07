@@ -30,7 +30,7 @@
 			<section class="max-w-4xl min-h-36 text-[#24072F] dark:text-violet-100 space-y-3">
 				<h3 class="font-semibold text-lg border-b border-violet-200 pb-4">About</h3>
 				<p class="text-base leading-6 dark:text-violet-200">
-					{group?.about}
+					{group?.description}
 				</p>
 			</section>
 			<OrganizerList organizers="{users}" />
