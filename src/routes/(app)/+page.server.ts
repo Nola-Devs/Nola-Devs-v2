@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
 			.sort((a, b) => a.start.getTime() - b.start.getTime())
 			.filter((event) => {
 				// avoid duplicate 'Hack Night' event on the events list
-				return !(event.group === 'Nola Game Dev' && event.summary === 'Hack Night');
+				return !(event.groupName === 'Nola Game Dev' && event.meetupName === 'Hack Night');
 			});
 
 		return {

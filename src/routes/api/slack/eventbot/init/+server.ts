@@ -73,7 +73,7 @@ export const POST: RequestHandler = async ({ request }) => {
 						action_id: 'edit_event',
 						text: {
 							type: 'plain_text',
-							text: 'Edit',
+							text: '(coming soon)',
 							emoji: true
 						},
 						value: 'edit_event'
@@ -90,7 +90,7 @@ export const POST: RequestHandler = async ({ request }) => {
 						action_id: 'cancel_	event',
 						text: {
 							type: 'plain_text',
-							text: 'Cancel',
+							text: '(coming soon)',
 							emoji: true
 						},
 						style: 'danger',
