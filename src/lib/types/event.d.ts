@@ -1,8 +1,8 @@
 import { EventLocation } from './event-location';
 
 export interface Event {
-	groupName: string; // group: string;
-	meetupName: string; // summary: string;
+	groupName: string;
+	meetupName: string;
 	description: string;
 	start: Date;
 	end: Date;

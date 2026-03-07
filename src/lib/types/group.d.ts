@@ -15,8 +15,7 @@ type GroupLinks = { [key in GroupLinkKey]: string };
 export interface Group {
 	group: string;
 	slug: string;
-	about: string;
-	calID: string;
+	description: string;
 	links: GroupLinks;
 	icon: string;
 }

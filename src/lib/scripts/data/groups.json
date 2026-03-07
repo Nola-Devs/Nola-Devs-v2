@@ -1,99 +1,93 @@
 [
 	{
-		"group": "Nola Tech Whispers",
-		"slug": "Nola-Tech-Whispers",
-		"links": {
-			"linkedin": "https://www.linkedin.com/groups/4310953/"
-		},
+		"group": "Nola Tech Talks",
+		"slug": "nola-tech-talks",
 		"description": "We're a group of NOLA techies who meet up monthly over food and drinks. We discuss tech topics, share knowledge and skills, network, and host guest speakers. The food and drinks are always sponsored, and admission is free. Every month we have a different topic for the tech industry. Please join us to learn, network, and most importantly, help us to continue to grow the NOLA tech community! (Nola Tech Talks was formerly known as Agile NOLA)",
+		"links": { "linkedin": "https://www.linkedin.com/groups/4310953/" },
 		"icon": "💼"
 	},
 	{
-		"group": "Below See Level",
-		"slug": "Below-See-Level",
-		"links": {
-			"website": "https://belowclevel.org/",
-			"twitch": "https://www.twitch.tv/digraph"
-		},
+		"group": "Below C Level",
+		"slug": "below-c-level",
 		"description": "We are a group of programmers residing in New Orleans, Louisiana, who gather on a monthly basis for presentations and discussions focused on systems programming. Our aim is to create an open and inclusive environment for individuals eager to delve deeper into the world of systems programming, going beyond surface-level abstractions. While our talks cater to programmers with a few years of professional experience, we encourage participation from all who are interested. In case any concepts or ideas appear perplexing or unclear, we allocate time for group discussions and collaborative learning.",
+		"links": { "website": "https://belowclevel.org/", "twitch": "https://www.twitch.tv/digraph" },
 		"icon": "🌊"
 	},
 	{
-		"group": "BRUG",
-		"slug": "BRUG",
+		"group": "BR SQL Server UG",
+		"slug": "br-sql-server-ug",
+		"description": "The Baton Rouge SQL Server User Group is a free, no-registration required user group for professionals and students in the broad field of Microsoft SQL Server. The group aims provide a platform for growing your skillset in Information Technology and your professional network, and work closely with local and regional partners to make our monthly meetings interesting and informative. We meet every second Wednesday of the month on a wide range of topics from Business Intelligence, Disaster Recovery, SQL Server performance and monitoring, and SQL server development. The following links to our meetup calendar: https://www.meetup.com/baton-rouge-net-and-sql-server-user-groups/",
 		"links": {
 			"website": "https://www.brssug.org/",
 			"twitter": "https://twitter.com/BRSSUG/",
 			"meetup": "https://www.meetup.com/baton-rouge-net-and-sql-server-user-groups/"
 		},
-		"description": "The Baton Rouge SQL Server User Group is a free, no-registration required user group for professionals and students in the broad field of Microsoft SQL Server. The group aims provide a platform for growing your skillset in Information Technology and your professional network, and work closely with local and regional partners to make our monthly meetings interesting and informative. We meet every second Wednesday of the month on a wide range of topics from Business Intelligence, Disaster Recovery, SQL Server performance and monitoring, and SQL server development. The following links to our meetup calendar: https://www.meetup.com/baton-rouge-net-and-sql-server-user-groups/",
 		"icon": "📊"
 	},
 	{
-		"group": "Frontend parrrrtty",
-		"slug": "Frontend-parrrrtty",
+		"group": "Frontend Party",
+		"slug": "frontend-party",
+		"description": "We are a vibrant community of front-end web developers known as the 'Front-End Party' located in New Orleans, Louisiana. Our group gathers once a month for engaging presentations and insightful discussions centered around front-end web development. Our primary focus is to provide a platform for like-minded individuals interested in exploring the intricacies of front-end development beyond the surface level.\nEvery second Tuesday of each month join us for 5:30pm at the beautiful Scale New Orleans. 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130",
 		"links": {
 			"website": "http://www.frontendparty.com/",
 			"meetup": "https://www.meetup.com/frontendparty/",
 			"twitch": "https://www.twitch.tv/nolafrontendparty"
 		},
-		"description": "We are a vibrant community of front-end web developers known as the 'Front-End Party' located in New Orleans, Louisiana. Our group gathers once a month for engaging presentations and insightful discussions centered around front-end web development. Our primary focus is to provide a platform for like-minded individuals interested in exploring the intricacies of front-end development beyond the surface level.\nEvery second Tuesday of each month join us for 5:30pm at the beautiful Scale New Orleans. 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130",
 		"icon": "🎉"
 	},
 	{
-		"group": "Jokenight",
-		"slug": "Jokenight",
+		"group": "Hacknight",
+		"slug": "hacknight",
+		"description": "Hacknight is the end destination for the defacto 'Tech-Night' events hosted at 7pm every Tuesday at the Rusty Nail. Dozens of developers and designers alike come to unwind in the casual atmosphere of the bar and exchange fun thoughts regarding tech or otherwise. If you see a group of nerds arguing in the street just ask 'Is this Hack Night?' and they will greet you and introduce you to people.",
 		"links": {
 			"meetup": "https://www.meetup.com/nolahacknight/",
 			"website": "http://www.rustynailnola.com"
 		},
-		"description": "Hacknight is the end destination for the defacto 'Tech-Night' events hosted at 7pm every Tuesday at the Rusty Nail. Dozens of developers and designers alike come to unwind in the casual atmosphere of the bar and exchange fun thoughts regarding tech or otherwise. If you see a group of nerds arguing in the street just ask 'Is this Hack Night?' and they will greet you and introduce you to people.",
 		"icon": "🍻"
 	},
 	{
-		"group": "Nola Gamers",
-		"slug": "Nola-Gamers",
+		"group": "Nola Game Dev",
+		"slug": "nola-game-dev",
+		"description": "We are a bunch of game developers in the Greater New Orleans area who meet on a monthly basis to network, collaborate, and share knowledge. Our events help the gamedev community present on interesting topics, showcase their projects, and encourage game development in the local area. We meet online on the third Thursday of every month at 7:00 pm. See our website for connecting.",
 		"links": {
 			"email": "contact@neworleansgamedev.com",
 			"discord": "https://discord.gg/PeJnP8J6cG"
 		},
-		"description": "We are a bunch of game developers in the Greater New Orleans area who meet on a monthly basis to network, collaborate, and share knowledge. Our events help the gamedev community present on interesting topics, showcase their projects, and encourage game development in the local area. We meet online on the third Thursday of every month at 7:00 pm. See our website for connecting.",
 		"icon": "🎮"
 	},
 	{
-		"group": "Woyk In Tech",
-		"slug": "Woyk-In-Tech",
+		"group": "Work In Tech",
+		"slug": "work-in-tech",
+		"description": "As someone involved in the tech scene in New Orleans, we are always learning new things, meeting new people and coming up with new ways of accomplishing our goals. This thriving community of smart, entrepreneurial people now has an official way to connect! The Work In Tech group will meet up once a quarter...or so... at a local New Orleans spot. We invite anyone working in Tech in the NOLA area to join us as well as those looking to learn more about the industry and connect with potential future opportunities!",
 		"links": {
 			"linkedin": "https://www.linkedin.com/company/workintechnola/",
 			"facebook": "https://www.facebook.com/workintechnola",
 			"eventbrite": "https://www.eventbrite.com/o/work-in-tech-nola-51562789513",
 			"linktr": "https://linktr.ee/workintech"
 		},
-		"description": "As someone involved in the tech scene in New Orleans, we are always learning new things, meeting new people and coming up with new ways of accomplishing our goals. This thriving community of smart, entrepreneurial people now has an official way to connect! The Work In Tech group will meet up once a quarter...or so... at a local New Orleans spot. We invite anyone working in Tech in the NOLA area to join us as well as those looking to learn more description the industry and connect with potential future opportunities!",
 		"icon": "💻"
 	},
 	{
 		"group": "NOLA Sec",
-		"slug": "NOLA-Sec",
+		"slug": "nola-sec",
+		"description": "NOLA Sec is New Orleans' premier cybersecurity community. We bring together experts and enthusiasts to explore the ever-changing world of cybersecurity. Our monthly events feature top national speakers, offering unique insights and networking opportunities. All are welcome to join us for learning and laughter, with refreshments provided. Connect with us and be part of the thriving NOLA Sec community today",
 		"links": {
 			"website": "https://nolasec.notion.site/11c035d2f3aa80f7be44c709b65194ad",
 			"linkedin": "https://www.linkedin.com/showcase/nolasec"
 		},
-		"description": "NOLA Sec is New Orleans' premier cybersecurity community. We bring together experts and enthusiasts to explore the ever-changing world of cybersecurity. Our monthly events feature top national speakers, offering unique insights and networking opportunities. All are welcome to join us for learning and laughter, with refreshments provided. Connect with us and be part of the thriving NOLA Sec community today",
 		"icon": "🔒"
 	},
 	{
 		"group": "NOLA Tech Connect",
-		"slug": "NOLA-Tech-Connect",
-		"links": {
-			"linkedin": "https://www.linkedin.com/groups/12554672/"
-		},
+		"slug": "nola-tech-connect",
 		"description": "New Orleans Tech Connect (previously NOLA WomXn in Tech) is an inspiring community of talented womxn. We come together monthly to foster connections, engage in tech discussions, and much more. Elevate your network and knowledge—be part of something amazing! 💻🌟",
+		"links": { "linkedin": "https://www.linkedin.com/groups/12554672/" },
 		"icon": "👩‍💻"
 	},
 	{
-		"group": "StartUp Nola Now-ish",
-		"slug": "startup-nola-nowish",
+		"group": "StartUp Nola Now",
+		"slug": "startup nola now",
+		"description": "The New Orleans Startup Ecosystem is a dynamic and vibrant community of innovators, entrepreneurs, and visionaries who are driving innovation and economic growth in the heart of the Big Easy. Fostering collaboration, creativity, and opportunity, this group is dedicated to supporting and nurturing the city's emerging businesses and startups, making New Orleans a thriving hub for innovation and entrepreneurship.",
 		"links": {
 			"website": "https://startupnola.com",
 			"facebook": "https://www.facebook.com/GNOInc/",
@@ -101,16 +95,13 @@
 			"twitter": "https://twitter.com/GNOinc",
 			"youtube": "https://www.youtube.com/channel/UCSRMkwNPyR0M1-NugMq7J9A"
 		},
-		"description": "The New Orleans Startup Ecosystem is a dynamic and vibrant community of innovators, entrepreneurs, and visionaries who are driving innovation and economic growth in the heart of the Big Easy. Fostering collaboration, creativity, and opportunity, this group is dedicated to supporting and nurturing the city's emerging businesses and startups, making New Orleans a thriving hub for innovation and entrepreneurship.",
 		"icon": "🌎"
 	},
 	{
 		"group": "NOLAvate Black",
-		"slug": "NOLAvate-Black",
-		"links": {
-			"website": "https://nolavateblack.com/"
-		},
+		"slug": "nolavate-black",
 		"description": "New Orleans Black Tech Network connecting entry level talent to jobs, resources and events to help you get hired.",
+		"links": { "website": "https://nolavateblack.com/" },
 		"icon": "✊🏾"
 	}
 ]
