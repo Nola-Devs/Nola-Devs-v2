@@ -22,6 +22,9 @@ const eventSchema = new Schema<Event>({
 		type: Date,
 		required: true
 	},
+	expireAt: {
+		type: Date
+	},
 	location: {
 		name: { type: String, required: true },
 		street: { type: String },
@@ -60,6 +63,9 @@ const eventSchema = new Schema<Event>({
 		required: true
 	}
 });
+
+// mongodb will clean up expired events with this index
+eventSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 
 const EventModel = mongoose.models.Event || model('Event', eventSchema);
 

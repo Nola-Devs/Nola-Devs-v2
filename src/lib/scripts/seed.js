@@ -17,7 +17,6 @@ export const connectDB = async () => {
 	}
 };
 
-console.log('test');
 try {
 	await connectDB();
 	await loadGroups();

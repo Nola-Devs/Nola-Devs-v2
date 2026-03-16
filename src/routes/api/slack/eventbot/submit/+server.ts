@@ -235,8 +235,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			locationZip = zip;
 		}
 
-		const startDate = startTime ? new Date(startTime * 1000) : null;
-		const endDate = endTime ? new Date(endTime * 1000) : null;
+		const startDate = new Date(startTime * 1000);
+		const endDate = new Date(endTime * 1000);
 
 		const eventData = {
 			title,
@@ -260,6 +260,13 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			createdAt: new Date()
 		};
 
+		const setExpireAt = (eventEnd: Date) => {
+			const expirationDate = new Date(eventEnd);
+			expirationDate.setUTCDate(expirationDate.getUTCDate() + 1);
+			expirationDate.setUTCHours(0);
+			return expirationDate;
+		};
+
 		const eventSlug = slugify(`${groupName} ${eventData.startTime}`, {
 			replacement: '-',
 			lower: true,
@@ -274,6 +281,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			description: eventData.description,
 			start: eventData.startTime,
 			end: eventData.endTime,
+			expireAt: setExpireAt(eventData.endTime),
 			location: {
 				name: eventData.locationName,
 				street: eventData.streetAddress,

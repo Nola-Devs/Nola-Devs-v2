@@ -22,6 +22,9 @@ const eventSchema = new Schema({
 		type: Date,
 		required: true
 	},
+	expireAt: {
+		type: Date
+	},
 	location: {
 		name: { type: String, required: true },
 		street: { type: String },
@@ -61,6 +64,9 @@ const eventSchema = new Schema({
 	}
 });
 
+// mongodb will clean up expired events with this index
+eventSchema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
+
 const EventModel = model('Event', eventSchema);
 
 export const loadEvents = async () => {
@@ -68,5 +74,6 @@ export const loadEvents = async () => {
 	const events = JSON.parse(data);
 
 	await EventModel.collection.drop();
+	await EventModel.syncIndexes(); // ensures index is included after the collection was dropped
 	await EventModel.bulkSave(events.map((e) => new EventModel(e)));
 };
