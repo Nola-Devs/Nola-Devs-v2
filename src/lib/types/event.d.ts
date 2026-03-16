@@ -6,6 +6,7 @@ export interface Event {
 	description: string;
 	start: Date;
 	end: Date;
+	expireAt: Date;
 	location: EventLocation;
 	locationNotes?: string;
 	eventLink?: string;
