@@ -19,7 +19,6 @@ import slugify from 'slugify';
 const slackClient = new WebClient(SLACK_BOT_TOKEN);
 
 export const POST: RequestHandler = async ({ request }: RequestEvent) => {
-	console.log('submit endpoint reached');
 	const formData = await request.formData();
 	const payloadString = formData.get('payload') as string;
 
@@ -29,7 +28,6 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 
 	const payload = JSON.parse(payloadString);
 	const state = payload.view.state;
-	console.log('🚀 ~ POST ~ state:', state);
 
 	let metadata;
 	try {
@@ -39,14 +37,11 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 				: payload.view.private_metadata;
 	} catch (err) {
 		console.error('Metadata parse error:', err);
-		console.log('Raw metadata:', payload.view.private_metadata);
 		return new Response('', { status: 200 });
 	}
 
-	console.log('Payload type:', payload.type);
 	if (payload.type === 'block_actions') {
 		const action = payload.actions[0];
-		console.log('action.action_id', action.action_id);
 
 		if (action.action_id === 'create_event') {
 			const groups: Group[] = await GroupModel.find({}, 'group slug');
@@ -92,10 +87,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 
 		if (action.action_id === 'group_select') {
 			const selectedGroup = action.selected_option.value;
-			console.log('🚀 ~ POST ~ selectedGroup:', selectedGroup);
 			const groupOptions = createGroupOptions(metadata.groups);
 			const locationOptions = createLocationOptions(metadata.locations);
-			// console.log('🚀 ~ POST ~ metadata:', metadata);
 
 			const updatedMetadata = {
 				...metadata,
@@ -138,10 +131,8 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 
 		if (action.action_id === 'location_select') {
 			const selectedLocation = action.selected_option.value;
-			console.log('🚀 ~ POST ~ selectedLocation:', selectedLocation);
 			const groupOptions = createGroupOptions(metadata.groups);
 			const locationOptions = createLocationOptions(metadata.locations);
-			// console.log('🚀 ~ POST ~ metadata:', metadata);
 
 			const updatedMetadata = {
 				...metadata,
@@ -204,10 +195,9 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const announcement = getInputValue(state, 'announcement_block', 'announcement_input');
 
 		const selectedGroup =
-			state.values?.group_section_block?.group_select?.selected_option?.value ?? 'other-group';
+			state.values?.group_section_block?.group_select?.selected_option?.value ?? null;
 		const selectedLocation =
-			state.values?.location_section_block?.location_select?.selected_option?.value ??
-			'other-location';
+			state.values?.location_section_block?.location_select?.selected_option?.value ?? null;
 
 		let groupName;
 		let locationName = getInputValue(state, 'location_name_block', 'street_address_input');
@@ -215,6 +205,32 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		let locationCity = getInputValue(state, 'city_block', 'city_input');
 		let locationState = getInputValue(state, 'state_block', 'state_input');
 		let locationZip = getInputValue(state, 'zip_block', 'zip_input');
+
+		// check for submission errors on blocks that don't have built-in slack validation
+		if (!selectedGroup || !selectedLocation) {
+			const groupOptions = createGroupOptions(metadata.groups);
+			const locationOptions = createLocationOptions(metadata.locations);
+
+			// add warning block to modal if missing required info
+			return json({
+				response_action: 'update',
+				view: {
+					type: 'modal',
+					callback_id: 'create_event_modal',
+					private_metadata: JSON.stringify(metadata),
+					title: { type: 'plain_text', text: 'Create an Event' },
+					submit: { type: 'plain_text', text: 'Submit' },
+					close: { type: 'plain_text', text: 'Cancel' },
+					blocks: buildCreateEventModalBlocks({
+						groups: groupOptions,
+						locations: locationOptions,
+						showOtherGroupField: metadata.showOtherGroupField,
+						showOtherLocationFields: metadata.showOtherLocationFields,
+						isMissingField: true
+					})
+				}
+			});
+		}
 
 		if (selectedGroup !== 'other-group') {
 			const { group } = await GroupModel.findOne({ slug: selectedGroup }, 'group');
@@ -238,6 +254,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const startDate = new Date(startTime * 1000);
 		const endDate = new Date(endTime * 1000);
 
+		// complete event data from slack modal
 		const eventData = {
 			title,
 			groupSlug: selectedGroup === 'other-group' ? 'other-group' : selectedGroup,
@@ -273,7 +290,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			locale: 'en'
 		});
 
-		// --- Save to MongoDB ---
+		// save to MongoDB
 		const newEvent: Event = {
 			groupSlug: eventData.groupSlug,
 			groupName,
@@ -304,10 +321,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			console.error('Error saving to database', e);
 		}
 
-		console.log('📦 Raw event data:', eventData);
-		console.log('📦 Event data to save:', newEvent);
-
-		// --- Post announcement to Slack ---
+		// post announcement to Slack
 		try {
 			await slackClient.chat.postMessage({
 				channel: metadata.channel_id,
@@ -318,7 +332,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			console.error('Failed to post announcement:', err);
 		}
 
-		// --- Return success modal (replaces the form) ---
+		// return success modal (replaces the form)
 		return json({
 			response_action: 'update',
 			view: {
