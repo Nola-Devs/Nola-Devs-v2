@@ -10,6 +10,7 @@ type createEventModalBlocksOptions = {
 	locations: Array<{ text: string; value: string }>;
 	showOtherGroupField?: boolean;
 	showOtherLocationFields?: boolean;
+	isMissingField?: boolean;
 };
 
 export const createGroupOptions = (fetchedGroups: Group[]) => {
@@ -95,14 +96,25 @@ export const buildAnnouncementBlocks = (event: any) => {
  * fields appear when an 'Other' option is selected.
  */
 export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptions) => {
-	const { groups, locations, showOtherGroupField, showOtherLocationFields } = options;
+	const { groups, locations, showOtherGroupField, showOtherLocationFields, isMissingField } =
+		options;
 
 	const blocks = [
+		{
+			type: 'context',
+			block_id: 'required_fields_note',
+			elements: [
+				{
+					type: 'mrkdwn',
+					text: 'Fields marked with * are required'
+				}
+			]
+		},
 		{
 			// Meetup title
 			type: 'input',
 			block_id: 'title_block',
-			label: { type: 'plain_text', text: 'Meetup Title' },
+			label: { type: 'plain_text', text: '* Meetup Title' },
 			element: {
 				type: 'plain_text_input',
 				action_id: 'title_input',
@@ -114,7 +126,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			// Group select
 			type: 'section',
 			block_id: 'group_section_block',
-			text: { type: 'mrkdwn', text: '*Group*' },
+			text: { type: 'mrkdwn', text: '* *Group*' },
 			accessory: {
 				type: 'static_select',
 				action_id: 'group_select',
@@ -133,13 +145,23 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		}
 	];
 
+	if (isMissingField) {
+		blocks.unshift({
+			type: 'context',
+			block_id: 'required_error_block',
+			elements: [
+				{ type: 'mrkdwn', text: ':warning: Please fill in all required fields (*) :warning: ' }
+			]
+		});
+	}
+
 	if (showOtherGroupField) {
 		blocks.push({
 			type: 'input',
 			block_id: 'other_group_block',
 			label: {
 				type: 'plain_text',
-				text: 'Group Name'
+				text: '* Group Name'
 			},
 			element: {
 				type: 'plain_text_input',
@@ -157,7 +179,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 	blocks.push({
 		type: 'input',
 		block_id: 'description_block',
-		label: { type: 'plain_text', text: 'Meetup Description' },
+		label: { type: 'plain_text', text: '* Meetup Description' },
 		element: {
 			type: 'plain_text_input',
 			action_id: 'description_input',
@@ -172,7 +194,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		{
 			type: 'input',
 			block_id: 'starttime_block',
-			label: { type: 'plain_text', text: 'Start' },
+			label: { type: 'plain_text', text: '* Start' },
 			element: {
 				type: 'datetimepicker',
 				action_id: 'datetimepicker_start'
@@ -182,7 +204,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		{
 			type: 'input',
 			block_id: 'endtime_block',
-			label: { type: 'plain_text', text: 'End' },
+			label: { type: 'plain_text', text: '* End' },
 			element: {
 				type: 'datetimepicker',
 				action_id: 'datetimepicker_end'
@@ -195,7 +217,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 	blocks.push({
 		type: 'section',
 		block_id: 'location_section_block',
-		text: { type: 'mrkdwn', text: '*Location*' },
+		text: { type: 'mrkdwn', text: '* *Location*' },
 		accessory: {
 			type: 'static_select',
 			action_id: 'location_select',
@@ -219,7 +241,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			{
 				type: 'input',
 				block_id: 'location_name_block',
-				label: { type: 'plain_text', text: 'Location Name' },
+				label: { type: 'plain_text', text: '* Location Name' },
 				element: {
 					type: 'plain_text_input',
 					action_id: 'street_address_input',
@@ -241,7 +263,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			{
 				type: 'input',
 				block_id: 'city_block',
-				label: { type: 'plain_text', text: 'City' },
+				label: { type: 'plain_text', text: '* City' },
 				element: {
 					type: 'plain_text_input',
 					action_id: 'city_input',
@@ -252,7 +274,7 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 			{
 				type: 'input',
 				block_id: 'state_block',
-				label: { type: 'plain_text', text: 'State' },
+				label: { type: 'plain_text', text: '* State' },
 				element: {
 					type: 'plain_text_input',
 					action_id: 'state_input',

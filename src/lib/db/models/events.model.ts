@@ -56,7 +56,7 @@ const eventSchema = new Schema<Event>({
 	},
 	groupSlug: {
 		type: String,
-		required: false
+		required: true
 	},
 	createdAt: {
 		type: Date,

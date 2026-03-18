@@ -204,10 +204,9 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const announcement = getInputValue(state, 'announcement_block', 'announcement_input');
 
 		const selectedGroup =
-			state.values?.group_section_block?.group_select?.selected_option?.value ?? 'other-group';
+			state.values?.group_section_block?.group_select?.selected_option?.value ?? null;
 		const selectedLocation =
-			state.values?.location_section_block?.location_select?.selected_option?.value ??
-			'other-location';
+			state.values?.location_section_block?.location_select?.selected_option?.value ?? null;
 
 		let groupName;
 		let locationName = getInputValue(state, 'location_name_block', 'street_address_input');
@@ -215,6 +214,31 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		let locationCity = getInputValue(state, 'city_block', 'city_input');
 		let locationState = getInputValue(state, 'state_block', 'state_input');
 		let locationZip = getInputValue(state, 'zip_block', 'zip_input');
+
+		// check for submission errors on blocks that don't have built-in slack validation
+		if (!selectedGroup || !selectedLocation) {
+			const groupOptions = createGroupOptions(metadata.groups);
+			const locationOptions = createLocationOptions(metadata.locations);
+
+			return json({
+				response_action: 'update',
+				view: {
+					type: 'modal',
+					callback_id: 'create_event_modal',
+					private_metadata: JSON.stringify(metadata),
+					title: { type: 'plain_text', text: 'Create an Event' },
+					submit: { type: 'plain_text', text: 'Submit' },
+					close: { type: 'plain_text', text: 'Cancel' },
+					blocks: buildCreateEventModalBlocks({
+						groups: groupOptions,
+						locations: locationOptions,
+						showOtherGroupField: metadata.showOtherGroupField,
+						showOtherLocationFields: metadata.showOtherLocationFields,
+						isMissingField: true
+					})
+				}
+			});
+		}
 
 		if (selectedGroup !== 'other-group') {
 			const { group } = await GroupModel.findOne({ slug: selectedGroup }, 'group');
