@@ -1,0 +1,34 @@
+{
+	"display_information": {
+		"name": "noladevs eventbot TEST"
+	},
+	"features": {
+		"bot_user": {
+			"display_name": "noladevs eventbot",
+			"always_online": false
+		},
+		"slash_commands": [
+			{
+				"command": "/event",
+				"url": "https://<INSERT YOUR URL HERE>/api/slack/eventbot/init",
+				"description": "Submit an event to noladevs.org",
+				"should_escape": false
+			}
+		]
+	},
+	"oauth_config": {
+		"scopes": {
+			"bot": ["chat:write", "commands", "chat:write.public"]
+		},
+		"pkce_enabled": false
+	},
+	"settings": {
+		"interactivity": {
+			"is_enabled": true,
+			"request_url": "https://<INSERT YOUR URL HERE>/api/slack/eventbot/submit"
+		},
+		"org_deploy_enabled": false,
+		"socket_mode_enabled": false,
+		"token_rotation_enabled": false
+	}
+}
