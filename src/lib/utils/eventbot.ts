@@ -48,14 +48,26 @@ export const getDateTimeValue = (state: any, blockId: string, actionId: string):
  * @returns Slack Block Kit Blocks
  */
 export const buildAnnouncementBlocks = (event: any) => {
-	const startDay = new Date(event.startTime).toLocaleDateString('en-US', { weekday: 'long' });
-	const endDay = new Date(event.endTime).toLocaleDateString('en-US', { weekday: 'long' });
+	const startDay = new Date(event.startTime).toLocaleDateString('en-US', {
+		timeZone: 'America/Chicago',
+		weekday: 'long',
+		month: 'short',
+		day: 'numeric'
+	});
+	const endDay = new Date(event.endTime).toLocaleDateString('en-US', {
+		timeZone: 'America/Chicago',
+		weekday: 'long',
+		month: 'short',
+		day: 'numeric'
+	});
 	const startTime = new Date(event.startTime).toLocaleTimeString('en-US', {
+		timeZone: 'America/Chicago',
 		hour: 'numeric',
 		minute: '2-digit',
 		hour12: true
 	});
 	const endTime = new Date(event.endTime).toLocaleTimeString('en-US', {
+		timeZone: 'America/Chicago',
 		hour: 'numeric',
 		minute: '2-digit',
 		hour12: true
