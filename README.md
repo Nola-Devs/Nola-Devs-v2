@@ -72,7 +72,8 @@ The MongoDB variables are the only ones needed to get up and running. The others
    2. [Windows](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
       1. [Start the database](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition-as-a-windows-service)
 
-2. Copy example env to get local up and running.
+2. Clone the repo to your machine.
+3. Copy example env to get local up and running.
 
 ```sh
 cp .env.example .env.local
@@ -94,6 +95,23 @@ npm run dev
 ```
 
 6. You now should be up and running to start developing 🥸
+
+### Key directories
+
+```
+/
+├── src                 - app lives here
+│   ├── lib
+│   │   ├── components  - reusable frontend components
+│   │   ├── db          - models and controllers
+|   |   ├── scripts     - seed script and the dummy data
+|   |   └── utils       - misc utility functions
+│   └── routes
+│   │   ├── (app)       - all page routes w/ .svelte and .server.ts files
+│   │   ├── admin       - admin panel pages (unused as of 20)
+|   |   └── api         - slackbot backend
+├── static              - font, favicon, image assets
+```
 
 ### noladevs eventbot
 
