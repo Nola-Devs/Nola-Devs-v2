@@ -74,6 +74,5 @@ export const loadEvents = async () => {
 	const events = JSON.parse(data);
 
 	await EventModel.collection.drop();
-	await EventModel.syncIndexes(); // ensures index is included after the collection was dropped
 	await EventModel.bulkSave(events.map((e) => new EventModel(e)));
 };
