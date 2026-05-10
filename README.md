@@ -108,7 +108,7 @@ npm run dev
 |   |   └── utils       - misc utility functions
 │   └── routes
 │   │   ├── (app)       - all page routes w/ .svelte and .server.ts files
-│   │   ├── admin       - admin panel pages (unused as of 20)
+│   │   ├── admin       - admin panel pages (unused as of 2026-05-10)
 |   |   └── api         - slackbot backend
 ├── static              - font, favicon, image assets
 ```
