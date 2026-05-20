@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Navbar, NavLi, NavBrand, NavHamburger, NavUl, DarkMode } from 'flowbite-svelte';
-	import Icon from './icon/index.svelte';
 	import Breadcrumb from './breadcrumb.svelte';
+	import Icon from './icon/index.svelte';
+	import IconParser from './icon-parser.svelte';
 	import MobileMenu from './mobile-menu.svelte';
 	let isMobileMenuOpen = true;
 	export let data: { groups: { name: string; slug: string }[] };
@@ -29,6 +30,12 @@
 			href="/contact"
 			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
 			>Contact</NavLi
+		>
+		<NavLi
+			href="https://github.com/Nola-Devs/Nola-Devs-v2"
+			target="_blank"
+			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
+			><IconParser icon="github" /></NavLi
 		>
 		<div class="h-6 bg-gray-400 w-px dark:bg-violet-100"></div>
 
