@@ -2,6 +2,8 @@
 	import EventBanner from '$lib/components/banners/event-banner.svelte';
 	import Icon from '$lib/components/icon/index.svelte';
 	import OrganizerList from '$lib/components/organizer-list.svelte';
+	import RsvpForm from '$lib/components/rsvp-form.svelte';
+	import { page } from '$app/stores';
 
 	import { Sanitizer } from '$lib/utils/sanitize';
 	import type { PageData } from './$types';
@@ -138,6 +140,10 @@
 				</ul>
 			</div>
 		</div>
+		<RsvpForm
+			eventSlug="{$page.params.eventID}"
+			totalHeadcount="{data.rsvpSummary?.totalHeadcount ?? 0}"
+		/>
 		<OrganizerList organizers="{data.users}" />
 	</aside>
 </div>

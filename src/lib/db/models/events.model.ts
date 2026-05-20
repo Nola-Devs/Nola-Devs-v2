@@ -61,6 +61,19 @@ const eventSchema = new Schema<Event>({
 	createdAt: {
 		type: Date,
 		required: true
+	},
+	pizza: {
+		vendorId: { type: Schema.Types.ObjectId, ref: 'Vendor', required: false },
+		slicesPerPerson: { type: Number, required: false, min: 0.5, max: 10 },
+		slicesPerPie: { type: Number, required: false, min: 1, max: 24 },
+		leadTimeHours: { type: Number, required: false, min: 0, max: 168 },
+		bufferMultiplier: { type: Number, required: false, default: 1.2, min: 1, max: 3 }
+	},
+	rsvpStats: {
+		totalRsvps: { type: Number, required: false },
+		totalHeadcount: { type: Number, required: false },
+		totalSlices: { type: Number, required: false },
+		finalizedAt: { type: Date, required: false }
 	}
 });
 

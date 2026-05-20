@@ -26,11 +26,13 @@
 					<a href="mailto:{email}">
 						<Icon name="mailIcon" size="{18}" viewBox="0 0 23 16" />
 					</a>
-					{#each Object.entries(links) as [link, url]}
-						<a href="{url}" target="_blank">
-							<IconParse icon="{link}" />
-						</a>
-					{/each}
+					{#if links}
+						{#each Object.entries(links) as [link, url]}
+							<a href="{url}" target="_blank">
+								<IconParse icon="{link}" />
+							</a>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		</div>

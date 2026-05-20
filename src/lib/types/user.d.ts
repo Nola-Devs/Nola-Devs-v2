@@ -1,16 +1,22 @@
-type userLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
+export type UserRole = 'super' | 'orgAdmin' | 'member';
 
-type userLinks = {
-	link: string | null | undefined;
-	[key: userLinkKey]: string;
+export type UserLinkKey = 'website' | 'github' | 'linkedin' | 'twitter';
+
+export type UserLinks = {
+	link?: string | null;
+	[key: UserLinkKey]: string | undefined | null;
 };
 
 export interface User {
-	name: string;
-	pfp: string;
-	links: userLinks;
+	githubId?: number;
 	email: string;
-	password: string;
-	role: string;
-	group: string;
+	name?: string;
+	avatarUrl?: string;
+	role: UserRole;
+	groupIds: string[];
+	createdAt: Date;
+
+	pfp?: string;
+	links?: UserLinks;
+	group?: string;
 }

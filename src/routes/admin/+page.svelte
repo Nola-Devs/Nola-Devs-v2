@@ -1,48 +1,15 @@
 <script lang="ts">
-	import { Input, Select, Label, Button, Card } from 'flowbite-svelte';
-
-	let roles = [
-		{ value: 'organizer', name: 'Organizer' },
-		{ value: 'admin', name: 'Admin' }
-	];
+	import { Button, Card } from 'flowbite-svelte';
 </script>
 
 <div class="h-screen w-full p-auto">
-	<Card class="m-auto ">
-		<form
-			action="?/login"
-			method="post"
-			id="loginForm"
-			autocomplete="on"
-			class="items-center flex flex-col gap-3"
-		>
-			<div class="w-full">
-				<Label for="email">Email</Label>
-				<Input
-					autocomplete="email"
-					type="email"
-					name="email"
-					value=""
-					placeholder="organizer@noladevs.org"
-					required
-				/>
-			</div>
-			<div class="w-full">
-				<Label for="password">Password</Label>
-				<Input
-					autocomplete="current-password"
-					type="password"
-					placeholder="password"
-					name="password"
-					value="•••••"
-					required
-				/>
-			</div>
-			<div class="w-full">
-				<Label for="role">Role</Label>
-				<Select name="role" items="{roles}" required />
-			</div>
-			<Button class="w-fit self-end" type="submit" value="LogIn">Log In</Button>
-		</form>
+	<Card class="m-auto">
+		<div class="flex flex-col gap-4 items-center p-4">
+			<h1 class="text-xl font-semibold">Admin sign in</h1>
+			<p class="text-sm text-gray-600 dark:text-gray-300 text-center">
+				Use your GitHub account to sign in. Access is granted by a super admin.
+			</p>
+			<Button href="/login/github" class="w-full">Sign in with GitHub</Button>
+		</div>
 	</Card>
 </div>

@@ -1,0 +1,12 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: noladevs-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - noladevs-mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  noladevs-mongo-data:
