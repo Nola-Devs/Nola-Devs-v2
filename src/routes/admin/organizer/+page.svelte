@@ -1,53 +1,38 @@
-<!-- <script lang="ts">
-	import { Tabs, TabItem, Button, Modal, Select, P } from 'flowbite-svelte';
-	import EditUser from '$lib/components/edit-user.svelte';
-	import EditOrg from '$lib/components/edit-org.svelte';
+<script lang="ts">
+	import { Card, Button } from 'flowbite-svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	$: user = data.user;
-	$: group = data.userGroup;
-	const groups = data.groups?.map((g) => {
-		return { value: g, name: g };
-	});
-	let step = 0;
 </script>
 
-{#if user?.name}
-	<P class="m-2">
-		Welcome {user.name}
-	</P>
-{/if}
+<div class="p-6 max-w-4xl mx-auto flex flex-col gap-4">
+	<header>
+		<h1 class="text-2xl font-bold">Organizer</h1>
+		<p class="text-sm text-gray-600 dark:text-gray-300">
+			{data.scopeKind === 'all' ? 'All upcoming events' : 'Events for your groups'}
+		</p>
+	</header>
 
-<Modal open="{!user.group}" dismissable="{true}">
-	{#if step === 0}
-		<div class="flex flex-col items-center">
-			<h1 class="text-3xl">👋 Welcome To NOLADevs</h1>
-			<p>We Noticed this is the 1st time you signed in!!</p>
-			<Button class="w-fit self-end" on:click="{() => step++}">Next</Button>
+	{#if data.events.length === 0}
+		<Card>
+			<div class="p-4 text-sm text-gray-600 dark:text-gray-300">
+				No upcoming events available to manage.
+			</div>
+		</Card>
+	{:else}
+		<div class="flex flex-col gap-3">
+			{#each data.events as event}
+				<Card>
+					<div class="p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+						<div>
+							<h2 class="font-semibold">{event.meetupName}</h2>
+							<p class="text-sm text-gray-600 dark:text-gray-300">
+								{event.groupName} · {new Date(event.start).toLocaleString()}
+							</p>
+						</div>
+						<Button href="/admin/organizer/event/{event.eventSlug}/pizza">Pizza</Button>
+					</div>
+				</Card>
+			{/each}
 		</div>
-	{:else if step === 1}
-		<div>
-			<EditUser {user} />
-			<Button on:click="{() => step++}">Next</Button>
-		</div>
-	{:else if step === 2}
-		<div>
-			<h1>Does your group exist?</h1>
-			<Select items="{groups}" placeholder="I don't see my group here" />
-			<Button on:click="{() => step++}">Save</Button>
-		</div>
-	{:else if step === 3}
-		<EditOrg {group} />
 	{/if}
-</Modal>
-
-<Tabs>
-	<TabItem open title="Organizer">
-		<div class="max-w-2xl mx-auto">
-			<EditUser {user} />
-		</div>
-	</TabItem>
-	<TabItem title="Group">
-		<EditOrg {group} />
-	</TabItem>
-</Tabs> -->
+</div>

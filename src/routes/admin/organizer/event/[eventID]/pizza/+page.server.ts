@@ -4,6 +4,7 @@ import EventModel from '$lib/db/models/events.model';
 import { vendorController } from '$lib/db/controllers/vendor.controller';
 import { rsvpController } from '$lib/db/controllers/rsvp.controller';
 import { calculatePizza, computeOrderByAt } from '$lib/utils/pizza-math';
+import { assertOrganizerForGroupSlug } from '$lib/server/auth/scope';
 
 const DEFAULT_BUFFER = 1.2;
 const DEFAULT_SLICES_PER_PERSON = 2.5;
@@ -12,14 +13,12 @@ const DEFAULT_LEAD_TIME_HOURS = 4;
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	if (!locals.user) throw redirect(302, '/admin');
-	if (locals.user.role !== 'orgAdmin' && locals.user.role !== 'super') {
-		throw error(403, 'Organizer admin only');
-	}
 
 	const event = await EventModel.findOne({ eventSlug: params.eventID }).lean<{
 		_id: { toString(): string };
 		meetupName: string;
 		groupName: string;
+		groupSlug: string;
 		start: Date;
 		end: Date;
 		pizza?: {
@@ -31,6 +30,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		};
 	}>();
 	if (!event) throw error(404, 'Event not found');
+
+	await assertOrganizerForGroupSlug(locals.user, event.groupSlug);
 
 	const vendors = await vendorController.list();
 	const summary = await rsvpController.summaryByEventId(event._id.toString());
@@ -82,9 +83,13 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
 export const actions: Actions = {
 	saveConfig: async ({ params, request, locals }) => {
-		if (!locals.user || (locals.user.role !== 'orgAdmin' && locals.user.role !== 'super')) {
-			return fail(403);
-		}
+		if (!locals.user) return fail(401);
+		const event = await EventModel.findOne({ eventSlug: params.eventID })
+			.select(['_id', 'groupSlug'])
+			.lean<{ _id: { toString(): string }; groupSlug: string }>();
+		if (!event) return fail(404);
+		await assertOrganizerForGroupSlug(locals.user, event.groupSlug);
+
 		const form = await request.formData();
 		const vendorId = (form.get('vendorId') as string) || null;
 		const slicesPerPerson = Number(form.get('slicesPerPerson'));
@@ -92,8 +97,20 @@ export const actions: Actions = {
 		const leadTimeHours = Number(form.get('leadTimeHours'));
 		const bufferMultiplier = Number(form.get('bufferMultiplier'));
 
+		const ranges: Array<[number, number, number, string]> = [
+			[slicesPerPerson, 0.5, 10, 'slicesPerPerson'],
+			[slicesPerPie, 1, 24, 'slicesPerPie'],
+			[leadTimeHours, 0, 168, 'leadTimeHours'],
+			[bufferMultiplier, 1, 3, 'bufferMultiplier']
+		];
+		for (const [v, min, max, name] of ranges) {
+			if (!Number.isFinite(v) || v < min || v > max) {
+				return fail(400, { error: `${name} must be between ${min} and ${max}` });
+			}
+		}
+
 		await EventModel.updateOne(
-			{ eventSlug: params.eventID },
+			{ _id: event._id },
 			{
 				$set: {
 					'pizza.vendorId': vendorId || undefined,

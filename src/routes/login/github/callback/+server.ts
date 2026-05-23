@@ -1,4 +1,6 @@
 import { OAuth2RequestError } from 'arctic';
+import { dev } from '$app/environment';
+import { env } from '$env/dynamic/private';
 import { github } from '$lib/server/auth/github';
 import { lucia } from '$lib/server/auth/lucia';
 import UserModel from '$lib/db/models/users.model';
@@ -50,10 +52,12 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 			return new Response('No verified email on GitHub account', { status: 400 });
 		}
 
+		const bootstrapId = env.BOOTSTRAP_SUPER_GITHUB_ID;
+		const isBootstrapSuper = bootstrapId ? String(ghUser.id) === bootstrapId.trim() : false;
+
 		let user = await UserModel.findOne({ githubId: ghUser.id });
 		if (!user) {
-			const existingUserCount = await UserModel.countDocuments({ githubId: { $exists: true } });
-			const role = existingUserCount === 0 ? 'super' : 'member';
+			const role = isBootstrapSuper ? 'super' : 'member';
 			user = await UserModel.create({
 				githubId: ghUser.id,
 				email,
@@ -62,11 +66,15 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
 				role,
 				groupIds: []
 			});
+		} else if (isBootstrapSuper && user.role !== 'super') {
+			user.role = 'super';
+			await user.save();
 		}
 
 		const session = await lucia.createSession(user._id.toString(), {});
 		const cookie = lucia.createSessionCookie(session.id);
-		cookies.set(cookie.name, cookie.value, { path: '.', ...cookie.attributes });
+		cookies.set(cookie.name, cookie.value, { path: '/', ...cookie.attributes });
+		cookies.delete('github_oauth_state', { path: '/', secure: !dev });
 
 		return new Response(null, {
 			status: 302,

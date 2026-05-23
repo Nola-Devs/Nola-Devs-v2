@@ -6,6 +6,6 @@ export const POST: RequestHandler = async ({ locals, cookies }) => {
 		await lucia.invalidateSession(locals.session.id);
 	}
 	const cookie = lucia.createBlankSessionCookie();
-	cookies.set(cookie.name, cookie.value, { path: '.', ...cookie.attributes });
+	cookies.set(cookie.name, cookie.value, { path: '/', ...cookie.attributes });
 	return new Response(null, { status: 302, headers: { Location: '/' } });
 };

@@ -17,11 +17,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const { session, user } = await lucia.validateSession(sessionId);
 	if (session && session.fresh) {
 		const cookie = lucia.createSessionCookie(session.id);
-		event.cookies.set(cookie.name, cookie.value, { path: '.', ...cookie.attributes });
+		event.cookies.set(cookie.name, cookie.value, { path: '/', ...cookie.attributes });
 	}
 	if (!session) {
 		const cookie = lucia.createBlankSessionCookie();
-		event.cookies.set(cookie.name, cookie.value, { path: '.', ...cookie.attributes });
+		event.cookies.set(cookie.name, cookie.value, { path: '/', ...cookie.attributes });
 	}
 
 	event.locals.user = user;

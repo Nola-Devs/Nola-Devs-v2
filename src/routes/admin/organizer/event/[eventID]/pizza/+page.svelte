@@ -9,6 +9,15 @@
 		...data.vendors.map((v) => ({ value: v._id ?? '', name: v.name }))
 	];
 
+	// Prefix cells whose first char could be interpreted as a formula by
+	// Excel/Sheets/Numbers (=, +, -, @, tab, CR, LF) with a leading single quote.
+	function csvSafe(cell: string): string {
+		if (cell.length > 0 && /^[=+\-@\t\r\n]/.test(cell)) {
+			return "'" + cell;
+		}
+		return cell;
+	}
+
 	function downloadCsv() {
 		const rows = [
 			['email', 'name', 'headcount', 'slices', 'createdAt'],
@@ -20,8 +29,10 @@
 				new Date(r.createdAt).toISOString()
 			])
 		];
-		const csv = rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(',')).join('\n');
-		const blob = new Blob([csv], { type: 'text/csv' });
+		const csv = rows
+			.map((r) => r.map((c) => `"${csvSafe(c).replace(/"/g, '""')}"`).join(','))
+			.join('\r\n');
+		const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement('a');
 		a.href = url;

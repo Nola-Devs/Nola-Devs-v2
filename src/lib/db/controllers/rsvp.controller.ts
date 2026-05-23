@@ -1,7 +1,18 @@
 import { randomBytes } from 'node:crypto';
 import { error } from '@sveltejs/kit';
+import mongoose from 'mongoose';
 import RsvpModel, { RSVP_HEADCOUNT_MAX, RSVP_SLICES_MAX } from '../models/rsvps.model';
 import EventModel from '../models/events.model';
+
+function assertObjectId(id: string): string {
+	if (!mongoose.isValidObjectId(id)) throw error(400, 'Invalid id');
+	return id;
+}
+
+function toObjectId(id: string): mongoose.Types.ObjectId {
+	if (!mongoose.isValidObjectId(id)) throw error(400, 'Invalid id');
+	return new mongoose.Types.ObjectId(id);
+}
 
 interface RsvpInput {
 	email: string;
@@ -35,56 +46,81 @@ function normalizeInput(input: RsvpInput) {
 	return { email, name, headcount, slices };
 }
 
+const RSVPS_PER_EVENT_MAX = 500;
+
 export const rsvpController = {
-	upsert: async (eventSlug: string, input: RsvpInput) => {
+	create: async (eventSlug: string, input: RsvpInput) => {
 		const normalized = normalizeInput(input);
 		const event = await EventModel.findOne({ eventSlug }).select(['_id', 'end']).lean<{
 			_id: { toString(): string };
 			end: Date;
 		}>();
 		if (!event) throw error(404, 'Event not found');
+		if (event.end.getTime() < Date.now()) throw error(410, 'Event has ended');
 
-		const expiresAt = new Date(event.end.getTime() + EXPIRES_AFTER_EVENT_DAYS * 86400_000);
-		const editToken = randomBytes(24).toString('hex');
-
-		const existing = await RsvpModel.findOne({ eventId: event._id, email: normalized.email });
-		if (existing) {
-			existing.name = normalized.name;
-			existing.headcount = normalized.headcount;
-			existing.slices = normalized.slices;
-			existing.updatedAt = new Date();
-			existing.expiresAt = expiresAt;
-			await existing.save();
-			return { editToken: existing.editToken, updated: true };
+		// Per-event cap to bound write amplification from a single attacker
+		// rotating emails.
+		const eventRsvpCount = await RsvpModel.countDocuments({ eventId: event._id });
+		if (eventRsvpCount >= RSVPS_PER_EVENT_MAX) {
+			throw error(429, 'Event has reached RSVP capacity');
 		}
 
-		await RsvpModel.create({
-			eventId: event._id,
-			email: normalized.email,
-			name: normalized.name,
-			headcount: normalized.headcount,
-			slices: normalized.slices,
-			editToken,
-			expiresAt
-		});
-		return { editToken, updated: false };
+		const expiresAt = new Date(event.end.getTime() + EXPIRES_AFTER_EVENT_DAYS * 86400_000);
+		const editToken = randomBytes(32).toString('hex');
+
+		try {
+			await RsvpModel.create({
+				eventId: event._id,
+				email: normalized.email,
+				name: normalized.name,
+				headcount: normalized.headcount,
+				slices: normalized.slices,
+				editToken,
+				expiresAt
+			});
+			return { editToken, created: true };
+		} catch (e: unknown) {
+			// Duplicate (eventId,email). Do NOT return the existing token — that
+			// would let anyone enumerate RSVPs and hijack edit links by guessing
+			// emails. Tell the user to use their saved bookmark instead.
+			if (
+				typeof e === 'object' &&
+				e !== null &&
+				'code' in e &&
+				(e as { code?: number }).code === 11000
+			) {
+				return { editToken: null, created: false, alreadyRsvpd: true };
+			}
+			throw e;
+		}
 	},
 
 	updateByToken: async (eventSlug: string, token: string, input: RsvpInput) => {
 		const normalized = normalizeInput(input);
-		const event = await EventModel.findOne({ eventSlug }).select(['_id']).lean<{
+		const event = await EventModel.findOne({ eventSlug }).select(['_id', 'end']).lean<{
 			_id: { toString(): string };
+			end: Date;
 		}>();
 		if (!event) throw error(404, 'Event not found');
+		if (event.end.getTime() < Date.now()) throw error(410, 'Event has ended');
 
-		const rsvp = await RsvpModel.findOne({ eventId: event._id, editToken: token });
+		// Token format is constrained — reject anything that isn't 64 hex chars
+		// before going to the DB.
+		if (!/^[a-f0-9]{64}$/.test(token)) throw error(404, 'RSVP not found');
+
+		const rsvp = await RsvpModel.findOneAndUpdate(
+			{ eventId: event._id, editToken: token },
+			{
+				$set: {
+					name: normalized.name,
+					headcount: normalized.headcount,
+					slices: normalized.slices,
+					updatedAt: new Date()
+				}
+			},
+			{ new: true }
+		);
 		if (!rsvp) throw error(404, 'RSVP not found');
-
-		rsvp.name = normalized.name;
-		rsvp.headcount = normalized.headcount;
-		rsvp.slices = normalized.slices;
-		rsvp.updatedAt = new Date();
-		await rsvp.save();
 		return { ok: true };
 	},
 
@@ -93,7 +129,9 @@ export const rsvpController = {
 			_id: { toString(): string };
 		}>();
 		if (!event) throw error(404, 'Event not found');
-		await RsvpModel.deleteOne({ eventId: event._id, editToken: token });
+		if (!/^[a-f0-9]{64}$/.test(token)) throw error(404, 'RSVP not found');
+		const res = await RsvpModel.deleteOne({ eventId: event._id, editToken: token });
+		if (res.deletedCount === 0) throw error(404, 'RSVP not found');
 		return { ok: true };
 	},
 
@@ -104,7 +142,9 @@ export const rsvpController = {
 			totalHeadcount: number;
 			totalSlices: number;
 		}>([
-			{ $match: { eventId: new RsvpModel.base.Types.ObjectId(eventId) } },
+			// rsvps.eventId is stored as a String (per schema), so $match must
+			// compare strings — passing an ObjectId here silently returns nothing.
+			{ $match: { eventId: assertObjectId(eventId) } },
 			{
 				$group: {
 					_id: null,
@@ -140,9 +180,12 @@ export const rsvpController = {
 	},
 
 	finalizeStats: async (eventId: string) => {
+		const _id = toObjectId(eventId);
 		const summary = await rsvpController.summaryByEventId(eventId);
-		await EventModel.updateOne(
-			{ _id: eventId },
+		// Atomic guard: only finalize if not already finalized. Prevents two
+		// concurrent finalize calls from racing or stomping older stats.
+		const res = await EventModel.updateOne(
+			{ _id, 'rsvpStats.finalizedAt': { $exists: false } },
 			{
 				$set: {
 					rsvpStats: {
@@ -154,7 +197,7 @@ export const rsvpController = {
 				}
 			}
 		);
-		return summary;
+		return { ...summary, finalized: res.modifiedCount === 1 };
 	},
 
 	finalizeExpiredEvents: async () => {

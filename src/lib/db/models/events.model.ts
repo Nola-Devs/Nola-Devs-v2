@@ -52,7 +52,8 @@ const eventSchema = new Schema<Event>({
 	eventSlug: {
 		type: String,
 		required: true,
-		unique: false
+		unique: true,
+		index: true
 	},
 	groupSlug: {
 		type: String,

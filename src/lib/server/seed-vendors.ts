@@ -23,7 +23,7 @@ export async function seedSharedVendors(): Promise<void> {
 	if (seeded) return;
 	for (const v of SHARED_VENDORS) {
 		await VendorModel.updateOne(
-			{ name: v.name },
+			{ name: v.name, isShared: true },
 			{ $setOnInsert: { ...v, isShared: true } },
 			{ upsert: true }
 		);

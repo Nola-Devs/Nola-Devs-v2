@@ -10,6 +10,7 @@
 	let slices = 2;
 	let submitting = false;
 	let editToken: string | null = null;
+	let alreadyRsvpd = false;
 	let errorMsg: string | null = null;
 
 	$: editUrl = editToken ? `${location?.origin ?? ''}/event/${eventSlug}#rsvp-${editToken}` : null;
@@ -33,8 +34,12 @@
 				return;
 			}
 			const body = await res.json();
+			if (body.alreadyRsvpd) {
+				alreadyRsvpd = true;
+				return;
+			}
 			editToken = body.editToken;
-			totalHeadcount += headcount;
+			if (body.created) totalHeadcount += headcount;
 		} catch (e) {
 			errorMsg = 'Network error';
 		} finally {
@@ -65,6 +70,11 @@
 				value="{editUrl}"
 				on:click="{selectAll}"
 			/>
+		{:else if alreadyRsvpd}
+			<div class="text-sm text-amber-700 dark:text-amber-300">
+				An RSVP already exists for that email. Use the bookmark link from your original
+				confirmation to change or cancel it. If you've lost the link, please contact the organizers.
+			</div>
 		{:else}
 			<form on:submit|preventDefault="{submit}" class="flex flex-col gap-2">
 				<Label for="rsvp-email">Email</Label>
