@@ -25,13 +25,12 @@
 		"icon": "📊"
 	},
 	{
-		"group": "Frontend Party",
-		"slug": "frontend-party",
-		"description": "We are a vibrant community of front-end web developers known as the 'Front-End Party' located in New Orleans, Louisiana. Our group gathers once a month for engaging presentations and insightful discussions centered around front-end web development. Our primary focus is to provide a platform for like-minded individuals interested in exploring the intricacies of front-end development beyond the surface level.\nEvery second Tuesday of each month join us for 5:30pm at the beautiful Scale New Orleans. 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130",
+		"group": "Super Duper Computer Party",
+		"slug": "super-duper-computer-party",
+		"description": "We like to hangout, make stuff, and talk about software. Sometimes there's a speaker, sometimes we have mini-hackathons. Our group gathers on the second Tuesday of every month at Scale Nola. Come join the party!",
 		"links": {
-			"website": "http://www.frontendparty.com/",
-			"meetup": "https://www.meetup.com/frontendparty/",
-			"twitch": "https://www.twitch.tv/nolafrontendparty"
+			"website": "http://www.superdupercomputerparty.com/",
+			"slack": "https://nola.slack.com/archives/C05CT3DG0F4"
 		},
 		"icon": "🎉"
 	},

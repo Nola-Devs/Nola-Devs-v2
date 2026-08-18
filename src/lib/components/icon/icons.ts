@@ -17,7 +17,7 @@ export const icons: { [key: string]: string } = {
 	brssugIcon: `
     <path d="M12 2C7.527 2 3 3.374 3 6V18C3 20.626 7.527 22 12 22C16.473 22 21 20.626 21 18V6C21 3.374 16.473 2 12 2ZM19 18C19 18.58 16.547 20 12 20C7.453 20 5 18.58 5 18V14.6C6.736 15.523 9.374 16 12 16C14.626 16 17.264 15.523 19 14.6V18ZM19 12C19 12.58 16.547 14 12 14C7.453 14 5 12.58 5 12V8.6C6.736 9.523 9.374 10 12 10C14.626 10 17.264 9.523 19 8.6V12ZM12 8C7.453 8 5 6.58 5 6C5 5.42 7.453 4 12 4C16.547 4 19 5.42 19 6C19 6.58 16.547 8 12 8Z" fill="currentColor"/>
   `,
-	frontEndPartyIcon: `
+	superDuperComputerPartyIcon: `
     <path d="M7 8L3 12L7 16M17 8L21 12L17 16M13 5L11 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   `,
 	gameDevsIcon: `
@@ -135,7 +135,7 @@ export const groupIconsMap: GroupIconsMap = {
 	'ai-hacking': 'aiHackingIcon',
 	'below-c-level': 'belowCLevelIcon',
 	'br-sql-server-ug': 'brssugIcon',
-	'frontend-party': 'frontEndPartyIcon',
+	'super-duper-computer-party': 'superDuperComputerPartyIcon',
 	'nola-game-dev': 'gameDevsIcon',
 	'hack-night': 'hackNightIcon',
 	'nola-sec': 'nolaSecIcon',
