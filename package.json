@@ -7,6 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"seed": "node --env-file=.env.local ./src/lib/scripts/seed.js",
+		"start-local-db": "docker compose up -d && until docker exec noladevs-mongo mongosh --quiet --eval 'db.adminCommand(\"ping\").ok' >/dev/null 2>&1; do sleep 1; done && npm run seed",
+		"stop-local-db": "docker compose stop",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
