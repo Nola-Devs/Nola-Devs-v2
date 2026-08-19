@@ -1,30 +1,5 @@
 [
 	{
-		"name": "Dustin Gaspard",
-		"pfp": "https://media.licdn.com/dms/image/C4E03AQG_YZHb62jsww/profile-displayphoto-shrink_800_800/0/1595785104288?e=1727308800&v=beta&t=gSW6XXGnOwb8PNPnM1J0x2xuY8yj0njw9h0BhTsf4WM",
-		"links": {
-			"twitter": "https://twitter.com/dgaspard",
-			"linkedin": "https://www.linkedin.com/in/dustin-gaspard",
-			"website": "http://www.diamonddata.com/"
-		},
-		"email": "dgaspard@gmail.com",
-		"group": "Nola Tech Talks",
-		"role": "organizer",
-		"password": "123456789"
-	},
-	{
-		"name": "Garett Majoue",
-		"pfp": "https://media.licdn.com/dms/image/C4E03AQEzavAs175b_Q/profile-displayphoto-shrink_800_800/0/1516311675296?e=1727308800&v=beta&t=eajd9vUvj6Q0MRh0oVB--DB_MkcAPgA1b5_o3Z2YxFg",
-		"links": {
-			"linkedin": "https://www.linkedin.com/in/garett-majoue/",
-			"website": "http://www.geocent.com/Pages/Default.aspx"
-		},
-		"email": "garret@email.com",
-		"group": "Nola Tech Talks",
-		"role": "organizer",
-		"password": "123456789"
-	},
-	{
 		"name": "Vanessa Pyne",
 		"pfp": "https://2021.commcon.xyz/avatars/v_pyne_crop.jpeg?w=640",
 		"links": {
@@ -54,47 +29,20 @@
 			"github": "https://github.com/bhelx",
 			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/"
 		},
-		"email": "bhelx@simst.im",
-		"group": "Below C Level",
-		"role": "organizer",
-		"password": "123456789"
-	},
-	{
-		"name": "Aaron Lee",
-		"pfp": "https://belowclevel.org/images/aaron.jpg",
-		"links": {
-			"github": "https://github.com/wwkeyboard",
-			"linkedin": "https://www.linkedin.com/in/aaronoralee/",
-			"website": "http://aaronosaur.us/"
-		},
-		"email": "wwkeyboard@gmail.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Below C Level",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Thomas LeBlanc",
-		"pfp": "https://media.licdn.com/dms/image/C5603AQHMUR3rcaaOiw/profile-displayphoto-shrink_800_800/0/1517675687435?e=1727308800&v=beta&t=orpHxTJm5txE1WjOsuvYDkot1-m4sTmhMqgyK7Wbb2k",
+		"pfp": "https://media.licdn.com/dms/image/v2/D5603AQHYLAM75rzAbw/profile-displayphoto-crop_800_800/B56ZzPCZxhHAAI-/0/1773000040727?e=1788393600&v=beta&t=NLq-dsPnk_wGpc2ddu_EB6_FT0qUuI-aaAzWLiyr2eQ",
 		"links": {
 			"website": "http://thesmilingdba.blogspot.com/",
-			"Linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
+			"linkedin": "https://www.linkedin.com/in/thomaslleblanc/"
 		},
-		"email": "thomeas@email.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "BR SQL Server UG",
-		"role": "organizer",
-		"password": "123456789"
-	},
-	{
-		"name": "Colin Williams",
-		"pfp": "https://res.cloudinary.com/dbdyc4klu/image/upload/v1696603918/pfpmaker_11_uqkrji.png",
-		"links": {
-			"github": "https://github.com/colinwilliams91",
-			"linkedin": "https://www.linkedin.com/in/colin-williams-dev",
-			"website": "https://www.colin-williams.dev/",
-			"email": "colin.williams.dev@gmail.com"
-		},
-		"email": "colin.williams.dev@gmail.com",
-		"group": "Frontend Party",
 		"role": "organizer",
 		"password": "123456789"
 	},
@@ -106,7 +54,7 @@
 			"linkedin": "https://www.linkedin.com/in/kalypsohoman/",
 			"website": "http://kalypsohoman.com/"
 		},
-		"email": "kalypsohomandev@gmail.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Frontend Party",
 		"role": "organizer",
 		"password": "123456789"
@@ -116,10 +64,9 @@
 		"pfp": "https://ca.slack-edge.com/T028DDR96-U029DEE5F-52acc63a10a8-512",
 		"links": {
 			"github": "https://github.com/bhelx",
-			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/",
-			"email": "bhelx@simst.im"
+			"linkedin": "https://www.linkedin.com/in/benjamin-eckel-b025831a3/"
 		},
-		"email": "bhelx@simst.im",
+		"email": "noladevsorg@gmail.com",
 		"group": "Hacknight",
 		"role": "organizer",
 		"password": "123456789"
@@ -130,30 +77,30 @@
 		"links": {
 			"Discord": "152092896164708352"
 		},
-		"email": "calder@email.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Curtis Cummings",
-		"pfp": "https://media.licdn.com/dms/image/C5603AQFpeXEQO4dJTA/profile-displayphoto-shrink_800_800/0/1565811722212?e=1727308800&v=beta&t=TReDkgyElqwe9q69rz1KtbG9BVLRNbc2kpv3ZQOYXMs",
+		"pfp": "https://media.licdn.com/dms/image/v2/C5603AQFpeXEQO4dJTA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1565811722212?e=1788393600&v=beta&t=DdxrFbqwQsiD7eWqzAqMe4kVTcCuvMSs94y1UcvwFg8",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/curtis-cummings-9536b994/",
 			"website": "http://parallaxvisions.com/"
 		},
-		"email": "curtis@email.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Chris Morison",
-		"pfp": "https://media.licdn.com/dms/image/D5603AQGOjCQ7b6vbpA/profile-displayphoto-shrink_800_800/0/1696542107080?e=1727308800&v=beta&t=PkNEBQFLa63-zYXup1wDslM2_1t1wFGwV_vvozfkNmw",
+		"pfp": "https://media.licdn.com/dms/image/v2/D5603AQGOjCQ7b6vbpA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1696542107080?e=1788393600&v=beta&t=Jci9K_VKtDxR05HsxcVcwDVE_09MGl49ieji5XslqTw",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/chris-morrison-547853ab/"
 		},
-		"email": "chris@email.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Nola Game Dev",
 		"role": "organizer",
 		"password": "123456789"
@@ -164,7 +111,7 @@
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/miguel-solis-/"
 		},
-		"email": "example@example.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "NOLA Sec",
 		"role": "organizer",
 		"password": "123456789"
@@ -173,10 +120,9 @@
 		"name": "Lucia Berliner",
 		"pfp": "https://media.licdn.com/dms/image/C5603AQHDGGYP_pYqmg/profile-displayphoto-shrink_800_800/0/1630620724447?e=1727308800&v=beta&t=5btPyN4MIvDwWg90-IaEcsJrdJviBiAvCLZaaLjpTuE",
 		"links": {
-			"linkedin": "https://www.linkedin.com/in/luciaberliner/",
-			"email": "lucia.berliner@gmail.com"
+			"linkedin": "https://www.linkedin.com/in/luciaberliner/"
 		},
-		"email": "lucia.berliner@gmail.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Womxn in Tech",
 		"role": "organizer",
 		"password": "123456789"
@@ -187,42 +133,42 @@
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/manuelavanderwerken/"
 		},
-		"email": "manualrovanderwerken@icloud.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Womxn in Tech",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Brook Davis",
-		"pfp": "https://media.licdn.com/dms/image/D5635AQFM9WljZpzWng/profile-framedphoto-shrink_800_800/0/1719170590930?e=1722132000&v=beta&t=avwxoMzPY_n2MqSf9f9lOu8QNIW3-twfMpCjceRrr9k",
+		"pfp": "https://media.licdn.com/dms/image/v2/C4E03AQGhJtzpZPAYbg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516272545870?e=1788393600&v=beta&t=SD7QgMTKgludxEKwRBAr_J5V6IaR2HFnYRCcvd_x0GM",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/brookbissinger/",
 			"twitter": "https://twitter.com/brook5280",
 			"website": "https://electricalSales.com"
 		},
-		"email": "brook5280@gmail.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "Work In Tech",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Evie Poitevent Sanders",
-		"pfp": "https://media.licdn.com/dms/image/D5603AQHjBtnbQBriQg/profile-displayphoto-shrink_800_800/0/1718260190722?e=1727308800&v=beta&t=FHVl8q1CctOlhbqxKlOJ3jCvGpdSvoy36P8UaOt4VSY",
+		"pfp": "https://media.licdn.com/dms/image/v2/D5603AQHjBtnbQBriQg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718260190722?e=1788393600&v=beta&t=JxrM04LGNV1N8CHfx8C3IFbOzJ8EIp7bmG7-9HuVmoY",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/eviepoitevent/"
 		},
-		"email": "epoitevent@gnoinc.org",
+		"email": "noladevsorg@gmail.com",
 		"group": "StartUp Nola Now",
 		"role": "organizer",
 		"password": "123456789"
 	},
 	{
 		"name": "Sabrina Short",
-		"pfp": "https://media.licdn.com/dms/image/C5603AQEUiLSHYiugHw/profile-displayphoto-shrink_800_800/0/1609943507182?e=1727308800&v=beta&t=LH4ZIG0lIxO45CAbwtNeb40R0F3dHyD2jg_F_Fw8dWA",
+		"pfp": "https://media.licdn.com/dms/image/v2/D5603AQELCcvlakcNcw/profile-displayphoto-crop_800_800/B56Z5E5gUzKwAQ-/0/1779272387030?e=1788393600&v=beta&t=Nhm_ZfYcsD7kXgorLkT99LgtA9CerHgqQ6IdGDj6V8c",
 		"links": {
 			"linkedin": "https://www.linkedin.com/in/sabrinanshort"
 		},
-		"email": "sabrina@nolavateblack.com",
+		"email": "noladevsorg@gmail.com",
 		"group": "NOLAvate Black",
 		"role": "organizer",
 		"password": "123456789"
