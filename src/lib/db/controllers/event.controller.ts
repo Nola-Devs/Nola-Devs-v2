@@ -28,7 +28,7 @@ export const eventController = {
 	 * @param {string} slug The slug of the group to get events for. See `src/lib/scripts/data/groups.json` for slugs.
 	 * @returns {Promise<Event[]>} (fulfilled promise) An array of events associated with the group.
 	 * @throws {error} 404 if events are not found / group does not exist.
-	 * @example eventController.getEventsByGroup('Frontend-Party')
+	 * @example eventController.getEventsByGroup('Super-Duper-Computer-Party')
 	 */
 	getEventsByGroup: async (slug: string): Promise<Event[]> => {
 		const events: Event[] = await EventModel.find({ groupSlug: slug }).select('-_id -__v').lean();
@@ -46,7 +46,7 @@ export const eventController = {
 	 * @param {string} eventSlug The slug of the desired event. See `src/lib/scripts/data/events.json` for slugs.
 	 * @returns {Promise<Event>} (fulfilled promise) The event matching the `eventSlug`.
 	 * @throws {error} 404 if event is not found.
-	 * @example eventController.getEventsByEventSlug('front-end-party-byobug-09102024')
+	 * @example eventController.getEventsByEventSlug('super-duper-computer-party-byobug-09102024')
 	 */
 	getEventsByEventSlug: async (eventSlug: string): Promise<Event> => {
 		try {
