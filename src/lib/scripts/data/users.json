@@ -35,6 +35,19 @@
 		"password": "123456789"
 	},
 	{
+		"name": "Aaron Lee",
+		"pfp": "https://belowclevel.org/images/aaron.jpg",
+		"links": {
+			"github": "https://github.com/wwkeyboard",
+			"linkedin": "https://www.linkedin.com/in/aaronoralee/",
+			"website": "http://aaronosaur.us/"
+		},
+		"email": "wwkeyboard@gmail.com",
+		"group": "Below C Level",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
 		"name": "Thomas LeBlanc",
 		"pfp": "https://media.licdn.com/dms/image/v2/D5603AQHYLAM75rzAbw/profile-displayphoto-crop_800_800/B56ZzPCZxhHAAI-/0/1773000040727?e=1788393600&v=beta&t=NLq-dsPnk_wGpc2ddu_EB6_FT0qUuI-aaAzWLiyr2eQ",
 		"links": {
