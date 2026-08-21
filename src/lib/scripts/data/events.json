@@ -1,8 +1,8 @@
 [
 	{
-		"groupName": "Frontend Party",
-		"meetupName": "🎉Front End Party BYOBug",
-		"description": "THIS MONTH:\n\n📅 Date: 10/14 🎉\n🚪 Doors at 5:30,\n⏰ Talk at 6:00\n📍 Scale New Orleans, 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130\n\nNola Coders, we will now be doing a single \"Feature Speaker\" presenting a 5 - 15 min lightening talk with \"BYOB\" (Bring Your Own Bug) and some round-robin pair-programming for the remainder of the event. Bring anything you would love a pair of eyes on (extra points for front end). We are also going to do a bit of Show N Tell re: Your Developer Workflows: config and rc files, $profiles, code snippets, tools, plugins and anything you have implemented or enjoyed that optimizes your work as a dev ⚡⚡⚡️",
+		"groupName": "Super Duper Computer Party",
+		"meetupName": "🎉Come Hangout",
+		"description": "THIS MONTH:\n\n📅 Date: 10/14 🎉\n🚪 Doors at 5:30,\n⏰ Talk at 6:00\n📍 Scale New Orleans, 612 Andrew Higgins Dr 2nd floor, New Orleans, LA 70130\n\nNola Coders, we will now be doing a single \"Feature Speaker\" presenting a 5 - 15 min lightening talk with \"BYOB\" (Bring Your Own Bug) and some round-robin pair-programming for the remainder of the event. Bring anything you would love a pair of eyes on. We are also going to do a bit of Show N Tell re: Your Developer Workflows: config and rc files, $profiles, code snippets, tools, plugins and anything you have implemented or enjoyed that optimizes your work as a dev ⚡⚡⚡️",
 		"start": "2026-03-10T23:00:00Z",
 		"end": "2026-03-11T01:00:00Z",
 		"expireAt": "2026-03-12T00:01:00Z",
@@ -15,8 +15,8 @@
 			"slug": "scale-new-orleans"
 		},
 		"eventLink": "https://www.google.com/calendar/event?eid=N2hmcGR1YWs1YjhtM3BsYWg3dGw4cThlMTFfMjAyNjAzMTBUMjMwMDAwWiAxYzIzZDdmZTE0ODQwZTMyMGVjMDc2MjI0NWJmNTVjYzMyYTY5MTA0MTdmY2Y3NmNhOGJhMmQxYTMwODExMGYzQGc",
-		"eventSlug": "front-end-party-byobug-03102026",
-		"groupSlug": "frontend-party",
+		"eventSlug": "super-duper-computer-party-byobug-03102026",
+		"groupSlug": "super-duper-computer-party",
 		"createdAt": "2026-03-07T00:00:00Z"
 	},
 	{

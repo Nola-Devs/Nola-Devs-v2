@@ -55,7 +55,19 @@
 			"website": "http://kalypsohoman.com/"
 		},
 		"email": "noladevsorg@gmail.com",
-		"group": "Frontend Party",
+		"group": "Super Duper Computer Party",
+		"role": "organizer",
+		"password": "123456789"
+	},
+	{
+		"name": "Tyler Myer",
+		"pfp": "https://media.licdn.com/dms/image/v2/D4D03AQEYVTcbG7GBqQ/profile-displayphoto-shrink_800_800/B4DZX9WdNiHIAc-/0/1743712277745?e=1788393600&v=beta&t=XmZxASDKFdiUG0A03FA_8o7gW0d1ifPoNC3WsWysSzA",
+		"links": {
+			"github": "https://github.com/tymey",
+			"linkedin": "https://www.linkedin.com/in/tyler-meyer-dev/"
+		},
+		"email": "noladevsorg@gmail.com",
+		"group": "Super Duper Computer Party",
 		"role": "organizer",
 		"password": "123456789"
 	},
