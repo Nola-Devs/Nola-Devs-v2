@@ -1,12 +1,5 @@
 [
 	{
-		"group": "Nola Tech Talks",
-		"slug": "nola-tech-talks",
-		"description": "We're a group of NOLA techies who meet up monthly over food and drinks. We discuss tech topics, share knowledge and skills, network, and host guest speakers. The food and drinks are always sponsored, and admission is free. Every month we have a different topic for the tech industry. Please join us to learn, network, and most importantly, help us to continue to grow the NOLA tech community! (Nola Tech Talks was formerly known as Agile NOLA)",
-		"links": { "linkedin": "https://www.linkedin.com/groups/4310953/" },
-		"icon": "💼"
-	},
-	{
 		"group": "Below C Level",
 		"slug": "below-c-level",
 		"description": "We are a group of programmers residing in New Orleans, Louisiana, who gather on a monthly basis for presentations and discussions focused on systems programming. Our aim is to create an open and inclusive environment for individuals eager to delve deeper into the world of systems programming, going beyond surface-level abstractions. While our talks cater to programmers with a few years of professional experience, we encourage participation from all who are interested. In case any concepts or ideas appear perplexing or unclear, we allocate time for group discussions and collaborative learning.",
@@ -27,7 +20,7 @@
 	{
 		"group": "Super Duper Computer Party",
 		"slug": "super-duper-computer-party",
-		"description": "We like to hangout, make stuff, and talk about software. Sometimes there's a speaker, sometimes we have mini-hackathons. Our group gathers on the second Tuesday of every month at Scale Nola. Come join the party!",
+		"description": "We like to hangout, make stuff, & talk about software. Sometimes there's a speaker, sometimes we have mini-hackathons. We try to keep topics junior-dev friendly, in hopes that anyone in the tech community can get something out of our events. We love anything open source or diy, and incorperate hands on keyboard learning & competitions as much as we can! We're very open to collaboration, so reach out if you have an idea! Our group gathers on the second Tuesday of every month at Scale Nola. Come join the party!",
 		"links": {
 			"website": "https://github.com/SuperDuperComputerParty",
 			"slack": "https://nola.slack.com/archives/C05CT3DG0F4"

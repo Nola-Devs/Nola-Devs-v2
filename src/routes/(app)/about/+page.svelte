@@ -51,7 +51,7 @@
 		<div>
 			<Heading tag="h2">Community Organizers</Heading>
 			<div class="flex flex-wrap justify-start">
-				{#each data.organizers as { name, pfp, email, links, group }}
+				{#each data.organizers as { name, pfp, links, group }}
 					<div
 						class="border rounded p-1 grid grid-cols-[50px_150px_50px] items-center duration-75 hover:scale-105 m-2"
 					>
@@ -68,9 +68,6 @@
 							<p class="text-base text-gray-800 dark:text-violet-200">{name}</p>
 							<p class="text-base text-gray-800 dark:text-violet-200">{group}</p>
 							<div class="flex gap-3 px-2 items-center dark:text-white">
-								<a href="mailto:{email}">
-									<Icon name="mailIcon" size="{18}" viewBox="0 0 23 16" />
-								</a>
 								{#each Object.entries(links) as [link, url]}
 									<a href="{url}" target="_blank">
 										<IconParse icon="{link}" />
