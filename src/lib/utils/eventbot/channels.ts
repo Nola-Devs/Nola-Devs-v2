@@ -7,7 +7,7 @@
  */
 
 import type { WebClient } from '@slack/web-api';
-import { AUDIT_LOG_CHANNEL_NAME } from '$lib/utils/eventbot-audit';
+import { AUDIT_LOG_CHANNEL_NAME } from '$lib/utils/eventbot/audit';
 
 // slack caps static_select at 100 options
 const MAX_CHANNEL_OPTIONS = 100;

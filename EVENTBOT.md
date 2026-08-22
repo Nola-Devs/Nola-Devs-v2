@@ -8,8 +8,17 @@ without touching the site. It is a slash command (`/event`) backed by two endpoi
 | `/api/slack/eventbot/init`   | The `/event` slash command. Opens the Eventbot menu modal. |
 | `/api/slack/eventbot/submit` | Every button click and modal submission from that menu.    |
 
-The app manifest lives in [slackbot-config.json](./slackbot-config.json), and the block-building
-helpers live in `src/lib/utils/eventbot.ts`.
+The app manifest lives in [slackbot-config.json](./slackbot-config.json). Everything else lives in
+`src/lib/utils/eventbot/`:
+
+| file             | Holds                                                              |
+| ---------------- | ------------------------------------------------------------------ |
+| `blocks.ts`      | Block Kit for both forms and the announcement                      |
+| `modals.ts`      | Opening and rebuilding those forms, and the button/select handlers |
+| `submissions.ts` | What happens when a form is submitted, including posting to Slack  |
+| `helpers.ts`     | Select options, reading modal values, listing an event's messages  |
+| `audit.ts`       | The `eventbot-notifications` log                                   |
+| `channels.ts`    | Which channels the bot can post in                                 |
 
 Every successful create and cancel is also posted to a channel named `eventbot-notifications`,
 recording who performed the action, the before/after values of the event, and — for a cancellation —

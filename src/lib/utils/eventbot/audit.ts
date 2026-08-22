@@ -7,7 +7,10 @@
  * `channels:read` scope so the channel name can be resolved to an id.
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { WebClient } from '@slack/web-api';
+import { describeError, truncateSectionText } from '$lib/utils/eventbot/helpers';
 
 export const AUDIT_LOG_CHANNEL_NAME = 'eventbot-notifications';
 
@@ -111,10 +114,6 @@ const toSnapshot = (event: any): Record<string, string> => {
 	);
 };
 
-// slack section text tops out at 3000 characters
-const truncate = (text: string, max = 2800) =>
-	text.length > max ? `${text.slice(0, max - 3)}...` : text;
-
 const formatSnapshot = (snapshot: Record<string, string>) => {
 	const entries = Object.entries(snapshot);
 
@@ -122,7 +121,7 @@ const formatSnapshot = (snapshot: Record<string, string>) => {
 		return '_none_';
 	}
 
-	return truncate(entries.map(([key, value]) => `• *${key}:* ${value}`).join('\n'));
+	return truncateSectionText(entries.map(([key, value]) => `• *${key}:* ${value}`).join('\n'));
 };
 
 /**
@@ -136,7 +135,7 @@ const formatDiff = (before: Record<string, string>, after: Record<string, string
 		return '_no field changes_';
 	}
 
-	return truncate(
+	return truncateSectionText(
 		changed
 			.map((key) => `• *${key}:* ${before[key] ?? '_empty_'} → ${after[key] ?? '_empty_'}`)
 			.join('\n')
@@ -183,7 +182,7 @@ const buildAuditBlocks = (options: AuditLogOptions) => {
 	if (reason) {
 		blocks.push({
 			type: 'section',
-			text: { type: 'mrkdwn', text: `*Reason*\n${truncate(reason)}` }
+			text: { type: 'mrkdwn', text: `*Reason*\n${truncateSectionText(reason)}` }
 		});
 	}
 
@@ -191,10 +190,16 @@ const buildAuditBlocks = (options: AuditLogOptions) => {
 };
 
 /**
- * Posts an audit entry. Logging must never break the user-facing flow,
- * so failures are swallowed after being logged to the server console.
+ * Posts an audit entry. Logging must never break the user-facing flow, so a
+ * failure is logged and reported back rather than thrown.
+ *
+ * Returns whether the entry actually landed, so the caller can tell the user
+ * when the record they expect to exist does not.
  */
-export const postEventAuditLog = async (slackClient: WebClient, options: AuditLogOptions) => {
+export const postEventAuditLog = async (
+	slackClient: WebClient,
+	options: AuditLogOptions
+): Promise<boolean> => {
 	const { operation, userId, before, after, reason } = options;
 
 	try {
@@ -204,7 +209,7 @@ export const postEventAuditLog = async (slackClient: WebClient, options: AuditLo
 			console.error(
 				`Audit log skipped: #${AUDIT_LOG_CHANNEL_NAME} not found or bot is not a member.`
 			);
-			return;
+			return false;
 		}
 
 		const eventName = after?.meetupName ?? before?.meetupName ?? 'event';
@@ -214,7 +219,87 @@ export const postEventAuditLog = async (slackClient: WebClient, options: AuditLo
 			text: `Event ${operation}d: ${eventName} by <@${userId}>`, // fallback for notifications
 			blocks: buildAuditBlocks({ operation, userId, before, after, reason })
 		});
+
+		return true;
 	} catch (err) {
 		console.error('Failed to post audit log:', err);
+		return false;
+	}
+};
+
+export type ErrorReport = {
+	// what the bot was attempting, in plain words: 'post the announcement'
+	action: string;
+	userId: string;
+	error: unknown;
+	// whatever narrows it down: the event title, the channel it was aimed at
+	details?: Record<string, string | undefined>;
+};
+
+/**
+ * Posts the full detail of a failure to the audit channel, so what the organizer
+ * sees in the modal can stay short while the stack trace is still recoverable by
+ * someone who can act on it.
+ *
+ * Never throws — it is already handling one failure and must not cause another.
+ */
+export const postErrorReport = async (slackClient: WebClient, report: ErrorReport) => {
+	const { action, userId, error, details = {} } = report;
+	const { code, message } = describeError(error);
+
+	try {
+		const channelId = await resolveAuditChannelId(slackClient);
+
+		if (!channelId) {
+			console.error(
+				`Error report skipped: #${AUDIT_LOG_CHANNEL_NAME} not found or bot is not a member.`
+			);
+			return;
+		}
+
+		const context = Object.entries(details)
+			.filter(([, value]) => value)
+			.map(([key, value]) => `• *${key}:* ${value}`)
+			.join('\n');
+
+		const stack = error instanceof Error && error.stack ? error.stack : String(error);
+
+		const blocks: any[] = [
+			{
+				type: 'section',
+				text: {
+					type: 'mrkdwn',
+					text: `:rotating_light: *Eventbot could not ${action}* — triggered by <@${userId}>`
+				}
+			},
+			{ type: 'divider' },
+			{
+				type: 'section',
+				text: {
+					type: 'mrkdwn',
+					text: truncateSectionText(`*Error*\n• *Code:* \`${code}\`\n• *Message:* ${message}`)
+				}
+			}
+		];
+
+		if (context) {
+			blocks.push({
+				type: 'section',
+				text: { type: 'mrkdwn', text: truncateSectionText(`*Context*\n${context}`) }
+			});
+		}
+
+		blocks.push({
+			type: 'section',
+			text: { type: 'mrkdwn', text: truncateSectionText(`*Stack*\n\`\`\`${stack}\`\`\``) }
+		});
+
+		await slackClient.chat.postMessage({
+			channel: channelId,
+			text: `Eventbot error: ${code} while trying to ${action}`, // fallback for notifications
+			blocks
+		});
+	} catch (err) {
+		console.error('Failed to post error report:', err);
 	}
 };
