@@ -49,6 +49,28 @@ const eventSchema = new Schema<Event>({
 		type: String,
 		required: false
 	},
+	// where the announcement was posted, so it can be edited in place later
+	announcementChannel: {
+		type: String,
+		required: false
+	},
+	announcementTs: {
+		type: String,
+		required: false
+	},
+	// every channel the announcement was linked into, so the links can be cleaned
+	// up when the event is cancelled
+	reposts: {
+		type: [
+			{
+				_id: false,
+				channel: { type: String, required: true },
+				ts: { type: String, required: true }
+			}
+		],
+		required: false,
+		default: undefined
+	},
 	eventSlug: {
 		type: String,
 		required: true,

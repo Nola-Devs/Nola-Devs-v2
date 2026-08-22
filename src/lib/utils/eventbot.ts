@@ -8,8 +8,17 @@ import type { Group } from '$lib/types/group';
 type createEventModalBlocksOptions = {
 	groups: Array<{ text: string; value: string }>;
 	locations: Array<{ text: string; value: string }>;
+	channels?: Array<{ text: string; value: string }>;
+	postChannelId?: string | null;
 	showOtherGroupField?: boolean;
 	showOtherLocationFields?: boolean;
+	showAnnouncementFields?: boolean;
+};
+
+type cancelEventModalBlocksOptions = {
+	events: Array<{ text: string; value: string }>;
+	selectedEventId?: string | null;
+	postCount?: number;
 	isMissingField?: boolean;
 };
 
@@ -31,6 +40,40 @@ export const createLocationOptions = (fetchedLocations: any) => {
 	});
 };
 
+const formatEventDay = (date: Date | string) =>
+	new Date(date).toLocaleDateString('en-US', {
+		timeZone: 'America/Chicago',
+		weekday: 'short',
+		month: 'short',
+		day: 'numeric'
+	});
+
+const formatEventTime = (date: Date | string) =>
+	new Date(date).toLocaleTimeString('en-US', {
+		timeZone: 'America/Chicago',
+		hour: 'numeric',
+		minute: '2-digit',
+		hour12: true
+	});
+
+/**
+ * Slack limits static_select option labels to 75 characters.
+ */
+const truncateOptionText = (text: string) => (text.length > 75 ? `${text.slice(0, 72)}...` : text);
+
+export const createEventOptions = (fetchedEvents: any[]) => {
+	return fetchedEvents.map((fetchedEvent: any) => {
+		return {
+			text: truncateOptionText(
+				`${fetchedEvent.meetupName} (${formatEventDay(fetchedEvent.start)}, ${formatEventTime(
+					fetchedEvent.start
+				)})`
+			),
+			value: String(fetchedEvent._id)
+		};
+	});
+};
+
 /**
  * Extract deeply nested values upon event submission
  */
@@ -40,6 +83,10 @@ export const getInputValue = (state: any, blockId: string, actionId: string): st
 
 export const getDateTimeValue = (state: any, blockId: string, actionId: string): number | null => {
 	return state.values?.[blockId]?.[actionId]?.selected_date_time ?? null;
+};
+
+export const getSelectValue = (state: any, blockId: string, actionId: string): string | null => {
+	return state?.values?.[blockId]?.[actionId]?.selected_option?.value ?? null;
 };
 
 /**
@@ -102,16 +149,168 @@ export const buildAnnouncementBlocks = (event: any) => {
 };
 
 /**
+ * Every slack message the bot posted for an event: the announcement itself and
+ * each repost linking back to it.
+ */
+type EventMessage = { channel: string; ts: string };
+
+export const collectEventMessages = (
+	event?: {
+		announcementChannel?: string;
+		announcementTs?: string;
+		reposts?: EventMessage[];
+	} | null
+): EventMessage[] => [
+	...(event?.announcementChannel && event?.announcementTs
+		? [{ channel: event.announcementChannel, ts: event.announcementTs }]
+		: []),
+	...(event?.reposts ?? [])
+];
+
+/**
+ * This is used for building the blocks in the
+ * Cancel Event modal flow. The select lists upcoming
+ * events only, and the confirmation checkbox guards
+ * against an accidental deletion.
+ */
+export const buildCancelEventModalBlocks = (options: cancelEventModalBlocksOptions) => {
+	const { events, selectedEventId, postCount = 0, isMissingField } = options;
+
+	if (!events.length) {
+		return [
+			{
+				type: 'section',
+				block_id: 'no_events_block',
+				text: { type: 'mrkdwn', text: 'There are no upcoming events to cancel.' }
+			}
+		];
+	}
+
+	const eventOptions = events.map((event) => ({
+		text: { type: 'plain_text' as const, text: event.text },
+		value: event.value
+	}));
+
+	// the modal is rebuilt when the selection changes, and a section accessory
+	// select only keeps its value if it is handed back explicitly
+	const selectedEventOption = eventOptions.find((option) => option.value === selectedEventId);
+
+	// declared once so initial_options can reference the exact same shape slack
+	// expects it to match
+	const cleanupOption = {
+		text: {
+			type: 'plain_text' as const,
+			text: `Also delete the ${postCount} slack ${postCount === 1 ? 'post' : 'posts'} for this event`
+		},
+		value: 'delete_posts'
+	};
+
+	const blocks: any[] = [
+		{
+			type: 'section',
+			block_id: 'event_section_block',
+			text: { type: 'mrkdwn', text: '* *Event to cancel*' },
+			accessory: {
+				type: 'static_select',
+				action_id: 'event_select',
+				placeholder: { type: 'plain_text', text: 'Select an event' },
+				options: eventOptions,
+				...(selectedEventOption ? { initial_option: selectedEventOption } : {})
+			}
+		},
+		{
+			type: 'input',
+			block_id: 'cancel_reason_block',
+			label: { type: 'plain_text', text: 'Reason (recorded in the audit log)' },
+			element: {
+				type: 'plain_text_input',
+				action_id: 'cancel_reason_input',
+				multiline: true,
+				placeholder: { type: 'plain_text', text: 'e.g.: "Venue is unavailable, rescheduling soon"' }
+			},
+			optional: true
+		},
+		{
+			type: 'input',
+			block_id: 'cancel_confirm_block',
+			label: { type: 'plain_text', text: '* Confirm' },
+			element: {
+				type: 'checkboxes',
+				action_id: 'cancel_confirm_input',
+				options: [
+					{
+						text: { type: 'plain_text' as const, text: 'Yes, delete this event from noladevs.org' },
+						value: 'confirm_cancel'
+					}
+				]
+			},
+			optional: false
+		},
+		{
+			type: 'context',
+			block_id: 'cancel_warning_block',
+			elements: [
+				{
+					type: 'mrkdwn',
+					text: ':warning: Cancelling removes the event from the site permanently. This cannot be undone.'
+				}
+			]
+		}
+	];
+
+	// nothing was ever posted for an unannounced event, so there is nothing to offer
+	if (postCount > 0) {
+		const confirmIndex = blocks.findIndex((block) => block.block_id === 'cancel_confirm_block');
+
+		blocks.splice(confirmIndex, 0, {
+			type: 'input',
+			block_id: 'cancel_cleanup_block',
+			label: { type: 'plain_text', text: 'Slack posts' },
+			hint: {
+				type: 'plain_text',
+				text: 'Leave this unchecked to keep the original posts in place.'
+			},
+			element: {
+				type: 'checkboxes',
+				action_id: 'cancel_cleanup_input',
+				options: [cleanupOption],
+				// cleaning up is the usual intent, so it starts checked
+				initial_options: [cleanupOption]
+			},
+			optional: true
+		});
+	}
+
+	if (isMissingField) {
+		blocks.unshift({
+			type: 'context',
+			block_id: 'cancel_error_block',
+			elements: [{ type: 'mrkdwn', text: ':warning: Please select an event to cancel :warning: ' }]
+		});
+	}
+
+	return blocks;
+};
+
+/**
  * This is used for building the blocks in the
  * Create Event modal flow. Reactivity happens with
  * the Group select and the Location select. Additional
  * fields appear when an 'Other' option is selected.
  */
 export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptions) => {
-	const { groups, locations, showOtherGroupField, showOtherLocationFields, isMissingField } =
-		options;
+	const {
+		groups,
+		locations,
+		channels = [],
+		postChannelId,
+		showOtherGroupField,
+		showOtherLocationFields,
+		showAnnouncementFields
+	} = options;
 
-	const blocks = [
+	// block kit shapes vary too much between blocks for a useful inferred type
+	const blocks: any[] = [
 		{
 			type: 'context',
 			block_id: 'required_fields_note',
@@ -136,10 +335,12 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		},
 		{
 			// Group select
-			type: 'section',
+			type: 'input',
 			block_id: 'group_section_block',
-			text: { type: 'mrkdwn', text: '* *Group*' },
-			accessory: {
+			// dispatch_action so picking 'Other Group' still re-renders the modal
+			dispatch_action: true,
+			label: { type: 'plain_text', text: '* Group' },
+			element: {
 				type: 'static_select',
 				action_id: 'group_select',
 				placeholder: { type: 'plain_text', text: 'Select a group' },
@@ -153,19 +354,10 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 						value: 'other-group'
 					}
 				]
-			}
+			},
+			optional: false
 		}
 	];
-
-	if (isMissingField) {
-		blocks.unshift({
-			type: 'context',
-			block_id: 'required_error_block',
-			elements: [
-				{ type: 'mrkdwn', text: ':warning: Please fill in all required fields (*) :warning: ' }
-			]
-		});
-	}
 
 	if (showOtherGroupField) {
 		blocks.push({
@@ -227,10 +419,12 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 
 	// Location dropdown
 	blocks.push({
-		type: 'section',
+		type: 'input',
 		block_id: 'location_section_block',
-		text: { type: 'mrkdwn', text: '* *Location*' },
-		accessory: {
+		// dispatch_action so picking 'Other Location' still re-renders the modal
+		dispatch_action: true,
+		label: { type: 'plain_text', text: '* Location' },
+		element: {
 			type: 'static_select',
 			action_id: 'location_select',
 			placeholder: { type: 'plain_text', text: 'Select a location' },
@@ -244,7 +438,8 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 					value: 'other-location'
 				}
 			]
-		}
+		},
+		optional: false
 	});
 
 	// Conditionally add "Other Location" address fields
@@ -347,21 +542,105 @@ export const buildCreateEventModalBlocks = (options: createEventModalBlocksOptio
 		optional: true
 	});
 
-	// Announcement text
-	blocks.push({
-		type: 'input',
-		block_id: 'announcement_block',
-		label: { type: 'plain_text', text: 'Announcement Message' },
-		element: {
-			type: 'plain_text_input',
-			action_id: 'announcement_input',
-			placeholder: {
+	// Where the announcement goes. Only channels the bot was invited to are
+	// listed, so a post can never fail with `not_in_channel`. Picking a channel
+	// reveals the repost picker and the announcement message underneath it.
+	if (channels.length) {
+		const channelOptions = channels.map((channel) => ({
+			text: { type: 'plain_text' as const, text: channel.text },
+			value: channel.value
+		}));
+
+		blocks.push({
+			type: 'input',
+			block_id: 'post_channel_block',
+			// dispatch_action so choosing a channel re-renders the modal with the
+			// announcement fields attached
+			dispatch_action: true,
+			label: { type: 'plain_text', text: 'Post In' },
+			hint: {
 				type: 'plain_text',
-				text: 'e.g.: "Hey @channel, we have an awesome meetup coming up!"'
-			}
-		},
-		optional: true
-	});
+				// the fields this reveals land below the fold, so the hint has to say so
+				text: showAnnouncementFields
+					? 'Repost and announcement options added below.'
+					: 'Optionally post the event in slack. Only shows channels eventbot has been invited to'
+			},
+			element: {
+				type: 'static_select',
+				action_id: 'post_channel_select',
+				placeholder: { type: 'plain_text', text: 'Select a channel' },
+				options: channelOptions
+			},
+			optional: true
+		});
+
+		if (showAnnouncementFields) {
+			blocks.push(
+				{ type: 'divider', block_id: 'announcement_divider' },
+				{
+					type: 'section',
+					block_id: 'announcement_header',
+					text: { type: 'mrkdwn', text: '*Announcement*' }
+				}
+			);
+		}
+
+		// the post channel already has the announcement itself, so linking back to
+		// it from itself is never useful
+		const repostOptions = channelOptions.filter((option) => option.value !== postChannelId);
+
+		if (showAnnouncementFields && repostOptions.length) {
+			blocks.push({
+				type: 'input',
+				block_id: 'repost_channels_block',
+				label: { type: 'plain_text', text: 'Repost In' },
+				hint: {
+					type: 'plain_text',
+					text: 'These channels get a link to the announcement post.'
+				},
+				element: {
+					type: 'multi_static_select',
+					action_id: 'repost_channels_select',
+					placeholder: { type: 'plain_text', text: 'Select channels' },
+					options: repostOptions
+				},
+				optional: true
+			});
+		}
+	} else {
+		blocks.push({
+			type: 'context',
+			block_id: 'no_channels_block',
+			elements: [
+				{
+					type: 'mrkdwn',
+					text: ':information_source: Invite eventbot to a channel to announce events in slack. The event is still saved to noladevs.org either way.'
+				}
+			]
+		});
+	}
+
+	// Announcement text, only useful once a post channel is chosen
+	if (showAnnouncementFields) {
+		blocks.push({
+			type: 'input',
+			block_id: 'announcement_block',
+			label: { type: 'plain_text', text: 'Announcement Message' },
+			hint: {
+				type: 'plain_text',
+				text: 'Additional intro text for slack posts'
+			},
+			element: {
+				type: 'plain_text_input',
+				action_id: 'announcement_input',
+				placeholder: {
+					type: 'plain_text',
+					text: 'e.g.: "Hey @channel, we have an awesome meetup coming up!"'
+				}
+			},
+			optional: true
+		});
+	}
 
 	return blocks;
 };
