@@ -19,6 +19,7 @@ import {
 import { postEventAuditLog } from '$lib/utils/eventbot-audit';
 import { listBotChannels } from '$lib/utils/eventbot-channels';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
+import type { Event } from '$lib/types/event.d.ts';
 import type { Group } from '$lib/types/group';
 import slugify from 'slugify';
 
@@ -356,22 +357,38 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		let locationZip = getInputValue(state, 'zip_block', 'zip_input');
 
 		if (selectedGroup !== 'other-group') {
-			const { group } = await GroupModel.findOne({ slug: selectedGroup }, 'group');
-			groupName = group;
+			const group = await GroupModel.findOne({ slug: selectedGroup }, 'group');
+			groupName = group?.group;
 		} else {
 			groupName = getInputValue(state, 'other_group_block', 'other_group_input');
 		}
 
 		if (selectedLocation !== 'other-location') {
-			const { name, street, city, state, zip } = await EventLocationModel.findOne({
-				slug: selectedLocation
-			});
+			const location = await EventLocationModel.findOne({ slug: selectedLocation });
 
-			locationName = name;
-			streetAddress = street;
-			locationCity = city;
-			locationState = state;
-			locationZip = zip;
+			locationName = location?.name ?? null;
+			streetAddress = location?.street ?? null;
+			locationCity = location?.city ?? null;
+			locationState = location?.state ?? null;
+			locationZip = location?.zip ?? null;
+		}
+
+		// every field below is `optional: false` in the modal, so slack fills it in
+		// before it ever reaches here. a payload without them is malformed rather
+		// than a user mistake, so it gets a 400 instead of a modal
+		if (
+			!title ||
+			!description ||
+			startTime === null ||
+			endTime === null ||
+			!selectedGroup ||
+			!groupName ||
+			!selectedLocation ||
+			!locationName ||
+			!locationCity ||
+			!locationState
+		) {
+			return json({ error: 'Missing required event fields' }, { status: 400 });
 		}
 
 		const startDate = new Date(startTime * 1000);
@@ -403,7 +420,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		const setExpireAt = (eventEnd: Date) => {
 			const expirationDate = new Date(eventEnd);
 			expirationDate.setUTCDate(expirationDate.getUTCDate() + 1);
-			expirationDate.setUTCHours(0);
+			expirationDate.setUTCHours(0, 0, 0, 0);
 			return expirationDate;
 		};
 
@@ -424,16 +441,16 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			expireAt: setExpireAt(eventData.endTime),
 			location: {
 				name: eventData.locationName,
-				street: eventData.streetAddress,
+				street: eventData.streetAddress ?? undefined,
 				city: eventData.locationCity,
 				state: eventData.state,
-				zip: eventData.locationZip,
+				zip: eventData.locationZip ?? undefined,
 				slug: eventData.locationSlug
 			},
-			locationNotes: eventData.locationNotes,
-			eventLink: eventData.eventLink,
-			rsvpLink: eventData.rsvpLink,
-			announcement: eventData.announcement,
+			locationNotes: eventData.locationNotes ?? undefined,
+			eventLink: eventData.eventLink ?? undefined,
+			rsvpLink: eventData.rsvpLink ?? undefined,
+			announcement: eventData.announcement ?? undefined,
 			eventSlug,
 			createdAt: eventData.createdAt
 		};
@@ -443,6 +460,28 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 			createdEvent = await EventModel.create(newEvent);
 		} catch (e) {
 			console.error('Error saving to database', e);
+		}
+
+		// announcing an event that is not on the site would be worse than not
+		// announcing at all, so a failed write stops here
+		if (!createdEvent) {
+			return json({
+				response_action: 'update',
+				view: {
+					type: 'modal',
+					title: { type: 'plain_text', text: 'Event Not Saved' },
+					close: { type: 'plain_text', text: 'Close' },
+					blocks: [
+						{
+							type: 'section',
+							text: {
+								type: 'mrkdwn',
+								text: `*${title}* could not be saved, so it was not announced anywhere. Try again, and check the server logs if it keeps failing.`
+							}
+						}
+					]
+				}
+			});
 		}
 
 		// post the announcement, then hold on to where it landed so it can be
@@ -465,11 +504,9 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 					});
 					announcementPermalink = permalink.permalink;
 
-					if (createdEvent) {
-						createdEvent.announcementChannel = announcementChannel;
-						createdEvent.announcementTs = posted.ts;
-						await createdEvent.save();
-					}
+					createdEvent.announcementChannel = announcementChannel;
+					createdEvent.announcementTs = posted.ts;
+					await createdEvent.save();
 				}
 			} catch (err) {
 				console.error('Failed to post announcement:', err);
@@ -498,7 +535,7 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 				}
 			}
 
-			if (createdEvent && reposts.length) {
+			if (reposts.length) {
 				createdEvent.reposts = reposts;
 				await createdEvent.save();
 			}
@@ -507,14 +544,12 @@ export const POST: RequestHandler = async ({ request }: RequestEvent) => {
 		}
 
 		// audit trail, only on a successful write
-		if (createdEvent) {
-			await postEventAuditLog(slackClient, {
-				operation: 'create',
-				userId: payload.user?.id ?? metadata.user_id,
-				before: null,
-				after: createdEvent
-			});
-		}
+		await postEventAuditLog(slackClient, {
+			operation: 'create',
+			userId: payload.user?.id ?? metadata.user_id,
+			before: null,
+			after: createdEvent
+		});
 
 		// return success modal (replaces the form)
 		return json({
