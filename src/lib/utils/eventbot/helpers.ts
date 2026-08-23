@@ -10,6 +10,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { Group } from '$lib/types/group';
+import { EVENT_TIME_ZONE } from '$lib/utils/event-dates';
 
 export const createGroupOptions = (fetchedGroups: Group[]) => {
 	return fetchedGroups.map((fetchedGroup: Group) => {
@@ -31,7 +32,7 @@ export const createLocationOptions = (fetchedLocations: any) => {
 
 const formatEventDay = (date: Date | string) =>
 	new Date(date).toLocaleDateString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		weekday: 'short',
 		month: 'short',
 		day: 'numeric'
@@ -39,7 +40,7 @@ const formatEventDay = (date: Date | string) =>
 
 const formatEventTime = (date: Date | string) =>
 	new Date(date).toLocaleTimeString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		hour: 'numeric',
 		minute: '2-digit',
 		hour12: true
@@ -119,19 +120,21 @@ export const describeError = (err: unknown) => {
 export const truncateSectionText = (text: string, max = 2800) =>
 	text.length > max ? `${text.slice(0, max - 3)}...` : text;
 
+/** One slack message the bot posted, as chat.delete needs it addressed. */
+export type EventMessage = { channel: string; ts: string };
+
+/** An event as far as its slack messages are concerned. */
+export type AnnouncedEvent = {
+	announcementChannel?: string;
+	announcementTs?: string;
+	reposts?: EventMessage[];
+};
+
 /**
  * Every slack message the bot posted for an event: the announcement itself and
  * each repost linking back to it.
  */
-type EventMessage = { channel: string; ts: string };
-
-export const collectEventMessages = (
-	event?: {
-		announcementChannel?: string;
-		announcementTs?: string;
-		reposts?: EventMessage[];
-	} | null
-): EventMessage[] => [
+export const collectEventMessages = (event?: AnnouncedEvent | null): EventMessage[] => [
 	...(event?.announcementChannel && event?.announcementTs
 		? [{ channel: event.announcementChannel, ts: event.announcementTs }]
 		: []),

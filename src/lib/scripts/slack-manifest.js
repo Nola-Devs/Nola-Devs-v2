@@ -14,6 +14,9 @@ const ENV_PATH = '.env.local';
 /**
  * Minimal .env reader. The Slack CLI invokes this outside of Vite, so
  * SvelteKit's $env modules are not available here.
+ *
+ * @param {string} path
+ * @returns {Record<string, string>}
  */
 const readEnvFile = (path) => {
 	if (!existsSync(path)) {
@@ -25,11 +28,13 @@ const readEnvFile = (path) => {
 			.split('\n')
 			.map((line) => line.trim())
 			.filter((line) => line && !line.startsWith('#'))
-			.map((line) => {
+			// flatMap rather than map + filter so a line without an `=` drops out
+			// without leaving a null behind
+			.flatMap((line) => {
 				const separator = line.indexOf('=');
 
 				if (separator === -1) {
-					return null;
+					return [];
 				}
 
 				const key = line.slice(0, separator).trim();
@@ -38,9 +43,8 @@ const readEnvFile = (path) => {
 					.trim()
 					.replace(/^['"]|['"]$/g, '');
 
-				return [key, value];
+				return [[key, value]];
 			})
-			.filter(Boolean)
 	);
 };
 
@@ -50,13 +54,15 @@ const manifest = readFileSync(MANIFEST_PATH, 'utf8');
 const missing = new Set();
 
 const resolved = manifest.replace(/\$\{(\w+)\}/g, (match, name) => {
-	if (!env[name]) {
+	const value = env[name];
+
+	if (!value) {
 		missing.add(name);
 		return match;
 	}
 
 	// trailing slashes would double up against the paths in the manifest
-	return env[name].replace(/\/+$/, '');
+	return value.replace(/\/+$/, '');
 });
 
 if (missing.size) {

@@ -3,14 +3,16 @@
  * update, or delete is mirrored to a notifications channel so the
  * community has a record of who changed what.
  *
- * Requires the bot to be a member of the channel below, and the
- * `channels:read` scope so the channel name can be resolved to an id.
+ * Requires the bot to be a member of the channel below — membership is both how
+ * the channel is found and what allows posting to it. Needs the `channels:read`
+ * and `groups:read` scopes from slackbot-config.json.
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { WebClient } from '@slack/web-api';
 import { describeError, truncateSectionText } from '$lib/utils/eventbot/helpers';
+import { EVENT_TIME_ZONE } from '$lib/utils/event-dates';
 
 export const AUDIT_LOG_CHANNEL_NAME = 'eventbot-notifications';
 
@@ -31,39 +33,39 @@ const OPERATION_LABELS: Record<AuditOperation, string> = {
 };
 
 // resolved once per server process, the channel id does not change
-let cachedChannelId: string | null = null;
+let cachedChannelId: string | null | undefined;
 
 const resolveAuditChannelId = async (slackClient: WebClient): Promise<string | null> => {
-	if (cachedChannelId) {
+	if (cachedChannelId !== undefined) {
 		return cachedChannelId;
 	}
 
 	let cursor: string | undefined;
+	let found: string | null = null;
 
 	do {
-		const result = await slackClient.conversations.list({
+		// only channels the bot belongs to — the same requirement as posting to one
+		const result = await slackClient.users.conversations({
 			exclude_archived: true,
 			limit: 200,
 			types: 'public_channel,private_channel',
 			cursor
 		});
 
-		const match = result.channels?.find((channel) => channel.name === AUDIT_LOG_CHANNEL_NAME);
-
-		if (match?.id) {
-			cachedChannelId = match.id;
-			return cachedChannelId;
-		}
-
-		cursor = result.response_metadata?.next_cursor || undefined;
+		found = result.channels?.find((channel) => channel.name === AUDIT_LOG_CHANNEL_NAME)?.id ?? null;
+		cursor = found ? undefined : result.response_metadata?.next_cursor || undefined;
 	} while (cursor);
 
-	return null;
+	// a miss is cached too, so a burst of error reports cannot rescan for each one.
+	// the cost is that inviting the bot after startup needs a restart to take effect
+	cachedChannelId = found;
+
+	return cachedChannelId;
 };
 
 const formatDate = (date: Date | string) =>
 	new Date(date).toLocaleString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		weekday: 'short',
 		month: 'short',
 		day: 'numeric',
@@ -227,7 +229,7 @@ export const postEventAuditLog = async (
 	}
 };
 
-export type ErrorReport = {
+type ErrorReport = {
 	// what the bot was attempting, in plain words: 'post the announcement'
 	action: string;
 	userId: string;

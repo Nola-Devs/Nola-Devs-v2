@@ -1,5 +1,5 @@
 {
 	"hooks": {
-		"get-manifest": "node src/lib/scripts/slack-manifest.js #"
+		"get-manifest": "node src/lib/scripts/slack-manifest.js"
 	}
 }

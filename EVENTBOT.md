@@ -17,12 +17,16 @@ The app manifest lives in [slackbot-config.json](./slackbot-config.json). Everyt
 | `modals.ts`      | Opening and rebuilding those forms, and the button/select handlers |
 | `submissions.ts` | What happens when a form is submitted, including posting to Slack  |
 | `helpers.ts`     | Select options, reading modal values, listing an event's messages  |
-| `audit.ts`       | The `eventbot-notifications` log                                   |
+| `audit.ts`       | The `eventbot-logs` log                                   |
 | `channels.ts`    | Which channels the bot can post in                                 |
 
-Every successful create and cancel is also posted to a channel named `eventbot-notifications`,
+Every successful create and cancel is also posted to a channel named `eventbot-logs`,
 recording who performed the action, the before/after values of the event, and — for a cancellation —
 the reason given.
+
+The bot has to be a member of that channel: membership is both how the channel is found and what
+allows posting to it. The lookup runs once and is cached for the life of the server process, so the
+invite has to be in place before the process starts — see [Setup](#setup) step 7.
 
 ## Announcing an event
 
@@ -33,7 +37,7 @@ fallback: leave it empty and the event is saved to the site without being announ
 Picking a channel reveals the two fields under it, **Repost In** and **Announcement Message**.
 
 **Repost In** takes any number of other channels, each of which gets a permalink to that one
-announcement rather than a copy of it — so a later edit only has to touch one message. The channel
+announcement rathereventbot-logso a later edit only has to touch one message. The channel
 chosen under **Post In** is filtered out of the list, since it already has the announcement itself.
 
 Both selectors only list channels the bot has been invited to, so invite it anywhere you want to be
@@ -121,12 +125,19 @@ Then, from the root of this repo:
    ```
 
    In that page, go to **OAuth & Permissions** in the sidebar and copy the **Bot User OAuth Token**
-   (it starts with `xoxb-`).
+   (it starts with `xoxb-`).eventbot-logs
 
 6. In the shared workspace, name your app something identifiable (for example `eventbot-<yourname>`)
    so it is clear whose bot is posting.
-7. If you are using your own workspace, create a channel named `eventbot-notifications` and invite the bot to it
-   (`/invite @noladevs eventbot` from inside the slack channel).
+7. Invite the bot to `eventbot-notifications` (`/invite @noladevs eventbot` from inside the
+   channel). In your own workspace, create the channel first; in the shared workspace it already
+   exists, but each bot still has to be invited to it separately.
+
+   Do this **before** you exercise the flow. The bot resolves that channel once per server process
+   and caches the answer, including a miss — so if you invite it while `npm run dev` is already
+   running, restart the dev server. Without a restart the lookup stays cached as "not found" and
+   every audit entry is silently skipped.
+
 8. Run the `/event` slash command in your workspace, take it for a spin.
 
 If you would rather not use the CLI, print the resolved manifest and paste it into
@@ -139,11 +150,9 @@ node src/lib/scripts/slack-manifest.js
 
 > How the manifest gets its URLs: `.slack/hooks.json` points the CLI's `get-manifest` hook at
 > `src/lib/scripts/slack-manifest.js`, which reads `slackbot-config.json` and substitutes any
-> `${VARIABLE}` from `.env.local` or the environment. The trailing `#` in that hook is deliberate —
-> the CLI appends a `--source=<dir>` argument to every hook command, and the comment keeps it from
-> being read as a script argument.
+> `${VARIABLE}` from `.env.local` or the environment.
 
----
+---eventbot-logs
 
 ## Testing
 
@@ -151,13 +160,13 @@ node src/lib/scripts/slack-manifest.js
 
 The full loop, once the setup above is done. Create an event with `/event` → **Create**, then
 confirm three things happen:
-
+eventbot-logs
 - the announcement is posted in the channel picked under **Post In**
 - each **Repost In** channel gets a permalink that Slack unfurls into a preview of that announcement
 - an audit entry appears in `#eventbot-notifications` with your name, `Before: _none_`, and the new
   event's fields under `After`
 - the event shows up on the site's events page
-
+eventbot-logs
 Then `/event` → **Cancel**, pick that event, and confirm four things:
 
 - the **Slack posts** checkbox appears with the right count, and leaving it ticked removes the
@@ -168,7 +177,9 @@ Then `/event` → **Cancel**, pick that event, and confirm four things:
 
 Slack failures never surface in the modal — they are caught and logged — so keep an eye on the
 `npm run dev` terminal. A missing scope or an uninvited bot shows up there as
-`Audit log skipped: #eventbot-notifications not found or bot is not a member.`
+`Audit log skipped: #eventbot-notifications not found or bot is not a member.` If you see that
+after inviting the bot, restart `npm run dev` — the failed lookup is cached for the life of the
+process.
 
 ### Without Slack
 

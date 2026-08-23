@@ -11,6 +11,7 @@
 
 import type { Event } from '$lib/types/event.d.ts';
 import { truncateSectionText } from '$lib/utils/eventbot/helpers';
+import { EVENT_TIME_ZONE } from '$lib/utils/event-dates';
 
 type SelectOption = { text: string; value: string };
 
@@ -37,25 +38,25 @@ type CancelEventBlocksOptions = {
  */
 export const buildAnnouncementBlocks = (event: Event) => {
 	const startDay = new Date(event.start).toLocaleDateString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		weekday: 'long',
 		month: 'short',
 		day: 'numeric'
 	});
 	const endDay = new Date(event.end).toLocaleDateString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		weekday: 'long',
 		month: 'short',
 		day: 'numeric'
 	});
 	const startTime = new Date(event.start).toLocaleTimeString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		hour: 'numeric',
 		minute: '2-digit',
 		hour12: true
 	});
 	const endTime = new Date(event.end).toLocaleTimeString('en-US', {
-		timeZone: 'America/Chicago',
+		timeZone: EVENT_TIME_ZONE,
 		hour: 'numeric',
 		minute: '2-digit',
 		hour12: true
@@ -205,7 +206,7 @@ const locationBlocks = (locations: SelectOption[], showOtherLocationFields?: boo
 				label: { type: 'plain_text', text: '* Location Name' },
 				element: {
 					type: 'plain_text_input',
-					action_id: 'street_address_input',
+					action_id: 'location_name_input',
 					placeholder: { type: 'plain_text', text: 'Location Name' }
 				},
 				optional: false
@@ -576,7 +577,9 @@ export const buildCancelEventModalBlocks = (options: CancelEventBlocksOptions) =
 		blocks.unshift({
 			type: 'context',
 			block_id: 'cancel_error_block',
-			elements: [{ type: 'mrkdwn', text: ':warning: Please select an event to cancel :warning: ' }]
+			elements: [
+				{ type: 'mrkdwn', text: ':warning: Please pick an event and tick the confirmation box' }
+			]
 		});
 	}
 

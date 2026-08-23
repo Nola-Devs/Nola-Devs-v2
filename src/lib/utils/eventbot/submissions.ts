@@ -13,6 +13,7 @@ import EventLocationModel from '$lib/db/models/event-locations.model';
 import EventModel from '$lib/db/models/events.model';
 import GroupModel from '$lib/db/models/groups.model';
 import {
+	type AnnouncedEvent,
 	bugReportLink,
 	collectEventMessages,
 	describeError,
@@ -21,6 +22,12 @@ import {
 	getSelectedValues,
 	getSelectValue
 } from '$lib/utils/eventbot/helpers';
+import {
+	EVENT_TIME_ZONE,
+	eventDateParts,
+	formatDateForSlug,
+	zoneOffsetMs
+} from '$lib/utils/event-dates';
 import {
 	AUDIT_LOG_CHANNEL_NAME,
 	postErrorReport,
@@ -58,9 +65,10 @@ type AnnounceOptions = {
  * What actually reached Slack. Posting cannot be rolled into the database write,
  * so the caller reports this back instead of pretending it all worked.
  */
-export type AnnounceResult = {
+type AnnounceResult = {
 	announced: boolean;
-	// slack's own reason, e.g. `not_in_channel`, when the announcement failed
+	// why the reposts could not go out — usually also why the announcement failed,
+	// e.g. slack's own `not_in_channel`
 	error?: { code: string; message: string };
 	reposted: string[];
 	failedReposts: string[];
@@ -75,7 +83,7 @@ export type AnnounceResult = {
  *
  * No post channel means the event was saved deliberately without announcing it.
  */
-export const announceEvent = async (
+const announceEvent = async (
 	slackClient: WebClient,
 	options: AnnounceOptions
 ): Promise<AnnounceResult> => {
@@ -127,10 +135,25 @@ export const announceEvent = async (
 	if (!announcementPermalink) {
 		// without the announcement there is nothing for a repost to link to
 		result.failedReposts = repostChannelIds;
-		result.error = result.error ?? {
-			code: 'no_permalink',
-			message: 'Slack accepted the announcement but returned no permalink to link to.'
-		};
+
+		if (!result.error) {
+			// the announcement itself went out, so nothing above reported this yet
+			const permalinkError = new Error(
+				'Slack accepted the announcement but returned no permalink to link to.'
+			);
+			permalinkError.name = 'no_permalink';
+
+			console.error('Failed to get announcement permalink:', permalinkError.message);
+			result.error = describeError(permalinkError);
+
+			await postErrorReport(slackClient, {
+				action: 'link the announcement into other channels',
+				userId,
+				error: permalinkError,
+				details: { Event: event.meetupName, Channel: `<#${postChannelId}>` }
+			});
+		}
+
 		return result;
 	}
 
@@ -179,9 +202,9 @@ export const announceEvent = async (
  * not stop the rest, so a message deleted by hand earlier does not strand the
  * others — but the caller is told how many were left behind.
  */
-export const deleteEventMessages = async (
+const deleteEventMessages = async (
 	slackClient: WebClient,
-	event: Parameters<typeof collectEventMessages>[0],
+	event: AnnouncedEvent | null,
 	context: { userId: string; eventName: string }
 ) => {
 	let deleted = 0;
@@ -207,11 +230,62 @@ export const deleteEventMessages = async (
 	return { deleted, failed };
 };
 
+/**
+ * Midnight in New Orleans on the day after the event ends. Mongo's TTL index
+ * drops the document at that instant, so an event stays on the site for the
+ * whole of its own local day.
+ */
 const expireAtFor = (eventEnd: Date) => {
-	const expirationDate = new Date(eventEnd);
-	expirationDate.setUTCDate(expirationDate.getUTCDate() + 1);
-	expirationDate.setUTCHours(0, 0, 0, 0);
-	return expirationDate;
+	// the local date the event happened on, which is what "the day after" has to
+	// mean — off the utc date it would roll over early for anything ending after 6pm
+	const { year, month, day } = eventDateParts(eventEnd);
+
+	// midnight utc on the following day, shifted by whatever offset the zone is on
+	// that date, which lands it on midnight local
+	const nextDay = new Date(Date.UTC(year, month - 1, day + 1));
+
+	return new Date(nextDay.getTime() + zoneOffsetMs(nextDay, EVENT_TIME_ZONE));
+};
+
+/**
+ * `hack-night-03112026` — the same shape the calendar importer already produces
+ * in event-parser.ts, so both sources of events give the site the same kind of
+ * url. The date is the event's local one, so it matches the date on the page.
+ */
+const baseEventSlug = (meetupName: string, start: Date) => {
+	return slugify(`${meetupName}-${formatDateForSlug(start)}`, {
+		lower: true,
+		strict: true,
+		remove: /[*+~.()'"!:@]/g
+	});
+};
+
+/**
+ * A group can run two events with the same name on one day, and
+ * `getEventsByEventSlug` takes the first match — so a slug already in use gets a
+ * counter rather than shadowing the event that already owns that url.
+ */
+const eventSlugFor = async (meetupName: string, start: Date) => {
+	const base = baseEventSlug(meetupName, start);
+
+	// one query for the whole family rather than one per attempt. `base` is
+	// already slugified down to [a-z0-9-], so it is safe to build a regex from
+	const taken = new Set<string | undefined>(
+		(await EventModel.find({ eventSlug: new RegExp(`^${base}(-\\d+)?$`) }, 'eventSlug')).map(
+			(event: { eventSlug?: string }) => event.eventSlug
+		)
+	);
+
+	if (!taken.has(base)) {
+		return base;
+	}
+
+	let suffix = 2;
+	while (taken.has(`${base}-${suffix}`)) {
+		suffix += 1;
+	}
+
+	return `${base}-${suffix}`;
 };
 
 /**
@@ -238,9 +312,10 @@ type CreateEventForm = {
  * Reads the create form. A picked group or location is looked up, an 'Other'
  * one is taken from the fields the modal revealed.
  *
- * Returns null when a required field is missing. Every one of them is
- * `optional: false` in the modal, so slack fills it in before it ever reaches
- * here — a payload without them is malformed rather than a user mistake.
+ * Returns null when a required value is missing. Slack marks every one of them
+ * `optional: false`, so a field left blank never reaches here — but a group or
+ * location removed from the site since the form opened no longer resolves, and
+ * that lands here too.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const readCreateEventForm = async (state: any): Promise<CreateEventForm | null> => {
@@ -269,7 +344,7 @@ const readCreateEventForm = async (state: any): Promise<CreateEventForm | null> 
 		groupName = group?.group;
 	}
 
-	let name = getInputValue(state, 'location_name_block', 'street_address_input');
+	let name = getInputValue(state, 'location_name_block', 'location_name_input');
 	let street = getInputValue(state, 'street_address_block', 'street_address_input');
 	let city = getInputValue(state, 'city_block', 'city_input');
 	let locationState = getInputValue(state, 'state_block', 'state_input');
@@ -396,13 +471,16 @@ const createEventResult = (
 	}
 
 	if (announcement.failedReposts.length) {
+		// individual reposts that failed one at a time carry no shared reason, so the
+		// per-channel errors in the audit channel are all there is to point at
+		const { code, message } = announcement.error ?? {
+			code: 'repost_failed',
+			message: 'See the audit channel for the per-channel errors.'
+		};
+
 		lines.push(
 			`:warning: Could not link in ${channelList(announcement.failedReposts)}.`,
-			reportingFooter(
-				'Eventbot: could not link announcement',
-				'repost_failed',
-				'See the audit channel for the per-channel errors.'
-			)
+			reportingFooter('Eventbot: could not link announcement', code, message)
 		);
 	}
 
@@ -418,8 +496,36 @@ export const handleCreateEventSubmission = async (context: SubmissionContext) =>
 
 	const form = await readCreateEventForm(payload.view.state);
 
+	// slack expects a view_submission to be answered with a view, so a bare error
+	// status would just show the organizer a generic connection failure
 	if (!form) {
-		return json({ error: 'Missing required event fields' }, { status: 400 });
+		const formError = new Error(
+			'A required field was missing, or the selected group or location no longer exists.'
+		);
+		formError.name = 'missing_fields';
+
+		console.error('Could not read the create form:', formError.message);
+
+		await postErrorReport(slackClient, {
+			action: 'read the submitted event form',
+			userId,
+			error: formError
+		});
+
+		return json(
+			resultModal(
+				'Event Not Saved',
+				[
+					':warning: Some required details were missing, so the event was not saved or announced.',
+					'If the group or location you picked has since been removed from the site, pick another or choose *Other*.',
+					reportingFooter(
+						'Eventbot: could not read the create form',
+						formError.name,
+						formError.message
+					)
+				].join('\n\n')
+			)
+		);
 	}
 
 	const newEvent: Event = {
@@ -435,11 +541,7 @@ export const handleCreateEventSubmission = async (context: SubmissionContext) =>
 		eventLink: form.eventLink,
 		rsvpLink: form.rsvpLink,
 		announcement: form.announcement,
-		eventSlug: slugify(`${form.groupName} ${form.start}`, {
-			replacement: '-',
-			lower: true,
-			locale: 'en'
-		}),
+		eventSlug: await eventSlugFor(form.title, form.start),
 		createdAt: new Date()
 	};
 
@@ -506,7 +608,9 @@ export const handleCancelEventSubmission = async (context: SubmissionContext) =>
 	const deletePosts =
 		getSelectedValues(state, 'cancel_cleanup_block', 'cancel_cleanup_input').length > 0;
 
-	// the select is a section accessory, so slack does not validate it for us
+	// the event select is a section accessory, so slack does not validate it for us.
+	// slack does enforce the confirm checkbox, but this deletes an event permanently,
+	// so it is not worth taking slack's word for it
 	if (!selectedEventId || !confirmed) {
 		return json({
 			response_action: 'update',
