@@ -339,7 +339,7 @@ const announcementBlocks = (options: CreateEventBlocksOptions) => {
 				// the fields this reveals land below the fold, so the hint has to say so
 				text: showAnnouncementFields
 					? 'Repost and announcement options added below.'
-					: 'Optionally post the event in slack. Only shows channels eventbot has been invited to'
+					: 'Optionally post the event in slack. Options are channels eventbot has been invited to'
 			},
 			element: {
 				type: 'static_select',

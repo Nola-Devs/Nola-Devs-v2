@@ -106,8 +106,8 @@ export const createEventView = async (
 };
 
 /**
- * The cancel form. The event list is always read fresh, since an event can end
- * or be cancelled elsewhere while the modal sits open.
+ * The cancel form. The event list is always read fresh, since an event can be
+ * cancelled elsewhere or age off the site while the modal sits open.
  */
 export const cancelEventView = async (
 	metadata: EventbotMetadata,
@@ -115,16 +115,23 @@ export const cancelEventView = async (
 ) => {
 	const { selectedEventId = null, isMissingField = false } = options;
 
-	// events that have already ended cannot be cancelled, one in progress still can be
-	const upcomingEvents = await EventModel.find({ end: { $gte: new Date() } })
+	// anything the site still shows should be cancellable, or an organizer is told
+	// an event they can see does not exist. the site lists everything until mongo's
+	// ttl index drops it at expireAt, so that is the same line to draw here — which
+	// does mean an event that is over but still posted can be taken down.
+	// expireAt is not required by the schema, and an event without one never leaves
+	// the site at all, so those have to be offered too
+	const cancellableEvents = await EventModel.find({
+		$or: [{ expireAt: { $gte: new Date() } }, { expireAt: { $exists: false } }]
+	})
 		.sort({ start: 1 })
 		.limit(MAX_CANCELLABLE_EVENTS);
 
-	const events = createEventOptions(upcomingEvents);
+	const events = createEventOptions(cancellableEvents);
 
 	// the cleanup checkbox is only worth showing once we know the chosen event
 	// actually has posts behind it
-	const selectedEvent = upcomingEvents.find(
+	const selectedEvent = cancellableEvents.find(
 		(event: { _id: unknown }) => String(event._id) === selectedEventId
 	);
 

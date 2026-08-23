@@ -528,6 +528,15 @@ export const handleCreateEventSubmission = async (context: SubmissionContext) =>
 		);
 	}
 
+	// the two pickers are independent, and an untouched End defaults to now — which
+	// saves an event that is already over and can then only be cancelled by hand
+	if (form.end <= form.start) {
+		return json({
+			response_action: 'errors',
+			errors: { endtime_block: 'The end time has to be after the start time.' }
+		});
+	}
+
 	const newEvent: Event = {
 		groupSlug: form.groupSlug,
 		groupName: form.groupName,
