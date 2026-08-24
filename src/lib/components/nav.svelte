@@ -20,7 +20,7 @@
 		onClick="{() => (isMobileMenuOpen = !isMobileMenuOpen)}"
 		class="md:block lg:hidden"
 	/>
-	<NavUl ulClass="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
+	<NavUl classes="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
 		<NavLi
 			href="/about"
 			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
