@@ -17,7 +17,7 @@ The app manifest lives in [slackbot-config.json](./slackbot-config.json). Everyt
 | `modals.ts`      | Opening and rebuilding those forms, and the button/select handlers |
 | `submissions.ts` | What happens when a form is submitted, including posting to Slack  |
 | `helpers.ts`     | Select options, reading modal values, listing an event's messages  |
-| `audit.ts`       | The `eventbot-logs` log                                   |
+| `audit.ts`       | The `eventbot-logs` log                                            |
 | `channels.ts`    | Which channels the bot can post in                                 |
 
 Every successful create and cancel is also posted to a channel named `eventbot-logs`,
@@ -37,7 +37,7 @@ fallback: leave it empty and the event is saved to the site without being announ
 Picking a channel reveals the two fields under it, **Repost In** and **Announcement Message**.
 
 **Repost In** takes any number of other channels, each of which gets a permalink to that one
-announcement rathereventbot-logso a later edit only has to touch one message. The channel
+announcement rather than a copy of it — so a later edit only has to touch one message. The channel
 chosen under **Post In** is filtered out of the list, since it already has the announcement itself.
 
 Both selectors only list channels the bot has been invited to, so invite it anywhere you want to be
@@ -125,7 +125,7 @@ Then, from the root of this repo:
    ```
 
    In that page, go to **OAuth & Permissions** in the sidebar and copy the **Bot User OAuth Token**
-   (it starts with `xoxb-`).eventbot-logs
+   (it starts with `xoxb-`).
 
 6. In the shared workspace, name your app something identifiable (for example `eventbot-<yourname>`)
    so it is clear whose bot is posting.
@@ -152,21 +152,21 @@ node src/lib/scripts/slack-manifest.js
 > `src/lib/scripts/slack-manifest.js`, which reads `slackbot-config.json` and substitutes any
 > `${VARIABLE}` from `.env.local` or the environment.
 
----eventbot-logs
+---
 
 ## Testing
 
 ### Through Slack
 
 The full loop, once the setup above is done. Create an event with `/event` → **Create**, then
-confirm three things happen:
-eventbot-logs
+confirm four things happen:
+
 - the announcement is posted in the channel picked under **Post In**
 - each **Repost In** channel gets a permalink that Slack unfurls into a preview of that announcement
 - an audit entry appears in `#eventbot-logs` with your name, `Before: _none_`, and the new
   event's fields under `After`
 - the event shows up on the site's events page
-eventbot-logs
+
 Then `/event` → **Cancel**, pick that event, and confirm four things:
 
 - the **Slack posts** checkbox appears with the right count, and leaving it ticked removes the
