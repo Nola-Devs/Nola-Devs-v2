@@ -8,7 +8,7 @@
 	export let data: { groups: { name: string; slug: string }[] };
 </script>
 
-<Navbar fluid class="flex justify-between items-center !bg-transparent !px-0 !pt-8">
+<Navbar fluid class="flex justify-between items-center bg-transparent! !px-0 !pt-8">
 	<Breadcrumb />
 	<NavBrand
 		href="/"
