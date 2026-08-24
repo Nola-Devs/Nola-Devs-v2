@@ -41,7 +41,7 @@ announcement rathereventbot-logso a later edit only has to touch one message. Th
 chosen under **Post In** is filtered out of the list, since it already has the announcement itself.
 
 Both selectors only list channels the bot has been invited to, so invite it anywhere you want to be
-able to announce. `eventbot-notifications` is left out of both, since it already receives the full
+able to announce. `eventbot-logs` is left out of both, since it already receives the full
 audit entry for the event.
 
 ## Cancelling an event
@@ -129,7 +129,7 @@ Then, from the root of this repo:
 
 6. In the shared workspace, name your app something identifiable (for example `eventbot-<yourname>`)
    so it is clear whose bot is posting.
-7. Invite the bot to `eventbot-notifications` (`/invite @noladevs eventbot` from inside the
+7. Invite the bot to `eventbot-logs` (`/invite @noladevs eventbot` from inside the
    channel). In your own workspace, create the channel first; in the shared workspace it already
    exists, but each bot still has to be invited to it separately.
 
@@ -163,7 +163,7 @@ confirm three things happen:
 eventbot-logs
 - the announcement is posted in the channel picked under **Post In**
 - each **Repost In** channel gets a permalink that Slack unfurls into a preview of that announcement
-- an audit entry appears in `#eventbot-notifications` with your name, `Before: _none_`, and the new
+- an audit entry appears in `#eventbot-logs` with your name, `Before: _none_`, and the new
   event's fields under `After`
 - the event shows up on the site's events page
 eventbot-logs
@@ -171,13 +171,13 @@ Then `/event` → **Cancel**, pick that event, and confirm four things:
 
 - the **Slack posts** checkbox appears with the right count, and leaving it ticked removes the
   announcement and every repost
-- the matching audit entry appears in `#eventbot-notifications` with `After: _none_` and your reason
+- the matching audit entry appears in `#eventbot-logs` with `After: _none_` and your reason
 - no cancellation message is posted to any channel
 - the event is gone from the site
 
 Slack failures never surface in the modal — they are caught and logged — so keep an eye on the
 `npm run dev` terminal. A missing scope or an uninvited bot shows up there as
-`Audit log skipped: #eventbot-notifications not found or bot is not a member.` If you see that
+`Audit log skipped: #eventbot-logs not found or bot is not a member.` If you see that
 after inviting the bot, restart `npm run dev` — the failed lookup is cached for the life of the
 process.
 

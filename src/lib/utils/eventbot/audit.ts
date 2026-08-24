@@ -14,7 +14,7 @@ import type { WebClient } from '@slack/web-api';
 import { describeError, truncateSectionText } from '$lib/utils/eventbot/helpers';
 import { EVENT_TIME_ZONE } from '$lib/utils/event-dates';
 
-export const AUDIT_LOG_CHANNEL_NAME = 'eventbot-notifications';
+export const AUDIT_LOG_CHANNEL_NAME = 'eventbot-logs';
 
 type AuditOperation = 'create' | 'update' | 'delete';
 
