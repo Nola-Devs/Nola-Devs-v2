@@ -3,6 +3,9 @@ layer(base);
 
 @import 'tailwindcss';
 
+@config "../tailwind.config.js";
+@plugin "flowbite/plugin";
+
 @layer utilities {
 	/* Hide scrollbar for Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
