@@ -30,7 +30,7 @@
 <Drawer
 	transitionType="fly"
 	{transitionParams}
-	bind:hidden
+	open
 	id="sidebar2"
 	bgColor="{'bg-[#24072F]'}"
 	bgOpacity="{'bg-opacity-70'}"

@@ -37,9 +37,8 @@
 			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
 			><IconParser icon="github" /></NavLi
 		>
-		<div class="h-6 bg-gray-400 w-px dark:bg-violet-100"></div>
 
-		<DarkMode btnClass="">
+		<DarkMode>
 			<Icon name="moonIcon" slot="darkIcon" size="{24}" />
 			<Icon name="sunIcon" slot="lightIcon" size="{24}" />
 		</DarkMode>
