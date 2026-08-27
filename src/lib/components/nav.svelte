@@ -4,7 +4,7 @@
 	import Icon from './icon/index.svelte';
 	import IconParser from './icon-parser.svelte';
 	import MobileMenu from './mobile-menu.svelte';
-	let isMobileMenuOpen = true;
+	let isMobileMenuClosed = true;
 	export let data: { groups: { name: string; slug: string }[] };
 </script>
 
@@ -17,7 +17,7 @@
 		N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
 	</NavBrand>
 	<NavHamburger
-		onClick="{() => (isMobileMenuOpen = !isMobileMenuOpen)}"
+		onclick="{() => (isMobileMenuClosed = !isMobileMenuClosed)}"
 		class="md:block lg:hidden"
 	/>
 	<NavUl classes="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
@@ -45,4 +45,4 @@
 	</NavUl>
 </Navbar>
 
-<MobileMenu {data} bind:hidden="{isMobileMenuOpen}" />
+<MobileMenu {data} bind:hidden="{isMobileMenuClosed}" />
