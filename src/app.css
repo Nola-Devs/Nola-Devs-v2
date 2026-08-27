@@ -1,9 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+@import 'tailwindcss/index.css';
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap') layer(base);
+@plugin 'flowbite/plugin';
+@source '../node_modules/flowbite-svelte/dist';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+	--breakpoint-3xl: 125rem;
+	--font-cute: 'Cute Font', sans-serif;
+
+	--background-image-homeBanner: url('/src/lib/assets/banner.webp');
+	--background-image-defaultBanner: url('/src/lib/assets/default-banner.webp');
+	--background-image-scaleBanner: url('/src/lib/assets/scale-banner.webp');
+
+	--color-primary-50: #edebfe;
+	--color-primary-100: #f3e8ff;
+	--color-primary-200: #e9d5ff;
+	--color-primary-300: #d8b4fe;
+	--color-primary-400: #c084fc;
+	--color-primary-500: #a855f7;
+	--color-primary-600: #9333ea;
+	--color-primary-700: #7e22ce;
+	--color-primary-800: #6b21a8;
+	--color-primary-900: #24072f;
+	--color-primary-dark: #0e0015;
+	--color-primary-light: #f6f5ff;
+}
 @layer utilities {
 	/* Hide scrollbar for Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {

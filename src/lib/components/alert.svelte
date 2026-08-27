@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
-	export enum AlertType {
-		Update = 'update',
-		Emergency = 'emergency',
-		News = 'news'
-	}
+	export const AlertType = {
+		Update: 'update',
+		Emergency: 'emergency',
+		News: 'news'
+	} as const;
 </script>
 
 <script lang="ts">

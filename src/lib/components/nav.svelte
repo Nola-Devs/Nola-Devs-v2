@@ -4,11 +4,11 @@
 	import Icon from './icon/index.svelte';
 	import IconParser from './icon-parser.svelte';
 	import MobileMenu from './mobile-menu.svelte';
-	let isMobileMenuOpen = true;
+	let isMobileMenuClosed = true;
 	export let data: { groups: { name: string; slug: string }[] };
 </script>
 
-<Navbar fluid class="flex justify-between items-center !bg-transparent !px-0 !pt-8">
+<Navbar fluid class="flex justify-between items-center bg-transparent! !px-0 !pt-8">
 	<Breadcrumb />
 	<NavBrand
 		href="/"
@@ -17,10 +17,10 @@
 		N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
 	</NavBrand>
 	<NavHamburger
-		onClick="{() => (isMobileMenuOpen = !isMobileMenuOpen)}"
+		onclick="{() => (isMobileMenuClosed = !isMobileMenuClosed)}"
 		class="md:block lg:hidden"
 	/>
-	<NavUl ulClass="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
+	<NavUl classes="p-0 flex gap-6 items-center font-medium" divClass="hidden md:hidden lg:block">
 		<NavLi
 			href="/about"
 			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
@@ -37,13 +37,12 @@
 			class="font-base leading-[24px] text-gray-400 md:hover:text-gray-600 dark:text-violet-100 md:dark:hover:text-violet-300"
 			><IconParser icon="github" /></NavLi
 		>
-		<div class="h-6 bg-gray-400 w-px dark:bg-violet-100"></div>
 
-		<DarkMode btnClass="">
+		<DarkMode>
 			<Icon name="moonIcon" slot="darkIcon" size="{24}" />
 			<Icon name="sunIcon" slot="lightIcon" size="{24}" />
 		</DarkMode>
 	</NavUl>
 </Navbar>
 
-<MobileMenu {data} bind:hidden="{isMobileMenuOpen}" />
+<MobileMenu {data} bind:hidden="{isMobileMenuClosed}" />

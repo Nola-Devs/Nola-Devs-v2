@@ -21,7 +21,7 @@ try {
 	await connectDB();
 	await loadGroups();
 	await loadUsers();
-	await loadEvents();
+	// await loadEvents(); // Uncomment this line to load events if needed
 	await loadLocations();
 	console.log('Data loaded successfully');
 } catch (error) {

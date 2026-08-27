@@ -39,8 +39,6 @@ groupSchema.pre('save', function (next) {
 	next();
 });
 
-groupSchema.index({ slug: 1 });
-
 const GroupModel = mongoose.models.Group || model('Group', groupSchema);
 
 export default GroupModel;
