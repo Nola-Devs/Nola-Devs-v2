@@ -10,7 +10,7 @@
 		"slash_commands": [
 			{
 				"command": "/event",
-				"url": "https://<INSERT YOUR URL HERE>/api/slack/eventbot/init",
+				"url": "${CLOUDFLARE_URL}/api/slack/eventbot/init",
 				"description": "Submit an event to noladevs.org",
 				"should_escape": false
 			}
@@ -18,14 +18,14 @@
 	},
 	"oauth_config": {
 		"scopes": {
-			"bot": ["chat:write", "commands", "chat:write.public"]
+			"bot": ["chat:write", "commands", "chat:write.public", "channels:read", "groups:read"]
 		},
 		"pkce_enabled": false
 	},
 	"settings": {
 		"interactivity": {
 			"is_enabled": true,
-			"request_url": "https://<INSERT YOUR URL HERE>/api/slack/eventbot/submit"
+			"request_url": "${CLOUDFLARE_URL}/api/slack/eventbot/submit"
 		},
 		"org_deploy_enabled": false,
 		"socket_mode_enabled": false,

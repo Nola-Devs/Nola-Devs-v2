@@ -2,6 +2,7 @@ import slugify from 'slugify';
 import type { googleCalAPIType } from '$lib/types/google-api.d.ts';
 import type { Event } from '$lib/types/event.d.ts';
 import type { LngLatLike } from 'mapbox-gl';
+import { formatDateForSlug } from '$lib/utils/event-dates';
 
 type geocodeOnEvent = googleCalAPIType & {
 	lnglat?: LngLatLike;
@@ -19,13 +20,6 @@ const convertToLngLat = (lnglat?: LngLatLike): [number, number] => {
 		return [lnglat.lng, lnglat.lat];
 	}
 	return [0, 0];
-};
-
-const formatDateForSlug = (date: Date) => {
-	return `${(date.getMonth() + 1).toString().padStart(2, '0')}${date
-		.getDate()
-		.toString()
-		.padStart(2, '0')}${date.getFullYear()}`;
 };
 
 /**

@@ -11,3 +11,8 @@ vite.config.ts.timestamp-*
 
 .vercel
 settings.json
+
+# slack cli writes your personal app + team ids here
+.slack/apps.json
+.slack/apps.dev.json
+.slack/cache

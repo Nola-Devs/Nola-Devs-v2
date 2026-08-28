@@ -12,6 +12,9 @@ export interface Event {
 	eventLink?: string;
 	rsvpLink?: string;
 	announcement?: string;
+	announcementChannel?: string;
+	announcementTs?: string;
+	reposts?: Array<{ channel: string; ts: string }>;
 	eventSlug?: string;
 	groupSlug?: string;
 	createdAt: Date;
