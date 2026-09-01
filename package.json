@@ -62,5 +62,10 @@
 	},
 	"engines": {
 		"node": ">=22"
-	}
+	},
+	"overrides": {
+    "sanitize-html": {
+      "htmlparser2": "^10.1.0"
+    }
+  }
 }
