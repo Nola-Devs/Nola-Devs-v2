@@ -56,6 +56,7 @@
 	"type": "module",
 	"dependencies": {
 		"@slack/web-api": "^7.13.0",
+		"@vercel/functions": "^3.9.11",
 		"bcrypt": "^5.1.1",
 		"ics": "^3.7.2",
 		"tailwind-merge": "^2.2.2"
@@ -64,8 +65,8 @@
 		"node": ">=22"
 	},
 	"overrides": {
-    "sanitize-html": {
-      "htmlparser2": "^10.1.0"
-    }
-  }
+		"sanitize-html": {
+			"htmlparser2": "^10.1.0"
+		}
+	}
 }
