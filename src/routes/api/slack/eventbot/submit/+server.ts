@@ -14,6 +14,8 @@ import {
 import { postErrorReport } from '$lib/utils/eventbot/audit';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 
+export const config = { maxDuration: 30 };
+
 const slackClient = new WebClient(SLACK_BOT_TOKEN);
 
 /**
