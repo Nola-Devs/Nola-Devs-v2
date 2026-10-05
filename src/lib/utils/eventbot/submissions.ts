@@ -8,6 +8,7 @@
  */
 
 import type { WebClient } from '@slack/web-api';
+import { waitUntil } from '@vercel/functions';
 import { json } from '@sveltejs/kit';
 import EventLocationModel from '$lib/db/models/event-locations.model';
 import EventModel from '$lib/db/models/events.model';
@@ -490,6 +491,92 @@ const createEventResult = (
 	];
 };
 
+const updateSubmissionModal = async (
+	context: SubmissionContext,
+	title: string,
+	message: string
+) => {
+	try {
+		await context.slackClient.views.update({
+			view_id: context.payload.view.id,
+			hash: context.payload.view.hash,
+			view: resultModal(title, message).view
+		});
+	} catch (err) {
+		console.error('Failed to update eventbot modal:', err);
+	}
+};
+
+const finishCreateEvent = async (
+	context: SubmissionContext,
+	form: CreateEventForm,
+	userId: string
+) => {
+	const { slackClient } = context;
+	const newEvent: Event = {
+		groupSlug: form.groupSlug,
+		groupName: form.groupName,
+		meetupName: form.title,
+		description: form.description,
+		start: form.start,
+		end: form.end,
+		expireAt: expireAtFor(form.end),
+		location: form.location,
+		locationNotes: form.locationNotes,
+		eventLink: form.eventLink,
+		rsvpLink: form.rsvpLink,
+		announcement: form.announcement,
+		eventSlug: await eventSlugFor(form.title, form.start),
+		createdAt: new Date()
+	};
+
+	let createdEvent;
+	let saveError: unknown;
+	try {
+		createdEvent = await EventModel.create(newEvent);
+	} catch (err) {
+		console.error('Error saving to database', err);
+		saveError = err;
+
+		await postErrorReport(slackClient, {
+			action: 'save the event to the database',
+			userId,
+			error: err,
+			details: { Event: form.title, Group: form.groupName }
+		});
+	}
+
+	if (!createdEvent) {
+		const { code, message } = describeError(saveError);
+		await updateSubmissionModal(
+			context,
+			'Event Not Saved',
+			[
+				`:warning: *${form.title}* could not be saved, so it was not announced anywhere.`,
+				`\`${code}\`: ${message}`,
+				reportingFooter('Eventbot: could not save event', code, message)
+			].join('\n\n')
+		);
+		return;
+	}
+
+	const announcement = await announceEvent(slackClient, {
+		event: createdEvent,
+		postChannelId: form.postChannelId,
+		repostChannelIds: form.repostChannelIds,
+		userId
+	});
+
+	const audited = await postEventAuditLog(slackClient, {
+		operation: 'create',
+		userId,
+		before: null,
+		after: createdEvent
+	});
+
+	await updateSubmissionModal(context, ...createEventResult(form, announcement, audited));
+};
+
 export const handleCreateEventSubmission = async (context: SubmissionContext) => {
 	const { slackClient, payload, metadata } = context;
 	const userId = payload.user?.id ?? metadata.user_id;
@@ -537,72 +624,35 @@ export const handleCreateEventSubmission = async (context: SubmissionContext) =>
 		});
 	}
 
-	const newEvent: Event = {
-		groupSlug: form.groupSlug,
-		groupName: form.groupName,
-		meetupName: form.title,
-		description: form.description,
-		start: form.start,
-		end: form.end,
-		expireAt: expireAtFor(form.end),
-		location: form.location,
-		locationNotes: form.locationNotes,
-		eventLink: form.eventLink,
-		rsvpLink: form.rsvpLink,
-		announcement: form.announcement,
-		eventSlug: await eventSlugFor(form.title, form.start),
-		createdAt: new Date()
-	};
+	waitUntil(
+		finishCreateEvent(context, form, userId).catch(async (err) => {
+			console.error('Failed to finish creating event:', err);
+			await postErrorReport(slackClient, {
+				action: 'finish creating the event',
+				userId,
+				error: err,
+				details: { Event: form.title, Group: form.groupName }
+			});
 
-	let createdEvent;
-	let saveError: unknown;
-	try {
-		createdEvent = await EventModel.create(newEvent);
-	} catch (e) {
-		console.error('Error saving to database', e);
-		saveError = e;
-
-		await postErrorReport(slackClient, {
-			action: 'save the event to the database',
-			userId,
-			error: e,
-			details: { Event: form.title, Group: form.groupName }
-		});
-	}
-
-	// announcing an event that is not on the site would be worse than not
-	// announcing at all, so a failed write stops here
-	if (!createdEvent) {
-		const { code, message } = describeError(saveError);
-
-		return json(
-			resultModal(
-				'Event Not Saved',
+			const { code, message } = describeError(err);
+			await updateSubmissionModal(
+				context,
+				'Event Processing Failed',
 				[
-					`:warning: *${form.title}* could not be saved, so it was not announced anywhere.`,
-					`\`${code}\`: ${message}`,
-					reportingFooter(`Eventbot: could not save event`, code, message)
+					`:warning: Event processing failed: \`${code}\`: ${message}`,
+					'The event may already have been saved. Check noladevs.org and #eventbot-logs before trying again.',
+					reportingFooter('Eventbot: event processing failed', code, message)
 				].join('\n\n')
-			)
-		);
-	}
+			);
+		})
+	);
 
-	const announcement = await announceEvent(slackClient, {
-		event: createdEvent,
-		postChannelId: form.postChannelId,
-		repostChannelIds: form.repostChannelIds,
-		userId
-	});
-
-	// audit trail, only on a successful write
-	const audited = await postEventAuditLog(slackClient, {
-		operation: 'create',
-		userId,
-		before: null,
-		after: createdEvent
-	});
-
-	return json(resultModal(...createEventResult(form, announcement, audited)));
+	return json(
+		resultModal(
+			'Saving Event',
+			':hourglass_flowing_sand: Saving the event and posting the announcement. This window will update when processing finishes.'
+		)
+	);
 };
 
 export const handleCancelEventSubmission = async (context: SubmissionContext) => {
@@ -627,6 +677,46 @@ export const handleCancelEventSubmission = async (context: SubmissionContext) =>
 		});
 	}
 
+	waitUntil(
+		finishCancelEvent(context, selectedEventId, reason, deletePosts, userId).catch(async (err) => {
+			console.error('Failed to finish cancelling event:', err);
+			await postErrorReport(slackClient, {
+				action: 'finish cancelling the event',
+				userId,
+				error: err,
+				details: { Event: selectedEventId }
+			});
+
+			const { code, message } = describeError(err);
+			await updateSubmissionModal(
+				context,
+				'Cancellation Processing Failed',
+				[
+					`:warning: Cancellation processing failed: \`${code}\`: ${message}`,
+					'The event may already have been removed. Check noladevs.org and #eventbot-logs before trying again.',
+					reportingFooter('Eventbot: cancellation processing failed', code, message)
+				].join('\n\n')
+			);
+		})
+	);
+
+	return json(
+		resultModal(
+			'Cancelling Event',
+			':hourglass_flowing_sand: Cancelling the event and cleaning up its Slack posts. This window will update when processing finishes.'
+		)
+	);
+};
+
+const finishCancelEvent = async (
+	context: SubmissionContext,
+	selectedEventId: string,
+	reason: string | null,
+	deletePosts: boolean,
+	userId: string
+) => {
+	const { slackClient } = context;
+
 	let cancelledEvent;
 	try {
 		cancelledEvent = await EventModel.findByIdAndDelete(selectedEventId);
@@ -636,12 +726,12 @@ export const handleCancelEventSubmission = async (context: SubmissionContext) =>
 
 	// the event was already removed, or the id no longer resolves
 	if (!cancelledEvent) {
-		return json(
-			resultModal(
-				'Event Not Found',
-				'That event could not be found. It may have already been cancelled.'
-			)
+		await updateSubmissionModal(
+			context,
+			'Event Not Found',
+			'That event could not be found. It may have already been cancelled.'
 		);
+		return;
 	}
 
 	// audit trail, only on a successful delete
@@ -686,10 +776,9 @@ export const handleCancelEventSubmission = async (context: SubmissionContext) =>
 		);
 	}
 
-	return json(
-		resultModal(
-			cleanup.failed ? 'Event Cancelled, Posts Remain' : 'Event Cancelled',
-			lines.join('\n\n')
-		)
+	await updateSubmissionModal(
+		context,
+		cleanup.failed ? 'Event Cancelled, Posts Remain' : 'Event Cancelled',
+		lines.join('\n\n')
 	);
 };

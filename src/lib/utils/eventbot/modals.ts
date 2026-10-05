@@ -172,9 +172,8 @@ const pushModal = async (slackClient: WebClient, triggerId: string, view: ModalV
  * The terminal modals that replace the form once a submission is done. They only
  * ever say one thing, so they need no callback_id and no submit button.
  */
-export const resultModal = (title: string, text: string) => ({
-	response_action: 'update',
-	view: {
+export const resultModal = (title: string, text: string) => {
+	const view: ModalView = {
 		type: 'modal',
 		title: { type: 'plain_text', text: title },
 		close: { type: 'plain_text', text: 'Close' },
@@ -184,8 +183,10 @@ export const resultModal = (title: string, text: string) => ({
 				text: { type: 'mrkdwn', text }
 			}
 		]
-	}
-});
+	};
+
+	return { response_action: 'update' as const, view };
+};
 
 type ActionContext = {
 	slackClient: WebClient;
