@@ -7,7 +7,7 @@
 
 <button
 	class="inline-flex gap-2.5 px-3 py-1 text-violet-500 border border-violet-500 rounded-lg hover:text-white hover:bg-violet-500 transition-colors text-sm font-medium items-center"
-	on:click="{() => (formModal = true)}"
+	onclick="{() => (formModal = true)}"
 >
 	Suggest an Event
 	<Icon name="plusIcon" size="{20}" />

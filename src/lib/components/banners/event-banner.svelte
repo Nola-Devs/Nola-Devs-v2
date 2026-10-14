@@ -40,7 +40,7 @@
 		<div class="flex gap-8 mt-3">
 			<!-- svelte-ignore a11y-invalid-attribute -->
 			<a
-				on:click="{() => openModal()}"
+				onclick="{() => openModal()}"
 				href="javascript:void(0)"
 				class="gap-2.5 text-blue-500 hover:underline font-medium text-sm inline-flex items-center transition-colors"
 			>
@@ -65,7 +65,7 @@
 
 	<Modal style="width:80%" bind:open="{popupModal}" size="xs" autoclose outsideclose>
 		<div class="text-center" style="padding-top:20px">
-			<Button style="margin-bottom:10px" on:click="{() => downloadICS(event)}"
+			<Button style="margin-bottom:10px" onclick="{() => downloadICS(event)}"
 				>Download Calender Event</Button
 			>
 			<a
