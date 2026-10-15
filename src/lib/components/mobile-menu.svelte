@@ -41,7 +41,7 @@
 			href="/"
 			class="inline-flex items-center  font-cute text-5xl leading-10 text-gray-900 dark:text-violet-100"
 		>
-			<button on:click="{closeSidebar}">
+			<button onclick="{closeSidebar}">
 				N0LA<span class="text-[#6628CC]">{'[DEVS]'}</span>
 			</button>
 		</NavBrand>

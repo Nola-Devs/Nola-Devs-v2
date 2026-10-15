@@ -27,7 +27,7 @@
 				<Input name="{'link' + i}" type="url" placeholder="{link}" />
 			</div>
 		{/each}
-		<Button class="w-fit" on:click="{addLink}">Add Link</Button>
+		<Button class="w-fit" onclick="{addLink}">Add Link</Button>
 	</div>
 
 	<Button class="w-fit m-3" type="submit">Save</Button>

@@ -228,6 +228,13 @@
 				Community Slack
 			</a>
 		{:else}
+			<!--
+					 .-.
+					(o o) boo!
+					| O \
+					 \   \
+					  `~~~'
+			-->
 			<Button
 				id="dingDong"
 				class="
@@ -238,7 +245,7 @@
 					{dingDongState !== 'READY' ? ' opacity-100 cursor-wait' : ''} 
 				"
 				disabled="{dingDongState !== 'READY'}"
-				on:click="{onClickDingDongButton}"
+				onclick="{onClickDingDongButton}"
 			>
 				{#if dingDongState === 'READY'}
 					Ding Dong

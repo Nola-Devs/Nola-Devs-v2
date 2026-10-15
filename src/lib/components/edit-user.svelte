@@ -34,7 +34,7 @@
 			</div>
 		{/each}
 
-		<Button class="w-fit" on:click="{addLink}">Add Link</Button>
+		<Button class="w-fit" onclick="{addLink}">Add Link</Button>
 	</div>
 	<Button class="w-fit m-3 self-end" type="submit">Save</Button>
 </form>
